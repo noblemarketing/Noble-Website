@@ -7,6 +7,86 @@ function setYear() {
   if (el) el.textContent = String(new Date().getFullYear());
 }
 
+function setFooterBioText() {
+  const text =
+    "Noble Marketing & Design is a boutique marketing & design studio that helps businesses elevate their online presence with branding and strategic marketing materials.";
+  $$(".footer-bio-text").forEach((el) => {
+    el.textContent = text;
+  });
+}
+
+function setFooterCenterIcon() {
+  $$(".footer-center-icon").forEach((img) => {
+    img.setAttribute("src", "./Logos/Noble Icon.png");
+  });
+}
+
+function setupFooterSocialIcons() {
+  const iconByNetwork = {
+    instagram:
+      '<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5"></rect><circle cx="12" cy="12" r="4.1"></circle><circle cx="17.5" cy="6.5" r="1.15"></circle></svg>',
+    facebook:
+      '<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"></path></svg>',
+    linkedin:
+      '<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.4 8.4A2.2 2.2 0 1 1 6.4 4a2.2 2.2 0 0 1 0 4.4zM4.6 9.8h3.6V20H4.6zM10.3 9.8h3.4v1.4h.1c.5-.9 1.7-1.7 3.5-1.7 3.7 0 4.4 2.4 4.4 5.6V20H18v-4.3c0-1-.1-2.4-1.5-2.4s-1.7 1.1-1.7 2.3V20h-3.6z"></path></svg>',
+  };
+  const networks = [
+    { key: "instagram", href: "https://www.instagram.com/thenoblemarketing/", label: "Instagram" },
+    { key: "facebook", href: "https://www.facebook.com/people/Noble-Marketing/100063772796053/", label: "Facebook" },
+    { key: "linkedin", href: "https://www.linkedin.com/company/noble-marketing", label: "LinkedIn" },
+  ];
+
+  $$(".site-footer").forEach((footer) => {
+    const bio = $(".footer-bio", footer);
+    if (!(bio instanceof HTMLElement)) return;
+
+    const connectCol = $(".footer-nav-groups .footer-col:last-child", footer);
+    let existingLinks = $$(".footer-social-link", connectCol || footer).filter((a) => a instanceof HTMLAnchorElement);
+    if (existingLinks.length === 0) {
+      existingLinks = networks.map(({ href, label }) => {
+        const a = document.createElement("a");
+        a.href = href;
+        a.textContent = label;
+        return a;
+      });
+    }
+
+    const mapped = networks.map(({ key, label, href: fallbackHref }) => {
+      const fromDom =
+        existingLinks.find((a) => (a.getAttribute("href") || "").toLowerCase().includes(key)) ||
+        existingLinks.find((a) => (a.textContent || "").toLowerCase().includes(label.toLowerCase()));
+      return {
+        key,
+        label,
+        href: fromDom?.getAttribute("href") || fallbackHref,
+      };
+    });
+
+    let bioSocial = $(".footer-social--bio", bio);
+    if (!(bioSocial instanceof HTMLElement)) {
+      bioSocial = document.createElement("div");
+      bioSocial.className = "footer-social footer-social--bio";
+      bio.appendChild(bioSocial);
+    } else {
+      bioSocial.innerHTML = "";
+    }
+
+    mapped.forEach(({ key, label, href }) => {
+      const a = document.createElement("a");
+      a.className = "footer-social-link";
+      a.href = href;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.setAttribute("aria-label", label);
+      a.innerHTML = `${iconByNetwork[key]}<span class="sr-only">${label}</span>`;
+      bioSocial.appendChild(a);
+    });
+
+    const connectSocial = $(".footer-col:last-child .footer-social", footer);
+    connectSocial?.remove();
+  });
+}
+
 /** index.html — full-screen intro: green lines meet at center, Noble mark, ~5s then dismiss */
 function setupHomeSplash() {
   const root = document.getElementById("home-splash");
@@ -1526,6 +1606,9 @@ function setupBlogIndexFilters() {
 }
 
 setYear();
+setFooterBioText();
+setFooterCenterIcon();
+setupFooterSocialIcons();
 setupHomeSplash();
 setupHeaderScrollUi();
 setupHomeHeaderScrollPin();
