@@ -87,6 +87,287 @@ function setupFooterSocialIcons() {
   });
 }
 
+function setupWorkCaseClientProfiles() {
+  if (!document.body.classList.contains("page-work-case")) return;
+
+  const slug = (location.pathname.split("/").pop() || "").toLowerCase();
+  const left = document.querySelector(".work-case-client-board__left");
+  const right = document.querySelector(".work-case-client-board__right");
+  const nextLink = document.querySelector(".work-case-client-board__next");
+  if (!(left instanceof HTMLElement) || !(right instanceof HTMLElement) || !(nextLink instanceof HTMLAnchorElement)) return;
+
+  const profiles = {
+    "work-brookstone-ind.html": {
+      name: "Brookstone Industries",
+      logo: "./Clients/Brookstone/Logos/Brookstone-Horizontal Logo-Icon - Main.svg",
+      services: "Branding + Website",
+      niche: "Metal Fabrication / Industrial Manufacturing",
+      location: "PA",
+      about:
+        'Precision sheet metal ductwork and custom metal fabrication company serving industrial, commercial, and residential projects. Known for their "Better Metal Faster" motto, they specialize in HVAC duct fabrication and custom fittings out of Ephrata, PA.',
+      links: [
+        { label: "Website", href: "https://brookstoneind.com" },
+        { label: "Instagram", href: "https://instagram.com/brookstoneindustries" },
+        { label: "LinkedIn", href: "https://linkedin.com/company/brookstone-industries" },
+      ],
+    },
+    "work-revd.html": {
+      name: "REVD Toys",
+      logo: "./Client Logos/black revd.svg",
+      services: "Branding + Website",
+      niche: "Collectible Toys / Agriculture",
+      location: "PA",
+      about:
+        "Founded in 2025, REVD Toys creates precision-engineered, scale model farm toys and collectibles for serious collectors and ag enthusiasts. Noble delivered full brand identity, custom retail packaging, and a Shopify website.",
+      links: [
+        { label: "Website", href: "https://revdtoys.com" },
+        { label: "Facebook", href: "https://facebook.com/p/REVD-Toys-61577368115099" },
+        { label: "Instagram", href: "https://www.instagram.com/revdtoys/" },
+      ],
+    },
+    "work-no-nonsense-neutering.html": {
+      name: "No Nonsense Neutering",
+      logo: "",
+      services: "Website",
+      niche: "Nonprofit / Animal Welfare",
+      location: "PA",
+      about:
+        "A 501(c)3 nonprofit founded in 2008 providing affordable sterilization and vaccination services for pets and community cats. Operating three clinic locations across the Lehigh Valley, Reading, and Plains, PA — they have impacted over 190,000 cats and dogs.",
+      links: [
+        { label: "Website", href: "https://nnnlv.org" },
+        { label: "Facebook", href: "https://facebook.com/NoNonsenseNeutering" },
+      ],
+    },
+    "work-everflame-financial.html": {
+      name: "Everflame Financial Consulting",
+      logo: "./Client Logos/Everflae.svg",
+      services: "Branding",
+      niche: "Financial Consulting",
+      location: "PA",
+      about:
+        "A financial consulting firm built on themes of rebirth and resilience, guiding individuals, entrepreneurs, and organizations through financial challenges toward their next chapter. Noble crafted a full brand identity centered on the symbolism of an ever-burning flame.",
+      links: [],
+    },
+    "work-hsf.html": {
+      name: "Head Strong Flight",
+      logo: "./Client Logos/HSF.svg",
+      services: "Branding",
+      niche: "Archery / Hunting",
+      location: "PA",
+      about:
+        "A custom arrow company rooted in trust, integrity, and precision. The brand identity draws on earthy tones, mountain silhouettes, and archer motifs to reflect the rugged, purposeful spirit of the hunt.",
+      links: [
+        { label: "Website", href: "https://headstrongflight.com" },
+        { label: "Facebook", href: "https://facebook.com/headstrongflightllc" },
+        { label: "Instagram", href: "https://instagram.com/headstrongflight" },
+        { label: "TikTok", href: "https://tiktok.com/@headstrongflight" },
+      ],
+    },
+    "work-da-targets.html": {
+      name: "DA Targets",
+      logo: "./Client Logos/DA.svg",
+      services: "Social Media + Website Management + Print",
+      niche: "Firearms Training / Tactical Equipment",
+      location: "PA",
+      about:
+        "A Pennsylvania-based company making self-healing polymer shooting targets with a patented color-change feature for instant visual feedback. Serving military, law enforcement, and civilian shooters, Noble manages their social media content and print materials.",
+      links: [
+        { label: "Website", href: "https://da-targets.com" },
+        { label: "Facebook", href: "https://facebook.com/DaTargets" },
+        { label: "Instagram", href: "https://instagram.com/da_targets" },
+      ],
+    },
+    "work-gradys.html": {
+      name: "Grady's Grill & Truckstop",
+      logo: "./Client Logos/Background.svg",
+      services: "Branding",
+      niche: "Food & Beverage / Diner",
+      location: "PA",
+      about:
+        "A beloved community fixture since 1981, Grady's Grill & Truckstop is a roadside diner with deep roots in tradition and local charm. Noble refreshed their brand identity to honor their history while modernizing their visual presence.",
+      links: [],
+    },
+    "work-vizion.html": {
+      name: "Vizion Consulting",
+      logo: "./Client Logos/Vizion.svg",
+      services: "Branding + Website + Social Media",
+      niche: "Leadership & Business Consulting",
+      location: "PA",
+      about:
+        "A values-driven consulting firm based in York/Lancaster, PA, helping leaders and organizations achieve meaningful growth through servant leadership, integrity, and strategic guidance. Noble developed their full brand identity and website.",
+      links: [
+        { label: "Website", href: "https://vizionconsulting.com" },
+        { label: "Instagram", href: "https://www.instagram.com/vizion.consulting/" },
+      ],
+    },
+    "work-living-room-church.html": {
+      name: "The Living Room Church",
+      logo: "",
+      services: "Branding",
+      niche: "Church / Religious Organization",
+      location: "FL",
+      about:
+        "A community-centered church based in Winter Springs, Florida (near Orlando), focused on authentic connection and gathering. Noble created their brand identity to reflect warmth, belonging, and faith.",
+      links: [
+        { label: "Website", href: "https://thelivingroomorl.square.site" },
+        { label: "Instagram", href: "https://instagram.com/thelivingroomchurchorl" },
+        { label: "Facebook", href: "https://facebook.com/TheLivingRoomChurchOrlando" },
+      ],
+    },
+    "work-witness-coffeehouse.html": {
+      name: "Wittness Coffeehouse",
+      logo: "",
+      services: "Branding",
+      niche: "Coffee Shop / Cafe",
+      location: "PA",
+      about:
+        "A new coffeehouse in Strasburg, PA built around community, presence, and connection over a great cup of coffee. Noble created a brand identity blending vintage apothecary charm with modern warmth to reflect the cafe's inviting spirit.",
+      links: [
+        { label: "Website", href: "https://wittnesscoffeehouse.com" },
+        { label: "Instagram", href: "https://instagram.com/wittnesscoffeehouse" },
+        { label: "Facebook", href: "https://facebook.com/p/Wittness-Coffeehouse-61580196470486" },
+      ],
+    },
+    "work-hey-peaches.html": {
+      name: "Hey Peaches",
+      logo: "",
+      services: "Branding",
+      niche: "Women's Fashion Boutique",
+      location: "PA",
+      about:
+        "A women's clothing boutique that received a full rebrand to modernize and elevate its look. The refreshed identity features a soft peach and coral palette, clean typography, and a confident message: style should be fun, effortless, and for every woman.",
+      links: [
+        { label: "Website", href: "https://shopheypeaches.com" },
+        { label: "Instagram", href: "https://instagram.com/shop.heypeaches" },
+      ],
+    },
+    "work-cosmos.html": {
+      name: "Cosmo Floral Design",
+      logo: "",
+      services: "Branding",
+      niche: "Floral Design / Events",
+      location: "KY",
+      about:
+        'A floral design studio in Lexington, Kentucky, rooted in intention and storytelling. Inspired by the Greek word for "world," founder Hannah\'s brand was built around natural elegance, warm earthy tones, and deeply personal symbolism.',
+      links: [{ label: "Instagram", href: "https://instagram.com/cosmo.floraldesign" }],
+    },
+    "work-flintrock.html": {
+      name: "Flintrock Stables",
+      logo: "",
+      services: "Social Media",
+      niche: "Equestrian / Agriculture",
+      location: "PA",
+      about:
+        "A premier equestrian facility in Lititz, Lancaster County, PA — part of the family-owned Flintrock Corporation. Noble manages their social media, showcasing their riding programs, horse care, and community events.",
+      links: [
+        { label: "Website", href: "https://flintrockcorporation.com" },
+        { label: "Instagram", href: "https://www.instagram.com/flintrock_stables/" },
+      ],
+    },
+    "work-lakewood-reserve.html": {
+      name: "Lakewood Reserve",
+      logo: "",
+      services: "Branding + Website + Social Media",
+      niche: "Hospitality / Short-Term Rental / Glamping",
+      location: "PA",
+      about:
+        "A modern lakeside tiny home retreat on Raystown Lake in Pennsylvania, offering elevated comfort surrounded by woods, water, and mountains. Noble handled full brand development, website, and ongoing social media management.",
+      links: [{ label: "Instagram", href: "https://instagram.com/lakewoodreserve" }],
+    },
+    "work-outback-toys.html": {
+      name: "Outback Toys",
+      logo: "./Client Logos/OBT_Logo_Reverse Primary.svg",
+      services: "Branding + Website + Social Media",
+      niche: "Retail / Farm Toy & Collectibles",
+      location: "PA",
+      about:
+        "One of the largest farm toy retailers in the United States, Outback Toys is a family-owned store rooted in Lititz, Lancaster County, PA — carrying thousands of die-cast farm toys, construction equipment replicas, collectibles, and farm-branded merchandise for kids and adult collectors alike. With roots going back to the early 1990s and a newly expanded state-of-the-art retail location, Outback Toys serves customers locally, nationally, and internationally through both their in-store experience and outbacktoys.com. Known for their exclusive limited-edition releases and deep agricultural heritage, they are a beloved destination for the farming community and a one-of-a-kind gem in Lancaster County.",
+      links: [
+        { label: "Website", href: "https://www.outbacktoys.com" },
+        { label: "Instagram", href: "https://instagram.com/outbacktoys" },
+      ],
+    },
+    "work-blaze-yoga-fitness.html": {
+      name: "Blaze Yoga Lancaster",
+      logo: "",
+      services: "Social Media",
+      niche: "Fitness & Wellness",
+      location: "PA",
+      about:
+        "A Lancaster-based hot yoga studio centered on movement, discipline, and personal growth. Noble supports Blaze Yoga with social media strategy and content that reflects the studio's motivating community culture.",
+      links: [],
+    },
+    "work-blaze-yoga.html": {
+      name: "Blaze Yoga Lancaster",
+      logo: "",
+      services: "Social Media",
+      niche: "Fitness & Wellness",
+      location: "PA",
+      about:
+        "A Lancaster-based hot yoga studio centered on movement, discipline, and personal growth. Noble supports Blaze Yoga with social media strategy and content that reflects the studio's motivating community culture.",
+      links: [],
+    },
+    "work-pennwood.html": {
+      name: "Pennwood Development Group",
+      logo: "",
+      services: "Branding",
+      niche: "Real Estate / Development",
+      location: "PA",
+      about:
+        "Pennwood Development Group is a regional development and investment team focused on strategic growth projects. Noble developed a clean, modern brand presentation to support long-term positioning and trust.",
+      links: [],
+    },
+    "work-tcc.html": {
+      name: "The Cultivate Collective",
+      logo: "",
+      services: "Branding",
+      niche: "Faith-Led Organization",
+      location: "PA",
+      about:
+        "The Cultivate Collective is a values-driven organization with a mission rooted in faith, community, and growth. Noble supported brand direction to communicate purpose with clarity and warmth.",
+      links: [],
+    },
+  };
+
+  const profile = profiles[slug];
+  if (!profile) return;
+
+  const logoMarkup = profile.logo
+    ? `<figure class="work-case-client-board__logo"><img class="work-case-client-board__mark work-case-client-board__mark--hero" src="${profile.logo}" alt="${profile.name} logo" loading="lazy" decoding="async"></figure>`
+    : `<h1 class="work-case-client-board__name">${profile.name}</h1>`;
+
+  const linksMarkup =
+    profile.links && profile.links.length > 0
+      ? `<p class="work-case-client-board__client-links">${profile.links
+          .map(
+            (link) =>
+              `<a class="work-case-client-board__client-link" href="${link.href}" target="_blank" rel="noopener noreferrer">${link.label}</a>`
+          )
+          .join("")}</p>`
+      : "";
+
+  left.innerHTML = `
+    <p class="work-case-client-board__back"><a href="./portfolio.html">Back to portfolio</a></p>
+    ${logoMarkup}
+    <dl class="work-case-client-board__meta" aria-label="Client details">
+      <div><dt>Location</dt><dd>${profile.location}</dd></div>
+      <div><dt>Niche</dt><dd>${profile.niche}</dd></div>
+      <div><dt>Services by Noble</dt><dd>${profile.services}</dd></div>
+    </dl>
+    ${linksMarkup}
+    <p><a class="work-case-client-board__next" href="${nextLink.getAttribute("href") || "./portfolio.html"}" aria-label="${
+    nextLink.getAttribute("aria-label") || "next project: portfolio"
+  }">→</a></p>
+  `;
+
+  const rightTitle = right.querySelector(".work-case-client-board__about-title");
+  if (rightTitle) rightTitle.textContent = "About the Client";
+  const about = right.querySelector(".work-case-client-board__about");
+  if (about instanceof HTMLElement) {
+    about.innerHTML = `<p class="lead">${profile.about}</p>`;
+  }
+}
+
 /** index.html — full-screen intro: green lines meet at center, Noble mark, ~5s then dismiss */
 function setupHomeSplash() {
   const root = document.getElementById("home-splash");
@@ -1609,6 +1890,7 @@ setYear();
 setFooterBioText();
 setFooterCenterIcon();
 setupFooterSocialIcons();
+setupWorkCaseClientProfiles();
 setupHomeSplash();
 setupHeaderScrollUi();
 setupHomeHeaderScrollPin();
