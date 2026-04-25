@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 100" aria-hidden="true" focusable="false">
+  <!-- Stylized silhouettes: Pennsylvania, Virginia, North Carolina (simplified, not to scale) -->
+  <path fill="#141311" d="M 6 78 L 6 28 L 22 18 L 52 14 L 68 22 L 72 48 L 66 76 L 44 86 L 18 84 Z" />
+  <path fill="#141311" d="M 78 82 L 82 24 L 108 20 L 124 36 L 128 58 L 120 80 L 98 86 Z" />
+  <path fill="#141311" d="M 134 80 L 138 22 L 186 16 L 206 44 L 210 68 L 198 84 L 162 88 Z" />
+</svg>

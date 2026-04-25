@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Noble</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="./script.js" defer></script>
+</head>
+<body class="page-contact">
+<header class="site-header" data-elevate>
+  <div class="container header-inner">
+    <a class="brand" href="./index.html">
+      <img class="brand-mark" src="./graphics/noble-stamp-1.svg" width="42" height="42" alt="Noble" />
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-lines" aria-hidden="true"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <a class="nav-link" href="./about.html">About</a>
+      <div class="nav-dropdown">
+        <a class="nav-link" href="./services/index.html">Services</a>
+        <div class="nav-dropdown-flyout" role="menu" aria-label="Service pages">
+          <a class="nav-dropdown-link" href="./branding.html">Branding</a>
+          <a class="nav-dropdown-link" href="./website-design.html">Website Design</a>
+          <a class="nav-dropdown-link" href="./social-media.html">Social Media</a>
+        </div>
+      </div>
+      <a class="nav-link" href="./portfolio.html">Portfolio</a>
+      <a class="nav-link" href="./blog/index.html">Blog</a>
+    </nav>
+    <div class="header-end">
+      <a class="header-discovery" href="./contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <section id="contact" class="section section-alt" data-reveal-on-scroll>
+    <div class="container contact-grid">
+      <div>
+        <h1 class="section-title">Contact</h1>
+        <p class="lead">Share a few details and we will reply with a thoughtful, human follow-up (usually within two business days).</p>
+        <div class="contact-cards">
+          <p><a href="mailto:audrey@thenoblemarketing.com">audrey@thenoblemarketing.com</a></p>
+          <p>Prefer a menu first? <a href="./services/index.html">Browse services</a> and come back with context.</p>
+        </div>
+        <form id="contact-form" class="contact-form" novalidate>
+          <p>
+            <label for="contact-name">Name</label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" required />
+          </p>
+          <p>
+            <label for="contact-email">Email</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" required />
+          </p>
+          <p>
+            <label for="project-type">Project type</label>
+            <select id="project-type" name="projectType" required>
+              <option value="" selected disabled>Select…</option>
+              <option value="Branding">Branding</option>
+              <option value="Website design">Website design</option>
+              <option value="Social media">Social media</option>
+              <option value="Multiple">Multiple services</option>
+            </select>
+          </p>
+          <p>
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="6" required></textarea>
+          </p>
+          <p>
+            <button class="button primary" type="submit">Send</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+  <section class="section services-reviews-section reviews-section--editorial" data-reveal-on-scroll>
+    <div class="container">
+      <h2 class="reviews-section-editorial-title">Atmosphere</h2>
+      <p class="services-reviews-lead services-reviews-lead--editorial">Clients describe the Noble process as calm, direct, and refreshingly un-corporate.</p>
+      <div class="reviews-carousel reviews-carousel--editorial" data-reviews-carousel>
+        <button type="button" class="reviews-carousel-nav reviews-carousel-nav--prev" aria-label="Previous testimonial">‹</button>
+        <div class="reviews-carousel-viewport" tabindex="0" role="region" aria-label="Testimonials" aria-roledescription="carousel">
+          <ul class="reviews-carousel-track" role="list">
+            <li class="reviews-carousel-slide">
+              <article class="review-editorial">
+                <p class="review-editorial__series">Contact / 01</p>
+                <div class="review-editorial__band">
+                  <div class="review-editorial__pull">
+                    <p>“The fastest ‘yes, they get us’ we’ve had with an outside creative partner.”</p>
+                  </div>
+                </div>
+                <p class="review-editorial__attr">— Digital-first founder, US East Coast</p>
+              </article>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="reviews-carousel-nav reviews-carousel-nav--next" aria-label="Next testimonial">›</button>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer" data-reveal-on-scroll>
+  <div class="container">
+    <div class="footer-grid footer-grid--tri">
+      <div class="footer-bio">
+        <p class="footer-bio-text">Boutique branding, websites, and social for teams who value craft and consistency.</p>
+      </div>
+      <div class="footer-center">
+        <div class="footer-brand-panel">
+          <a class="footer-center-icon-link" href="./index.html">
+            <img class="footer-center-icon" src="./graphics/noble-stamp-1.svg" width="72" height="72" alt="Noble home" />
+          </a>
+          <a class="footer-center-cta" href="./contact.html">Start a project</a>
+          <p class="footer-center-copyright">© <span id="year">2026</span> Noble Marketing &amp; Design. All rights reserved.</p>
+        </div>
+      </div>
+      <div class="footer-nav-groups" role="navigation" aria-label="Footer">
+        <div class="footer-col">
+          <h3>Services</h3>
+          <a href="./branding.html">Branding</a>
+          <a href="./website-design.html">Website Design</a>
+          <a href="./social-media.html">Social Media</a>
+        </div>
+        <div class="footer-col">
+          <h3>Company</h3>
+          <a href="./about.html">About</a>
+          <a href="./portfolio.html">Portfolio</a>
+          <a href="./blog/index.html">Blog</a>
+          <a href="./contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h3>Connect</h3>
+          <a href="mailto:audrey@thenoblemarketing.com">audrey@thenoblemarketing.com</a>
+          <div class="footer-social" aria-label="Social links">
+            <a class="footer-social-link" href="https://www.instagram.com/thenoblemarketing/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="footer-social-link" href="https://www.facebook.com/people/Noble-Marketing/100063772796053/" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="footer-social-link" href="https://www.linkedin.com/company/noble-marketing" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

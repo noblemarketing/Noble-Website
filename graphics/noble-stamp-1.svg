@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" aria-hidden="true">
+  <defs>
+    <path id="r1" d="M200,32 A168,168 0 1 1 200,368 A168,168 0 1 1 200,32"/>
+    <path id="r2" d="M200,88 A112,112 0 1 1 200,312 A112,112 0 1 1 200,88"/>
+    <path id="r3" d="M200,136 A64,64 0 1 1 200,264 A64,64 0 1 1 200,136"/>
+  </defs>
+  <g fill="none" transform="rotate(-8 200 200)">
+    <text font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="400" letter-spacing="0.35em" fill="rgba(62,48,34,0.14)">
+      <textPath href="#r1" startOffset="2%">STRATEGY &#183; BRANDING &#183; WEB &#183; SOCIAL &#183; DIGITAL &#183;</textPath>
+    </text>
+    <text font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="600" letter-spacing="0.12em" fill="rgba(62,48,34,0.16)">
+      <textPath href="#r2" startOffset="12%">NOBLE MARKETING &amp; DESIGN</textPath>
+    </text>
+    <text font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="500" letter-spacing="0.28em" fill="rgba(62,48,34,0.13)">
+      <textPath href="#r3" startOffset="18%">BOUTIQUE STUDIO</textPath>
+    </text>
+  </g>
+</svg>

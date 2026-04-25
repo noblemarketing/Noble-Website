@@ -1,0 +1,350 @@
+.hero {
+  padding-top: 92px;
+  padding-bottom: 26px;
+}
+
+.hero-eyebrow {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.hero-title {
+  margin: 0;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  font-size: clamp(48px, 6vw, 84px);
+}
+
+.hero-subtext {
+  margin: 14px 0 0;
+  max-width: 65ch;
+  color: var(--color-text-muted);
+  font-size: 18px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.hero-media {
+  margin-top: 22px;
+}
+
+.section {
+  padding: var(--section-gap) 0;
+}
+
+.section-surface {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section-head {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.section-head.is-centered {
+  text-align: center;
+  place-items: center;
+}
+
+.section-title {
+  margin: 0;
+  font-size: clamp(32px, 3.6vw, 50px);
+  letter-spacing: 0.03em;
+}
+
+.section-subtext {
+  margin: 0;
+  color: var(--color-text-muted);
+  max-width: 70ch;
+  font-size: 16px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.card {
+  border: 1px solid var(--color-border);
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
+}
+
+.icon-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.card p {
+  margin: 8px 0 0;
+  color: var(--color-text-muted);
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.work-card {
+  border: 1px solid var(--color-border);
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.work-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
+}
+
+.work-card .img-placeholder {
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0;
+}
+
+.work-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 14px 16px;
+}
+
+.work-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.section-actions {
+  margin-top: 18px;
+}
+
+.process {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.process-step {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  position: relative;
+}
+
+.process-step::after {
+  content: "";
+  position: absolute;
+  top: 26px;
+  right: -14px;
+  width: 14px;
+  height: 2px;
+  background: var(--color-border);
+}
+
+.process-step:last-child::after {
+  display: none;
+}
+
+.process-num {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: white;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+}
+
+.process-step h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.process-step p {
+  margin: 8px 0 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.quote-card {
+  border: 1px solid var(--color-border);
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.quote-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
+}
+
+.stars {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
+.quote {
+  margin: 10px 0 0;
+  color: var(--color-text-muted);
+}
+
+.quote-by {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.muted {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cta-banner {
+  background: var(--color-accent);
+  color: white;
+  padding: 56px 0;
+}
+
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cta-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: clamp(34px, 3.8vw, 52px);
+  letter-spacing: 0.03em;
+}
+
+.cta-subtext {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-weight: 500;
+}
+
+.cta-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cta-form input {
+  min-width: min(340px, 100%);
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.cta-form input::placeholder {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.cta-form .btn {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: white;
+  color: var(--color-accent);
+}
+
+.cta-form .btn:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .process {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .process-step::after {
+    display: none;
+  }
+
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
