@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About — Noble</title>
   <link rel="stylesheet" href="./styles.css" />
+  <script src="./instagram-feed-fallback.js" defer></script>
   <script src="./script.js" defer></script>
 </head>
 <body class="page-about">
 <header class="site-header" data-elevate>
   <div class="container header-inner">
     <a class="brand" href="./index.html">
-      <img class="brand-mark" src="./graphics/noble-stamp-1.svg" width="42" height="42" alt="Noble" />
+      <img class="brand-mark" src="./Logos/Noble Icon.png" width="42" height="42" alt="Noble" />
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
       <span class="nav-toggle-lines" aria-hidden="true"></span>
@@ -36,58 +37,93 @@
   </div>
 </header>
 <main id="main">
-  <section class="about-editorial" data-reveal-on-scroll>
-    <div class="about-editorial__inner">
-      <div class="about-editorial__top">
-        <div class="about-editorial__intro">
-          <h1 class="about-editorial__title">Boutique Branding, Built With Care</h1>
-          <p class="about-editorial__tagline">A Pennsylvania studio partnering with US brands to refine identity, digital presence, and how you show up on social—without the corporate conveyor belt.</p>
-          <a class="about-editorial__contact-link" href="./about.html#about-bio">Meet the studio &amp; founder</a>
-        </div>
-        <div class="about-editorial__photos" aria-hidden="true">
-          <figure class="about-editorial__figure">
-            <img src="./Photos/AudreyHBranding-7568.jpg" width="800" height="1000" alt="Audrey in the studio" loading="lazy" />
-          </figure>
-          <figure class="about-editorial__figure">
-            <img src="./Photos/AudreyHBranding-7832.jpg" width="800" height="1000" alt="Branding in progress" loading="lazy" />
-          </figure>
+  <section class="about-hero-split" data-reveal-on-scroll aria-labelledby="about-hero-heading">
+    <div class="about-hero-split__split">
+      <div class="about-hero-split__copy">
+        <h1 class="about-hero-split__title" id="about-hero-heading">Clarity, craft, and strategy&mdash;for brands ready to grow</h1>
+        <div class="about-editorial__bio about-hero-split__bio" id="about-bio" tabindex="-1">
+          <p>As a Graphic Designer and Strategic Marketer, Audrey brings a diverse skill set and a deep passion for helping businesses elevate their brands with clarity and intention. Her expertise spans brand identity development, creative direction, and digital marketing, where she focuses on building visually compelling solutions that are not only aesthetically refined, but strategically effective.</p>
+          <p>With hands-on experience across social media platforms, website design and development, and multi-channel marketing, Audrey has worked with businesses in ecommerce, professional services, manufacturing, outdoor and lifestyle brands, hospitality, and creative industries. Her work includes designing and managing social media content, developing conversion-focused websites, and crafting cohesive brand systems that translate seamlessly across digital and print touchpoints.</p>
+          <p>Driven by a commitment to excellence, Audrey is dedicated to exceeding client expectations&mdash;creating work that not only looks polished, but performs with purpose.</p>
         </div>
       </div>
-      <div class="about-editorial__bio" id="about-bio" tabindex="-1">
-        <p>Founded by Audrey, Noble is a small-by-design brand studio: fewer concurrent projects, more thoughtful iteration, and direct access to the person making the calls.</p>
-        <p>We work with founders, marketing leads, and internal teams to translate personality into a cohesive visual story—from logo and packaging cues to a website that finally feels on-brand, plus social that breathes the same air.</p>
-        <p>Most engagements blend strategy and craft across Pennsylvania and remote collaborations nationwide; where you are matters less than how clearly you can share what makes your brand different.</p>
-      </div>
+      <figure class="about-hero-split__media">
+        <img src="./Photos/AudreyHBranding-8014.jpg" width="1600" height="2000" alt="Audrey Noble, founder of Noble Marketing &amp; Design" loading="eager" decoding="async" />
+      </figure>
     </div>
   </section>
-  <section class="section about-who-we-serve" data-reveal-on-scroll>
-    <div class="container">
-      <div class="about-who-we-serve__body">
-        <div class="about-who-we-serve__regions about-who-we-serve__regions--two-cols">
-          <div class="about-who-we-serve__region">
-            <h3 class="about-who-we-serve__subhead">South Central &amp; Central Pennsylvania</h3>
-            <div class="about-who-we-serve__region-content">
-              <div class="about-who-we-serve__state-markers" aria-hidden="true">
-                <img src="./States/PA.png" width="104" height="104" alt="" />
-              </div>
-              <p>The studio is located in <strong>South Central Pennsylvania</strong>. We regularly partner with organizations throughout the region, including in <strong>Adams, Cumberland, Dauphin, Franklin, Lancaster, Lebanon, Perry, and York counties</strong>, and in towns and cities such as <strong>Harrisburg, Lancaster, York, Carlisle, Chambersburg, Gettysburg, Lebanon, Hershey, and Mechanicsburg</strong>. Local meetings are welcome when it fits your project; many milestones happen remotely with the same clarity and care.</p>
-            </div>
-          </div>
-          <div class="about-who-we-serve__region">
-            <h3 class="about-who-we-serve__subhead">Virginia, North Carolina, Florida &amp; Beyond</h3>
-            <div class="about-who-we-serve__region-content">
-              <div class="about-who-we-serve__state-markers about-who-we-serve__state-markers--stack" aria-hidden="true">
-                <img src="./States/FL.png" width="104" height="104" alt="" />
-                <img src="./States/VA.png" width="104" height="104" alt="" />
-                <img src="./States/NC.png" width="104" height="104" alt="" />
-              </div>
-              <p>Noble has also supported clients outside Pennsylvania, including work tied to <strong>Lynchburg, Virginia</strong>; to <strong>Raleigh, Charlotte, and Greenville, North Carolina</strong>; and to partners and projects in <strong>Florida</strong>—plus ongoing remote collaborations nationwide. Wherever you are, the process stays organized: discovery, strategy, design, and launch with timelines you can plan around.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+
+  <section class="about-how-i-work" data-reveal-on-scroll aria-labelledby="about-how-i-work-heading">
+    <div class="container about-how-i-work__inner">
+      <header class="about-how-i-work__intro">
+        <p class="about-how-i-work__eyebrow">How I work</p>
+        <h2 class="about-how-i-work__title" id="about-how-i-work-heading">
+          Qualities that shape <em class="about-how-i-work__title-em">every</em> project I take on.
+        </h2>
+      </header>
+      <ul class="about-how-i-work__grid" role="list">
+        <li class="about-how-i-work__card">
+          <h3 class="about-how-i-work__card-title">Grounded</h3>
+          <p class="about-how-i-work__card-body">Strategy before aesthetics. I want to understand your business before I pick up a pencil &mdash; or open a design file.</p>
+        </li>
+        <li class="about-how-i-work__card">
+          <h3 class="about-how-i-work__card-title">Intentional</h3>
+          <p class="about-how-i-work__card-body">Nothing I do is arbitrary. The colors, the type, the layout &mdash; every decision has a reason, and I can explain it.</p>
+        </li>
+        <li class="about-how-i-work__card">
+          <h3 class="about-how-i-work__card-title">Collaborative</h3>
+          <p class="about-how-i-work__card-body">Your voice matters throughout &mdash; not just at the brief. This is built with you, not handed to you at the end.</p>
+        </li>
+        <li class="about-how-i-work__card">
+          <h3 class="about-how-i-work__card-title">Genuine</h3>
+          <p class="about-how-i-work__card-body">I&apos;ll tell you what I think, clearly and kindly. If something isn&apos;t working, we talk about it. Flattery doesn&apos;t serve you.</p>
+        </li>
+        <li class="about-how-i-work__card">
+          <h3 class="about-how-i-work__card-title">Patient</h3>
+          <p class="about-how-i-work__card-body">Good branding takes the time it takes. I&apos;d rather get it right than get it done fast.</p>
+        </li>
+        <li class="about-how-i-work__card">
+          <h3 class="about-how-i-work__card-title">Personal</h3>
+          <p class="about-how-i-work__card-body">When you email me, I respond. When we have a call, it&apos;s me on the line. Every time.</p>
+        </li>
+      </ul>
     </div>
   </section>
+
+  <section class="about-our-process" id="our-process" data-reveal-on-scroll aria-labelledby="about-our-process-heading">
+    <div class="container about-our-process__inner">
+      <header class="about-our-process__header">
+        <p class="about-our-process__eyebrow">OUR PROCESS</p>
+        <h2 class="about-our-process__title" id="about-our-process-heading">
+          From audit to finished brand &mdash; <em class="about-our-process__title-em">in the right order.</em>
+        </h2>
+      </header>
+      <div class="about-our-process__divider" aria-hidden="true"></div>
+      <ol class="about-our-process__steps" role="list">
+        <li class="about-our-process__step">
+          <p class="about-our-process__step-label"><span class="about-our-process__step-label-inner">STEP 01</span></p>
+          <h3 class="about-our-process__step-title">Brand Audit</h3>
+          <p class="about-our-process__step-body">We start by understanding where you currently stand &mdash; across brand, web, SEO, social, and marketing. Graded, honest, and prioritized.</p>
+        </li>
+        <li class="about-our-process__step">
+          <p class="about-our-process__step-label"><span class="about-our-process__step-label-inner">STEP 02</span></p>
+          <h3 class="about-our-process__step-title">Brand Workshop</h3>
+          <p class="about-our-process__step-body">We define your strategy, voice, and visual direction together. Every design decision that follows is rooted in what we establish here.</p>
+        </li>
+        <li class="about-our-process__step">
+          <p class="about-our-process__step-label"><span class="about-our-process__step-label-inner">STEP 03</span></p>
+          <h3 class="about-our-process__step-title">Design + Build</h3>
+          <p class="about-our-process__step-body">Logo, identity, website &mdash; designed from scratch, built around your brand brief. Refined until it feels right, not just finished.</p>
+        </li>
+        <li class="about-our-process__step">
+          <p class="about-our-process__step-label"><span class="about-our-process__step-label-inner">STEP 04</span></p>
+          <h3 class="about-our-process__step-title">Visibility + Launch</h3>
+          <p class="about-our-process__step-body">SEO, Google Business, social media &mdash; all updated to match your new brand and optimized so the right people can actually find you.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
   <section class="section about-industries-we-serve" id="industries-we-serve" aria-labelledby="about-industries-heading" data-reveal-on-scroll>
     <div class="container">
       <h2 class="section-title" id="about-industries-heading">Industries &amp; organizations we partner with</h2>
@@ -99,7 +135,6 @@
       </p>
     </div>
     <div class="about-industries-marquee" aria-label="Industries marquee" role="region">
-      <p class="about-industries-marquee__kicker">A rotating snapshot</p>
       <div class="about-industries-marquee__viewport">
         <div class="about-industries-marquee__track">
           <p class="about-industries-marquee__line about-industries-marquee__items">fitness &amp; wellness · tourism &amp; travel · equestrian &amp; outdoor · home services · education · faith-led organizations</p>
@@ -132,24 +167,53 @@
             <div class="about-remote-collab__photos">
               <figure class="about-remote-collab__figure">
                 <img
-                  src="./Photos/AudreyHBranding-7568.jpg"
-                  width="2048"
-                  height="3072"
-                  alt="Black-and-white portrait of Audrey in a white shirt and light denim, standing against a plain wall with glasses in hand."
+                  src="./Photos/AudreyHBranding-8165.jpg"
+                  width="1600"
+                  height="2000"
+                  alt="Noble business cards, notebook, and glasses on a wooden chair in bright natural light."
                   loading="lazy"
                   decoding="async"
                 />
               </figure>
               <figure class="about-remote-collab__figure">
                 <img
-                  src="./Photos/AudreyHBranding-7832.jpg"
-                  width="2048"
-                  height="3072"
-                  alt="Overhead view of Noble branding work on a light wood floor—laptop, printed mood boards, binder, and hands arranging sheets."
+                  src="./Photos/AudreyHBranding-7982.jpg"
+                  width="1600"
+                  height="2000"
+                  alt="Overhead view of hands on printed branding proofs and mood boards on a light wood table."
                   loading="lazy"
                   decoding="async"
                 />
               </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section about-who-we-serve" data-reveal-on-scroll aria-labelledby="about-areas-we-serve-heading">
+    <div class="container">
+      <h2 id="about-areas-we-serve-heading" class="about-who-we-serve__heading">Areas we&apos;ve served</h2>
+      <div class="about-who-we-serve__body">
+        <div class="about-who-we-serve__regions about-who-we-serve__regions--two-cols">
+          <div class="about-who-we-serve__region">
+            <h3 class="about-who-we-serve__subhead">South Central &amp; Central Pennsylvania</h3>
+            <div class="about-who-we-serve__region-content">
+              <div class="about-who-we-serve__state-markers" aria-hidden="true">
+                <img src="./States/PA.png" width="104" height="104" alt="" />
+              </div>
+              <p>The studio is located in <strong>South Central Pennsylvania</strong>. We regularly partner with organizations throughout the region, including in <strong>Adams, Cumberland, Dauphin, Franklin, Lancaster, Lebanon, Perry, and York counties</strong>, and in towns and cities such as <strong>Harrisburg, Lancaster, York, Carlisle, Chambersburg, Gettysburg, Lebanon, Hershey, and Mechanicsburg</strong>. Local meetings are welcome when it fits your project; many milestones happen remotely with the same clarity and care.</p>
+            </div>
+          </div>
+          <div class="about-who-we-serve__region">
+            <h3 class="about-who-we-serve__subhead">Virginia, North Carolina, Florida &amp; Beyond</h3>
+            <div class="about-who-we-serve__region-content">
+              <div class="about-who-we-serve__state-markers about-who-we-serve__state-markers--stack" aria-hidden="true">
+                <img src="./States/FL.png" width="104" height="104" alt="" />
+                <img src="./States/VA.png" width="104" height="104" alt="" />
+                <img src="./States/NC.png" width="104" height="104" alt="" />
+              </div>
+              <p>Noble has also supported clients outside Pennsylvania, including work tied to <strong>Lynchburg, Virginia</strong>; to <strong>Raleigh, Charlotte, and Greenville, North Carolina</strong>; and to partners and projects in <strong>Florida</strong>—plus ongoing remote collaborations nationwide. Wherever you are, the process stays organized: discovery, strategy, design, and launch with timelines you can plan around.</p>
             </div>
           </div>
         </div>
@@ -199,6 +263,9 @@
     </div>
   </section>
 
+  <section class="section home-instagram-strip site-instagram-prefooter instagram-feed-section" data-reveal-on-scroll aria-label="Instagram">
+    <div class="container" data-noble-instagram-feed></div>
+  </section>
 </main>
 <footer class="site-footer" data-reveal-on-scroll>
   <div class="container">
@@ -218,9 +285,9 @@
       <div class="footer-nav-groups" role="navigation" aria-label="Footer">
         <div class="footer-col">
           <h3>Services</h3>
-          <a href="./branding.html">Branding</a>
-          <a href="./website-design.html">Website Design</a>
-          <a href="./social-media.html">Social Media</a>
+          <a href="./services/branding/index.html">Branding</a>
+          <a href="./services/website-design/index.html">Website Design</a>
+          <a href="./services/social-media/index.html">Social Media</a>
         </div>
         <div class="footer-col">
           <h3>Company</h3>

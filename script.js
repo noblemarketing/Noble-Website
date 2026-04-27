@@ -755,8 +755,8 @@ function setupServiceAccordion() {
   const panels = $$(".service-horiz-slide", root);
   if (tabs.length === 0 || panels.length === 0 || tabs.length !== panels.length) return;
 
-  /** Branding (0) starts on the left; website (1) and social (2) start on the right until first opened. */
-  const docked = [true, false, false];
+  /** Tabs 0..active stay on the left (Branding → +Web → +Social); higher indices return to the right rail. */
+  const docked = [false, false, false];
 
   const syncRightEmpty = () => {
     if (rightWrap) {
@@ -779,14 +779,19 @@ function setupServiceAccordion() {
     syncRightEmpty();
   };
 
-  if (leftWrap && rightWrap) {
-    redistributeTabs();
-  }
-
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   let activeIndex = panels.findIndex((p) => p.classList.contains("is-active"));
   if (activeIndex < 0) activeIndex = 0;
+
+  const syncDockedToActive = (index) => {
+    for (let j = 0; j < tabs.length; j++) {
+      docked[j] = j <= index;
+    }
+    if (leftWrap && rightWrap) redistributeTabs();
+  };
+
+  syncDockedToActive(activeIndex);
 
   let busy = false;
   let slideSafetyTimer = 0;
@@ -809,10 +814,7 @@ function setupServiceAccordion() {
     if (index < 0 || index >= panels.length || busy) return;
     if (index === activeIndex) return;
 
-    if (index > 0 && !docked[index]) {
-      docked[index] = true;
-      redistributeTabs();
-    }
+    syncDockedToActive(index);
 
     const prev = activeIndex;
     const instantSwitch = reduceMotion.matches;
@@ -823,7 +825,9 @@ function setupServiceAccordion() {
     const applyUi = (targetIndex) => {
       activeIndex = targetIndex;
       tabs.forEach((t, i) => {
-        t.setAttribute("aria-expanded", i === targetIndex ? "true" : "false");
+        const on = i === targetIndex;
+        t.setAttribute("aria-expanded", on ? "true" : "false");
+        t.setAttribute("aria-selected", on ? "true" : "false");
       });
     };
 
@@ -961,15 +965,20 @@ function setupAddonsCarousel() {
   });
 }
 
-function formatStatValue(n) {
-  if (n >= 1000) return n.toLocaleString("en-US");
-  return String(Math.round(n));
+function formatStatValue(n, decimalsAttr) {
+  if (decimalsAttr != null && decimalsAttr !== "") {
+    const d = parseInt(String(decimalsAttr), 10);
+    if (Number.isFinite(d) && d >= 0) {
+      return Number(n).toFixed(d);
+    }
+  }
+  const num = Number(n);
+  if (num >= 1000) return num.toLocaleString("en-US");
+  return String(Math.round(num));
 }
 
 function setupReviewsCarousel() {
-  const root = document.querySelector("[data-reviews-carousel]");
-  if (!root) return;
-
+  document.querySelectorAll("[data-reviews-carousel]").forEach((root) => {
   const vp = $(".reviews-carousel-viewport", root);
   const prev = $(".reviews-carousel-nav--prev", root);
   const next = $(".reviews-carousel-nav--next", root);
@@ -1084,6 +1093,7 @@ function setupReviewsCarousel() {
     sync();
     syncAuto();
   });
+  });
 }
 
 function setupStatsCounter() {
@@ -1099,7 +1109,8 @@ function setupStatsCounter() {
     nums.forEach((el) => {
       const target = Number(el.getAttribute("data-target"));
       if (!Number.isFinite(target)) return;
-      el.textContent = formatStatValue(target);
+      const dec = el.getAttribute("data-decimals");
+      el.textContent = formatStatValue(target, dec);
     });
   };
 
@@ -1115,15 +1126,16 @@ function setupStatsCounter() {
     nums.forEach((el) => {
       const target = Number(el.getAttribute("data-target"));
       if (!Number.isFinite(target)) return;
+      const dec = el.getAttribute("data-decimals");
 
       const start = performance.now();
 
       const tick = (now) => {
         const t = Math.min(1, (now - start) / duration);
         const v = easeOut(t) * target;
-        el.textContent = formatStatValue(v);
+        el.textContent = formatStatValue(v, dec);
         if (t < 1) requestAnimationFrame(tick);
-        else el.textContent = formatStatValue(target);
+        else el.textContent = formatStatValue(target, dec);
       };
 
       requestAnimationFrame(tick);
@@ -1540,6 +1552,277 @@ function ensureInstagramStripFallbackLinked() {
   });
 }
 
+/** Pre-footer Instagram strip from `instagram-feed.json` (Behold-style payload: profile + horizontal thumbnails). */
+function setupNobleInstagramHorizontalFeed() {
+  const mounts = document.querySelectorAll("[data-noble-instagram-feed]");
+  if (!mounts.length) return;
+
+  const profileHref = (username) => {
+    const u = String(username || "").replace(/^@/, "").trim();
+    return u ? `https://www.instagram.com/${encodeURIComponent(u)}/` : NOBLE_INSTAGRAM_PROFILE;
+  };
+
+  const buildInner = (data) => {
+    if (!data || typeof data.username !== "string" || !Array.isArray(data.posts) || data.posts.length === 0) {
+      return null;
+    }
+    const username = String(data.username).replace(/^@/, "").trim();
+    if (!username) return null;
+
+    const wrap = document.createElement("div");
+    wrap.className = "instagram-feed-section__inner site-instagram-prefooter__inner";
+
+    const h2 = document.createElement("h2");
+    h2.className = "section-title instagram-feed-section__title";
+    h2.textContent = "On Instagram";
+
+    const profile = document.createElement("div");
+    profile.className = "instagram-feed-section__profile";
+
+    const avatarLink = document.createElement("a");
+    avatarLink.className = "instagram-feed-section__avatar-link";
+    avatarLink.href = profileHref(username);
+    avatarLink.target = "_blank";
+    avatarLink.rel = "noopener noreferrer";
+    const avatar = document.createElement("img");
+    avatar.className = "instagram-feed-section__avatar";
+    avatar.src = String(data.profilePictureUrl || "").trim();
+    avatar.alt = `@${username} on Instagram`;
+    avatar.width = 88;
+    avatar.height = 88;
+    avatar.loading = "lazy";
+    avatar.decoding = "async";
+    avatarLink.appendChild(avatar);
+
+    const meta = document.createElement("div");
+    meta.className = "instagram-feed-section__meta";
+
+    const handle = document.createElement("a");
+    handle.className = "instagram-feed-section__handle";
+    handle.href = profileHref(username);
+    handle.target = "_blank";
+    handle.rel = "noopener noreferrer";
+    handle.textContent = `@${username}`;
+
+    const statEl = document.createElement("p");
+    statEl.className = "instagram-feed-section__stats";
+    const fc = typeof data.followersCount === "number" && Number.isFinite(data.followersCount) ? data.followersCount : null;
+    const fwc = typeof data.followsCount === "number" && Number.isFinite(data.followsCount) ? data.followsCount : null;
+    if (fc != null && fwc != null) {
+      statEl.textContent = `${fc.toLocaleString()} followers · ${fwc.toLocaleString()} following`;
+    } else if (fc != null) {
+      statEl.textContent = `${fc.toLocaleString()} followers`;
+    }
+
+    meta.appendChild(handle);
+    if (statEl.textContent) meta.appendChild(statEl);
+
+    const bioText = typeof data.biography === "string" ? data.biography.trim() : "";
+    if (bioText) {
+      const bio = document.createElement("p");
+      bio.className = "instagram-feed-section__bio";
+      bio.style.whiteSpace = "pre-line";
+      bio.textContent = bioText;
+      meta.appendChild(bio);
+    }
+
+    const siteRaw = typeof data.website === "string" ? data.website.trim() : "";
+    if (siteRaw) {
+      let href = siteRaw;
+      try {
+        href = new URL(siteRaw.includes("://") ? siteRaw : `https://${siteRaw}`).href;
+      } catch {
+        href = siteRaw.includes("://") ? siteRaw : `https://${siteRaw}`;
+      }
+      const web = document.createElement("a");
+      web.className = "instagram-feed-section__website";
+      web.href = href;
+      web.target = "_blank";
+      web.rel = "noopener noreferrer";
+      try {
+        web.textContent = new URL(href).hostname.replace(/^www\./, "");
+      } catch {
+        web.textContent = "Website";
+      }
+      meta.appendChild(web);
+    }
+
+    profile.appendChild(avatarLink);
+    profile.appendChild(meta);
+
+    const rail = document.createElement("div");
+    rail.className = "instagram-feed-section__rail";
+    rail.setAttribute("role", "list");
+
+    const feedPostThumbUrl = (post) => {
+      if (!post || typeof post !== "object") return "";
+      const sizes = post.sizes && typeof post.sizes === "object" ? post.sizes : null;
+      const fromSizes = (k) => {
+        const b = sizes && sizes[k] && typeof sizes[k].mediaUrl === "string" ? sizes[k].mediaUrl.trim() : "";
+        return b && !/\.mp4(\?|$)/i.test(b) ? b : "";
+      };
+      /* Prefer Behold-hosted sizes first — Instagram CDN URLs in thumbnailUrl/mediaUrl expire often and break thumbnails. */
+      const sz =
+        fromSizes("large") || fromSizes("medium") || fromSizes("full") || fromSizes("small");
+      if (sz) return sz;
+      const m = typeof post.mediaUrl === "string" ? post.mediaUrl.trim() : "";
+      if (m && !/\.mp4(\?|$)/i.test(m)) return m;
+      const t = typeof post.thumbnailUrl === "string" ? post.thumbnailUrl.trim() : "";
+      if (t && !/\.mp4(\?|$)/i.test(t)) return t;
+      const kids = Array.isArray(post.children) ? post.children : [];
+      for (let c = 0; c < kids.length; c++) {
+        const ch = kids[c];
+        const u = feedPostThumbUrl(ch);
+        if (u) return u;
+      }
+      return "";
+    };
+
+    const feedPostThumbFallbackUrl = (post) => {
+      if (!post || typeof post !== "object") return "";
+      const t = typeof post.thumbnailUrl === "string" ? post.thumbnailUrl.trim() : "";
+      if (t && !/\.mp4(\?|$)/i.test(t)) return t;
+      const m = typeof post.mediaUrl === "string" ? post.mediaUrl.trim() : "";
+      return m && !/\.mp4(\?|$)/i.test(m) ? m : "";
+    };
+
+    data.posts.forEach((post, i) => {
+      if (!post || typeof post !== "object") return;
+      const thumb = feedPostThumbUrl(post);
+      const linkUrl = typeof post.permalink === "string" ? post.permalink.trim() : "";
+      if (!thumb || !linkUrl) return;
+
+      const a = document.createElement("a");
+      a.className = "instagram-feed-section__post";
+      a.href = linkUrl;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.setAttribute("role", "listitem");
+      const cap =
+        typeof post.prunedCaption === "string" && post.prunedCaption.trim()
+          ? post.prunedCaption.trim()
+          : typeof post.caption === "string"
+            ? post.caption.trim()
+            : "";
+      const aria = cap.length > 118 ? `${cap.slice(0, 118)}…` : cap || `Instagram post ${i + 1}`;
+      a.setAttribute("aria-label", aria);
+
+      const span = document.createElement("span");
+      span.className = "instagram-feed-section__thumb";
+
+      const img = document.createElement("img");
+      img.src = thumb;
+      img.alt = "";
+      img.width = 320;
+      img.height = 400;
+      img.loading = "lazy";
+      img.decoding = "async";
+      const fbUrl = feedPostThumbFallbackUrl(post);
+      if (fbUrl && fbUrl !== thumb) {
+        img.addEventListener(
+          "error",
+          () => {
+            img.src = fbUrl;
+          },
+          { once: true },
+        );
+      }
+      span.appendChild(img);
+
+      const isReel = Boolean(post.isReel) || post.mediaType === "VIDEO";
+      if (isReel) {
+        const badge = document.createElement("span");
+        badge.className = "instagram-feed-section__badge";
+        badge.textContent = "Reel";
+        span.appendChild(badge);
+      }
+
+      a.appendChild(span);
+      rail.appendChild(a);
+    });
+
+    if (!rail.childElementCount) return null;
+
+    const row = document.createElement("div");
+    row.className = "instagram-feed-section__row";
+
+    row.appendChild(profile);
+    row.appendChild(rail);
+
+    wrap.appendChild(h2);
+    wrap.appendChild(row);
+    return wrap;
+  };
+
+  const renderFallback = (mount) => {
+    mount.textContent = "";
+    const p = document.createElement("p");
+    p.className = "instagram-feed-section__fallback";
+    p.appendChild(document.createTextNode("Follow along on "));
+    const a = document.createElement("a");
+    a.href = NOBLE_INSTAGRAM_PROFILE;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.textContent = "Instagram";
+    p.appendChild(a);
+    p.appendChild(document.createTextNode("."));
+    mount.appendChild(p);
+  };
+
+  const fetchNobleInstagramFeedData = async () => {
+    const embedded =
+      typeof window !== "undefined" &&
+      window.NOBLE_INSTAGRAM_FEED_EMBEDDED &&
+      typeof window.NOBLE_INSTAGRAM_FEED_EMBEDDED === "object" &&
+      typeof window.NOBLE_INSTAGRAM_FEED_EMBEDDED.username === "string"
+        ? window.NOBLE_INSTAGRAM_FEED_EMBEDDED
+        : null;
+
+    const urlCandidates = Array.from(
+      new Set(
+        [
+          nobleScriptSiblingUrl("./instagram-feed.json"),
+          new URL("./instagram-feed.json", window.location.href).href,
+        ].filter(Boolean),
+      ),
+    );
+
+    for (let u = 0; u < urlCandidates.length; u++) {
+      try {
+        const r = await fetch(urlCandidates[u], { cache: "no-store" });
+        if (!r.ok) continue;
+        const data = await r.json();
+        if (
+          data &&
+          typeof data.username === "string" &&
+          Array.isArray(data.posts) &&
+          data.posts.length > 0
+        ) {
+          return data;
+        }
+      } catch (_) {
+        /* Typical when using file://, offline, or JSON missing on host */
+      }
+    }
+
+    return embedded;
+  };
+
+  const promise = fetchNobleInstagramFeedData();
+
+  mounts.forEach((mount) => {
+    promise.then((data) => {
+      const inner = buildInner(data);
+      mount.textContent = "";
+      if (inner) {
+        mount.appendChild(inner);
+      } else {
+        renderFallback(mount);
+      }
+    });
+  });
+}
+
 /** Sitewide Instagram strip: optional widget iframe, or Meta embeds from post/reel URLs, else static grid */
 function setupHomeInstagramFeed() {
   const embedHost = document.getElementById("home-instagram-embeds");
@@ -1886,6 +2169,68 @@ function setupBlogIndexFilters() {
   });
 }
 
+function setupBackToTop() {
+  if ($("#noble-back-to-top")) return;
+
+  const ringR = 22;
+  const circumference = 2 * Math.PI * ringR;
+
+  const wrap = document.createElement("div");
+  wrap.id = "noble-back-to-top";
+  wrap.className = "back-to-top";
+  wrap.innerHTML = `<button type="button" class="back-to-top__btn" aria-label="Back to top">
+    <svg class="back-to-top__svg" viewBox="0 0 52 52" width="52" height="52" aria-hidden="true">
+      <circle class="back-to-top__track" cx="26" cy="26" r="${ringR}" fill="none" stroke-width="2.25" />
+      <circle class="back-to-top__progress" cx="26" cy="26" r="${ringR}" fill="none" stroke-width="2.25" transform="rotate(-90 26 26)" />
+      <path class="back-to-top__arrow" d="M26 17 L26 31 M19 24 L26 17 L33 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+    </svg>
+  </button>`;
+
+  document.body.appendChild(wrap);
+
+  const btn = $(".back-to-top__btn", wrap);
+  const progressEl = $(".back-to-top__progress", wrap);
+  if (!(btn instanceof HTMLButtonElement) || !(progressEl instanceof SVGCircleElement)) return;
+
+  progressEl.style.strokeDasharray = String(circumference);
+
+  const scrollable = () => {
+    const el = document.documentElement;
+    return Math.max(0, el.scrollHeight - el.clientHeight);
+  };
+
+  const update = () => {
+    const max = scrollable();
+    const y = window.scrollY || document.documentElement.scrollTop;
+    const p = max <= 0 ? 0 : Math.min(1, Math.max(0, y / max));
+    progressEl.style.strokeDashoffset = String(circumference * (1 - p));
+
+    const showFrom = 180;
+    const t = max <= 0 ? 0 : Math.min(1, Math.max(0, (y - showFrom) / 280));
+    wrap.style.setProperty("--back-to-top-t", String(t));
+    wrap.classList.toggle("is-visible", y > showFrom);
+  };
+
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      update();
+    });
+  };
+
+  btn.addEventListener("click", () => {
+    const instant = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: instant ? "auto" : "smooth" });
+  });
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  update();
+}
+
 setYear();
 setFooterBioText();
 setFooterCenterIcon();
@@ -1917,5 +2262,7 @@ setupWorkCaseGrowthCounters();
 setupReviewsCarousel();
 setupServicesPricingModals();
 setupHomeInstagramFeed();
+setupNobleInstagramHorizontalFeed();
 setupBlazeYogaReelsEmbeds();
+setupBackToTop();
 

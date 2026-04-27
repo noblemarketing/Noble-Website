@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact — Noble</title>
   <link rel="stylesheet" href="./styles.css" />
+  <script src="./instagram-feed-fallback.js" defer></script>
   <script src="./script.js" defer></script>
 </head>
 <body class="page-contact">
 <header class="site-header" data-elevate>
   <div class="container header-inner">
     <a class="brand" href="./index.html">
-      <img class="brand-mark" src="./graphics/noble-stamp-1.svg" width="42" height="42" alt="Noble" />
+      <img class="brand-mark" src="./Logos/Noble Icon.png" width="42" height="42" alt="Noble" />
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
       <span class="nav-toggle-lines" aria-hidden="true"></span>
@@ -22,9 +23,9 @@
       <div class="nav-dropdown">
         <a class="nav-link" href="./services/index.html">Services</a>
         <div class="nav-dropdown-flyout" role="menu" aria-label="Service pages">
-          <a class="nav-dropdown-link" href="./branding.html">Branding</a>
-          <a class="nav-dropdown-link" href="./website-design.html">Website Design</a>
-          <a class="nav-dropdown-link" href="./social-media.html">Social Media</a>
+          <a class="nav-dropdown-link" href="./services/branding/index.html">Branding</a>
+          <a class="nav-dropdown-link" href="./services/website-design/index.html">Website Design</a>
+          <a class="nav-dropdown-link" href="./services/social-media/index.html">Social Media</a>
         </div>
       </div>
       <a class="nav-link" href="./portfolio.html">Portfolio</a>
@@ -77,8 +78,8 @@
   </section>
   <section class="section services-reviews-section reviews-section--editorial" data-reveal-on-scroll>
     <div class="container">
-      <h2 class="reviews-section-editorial-title">Atmosphere</h2>
-      <p class="services-reviews-lead services-reviews-lead--editorial">Clients describe the Noble process as calm, direct, and refreshingly un-corporate.</p>
+      <h2 class="reviews-section-editorial-title">Client voices</h2>
+      <p class="services-reviews-lead services-reviews-lead--editorial">What partners say about working with Noble on brand, web, and campaigns.</p>
       <div class="reviews-carousel reviews-carousel--editorial" data-reviews-carousel>
         <button type="button" class="reviews-carousel-nav reviews-carousel-nav--prev" aria-label="Previous testimonial">‹</button>
         <div class="reviews-carousel-viewport" tabindex="0" role="region" aria-label="Testimonials" aria-roledescription="carousel">
@@ -88,10 +89,54 @@
                 <p class="review-editorial__series">Contact / 01</p>
                 <div class="review-editorial__band">
                   <div class="review-editorial__pull">
-                    <p>“The fastest ‘yes, they get us’ we’ve had with an outside creative partner.”</p>
+                    <p>“From start to finish, the experience was seamless and professional. Audrey took the time to listen to my vision, turned it into stunning visuals that exceeded my expectations, and I highly recommend her services to anyone in need of top-quality graphic design work.”</p>
                   </div>
                 </div>
-                <p class="review-editorial__attr">— Digital-first founder, US East Coast</p>
+                <p class="review-editorial__attr">— Lisa Cook, The Living Room Church</p>
+              </article>
+            </li>
+            <li class="reviews-carousel-slide">
+              <article class="review-editorial">
+                <p class="review-editorial__series">Contact / 02</p>
+                <div class="review-editorial__band">
+                  <div class="review-editorial__pull">
+                    <p>“Audrey was collaborative each step of the way, and very accommodating for any edits or changes. She didn&apos;t just want to do what I wanted, but aimed to ensure that my ideas would be presented the way I envisioned them. The final product of the branding package exceeded my expectations and I could not be more pleased.”</p>
+                  </div>
+                </div>
+                <p class="review-editorial__attr">— Pete Wisniewski, Everflame Financial Consulting</p>
+              </article>
+            </li>
+            <li class="reviews-carousel-slide">
+              <article class="review-editorial">
+                <p class="review-editorial__series">Contact / 03</p>
+                <div class="review-editorial__band">
+                  <div class="review-editorial__pull">
+                    <p>“I&apos;ve been impressed by her thoughtful handling of our brand and the quality of execution she brought to our website development. Professional, collaborative, and a true partner.”</p>
+                  </div>
+                </div>
+                <p class="review-editorial__attr">— Matthew Smith, Vizion Consulting</p>
+              </article>
+            </li>
+            <li class="reviews-carousel-slide">
+              <article class="review-editorial">
+                <p class="review-editorial__series">Contact / 04</p>
+                <div class="review-editorial__band">
+                  <div class="review-editorial__pull">
+                    <p>“She made creating a logo feel seamless by offering multiple design options and explaining things clearly along the way. The attention to detail and professionalism throughout the project really stood out, and the final result exceeded my expectations.”</p>
+                  </div>
+                </div>
+                <p class="review-editorial__attr">— Kyle Head, Head Strong Flight</p>
+              </article>
+            </li>
+            <li class="reviews-carousel-slide">
+              <article class="review-editorial">
+                <p class="review-editorial__series">Contact / 05</p>
+                <div class="review-editorial__band">
+                  <div class="review-editorial__pull">
+                    <p>“The very first meeting we had to discuss our vision felt so personal. Audrey really bought into what we were going for. She was also so quick to get back to us with any questions we had or requests for any changes. I would highly recommend working with Audrey for any and all branding needs.”</p>
+                  </div>
+                </div>
+                <p class="review-editorial__attr">— Megan Witt, Wittness Coffeehouse</p>
               </article>
             </li>
           </ul>
@@ -99,6 +144,10 @@
         <button type="button" class="reviews-carousel-nav reviews-carousel-nav--next" aria-label="Next testimonial">›</button>
       </div>
     </div>
+  </section>
+
+  <section class="section home-instagram-strip site-instagram-prefooter instagram-feed-section" data-reveal-on-scroll aria-label="Instagram">
+    <div class="container" data-noble-instagram-feed></div>
   </section>
 </main>
 <footer class="site-footer" data-reveal-on-scroll>
@@ -119,9 +168,9 @@
       <div class="footer-nav-groups" role="navigation" aria-label="Footer">
         <div class="footer-col">
           <h3>Services</h3>
-          <a href="./branding.html">Branding</a>
-          <a href="./website-design.html">Website Design</a>
-          <a href="./social-media.html">Social Media</a>
+          <a href="./services/branding/index.html">Branding</a>
+          <a href="./services/website-design/index.html">Website Design</a>
+          <a href="./services/social-media/index.html">Social Media</a>
         </div>
         <div class="footer-col">
           <h3>Company</h3>

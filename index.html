@@ -1,18 +1,19 @@
-<!doctype html>
+ï»¿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Noble Marketing &amp; Design — boutique branding, website design, and social media for teams across Pennsylvania and the US." />
+  <meta name="description" content="Noble Marketing &amp; Design ï¿½ boutique branding, website design, and social media for teams across Pennsylvania and the US." />
   <title>Noble Marketing &amp; Design</title>
   <link rel="stylesheet" href="./styles.css" />
+  <script src="./instagram-feed-fallback.js" defer></script>
   <script src="./script.js" defer></script>
 </head>
 <body class="home-nav-fixed-bottom">
 <header class="site-header" data-elevate>
   <div class="container header-inner">
     <a class="brand" href="./index.html" aria-current="page">
-      <img class="brand-mark" src="./Logos/Noble Logo.png" width="42" height="42" alt="Noble" />
+      <img class="brand-mark" src="./Logos/Noble Icon.png" width="42" height="42" alt="Noble" />
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
       <span class="nav-toggle-lines" aria-hidden="true"></span>
@@ -39,18 +40,15 @@
 <main id="main">
   <section id="top" class="hero" data-reveal-on-scroll>
     <div class="hero-band">
-      <div class="hero-media" style="--hero-img: url(./Photos/AudreyHBranding-7834.jpg)"></div>
+      <div class="hero-media" style="--hero-img: url('./Photos/AudreyHBranding-8155.jpg')"></div>
       <div class="hero-inner">
         <div class="container">
           <div class="hero-card">
-            <p class="eyebrow">Pennsylvania studio · US-wide remote</p>
-            <h1 class="hero-title">Brand, web, and social—<span class="hero-title-lock">built as one story.</span></h1>
-            <p class="hero-subtitle">Noble partners with founders and marketing leads who want a calm, elevated presence: identity you can ship, websites your team can maintain, and social that matches the rest.</p>
-            <div class="hero-actions">
-              <a class="button primary" href="./contact.html">Start a project</a>
-              <a class="button ghost" href="#work">Featured work</a>
-              <a class="button ghost" href="#services">Services</a>
-            </div>
+            <a class="hero-home-wordmark hero-home-wordmark--in-card" href="./index.html" aria-current="page" aria-label="Noble Marketing &amp; Design home">
+              <img src="./Logos/Noble Logo.png" width="280" height="75" alt="" decoding="async" />
+            </a>
+            <h1 class="hero-title">Boutique branding &amp; design studio</h1>
+            <p class="hero-subtitle">for businesses ready to look as good as they actually are.</p>
           </div>
         </div>
       </div>
@@ -59,8 +57,7 @@
           <div class="hero-side-stat-line">
             <span class="hero-side-bracket">[</span>
             <div class="hero-side-stat-stack">
-              <span class="hero-side-stat-kicker">How we work</span>
-              <span class="hero-side-stat-value">Research ? refine ? launch</span>
+              <span class="hero-side-stat-value">Intentional process- streamlined steps and clear communication</span>
             </div>
             <span class="hero-side-bracket">]</span>
           </div>
@@ -70,7 +67,7 @@
             <span class="hero-side-bracket">[</span>
             <div class="hero-side-stat-stack">
               <span class="hero-side-stat-kicker">Where we shine</span>
-              <span class="hero-side-stat-value">Identity · digital · feed</span>
+              <span class="hero-side-stat-value">expertly crafted for your specific needs.</span>
             </div>
             <span class="hero-side-bracket">]</span>
           </div>
@@ -82,181 +79,89 @@
   <section class="noble-intro-band" data-reveal-on-scroll>
     <div class="container">
       <div class="noble-intro-grid">
-        <p class="noble-intro-side noble-intro-side--left">Small by design</p>
+        <p class="noble-intro-side noble-intro-side--left">marketing</p>
         <div class="noble-intro-body">
-          <p class="noble-intro-bio">Fewer concurrent projects, more iteration, and direct access to the person shaping your brand. Whether you are down the road in Lancaster or coordinating remotely, Noble keeps the work human and the deliverables consistent.</p>
+          <p class="noble-intro-bio">At Noble, we believe great work starts with genuine connection. Taking the time to build intentional relationships with clients&mdash;listening closely to their pain points, goals, and long-term vision&mdash;so every solution feels thoughtful, personal, and purpose-built.</p>
         </div>
-        <p class="noble-intro-side noble-intro-side--right">One connected arc</p>
+        <p class="noble-intro-side noble-intro-side--right">Design</p>
       </div>
     </div>
   </section>
 
-  <section id="services" class="section section-alt services-editorial services-editorial--catalog" data-reveal-on-scroll>
+  <section class="section home-who-we-are-split" data-reveal-on-scroll aria-labelledby="home-who-we-are-heading">
+    <div class="container home-who-we-are-split__grid">
+      <div class="home-who-we-are-split__copy">
+        <h2 id="home-who-we-are-heading" class="home-who-we-are-split__title">Design and Marketing Strategies Built With Care</h2>
+        <p class="home-who-we-are-split__lead">Noble doesn&apos;t believe in one-size-fits-all design. The process is rooted in a deep commitment to creating unique visuals that reflect the heart of each brand. Every project is approached with care, collaboration, and dedication&mdash;because your business deserves more than a template, it deserves intention.</p>
+        <a class="home-who-we-are-split__link" href="./about.html">Meet the studio &amp; founder</a>
+      </div>
+      <div class="home-who-we-are-split__gallery">
+        <figure class="home-who-we-are-split__figure home-who-we-are-split__figure--portrait">
+          <img src="./Photos/AudreyHBranding-7568.jpg" width="640" height="800" alt="Audrey Noble, founder of Noble Marketing &amp; Design" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="home-who-we-are-split__figure home-who-we-are-split__figure--desk">
+          <img src="./Photos/AudreyHBranding-7832.jpg" width="640" height="800" alt="Branding and mood boards with laptop" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section section-alt home-services-horiz" data-reveal-on-scroll aria-labelledby="home-services-heading">
     <div class="container">
-      <header class="services-editorial-head services-editorial-head--catalog">
-        <h2 class="section-title" style="max-width: 24ch; margin: 0 auto 12px; text-align: center;">What we do</h2>
-        <p class="services-editorial-sub" style="text-align: center; max-width: 52ch; margin: 0 auto;">Three disciplines, one studio rhythm—so your logo, site, and social read as the same brand instead of three competing directions.</p>
+      <header class="home-services-horiz__head">
+        <h2 id="home-services-heading" class="home-services-horiz__title">Services</h2>
       </header>
-      <ul class="services-editorial-grid services-editorial-grid--catalog" role="list">
-        <li>
-          <article class="services-catalog-card">
-            <a class="services-catalog-card__media-trigger services-editorial-media-trigger" href="./services/branding/index.html" aria-label="Open Branding service">
-              <div class="services-editorial-media services-editorial-media--photo">
-                <img src="./Photos/AudreyHBranding-8165.png" width="800" height="1000" alt="" loading="lazy" />
-              </div>
-            </a>
-            <h3 class="services-catalog-card__title">
-              <a class="services-catalog-card__title-link" href="./services/branding/index.html">Branding</a>
-            </h3>
-            <p class="services-catalog-card__text">Identity systems, guidelines, and launch-ready assets your whole team can actually use.</p>
-            <a class="services-editorial-cta" href="./services/branding/index.html">View service</a>
-          </article>
-        </li>
-        <li>
-          <article class="services-catalog-card">
-            <a class="services-catalog-card__media-trigger services-editorial-media-trigger" href="./services/website-design/index.html" aria-label="Open Website Design service">
-              <div class="services-editorial-media services-editorial-media--photo">
-                <img src="./Photos/AudreyHBranding-7647.jpg" width="800" height="1000" alt="" loading="lazy" />
-              </div>
-            </a>
-            <h3 class="services-catalog-card__title">
-              <a class="services-catalog-card__title-link" href="./services/website-design/index.html">Website design</a>
-            </h3>
-            <p class="services-catalog-card__text">Editorial, mobile-first experiences with patterns your team can extend without starting over.</p>
-            <a class="services-editorial-cta" href="./services/website-design/index.html">View service</a>
-          </article>
-        </li>
-        <li>
-          <article class="services-catalog-card">
-            <a class="services-catalog-card__media-trigger services-editorial-media-trigger" href="./services/social-media/index.html" aria-label="Open Social Media service">
-              <div class="services-editorial-media services-editorial-media--photo">
-                <img src="./Photos/Social-hero-right.png" width="800" height="1000" alt="" loading="lazy" />
-              </div>
-            </a>
-            <h3 class="services-catalog-card__title">
-              <a class="services-catalog-card__title-link" href="./services/social-media/index.html">Social media</a>
-            </h3>
-            <p class="services-catalog-card__text">Art direction, templates, and campaign rhythm tuned for the channels your customers check.</p>
-            <a class="services-editorial-cta" href="./services/social-media/index.html">View service</a>
-          </article>
-        </li>
-      </ul>
     </div>
-  </section>
-
-  <section class="section home-who-we-are-cta" data-reveal-on-scroll aria-label="Learn about Noble">
-    <div class="home-who-we-are-cta__media" style="--who-img: url('./Photos/AudreyHBranding-7832.jpg');">
-      <div class="home-who-we-are-cta__overlay">
-        <h2 class="home-who-we-are-cta__title">Who We Are</h2>
-        <p class="home-who-we-are-cta__text">Noble is a boutique studio for brands that want to look as intentional as they are—pairing strategy with refined design across branding, web, and social. Based in South Central Pennsylvania, happy to collaborate remotely.</p>
-        <a class="home-who-we-are-cta__button" href="./about.html">About Us</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt services-reviews-section reviews-section--editorial" data-reveal-on-scroll>
-    <div class="container">
-      <h2 class="reviews-section-editorial-title">Client voices</h2>
-      <p class="services-reviews-lead services-reviews-lead--editorial">What it feels like when brand, site, and social move together instead of drifting apart.</p>
-      <div class="reviews-carousel reviews-carousel--editorial" data-reviews-carousel>
-        <button type="button" class="reviews-carousel-nav reviews-carousel-nav--prev" aria-label="Previous testimonial">‹</button>
-        <div class="reviews-carousel-viewport" tabindex="0" role="region" aria-label="Testimonials" aria-roledescription="carousel">
-          <ul class="reviews-carousel-track" role="list">
-            <li class="reviews-carousel-slide">
-              <article class="review-editorial" aria-label="Testimonial 1 of 2">
-                <p class="review-editorial__series">Studio notes / 01</p>
-                <div class="review-editorial__band">
-                  <div class="review-editorial__pull">
-                    <p>“Clarity, craft, and calm execution—the combination we needed for a rebrand the whole board could get behind.”</p>
-                  </div>
-                </div>
-                <p class="review-editorial__attr">— Health &amp; professional services partner, PA</p>
-                <p class="review-editorial__body">Noble shepherded a focused identity system, web rollout, and social templates in one connected arc.</p>
-              </article>
-            </li>
-            <li class="reviews-carousel-slide">
-              <article class="review-editorial" aria-label="Testimonial 2 of 2">
-                <p class="review-editorial__series">Studio notes / 02</p>
-                <div class="review-editorial__band">
-                  <div class="review-editorial__pull">
-                    <p>“We finally have one visual language that carries from hero photography to the smallest icon on the site.”</p>
-                  </div>
-                </div>
-                <p class="review-editorial__attr">— Operations director, family-owned business</p>
-                <p class="review-editorial__body">The studio kept decisions legible for our internal team while still pushing the brand forward.</p>
-              </article>
-            </li>
-          </ul>
+    <div class="home-services-horiz__acc-bleed">
+      <div class="service-horiz-acc home-services-horiz__acc" data-service-accordion>
+        <div class="service-horiz-tabs service-horiz-tabs--left" aria-hidden="true"></div>
+        <div class="service-horiz-viewport">
+          <div id="service-horiz-panel-0" class="service-horiz-slide is-active" role="tabpanel" aria-labelledby="service-horiz-tab-0" aria-hidden="false">
+            <div class="service-horiz-media service-horiz-media--bottom-quarter" style="--img: url(./Photos/AudreyHBranding-7834.jpg)"></div>
+            <div class="service-horiz-scrim"></div>
+            <div class="service-horiz-body home-services-horiz__body">
+              <div class="home-services-horiz__copy">
+                <h3 class="service-horiz-kicker">A cohesive brand isn&apos;t just about looking professional.</h3>
+                <p class="service-horiz-bio service-desc">It&apos;s about showing up the same way everywhere &mdash; so the right people recognize you, trust you, and choose you.</p>
+              </div>
+              <a class="button primary home-services-horiz__cta" href="./services/branding/index.html">See branding and design</a>
+            </div>
+          </div>
+          <div id="service-horiz-panel-1" class="service-horiz-slide" role="tabpanel" aria-labelledby="service-horiz-tab-1" aria-hidden="true">
+            <div class="service-horiz-media" style="--img: url(./Photos/AudreyHBranding-7647.jpg)"></div>
+            <div class="service-horiz-scrim"></div>
+            <div class="service-horiz-body home-services-horiz__body">
+              <div class="home-services-horiz__copy">
+                <h3 class="service-horiz-kicker">Built to move&mdash;and to last.</h3>
+                <p class="service-horiz-bio service-desc">Editorial, mobile-first sites with patterns your team can extend without starting over.</p>
+              </div>
+              <a class="button primary home-services-horiz__cta" href="./services/website-design/index.html">See web design</a>
+            </div>
+          </div>
+          <div id="service-horiz-panel-2" class="service-horiz-slide" role="tabpanel" aria-labelledby="service-horiz-tab-2" aria-hidden="true">
+            <div class="service-horiz-media" style="--img: url(./Photos/Social-hero-right.png)"></div>
+            <div class="service-horiz-scrim"></div>
+            <div class="service-horiz-body home-services-horiz__body">
+              <div class="home-services-horiz__copy">
+                <h3 class="service-horiz-kicker">A feed that matches the rest of your brand.</h3>
+                <p class="service-horiz-bio service-desc">Art direction, templates, and campaign rhythm tuned for the channels your customers check.</p>
+              </div>
+              <a class="button primary home-services-horiz__cta" href="./services/social-media/index.html">See social media</a>
+            </div>
+          </div>
         </div>
-        <button type="button" class="reviews-carousel-nav reviews-carousel-nav--next" aria-label="Next testimonial">›</button>
+        <div class="service-horiz-tabs service-horiz-tabs--right" data-service-tabs-right role="tablist" aria-label="Services">
+          <button id="service-horiz-tab-0" class="service-horiz-tab" type="button" role="tab" aria-selected="true" aria-controls="service-horiz-panel-0" aria-expanded="true">
+            <span class="service-horiz-tab-text">Branding and design</span>
+          </button>
+          <button id="service-horiz-tab-1" class="service-horiz-tab" type="button" role="tab" aria-selected="false" aria-controls="service-horiz-panel-1" aria-expanded="false">
+            <span class="service-horiz-tab-text">Web design</span>
+          </button>
+          <button id="service-horiz-tab-2" class="service-horiz-tab" type="button" role="tab" aria-selected="false" aria-controls="service-horiz-panel-2" aria-expanded="false">
+            <span class="service-horiz-tab-text">Social media</span>
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section id="work" class="section home-featured-section" data-reveal-on-scroll>
-    <div class="container">
-      <header class="home-featured-head">
-        <p class="home-featured-kicker">Portfolio</p>
-        <h2 class="home-featured-title">A few recent collaborations</h2>
-        <p class="home-featured-lead">Case studies across industrial, retail, wellness, and community brands—each with its own constraints and craft.</p>
-      </header>
-      <ol class="portfolio-mag-grid" role="list">
-        <li class="portfolio-mag-item">
-          <a class="portfolio-mag-card" href="./work-brookstone-ind.html">
-            <div class="portfolio-mag-card__media portfolio-mag-card__media--brookstone">
-              <img src="./portfolio/brookstone-portfolio-thumb.png" width="1600" height="1000" alt="" loading="lazy" decoding="async" />
-            </div>
-            <div>
-              <span class="portfolio-mag-card__cat">Branding · Website</span>
-              <span class="portfolio-mag-card__title">Brookstone Industrial</span>
-              <p class="portfolio-mag-card__excerpt">Industrial rebrand and digital presence built for credibility in the field.</p>
-              <span class="portfolio-mag-card__arrow" aria-hidden="true">?</span>
-            </div>
-          </a>
-        </li>
-        <li class="portfolio-mag-item">
-          <a class="portfolio-mag-card" href="./work-outback-toys.html">
-            <div class="portfolio-mag-card__media portfolio-mag-card__media--outback">
-              <img src="./portfolio/outback-toys-portfolio-thumb.png" width="1600" height="1000" alt="" loading="lazy" decoding="async" />
-            </div>
-            <div>
-              <span class="portfolio-mag-card__cat">Branding</span>
-              <span class="portfolio-mag-card__title">Outback Toys</span>
-              <p class="portfolio-mag-card__excerpt">Retail storytelling, packaging cues, and campaign-ready product language.</p>
-              <span class="portfolio-mag-card__arrow" aria-hidden="true">?</span>
-            </div>
-          </a>
-        </li>
-        <li class="portfolio-mag-item">
-          <a class="portfolio-mag-card" href="./work-blaze-yoga-fitness.html">
-            <div class="portfolio-mag-card__media">
-              <img src="./portfolio/blaze-portfolio-thumb.png" width="1600" height="1000" alt="" loading="lazy" decoding="async" />
-            </div>
-            <div>
-              <span class="portfolio-mag-card__cat">Brand · Social · Web</span>
-              <span class="portfolio-mag-card__title">Blaze Yoga</span>
-              <p class="portfolio-mag-card__excerpt">Movement brand with an editorial feed and studio-first storytelling.</p>
-              <span class="portfolio-mag-card__arrow" aria-hidden="true">?</span>
-            </div>
-          </a>
-        </li>
-        <li class="portfolio-mag-item">
-          <a class="portfolio-mag-card" href="./work-lakewood-reserve.html">
-            <div class="portfolio-mag-card__media portfolio-mag-card__media--lakewood">
-              <img src="./portfolio/lakewood-portfolio-thumb.png" width="1600" height="1000" alt="" loading="lazy" decoding="async" />
-            </div>
-            <div>
-              <span class="portfolio-mag-card__cat">Branding · Website</span>
-              <span class="portfolio-mag-card__title">Lakewood Reserve</span>
-              <p class="portfolio-mag-card__excerpt">Real estate and lifestyle positioning with a refined, welcoming palette.</p>
-              <span class="portfolio-mag-card__arrow" aria-hidden="true">?</span>
-            </div>
-          </a>
-        </li>
-      </ol>
-      <p style="text-align:center;margin:clamp(28px,4vw,40px) 0 0">
-        <a class="button ghost" href="./portfolio.html">Full portfolio</a>
-      </p>
     </div>
   </section>
 
@@ -264,76 +169,255 @@
     <div class="container">
       <div class="home-stats-grid" role="list">
         <div class="home-stats-cell" role="listitem">
-          <p class="home-stats-figure"><span class="home-stats-num" data-target="18">0</span><span class="home-stats-affix">+</span></p>
-          <p class="home-stats-label">Case studies &amp; client stories live on the site</p>
+          <p class="home-stats-figure"><span class="home-stats-num" data-target="8">0</span></p>
+          <p class="home-stats-label">years of experience</p>
         </div>
         <div class="home-stats-cell" role="listitem">
-          <p class="home-stats-figure"><span class="home-stats-num" data-target="3">0</span></p>
-          <p class="home-stats-label">Core disciplines—brand, web, and social—in one studio</p>
+          <p class="home-stats-figure"><span class="home-stats-num" data-target="50">0</span><span class="home-stats-affix">+</span></p>
+          <p class="home-stats-label">projects and campaigns delivered</p>
         </div>
         <div class="home-stats-cell" role="listitem">
-          <p class="home-stats-figure"><span class="home-stats-num" data-target="1">0</span></p>
-          <p class="home-stats-label">Principal-led partnership from discovery through launch</p>
+          <p class="home-stats-figure"><span class="home-stats-num" data-target="1.6" data-decimals="1">0</span><span class="home-stats-affix">M</span></p>
+          <p class="home-stats-label home-stats-label--two-lines">
+            <span class="home-stats-label-line">organic views generated</span>
+            <span class="home-stats-label-line">across client social platforms</span>
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="clients" class="section section-clients-stamp" data-reveal-on-scroll>
+  <section class="section home-recent-projects" id="recent-projects" data-reveal-on-scroll aria-labelledby="home-recent-projects-heading">
     <div class="container">
-      <div class="clients-stamp-head">
-        <h2 class="section-title clients-stamp-title">Selected partners</h2>
-        <p class="clients-stamp-lead">Logos and marks we have had the joy of building or extending—tap through to case pages.</p>
-      </div>
-      <ul class="clients-stamp-grid" role="list">
-        <li class="clients-stamp-cell clients-stamp-cell--outback">
-          <a class="clients-stamp-link" href="./work-outback-toys.html" aria-label="Outback Toys case">
-            <img src="./Client%20Logos/OBT%20black.svg" width="200" height="64" alt="Outback Toys" />
+      <header class="home-recent-projects__header">
+        <div class="home-recent-projects__header-row">
+          <div class="home-recent-projects__titles">
+            <p class="home-recent-projects__eyebrow">Portfolio</p>
+            <h2 id="home-recent-projects-heading" class="home-recent-projects__title">Recent projects</h2>
+          </div>
+          <a class="home-recent-projects__portfolio-link" href="./portfolio.html">View full portfolio</a>
+        </div>
+        <p class="home-recent-projects__lead">Snapshots from branding, websites, and social collaborations&mdash;tap through to see the full story behind each engagement.</p>
+      </header>
+      <ul class="home-recent-projects__grid" role="list">
+        <li class="home-recent-projects__cell home-recent-projects__cell--large">
+          <a class="home-recent-projects__card" href="./work-brookstone-ind.html">
+            <span class="home-recent-projects__media home-recent-projects__media--brookstone">
+              <img src="./Photos/brookstone-cap-logo.png" width="1200" height="1600" alt="Brookstone Industries embroidered logo on a navy cap outdoors" loading="lazy" decoding="async" />
+            </span>
+            <span class="home-recent-projects__caption">
+              <span class="home-recent-projects__name">Brookstone Industries</span>
+              <span class="home-recent-projects__arrow" aria-hidden="true">&#8594;</span>
+            </span>
           </a>
         </li>
-        <li class="clients-stamp-cell clients-stamp-cell--hsf">
-          <a class="clients-stamp-link" href="./work-hsf.html" aria-label="Head Strong Flight case">
-            <img src="./Client%20Logos/HSF.svg" width="120" height="64" alt="Head Strong Flight" />
+        <li class="home-recent-projects__cell home-recent-projects__cell--top">
+          <a class="home-recent-projects__card" href="./work-vizion.html">
+            <span class="home-recent-projects__media">
+              <img src="./Photos/vizion-consulting-business-cards.png" width="1600" height="1000" alt="Vizion Consulting business cards on a wood desk" loading="lazy" decoding="async" />
+            </span>
+            <span class="home-recent-projects__caption">
+              <span class="home-recent-projects__name">Vizion Consulting</span>
+              <span class="home-recent-projects__arrow" aria-hidden="true">&#8594;</span>
+            </span>
           </a>
         </li>
-        <li class="clients-stamp-cell clients-stamp-cell--gradys">
-          <a class="clients-stamp-link" href="./work-gradys.html" aria-label="Grady’s case">
-            <img src="./Client%20Logos/Background.svg" width="160" height="80" alt="Grady’s" />
+        <li class="home-recent-projects__cell">
+          <a class="home-recent-projects__card" href="./work-blaze-yoga-fitness.html">
+            <span class="home-recent-projects__media home-recent-projects__media--blaze-yoga">
+              <img src="./Photos/blaze-yoga-fitness-social.png" width="1200" height="1600" alt="Blaze Yoga Lancaster logo on a grainy black-and-white athletic lifestyle photo" loading="lazy" decoding="async" />
+            </span>
+            <span class="home-recent-projects__caption">
+              <span class="home-recent-projects__name">Blaze Yoga &amp; Fitness</span>
+              <span class="home-recent-projects__arrow" aria-hidden="true">&#8594;</span>
+            </span>
           </a>
         </li>
-        <li class="clients-stamp-cell clients-stamp-cell--pennwood">
-          <a class="clients-stamp-link" href="./work-pennwood.html" aria-label="Pennwood case">
-            <img src="./portfolio/pennwood/pennwood-logo-primary-horizontal.png" width="220" height="64" alt="Pennwood" />
+        <li class="home-recent-projects__cell">
+          <a class="home-recent-projects__card" href="./work-pennwood.html">
+            <span class="home-recent-projects__media home-recent-projects__media--pennwood">
+              <img src="./Photos/pennwood-development-branded-mug.png" width="1600" height="1000" alt="Pennwood Development Group branded mug on a desk with laptop and portfolio in an office setting" loading="lazy" decoding="async" />
+            </span>
+            <span class="home-recent-projects__caption">
+              <span class="home-recent-projects__name">Pennwood Development Group</span>
+              <span class="home-recent-projects__arrow" aria-hidden="true">&#8594;</span>
+            </span>
           </a>
         </li>
-        <li class="clients-stamp-cell clients-stamp-cell--vizion">
-          <a class="clients-stamp-link" href="./work-vizion.html" aria-label="Vizion case">
-            <img src="./portfolio/vizion/vizion-logo-15.png" width="200" height="64" alt="Vizion" />
+        <li class="home-recent-projects__cell">
+          <a class="home-recent-projects__card" href="./work-lakewood-reserve.html">
+            <span class="home-recent-projects__media home-recent-projects__media--lakewood-reserve">
+              <img src="./Photos/lakewood-reserve-campfire.png" width="1600" height="900" alt="Friends gathered around a campfire at night near a lit cabin at Lakewood Reserve" loading="lazy" decoding="async" />
+            </span>
+            <span class="home-recent-projects__caption">
+              <span class="home-recent-projects__name">Lakewood Reserve</span>
+              <span class="home-recent-projects__arrow" aria-hidden="true">&#8594;</span>
+            </span>
           </a>
-        </li>
-        <li class="clients-stamp-cell clients-stamp-cell--everflame">
-          <a class="clients-stamp-link" href="./work-everflame-financial.html" aria-label="Everflame Financial case">
-            <img src="./Client%20Logos/Everflame-portfolio-lockup.svg" width="200" height="64" alt="Everflame Financial" />
-          </a>
-        </li>
-        <li class="clients-stamp-cell clients-stamp-cell--cta">
-          <a class="button ghost" href="./portfolio.html">View portfolio</a>
         </li>
       </ul>
     </div>
   </section>
 
-  <section class="section home-instagram-strip site-instagram-prefooter" data-reveal-on-scroll>
-    <div class="container">
-      <h2 class="section-title" style="text-align:center;margin-bottom:8px">On Instagram</h2>
-      <p class="lead" style="text-align:center;margin:0 auto 20px;max-width:50ch">Latest work, studio moments, and feed-forward art direction at <a href="https://www.instagram.com/thenoblemarketing/" target="_blank" rel="noopener noreferrer">@thenoblemarketing</a>.</p>
-      <div id="home-instagram-embeds" class="home-instagram-strip__embeds home-instagram-strip__feed" hidden></div>
-      <ul id="home-instagram-fallback" class="home-instagram-strip__grid" role="list">
-        <li><img src="./Photos/AudreyHBranding-7568.jpg" width="400" height="500" alt="Studio photography" loading="lazy" /></li>
-        <li><img src="./portfolio/da-targets-portfolio-thumb.png" width="400" height="500" alt="Client work preview" loading="lazy" /></li>
-        <li><img src="./Photos/AudreyHBranding-8165.png" width="400" height="500" alt="Branding work" loading="lazy" /></li>
+  <section class="section section-alt home-client-voices" id="client-voices" data-reveal-on-scroll aria-label="Client voices">
+    <div class="home-client-voices__split">
+      <aside class="home-client-voices__sticky">
+        <figure class="home-client-voices__figure">
+          <img src="./Photos/AudreyHBranding-7867.jpg" width="1600" height="2000" alt="Founder crouching with branding mood boards, laptop, and creative materials in a bright white studio." loading="lazy" decoding="async" />
+        </figure>
+      </aside>
+      <div class="home-client-voices__stack">
+        <article class="home-client-voices__panel home-client-voices__panel--cream" aria-label="Testimonial 1 of 5">
+          <div class="home-client-voices__panel-inner">
+            <blockquote class="home-client-voices__quote">
+              <p>From start to finish, seamless and professional.</p>
+            </blockquote>
+            <p class="home-client-voices__body">From start to finish, the experience was seamless and professional. Audrey took the time to listen to my vision, turned it into stunning visuals that exceeded my expectations, and I highly recommend her services to anyone in need of top-quality graphic design work.</p>
+            <p class="home-client-voices__attr">&mdash; Lisa Cook, The Living Room Church</p>
+          </div>
+        </article>
+        <article class="home-client-voices__panel home-client-voices__panel--tan" aria-label="Testimonial 2 of 5">
+          <div class="home-client-voices__panel-inner">
+            <blockquote class="home-client-voices__quote">
+              <p>Collaborative each step of the way.</p>
+            </blockquote>
+            <p class="home-client-voices__body">Audrey was collaborative each step of the way, and very accommodating for any edits or changes. She didn&apos;t just want to do what I wanted, but aimed to ensure that my ideas would be presented the way I envisioned them. The final product of the branding package exceeded my expectations and I could not be more pleased.</p>
+            <p class="home-client-voices__attr">&mdash; Pete Wisniewski, Everflame Financial Consulting</p>
+          </div>
+        </article>
+        <article class="home-client-voices__panel home-client-voices__panel--cream" aria-label="Testimonial 3 of 5">
+          <div class="home-client-voices__panel-inner">
+            <blockquote class="home-client-voices__quote">
+              <p>Thoughtful brand work and quality execution.</p>
+            </blockquote>
+            <p class="home-client-voices__body">I&apos;ve been impressed by her thoughtful handling of our brand and the quality of execution she brought to our website development. Professional, collaborative, and a true partner.</p>
+            <p class="home-client-voices__attr">&mdash; Matthew Smith, Vizion Consulting</p>
+          </div>
+        </article>
+        <article class="home-client-voices__panel home-client-voices__panel--tan" aria-label="Testimonial 4 of 5">
+          <div class="home-client-voices__panel-inner">
+            <blockquote class="home-client-voices__quote">
+              <p>Creating a logo felt seamless.</p>
+            </blockquote>
+            <p class="home-client-voices__body">She made creating a logo feel seamless by offering multiple design options and explaining things clearly along the way. The attention to detail and professionalism throughout the project really stood out, and the final result exceeded my expectations.</p>
+            <p class="home-client-voices__attr">&mdash; Kyle Head, Head Strong Flight</p>
+          </div>
+        </article>
+        <article class="home-client-voices__panel home-client-voices__panel--cream" aria-label="Testimonial 5 of 5">
+          <div class="home-client-voices__panel-inner">
+            <blockquote class="home-client-voices__quote">
+              <p>She bought into our vision from day one.</p>
+            </blockquote>
+            <p class="home-client-voices__body">The very first meeting we had to discuss our vision felt so personal. Audrey really bought into what we were going for. She was also so quick to get back to us with any questions we had or requests for any changes. I would highly recommend working with Audrey for any and all branding needs.</p>
+            <p class="home-client-voices__attr">&mdash; Megan Witt, Wittness Coffeehouse</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section home-partners-strip" id="partners" data-reveal-on-scroll aria-labelledby="home-partners-heading">
+    <div class="container home-partners-strip__inner">
+      <h2 class="home-partners-strip__title" id="home-partners-heading">Clients we&apos;ve partnered with</h2>
+      <ul class="home-partners-strip__logos" role="list">
+        <li class="home-partners-strip__cell">
+          <a class="home-partners-strip__link" href="./work-revd.html" aria-label="Revd case study">
+            <img class="home-partners-strip__logo home-partners-strip__logo--knockout-white" src="./Client%20Logos/black%20revd.svg" width="200" height="64" alt="Revd" loading="lazy" decoding="async" />
+          </a>
+        </li>
+        <li class="home-partners-strip__cell">
+          <a class="home-partners-strip__link" href="./work-da-targets.html" aria-label="DA Targets case study">
+            <img class="home-partners-strip__logo home-partners-strip__logo--knockout-white" src="./Client%20Logos/DA.svg" width="200" height="64" alt="DA Targets" loading="lazy" decoding="async" />
+          </a>
+        </li>
+        <li class="home-partners-strip__cell">
+          <a class="home-partners-strip__link" href="./work-vizion.html" aria-label="Vizion Consulting case study">
+            <img class="home-partners-strip__logo home-partners-strip__logo--knockout-white" src="./Client%20Logos/Vizion.svg" width="200" height="64" alt="Vizion Consulting" loading="lazy" decoding="async" />
+          </a>
+        </li>
+        <li class="home-partners-strip__cell">
+          <a class="home-partners-strip__link" href="./work-outback-toys.html" aria-label="Outback Toys case study">
+            <img class="home-partners-strip__logo" src="./Client%20Logos/OBT_Logo_Reverse%20Primary.svg" width="220" height="64" alt="Outback Toys" loading="lazy" decoding="async" />
+          </a>
+        </li>
+        <li class="home-partners-strip__cell">
+          <a class="home-partners-strip__link" href="./work-flintrock.html" aria-label="Flintrock Stables case study">
+            <img class="home-partners-strip__logo" src="./Client%20Logos/Flintrock%2BStables%2BLogo%2BShadow.webp" width="220" height="72" alt="Flintrock Stables" loading="lazy" decoding="async" />
+          </a>
+        </li>
       </ul>
     </div>
+  </section>
+
+  <section id="work" class="section home-featured-section" data-reveal-on-scroll>
+    <div class="container">
+      <header class="home-featured-head">
+        <p class="home-featured-kicker">Blog</p>
+        <h2 class="home-featured-title">Recent success stories</h2>
+        <p class="home-featured-lead">Organic reach, community growth, and brand clarity&mdash;written as short articles you can read in a few minutes.</p>
+      </header>
+      <ol class="portfolio-mag-grid" role="list">
+        <li class="portfolio-mag-item">
+          <a class="portfolio-mag-card" href="./blog/flint-rock-stables-organic-community-social.html">
+            <div class="portfolio-mag-card__media portfolio-mag-card__media--flintrock">
+              <img src="./portfolio/flintrock-stables-portfolio-thumb.png" width="1600" height="1000" alt="" loading="lazy" decoding="async" />
+            </div>
+            <div>
+              <span class="portfolio-mag-card__cat">Social media</span>
+              <span class="portfolio-mag-card__title">Flint Rock Stables</span>
+              <p class="portfolio-mag-card__excerpt">How community-forward social helped an equestrian brand show up consistently.</p>
+              <span class="portfolio-mag-card__arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </a>
+        </li>
+        <li class="portfolio-mag-item">
+          <a class="portfolio-mag-card" href="./blog/outback-toys-first-month-organic-social.html">
+            <div class="portfolio-mag-card__media portfolio-mag-card__media--outback">
+              <img src="./portfolio/outback-toys-portfolio-thumb.png" width="1600" height="1000" alt="" loading="lazy" decoding="async" />
+            </div>
+            <div>
+              <span class="portfolio-mag-card__cat">Social media</span>
+              <span class="portfolio-mag-card__title">Outback Toys</span>
+              <p class="portfolio-mag-card__excerpt">First-month organic social momentum for a retail brand coming online.</p>
+              <span class="portfolio-mag-card__arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </a>
+        </li>
+        <li class="portfolio-mag-item">
+          <a class="portfolio-mag-card" href="./blog/blaze-yoga-lancaster-organic-social-reach.html">
+            <div class="portfolio-mag-card__media">
+              <img src="./portfolio/blaze-portfolio-thumb.png" width="1600" height="1000" alt="" loading="lazy" decoding="async" />
+            </div>
+            <div>
+              <span class="portfolio-mag-card__cat">Social media</span>
+              <span class="portfolio-mag-card__title">Blaze Yoga</span>
+              <p class="portfolio-mag-card__excerpt">Organic reach for a Lancaster studio without leaning on paid ads.</p>
+              <span class="portfolio-mag-card__arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </a>
+        </li>
+        <li class="portfolio-mag-item">
+          <a class="portfolio-mag-card" href="./blog/lakewood-reserve-organic-social-growth.html">
+            <div class="portfolio-mag-card__media portfolio-mag-card__media--lakewood">
+              <img src="./portfolio/lakewood-portfolio-thumb.png" width="1600" height="1000" alt="" loading="lazy" decoding="async" />
+            </div>
+            <div>
+              <span class="portfolio-mag-card__cat">Social media</span>
+              <span class="portfolio-mag-card__title">Lakewood Reserve</span>
+              <p class="portfolio-mag-card__excerpt">Growing visibility for a real estate lifestyle brand on social.</p>
+              <span class="portfolio-mag-card__arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </a>
+        </li>
+      </ol>
+      <p style="text-align:center;margin:clamp(28px,4vw,40px) 0 0">
+        <a class="button ghost" href="./blog/index.html">All articles</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section home-instagram-strip site-instagram-prefooter instagram-feed-section" data-reveal-on-scroll aria-label="Instagram">
+    <div class="container" data-noble-instagram-feed></div>
   </section>
 </main>
 <footer class="site-footer" data-reveal-on-scroll>
@@ -348,7 +432,7 @@
             <img class="footer-center-icon" src="./Logos/Noble Icon.png" width="72" height="72" alt="Noble home" />
           </a>
           <a class="footer-center-cta" href="./contact.html">Start a project</a>
-          <p class="footer-center-copyright">© <span id="year">2026</span> Noble Marketing &amp; Design. All rights reserved.</p>
+          <p class="footer-center-copyright">ï¿½ <span id="year">2026</span> Noble Marketing &amp; Design. All rights reserved.</p>
         </div>
       </div>
       <div class="footer-nav-groups" role="navigation" aria-label="Footer">
