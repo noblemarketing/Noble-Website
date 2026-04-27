@@ -1572,10 +1572,6 @@ function setupNobleInstagramHorizontalFeed() {
     const wrap = document.createElement("div");
     wrap.className = "instagram-feed-section__inner site-instagram-prefooter__inner";
 
-    const h2 = document.createElement("h2");
-    h2.className = "section-title instagram-feed-section__title";
-    h2.textContent = "On Instagram";
-
     const profile = document.createElement("div");
     profile.className = "instagram-feed-section__profile";
 
@@ -1749,7 +1745,6 @@ function setupNobleInstagramHorizontalFeed() {
     row.appendChild(profile);
     row.appendChild(rail);
 
-    wrap.appendChild(h2);
     wrap.appendChild(row);
     return wrap;
   };
