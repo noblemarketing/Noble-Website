@@ -32,7 +32,7 @@
       <a class="nav-link" href="./blog/index.html">Blog</a>
     </nav>
     <div class="header-end">
-      <a class="header-discovery" href="./contact.html">Contact</a>
+      <a class="header-discovery" href="./contact.html"><span class="header-discovery__label header-discovery__label--desktop">Book a Discovery Call</span><span class="header-discovery__label header-discovery__label--mobile">Book a discovery call</span></a>
     </div>
   </div>
 </header>
@@ -46,7 +46,7 @@
           <p><a href="mailto:audrey@thenoblemarketing.com">audrey@thenoblemarketing.com</a></p>
           <p>Prefer a menu first? <a href="./services/index.html">Browse services</a> and come back with context.</p>
         </div>
-        <form id="contact-form" class="contact-form" novalidate>
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/meevbbgn" method="POST">
           <p>
             <label for="contact-name">Name</label>
             <input id="contact-name" name="name" type="text" autocomplete="name" required />
@@ -55,6 +55,9 @@
             <label for="contact-email">Email</label>
             <input id="contact-email" name="email" type="email" autocomplete="email" required />
           </p>
+          <input type="hidden" name="_subject" value="New Noble website inquiry" />
+          <input type="hidden" name="_next" value="./contact.html?submitted=true" />
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
           <p>
             <label for="project-type">Project type</label>
             <select id="project-type" name="projectType" required>

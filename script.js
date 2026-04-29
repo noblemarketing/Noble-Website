@@ -16,9 +16,8 @@ function setFooterBioText() {
 }
 
 function setFooterCenterIcon() {
-  $$(".footer-center-icon").forEach((img) => {
-    img.setAttribute("src", "./Logos/Noble Icon.png");
-  });
+  // Each page sets the correct relative path to Logos/Noble Icon.png; normalizing to ./Logos/
+  // breaks nested routes (e.g. services/branding/index.html → ../../Logos/...).
 }
 
 function setupFooterSocialIcons() {
@@ -1455,40 +1454,8 @@ function setupBrandingTierReveal() {
 function setupContactForm() {
   const form = $("#contact-form");
   if (!(form instanceof HTMLFormElement)) return;
-
-  const emailTo = "audrey@thenoblemarketing.com";
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const fd = new FormData(form);
-    const name = String(fd.get("name") || "").trim();
-    const email = String(fd.get("email") || "").trim();
-    const projectType = String(fd.get("projectType") || fd.get("interest") || "").trim();
-    const message = String(fd.get("message") || "").trim();
-
-    const missing = !name || !email || !projectType || !message;
-    if (missing) {
-      form.reportValidity();
-      return;
-    }
-
-    const subject = `Boutique Branding and Design Studio inquiry: ${projectType}`;
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Project type: ${projectType}`,
-      "",
-      message,
-    ].join("\n");
-
-    const href =
-      `mailto:${encodeURIComponent(emailTo)}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(body)}`;
-
-    window.location.href = href;
-  });
+  // Ensure the contact form uses native validation + direct Formspree POST.
+  form.noValidate = false;
 }
 
 /** services/index.html — one dialog per service (opened from editorial images) */
@@ -1600,18 +1567,7 @@ function setupNobleInstagramHorizontalFeed() {
     handle.rel = "noopener noreferrer";
     handle.textContent = `@${username}`;
 
-    const statEl = document.createElement("p");
-    statEl.className = "instagram-feed-section__stats";
-    const fc = typeof data.followersCount === "number" && Number.isFinite(data.followersCount) ? data.followersCount : null;
-    const fwc = typeof data.followsCount === "number" && Number.isFinite(data.followsCount) ? data.followsCount : null;
-    if (fc != null && fwc != null) {
-      statEl.textContent = `${fc.toLocaleString()} followers · ${fwc.toLocaleString()} following`;
-    } else if (fc != null) {
-      statEl.textContent = `${fc.toLocaleString()} followers`;
-    }
-
     meta.appendChild(handle);
-    if (statEl.textContent) meta.appendChild(statEl);
 
     const bioText = typeof data.biography === "string" ? data.biography.trim() : "";
     if (bioText) {
