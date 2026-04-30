@@ -3675,6 +3675,7 @@ body.home-nav-fixed-bottom .home-featured-section .portfolio-mag-grid{
   grid-template-columns: repeat(2, minmax(0, 1fr));
   min-height: min(78vh, 760px);
   align-items: stretch;
+  position: relative;
 }
 .work-case-client-board__left{
   display: flex;
@@ -4112,15 +4113,26 @@ body.home-nav-fixed-bottom .home-featured-section .portfolio-mag-grid{
   align-items: center;
   justify-content: center;
   gap: 10px;
-  align-self: flex-end;
-  margin-top: auto;
-  padding-top: clamp(22px, 3.5vw, 36px);
+  position: absolute;
+  right: clamp(20px, 4vw, 48px);
+  top: clamp(22px, 3.5vw, 42px);
+  margin: 0;
+  padding: 0;
   color: rgba(247, 241, 230, 0.92);
   text-decoration: none;
   font-size: clamp(26px, 3vw, 34px);
   line-height: 1;
   letter-spacing: 0.04em;
   transition: color 0.2s ease, transform 0.2s ease;
+  z-index: 2;
+}
+.work-case-client-board__next-wrap{
+  margin: clamp(18px, 2.8vw, 30px) 0 0;
+  text-align: right;
+}
+.work-case-client-board__right .work-case-client-board__next{
+  margin: 0;
+  padding: 0;
 }
 .work-case-client-board__next:hover{
   color: #f7f1e6;
@@ -4145,7 +4157,8 @@ body.home-nav-fixed-bottom .home-featured-section .portfolio-mag-grid{
 /* Portfolio case — full-width identity logo strip (optional per case page) */
 .work-case-logo-band{
   margin: clamp(24px, 5vw, 56px) clamp(20px, 4vw, 48px);
-  padding: clamp(32px, 5vw, 64px) 0;
+  height: 500px;
+  padding: 0;
   background: #ffffff;
   border-top: 1px solid rgba(20, 19, 17, 0.06);
   border-bottom: 1px solid rgba(20, 19, 17, 0.06);
@@ -4155,6 +4168,7 @@ body.home-nav-fixed-bottom .home-featured-section .portfolio-mag-grid{
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 .work-case-logo-band__figure{
   margin: 0;
