@@ -21,18 +21,17 @@ function setFooterCenterIcon() {
 }
 
 function setupFooterSocialIcons() {
+  /** Moss fill matches `.site-footer` so glyphs read as knockouts on solid LinkedIn / Facebook tiles (ref: light gray on dark). */
+  const cut = "var(--moss)";
   const iconByNetwork = {
-    instagram:
-      '<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5"></rect><circle cx="12" cy="12" r="4.1"></circle><circle cx="17.5" cy="6.5" r="1.15"></circle></svg>',
-    facebook:
-      '<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"></path></svg>',
-    linkedin:
-      '<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.4 8.4A2.2 2.2 0 1 1 6.4 4a2.2 2.2 0 0 1 0 4.4zM4.6 9.8h3.6V20H4.6zM10.3 9.8h3.4v1.4h.1c.5-.9 1.7-1.7 3.5-1.7 3.7 0 4.4 2.4 4.4 5.6V20H18v-4.3c0-1-.1-2.4-1.5-2.4s-1.7 1.1-1.7 2.3V20h-3.6z"></path></svg>',
+    linkedin: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="currentColor"/><g fill="${cut}"><circle cx="8.5" cy="7.85" r="1.25"/><rect x="7.65" y="10.15" width="1.75" height="7.35" rx="0.25"/><path d="M12.75 10.15h2.25c1.2 0 2.1.68 2.1 2.08v5.27h-2.15v-4.7c0-.58-.32-1-.9-1-.78 0-1.15.56-1.15 1.18v4.52h-2.15V10.15z"/></g></svg>`,
+    facebook: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path fill="${cut}" d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/></svg>`,
+    instagram: `<svg class="footer-social-icon footer-social-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.85" fill="none" stroke="currentColor" stroke-width="1.65"/><circle cx="17.45" cy="6.55" r="1.15" fill="currentColor"/></svg>`,
   };
   const networks = [
-    { key: "instagram", href: "https://www.instagram.com/thenoblemarketing/", label: "Instagram" },
+    { key: "linkedin", href: "https://www.linkedin.com/company/noble-marketing-design/?viewAsMember=true", label: "LinkedIn" },
     { key: "facebook", href: "https://www.facebook.com/people/Noble-Marketing/100063772796053/", label: "Facebook" },
-    { key: "linkedin", href: "https://www.linkedin.com/company/noble-marketing", label: "LinkedIn" },
+    { key: "instagram", href: "https://www.instagram.com/thenoblemarketing/", label: "Instagram" },
   ];
 
   $$(".site-footer").forEach((footer) => {
@@ -126,7 +125,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-no-nonsense-neutering.html": {
       name: "No Nonsense Neutering",
-      logo: "",
+      logo: "./Photos/no-nonsense-neutering/nnn-client-logo.png",
       services: "Website",
       niche: "Nonprofit / Animal Welfare",
       location: "PA",
@@ -178,7 +177,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-gradys.html": {
       name: "Grady's Grill & Truckstop",
-      logo: "./Client Logos/Background.svg",
+      logo: "./Client Logos/Gradys%202.svg",
       services: "Branding",
       niche: "Food & Beverage / Diner",
       location: "PA",
@@ -201,7 +200,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-living-room-church.html": {
       name: "The Living Room Church",
-      logo: "",
+      logo: "./Client Logos/Living-room-church-logo.jpg",
       services: "Branding",
       niche: "Church / Religious Organization",
       location: "FL",
@@ -215,7 +214,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-witness-coffeehouse.html": {
       name: "Wittness Coffeehouse",
-      logo: "",
+      logo: "./Client Logos/Witt2.svg",
       services: "Branding",
       niche: "Coffee Shop / Cafe",
       location: "PA",
@@ -229,7 +228,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-hey-peaches.html": {
       name: "Hey Peaches",
-      logo: "",
+      logo: "./Client Logos/HeyPeaches.svg",
       services: "Branding",
       niche: "Women's Fashion Boutique",
       location: "PA",
@@ -242,7 +241,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-cosmos.html": {
       name: "Cosmo Floral Design",
-      logo: "",
+      logo: "./Client Logos/Cosmo.svg",
       services: "Branding",
       niche: "Floral Design / Events",
       location: "KY",
@@ -252,7 +251,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-flintrock.html": {
       name: "Flintrock Stables",
-      logo: "",
+      logo: "./Client Logos/Flintrock.svg",
       services: "Social Media",
       niche: "Equestrian / Agriculture",
       location: "PA",
@@ -265,9 +264,9 @@ function setupWorkCaseClientProfiles() {
     },
     "work-lakewood-reserve.html": {
       name: "Lakewood Reserve",
-      logo: "",
+      logo: "./Client Logos/Lakewood%20reserv%20Horizontal.svg",
       services: "Branding + Website + Social Media",
-      niche: "Hospitality / Short-Term Rental / Glamping",
+      niche: "Hospitality / Short-Term Rental / Tiny Homes",
       location: "PA",
       about:
         "A modern lakeside tiny home retreat on Raystown Lake in Pennsylvania, offering elevated comfort surrounded by woods, water, and mountains. Noble handled full brand development, website, and ongoing social media management.",
@@ -275,7 +274,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-outback-toys.html": {
       name: "Outback Toys",
-      logo: "./Client Logos/OBT_Logo_Reverse Primary.svg",
+      logo: "./Client Logos/OBT%20black.svg",
       services: "Branding + Website + Social Media",
       niche: "Retail / Farm Toy & Collectibles",
       location: "PA",
@@ -286,19 +285,9 @@ function setupWorkCaseClientProfiles() {
         { label: "Instagram", href: "https://instagram.com/outbacktoys" },
       ],
     },
-    "work-blaze-yoga-fitness.html": {
-      name: "Blaze Yoga Lancaster",
-      logo: "",
-      services: "Social Media",
-      niche: "Fitness & Wellness",
-      location: "PA",
-      about:
-        "A Lancaster-based hot yoga studio centered on movement, discipline, and personal growth. Noble supports Blaze Yoga with social media strategy and content that reflects the studio's motivating community culture.",
-      links: [],
-    },
     "work-blaze-yoga.html": {
       name: "Blaze Yoga Lancaster",
-      logo: "",
+      logo: "./Client Logos/Blaze-yoga-lancaster-header.png",
       services: "Social Media",
       niche: "Fitness & Wellness",
       location: "PA",
@@ -308,7 +297,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-pennwood.html": {
       name: "Pennwood Development Group",
-      logo: "",
+      logo: "./Client Logos/Primary_Wordmark_RGB.jpg",
       services: "Branding",
       niche: "Real Estate / Development",
       location: "PA",
@@ -416,10 +405,37 @@ function setupHomeHeaderScrollPin() {
   /** Stay pinned until hero clears the bar by this many px (stops pin ↔ unpin flicker at the threshold) */
   const PIN_RELEASE_PX = 10;
 
+  const isHomeMobileNavTop = () =>
+    typeof window.matchMedia === "function" && window.matchMedia("(max-width: 760px)").matches;
+
+  /** Keeps CSS --site-header-height in sync with the fixed header’s painted height (incl. borders + safe-area padding). */
+  const syncMeasuredHeaderHeight = () => {
+    if (!isHomeMobileNavTop()) {
+      document.documentElement.style.removeProperty("--site-header-measured");
+      return;
+    }
+    const h = Math.ceil(header.getBoundingClientRect().height);
+    if (h > 0) {
+      document.documentElement.style.setProperty("--site-header-measured", `${h}px`);
+    }
+  };
+
   let pinned = false;
   let raf = 0;
 
   const update = () => {
+    syncMeasuredHeaderHeight();
+    if (isHomeMobileNavTop()) {
+      document.body.classList.add(BODY_TOP);
+      header.classList.add(PIN);
+      header.style.setProperty("top", "0");
+      header.style.setProperty("bottom", "auto");
+      header.style.setProperty("transform", "translate3d(0, 0, 0)");
+      header.classList.toggle("is-elevated", window.scrollY > 10);
+      pinned = true;
+      return;
+    }
+
     const heroRect = hero.getBoundingClientRect();
     const headerH = header.offsetHeight;
     const vh = window.innerHeight;
@@ -456,6 +472,10 @@ function setupHomeHeaderScrollPin() {
   update();
   window.addEventListener("scroll", schedule, { passive: true });
   window.addEventListener("resize", schedule, { passive: true });
+  window.addEventListener("load", schedule, { passive: true });
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(() => schedule());
+  }
 }
 
 /** One rAF-throttled scroll handler for header shadow + hide-on-scroll (avoids duplicate scroll listeners sitewide). */
@@ -811,6 +831,7 @@ function setupServiceAccordion() {
 
   const setOpen = (index) => {
     if (index < 0 || index >= panels.length || busy) return;
+
     if (index === activeIndex) return;
 
     syncDockedToActive(index);
@@ -876,6 +897,12 @@ function setupServiceAccordion() {
     slideSafetyTimer = window.setTimeout(cleanup, 720);
   };
 
+  if (typeof window.matchMedia === "function") {
+    window.matchMedia("(max-width: 760px)").addEventListener("change", () => {
+      syncDockedToActive(activeIndex);
+    });
+  }
+
   tabs.forEach((tab, index) => {
     tab.addEventListener("click", () => setOpen(index));
     tab.addEventListener("keydown", (e) => {
@@ -906,7 +933,8 @@ function setupServiceAccordion() {
 function setupServicesScrollReveal() {
   if (
     !document.body.classList.contains("page-services") &&
-    !document.body.classList.contains("page-blog")
+    !document.body.classList.contains("page-blog") &&
+    !document.body.classList.contains("page-contact")
   ) {
     return;
   }
@@ -1454,8 +1482,30 @@ function setupBrandingTierReveal() {
 function setupContactForm() {
   const form = $("#contact-form");
   if (!(form instanceof HTMLFormElement)) return;
-  // Ensure the contact form uses native validation + direct Formspree POST.
+  // Formspree “Basic HTML”: native browser validation + POST to action URL.
   form.noValidate = false;
+
+  const nextField = form.querySelector('input[name="_next"][data-contact-form-next]');
+  if (nextField instanceof HTMLInputElement) {
+    try {
+      nextField.value = new URL("contact.html?submitted=true", window.location.href).href;
+    } catch {
+      nextField.removeAttribute("value");
+    }
+  }
+
+  try {
+    const q = new URLSearchParams(window.location.search);
+    if (q.get("submitted") === "true") {
+      const ok = document.getElementById("contact-form-success");
+      if (ok instanceof HTMLElement) {
+        ok.hidden = false;
+        ok.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
+  } catch {
+    /* ignore */
+  }
 }
 
 /** services/index.html — one dialog per service (opened from editorial images) */

@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contact Noble Marketing &amp; Design — book a discovery call, send a project inquiry, or reach Audrey by email." />
   <title>Contact — Noble</title>
   <link rel="stylesheet" href="./styles.css" />
   <script src="./instagram-feed-fallback.js" defer></script>
@@ -32,34 +33,67 @@
       <a class="nav-link" href="./blog/index.html">Blog</a>
     </nav>
     <div class="header-end">
-      <a class="header-discovery" href="./contact.html"><span class="header-discovery__label header-discovery__label--desktop">Book a Discovery Call</span><span class="header-discovery__label header-discovery__label--mobile">Book a discovery call</span></a>
+      <a class="header-discovery" href="./contact.html" aria-current="page"><span class="header-discovery__label header-discovery__label--desktop">Book a Discovery Call</span><span class="header-discovery__label header-discovery__label--mobile">Book a discovery call</span></a>
     </div>
   </div>
 </header>
 <main id="main">
-  <section id="contact" class="section section-alt" data-reveal-on-scroll>
-    <div class="container contact-grid">
-      <div>
-        <h1 class="section-title">Contact</h1>
-        <p class="lead">Share a few details and we will reply with a thoughtful, human follow-up (usually within two business days).</p>
+  <section class="contact-page-hero" data-reveal-on-scroll aria-labelledby="contact-hero-heading">
+    <div class="container contact-page-hero__split">
+      <figure class="contact-page-hero__figure">
+        <img src="./Photos/AudreyHBranding-7999.jpg" width="1365" height="2048" alt="Noble business cards, portfolio sleeve, and glasses on a wooden chair in natural light" loading="eager" decoding="async" />
+      </figure>
+      <div class="contact-page-hero__inner">
+        <p class="contact-page-hero__eyebrow">Get in touch</p>
+        <h1 class="contact-page-hero__title" id="contact-hero-heading">Start a conversation</h1>
+        <p class="contact-page-hero__lead lead">Tell me what you are building—branding, a site, social, or all three—and I will reply with a follow-up, usually within two business days.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section-alt contact-main-section" data-reveal-on-scroll aria-labelledby="contact-aside-heading">
+    <div class="container contact-page-grid">
+      <div class="contact-page-grid__copy">
+        <h2 class="contact-page-grid__heading" id="contact-aside-heading">Ways to reach Noble</h2>
+        <p class="contact-page-grid__sub">Email works best for first touch. If you prefer context first, skim services and come back with a short note.</p>
         <div class="contact-cards">
-          <p><a href="mailto:audrey@thenoblemarketing.com">audrey@thenoblemarketing.com</a></p>
-          <p>Prefer a menu first? <a href="./services/index.html">Browse services</a> and come back with context.</p>
+          <a class="contact-card" href="mailto:audrey@thenoblemarketing.com">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">audrey@thenoblemarketing.com</span>
+          </a>
+          <a class="contact-card" href="./services/index.html">
+            <span class="contact-label">Services</span>
+            <span class="contact-value">Branding, website design, and social media</span>
+          </a>
         </div>
-        <form id="contact-form" class="contact-form" action="https://formspree.io/f/meevbbgn" method="POST">
-          <p>
-            <label for="contact-name">Name</label>
-            <input id="contact-name" name="name" type="text" autocomplete="name" required />
-          </p>
-          <p>
-            <label for="contact-email">Email</label>
-            <input id="contact-email" name="email" type="email" autocomplete="email" required />
-          </p>
+        <div class="contact-page-social-wrap">
+          <p class="contact-page-social-label">Follow along</p>
+          <div class="footer-social" aria-label="Social links">
+            <a class="footer-social-link" href="https://www.instagram.com/thenoblemarketing/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="footer-social-link" href="https://www.facebook.com/people/Noble-Marketing/100063772796053/" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="footer-social-link" href="https://www.linkedin.com/company/noble-marketing-design/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-page-grid__form">
+        <h2 class="contact-page-form-title">Send a message</h2>
+        <div id="contact-form-success" class="contact-form-success" hidden role="status">Thank you—your message is on its way. We will be in touch soon.</div>
+        <form id="contact-form" class="form contact-form" action="https://formspree.io/f/meevbbgn" method="post" accept-charset="UTF-8">
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label" for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label class="field-label" for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" required />
+            </div>
+          </div>
           <input type="hidden" name="_subject" value="New Noble website inquiry" />
-          <input type="hidden" name="_next" value="./contact.html?submitted=true" />
+          <input type="hidden" name="_next" value="./contact.html?submitted=true" data-contact-form-next />
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
-          <p>
-            <label for="project-type">Project type</label>
+          <div class="field">
+            <label class="field-label" for="project-type">Project type</label>
             <select id="project-type" name="projectType" required>
               <option value="" selected disabled>Select…</option>
               <option value="Branding">Branding</option>
@@ -67,84 +101,15 @@
               <option value="Social media">Social media</option>
               <option value="Multiple">Multiple services</option>
             </select>
-          </p>
-          <p>
-            <label for="contact-message">Message</label>
+          </div>
+          <div class="field">
+            <label class="field-label" for="contact-message">Message</label>
             <textarea id="contact-message" name="message" rows="6" required></textarea>
-          </p>
-          <p>
-            <button class="button primary" type="submit">Send</button>
-          </p>
+          </div>
+          <div class="field contact-form__submit">
+            <button class="button primary" type="submit">Send message</button>
+          </div>
         </form>
-      </div>
-    </div>
-  </section>
-  <section class="section services-reviews-section reviews-section--editorial" data-reveal-on-scroll>
-    <div class="container">
-      <h2 class="reviews-section-editorial-title">Client voices</h2>
-      <p class="services-reviews-lead services-reviews-lead--editorial">What partners say about working with Noble on brand, web, and campaigns.</p>
-      <div class="reviews-carousel reviews-carousel--editorial" data-reviews-carousel>
-        <button type="button" class="reviews-carousel-nav reviews-carousel-nav--prev" aria-label="Previous testimonial">‹</button>
-        <div class="reviews-carousel-viewport" tabindex="0" role="region" aria-label="Testimonials" aria-roledescription="carousel">
-          <ul class="reviews-carousel-track" role="list">
-            <li class="reviews-carousel-slide">
-              <article class="review-editorial">
-                <p class="review-editorial__series">Contact / 01</p>
-                <div class="review-editorial__band">
-                  <div class="review-editorial__pull">
-                    <p>“From start to finish, the experience was seamless and professional. Audrey took the time to listen to my vision, turned it into stunning visuals that exceeded my expectations, and I highly recommend her services to anyone in need of top-quality graphic design work.”</p>
-                  </div>
-                </div>
-                <p class="review-editorial__attr">— Lisa Cook, The Living Room Church</p>
-              </article>
-            </li>
-            <li class="reviews-carousel-slide">
-              <article class="review-editorial">
-                <p class="review-editorial__series">Contact / 02</p>
-                <div class="review-editorial__band">
-                  <div class="review-editorial__pull">
-                    <p>“Audrey was collaborative each step of the way, and very accommodating for any edits or changes. She didn&apos;t just want to do what I wanted, but aimed to ensure that my ideas would be presented the way I envisioned them. The final product of the branding package exceeded my expectations and I could not be more pleased.”</p>
-                  </div>
-                </div>
-                <p class="review-editorial__attr">— Pete Wisniewski, Everflame Financial Consulting</p>
-              </article>
-            </li>
-            <li class="reviews-carousel-slide">
-              <article class="review-editorial">
-                <p class="review-editorial__series">Contact / 03</p>
-                <div class="review-editorial__band">
-                  <div class="review-editorial__pull">
-                    <p>“I&apos;ve been impressed by her thoughtful handling of our brand and the quality of execution she brought to our website development. Professional, collaborative, and a true partner.”</p>
-                  </div>
-                </div>
-                <p class="review-editorial__attr">— Matthew Smith, Vizion Consulting</p>
-              </article>
-            </li>
-            <li class="reviews-carousel-slide">
-              <article class="review-editorial">
-                <p class="review-editorial__series">Contact / 04</p>
-                <div class="review-editorial__band">
-                  <div class="review-editorial__pull">
-                    <p>“She made creating a logo feel seamless by offering multiple design options and explaining things clearly along the way. The attention to detail and professionalism throughout the project really stood out, and the final result exceeded my expectations.”</p>
-                  </div>
-                </div>
-                <p class="review-editorial__attr">— Kyle Head, Head Strong Flight</p>
-              </article>
-            </li>
-            <li class="reviews-carousel-slide">
-              <article class="review-editorial">
-                <p class="review-editorial__series">Contact / 05</p>
-                <div class="review-editorial__band">
-                  <div class="review-editorial__pull">
-                    <p>“The very first meeting we had to discuss our vision felt so personal. Audrey really bought into what we were going for. She was also so quick to get back to us with any questions we had or requests for any changes. I would highly recommend working with Audrey for any and all branding needs.”</p>
-                  </div>
-                </div>
-                <p class="review-editorial__attr">— Megan Witt, Wittness Coffeehouse</p>
-              </article>
-            </li>
-          </ul>
-        </div>
-        <button type="button" class="reviews-carousel-nav reviews-carousel-nav--next" aria-label="Next testimonial">›</button>
       </div>
     </div>
   </section>
@@ -189,7 +154,7 @@
           <div class="footer-social" aria-label="Social links">
             <a class="footer-social-link" href="https://www.instagram.com/thenoblemarketing/" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a class="footer-social-link" href="https://www.facebook.com/people/Noble-Marketing/100063772796053/" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a class="footer-social-link" href="https://www.linkedin.com/company/noble-marketing" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="footer-social-link" href="https://www.linkedin.com/company/noble-marketing-design/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
         </div>
       </div>
