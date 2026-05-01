@@ -1464,7 +1464,7 @@ h3.branding-showcase-title{
 /* Same horizontal start as .container / .hero-subtitle */
 .hero-side-stat:first-child{
   position: absolute;
-  left: calc((100% - min(var(--container), calc(100% - 48px))) / 2 - clamp(44px, 7vw, 96px));
+  left: calc((100% - min(var(--container), calc(100% - 48px))) / 2 - clamp(72px, 12vw, 152px));
   /* Intentional Process: sit lower so rotated copy is not clipped at the top */
   top: clamp(196px, 31vh, 328px);
   right: auto;
