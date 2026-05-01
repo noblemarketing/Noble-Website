@@ -11266,30 +11266,18 @@ body.page-services.page-service-social:not(.page-services-hub) .services-split-h
 .page-service-social .section-social-packages .package--editorial .package-list li{
   list-style: none;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 10px;
-  text-align: left;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  text-align: center;
 }
 .page-service-social .section-social-packages .package--editorial .package-list li::before{
   content: "";
   width: 18px;
   height: 1px;
-  margin-top: 0.62em;
   flex-shrink: 0;
   background: rgba(20, 19, 17, 0.5);
-}
-@media (max-width: 900px){
-  .page-service-social .section-social-packages .package--editorial .package-list li{
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
-  }
-  .page-service-social .section-social-packages .package--editorial .package-list li::before{
-    margin-top: 0;
-  }
 }
 .page-service-branding main > .section.section-alt .container{
   text-align: center;
