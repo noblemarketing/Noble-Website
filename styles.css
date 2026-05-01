@@ -4210,7 +4210,10 @@ body.page-work-case .site-header{
   object-fit: contain;
   object-position: left center;
   margin: 0;
-  filter: none;
+  filter: brightness(0);
+}
+.page-witness-coffeehouse-case .section.work-case-logo-band .work-case-logo-band__img{
+  filter: brightness(0);
 }
 
 /* No Nonsense Neutering — horizontal wordmark in hero; JS figure uses only --hero */
@@ -4444,7 +4447,8 @@ body.page-work-case .site-header{
   border-bottom: 0;
   box-sizing: border-box;
 }
-.section.work-case-logo-band:has(+ .section.work-case-submark-row){
+.section.work-case-logo-band:has(+ .section.work-case-submark-row),
+.section.work-case-logo-band:has(+ .section.work-case-brand-swatches){
   padding-block: 6px;
   margin-bottom: clamp(8px, 1.5vw, 20px);
 }
@@ -4487,8 +4491,28 @@ body.page-work-case .site-header{
 .section.work-case-submark-row{
   padding-block: calc(6px + clamp(18px, 3.5vw, 40px));
 }
-.section.work-case-logo-band + .section.work-case-submark-row{
+.section.work-case-logo-band + .section.work-case-submark-row,
+.section.work-case-brand-swatches + .section.work-case-submark-row{
   padding-top: calc(6px + clamp(10px, 2vw, 24px));
+}
+
+.section.work-case-brand-swatches{
+  padding-block: clamp(28px, 4vw, 52px);
+  background: #ffffff;
+}
+.section.work-case-brand-swatches ul[class*="brand-swatches"]{
+  margin-top: 0;
+}
+.section.work-case-brand-swatches .gradys-brand-swatches{
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.section.work-case-brand-swatches [class*="brand-swatch__name"]{
+  display: none;
+}
+.section.work-case-brand-swatches li[class*="brand-swatch"]{
+  justify-content: center;
+  gap: 0;
+  min-height: clamp(52px, 11vw, 92px);
 }
 .work-case-submark-row__grid{
   display: grid;
@@ -4516,6 +4540,16 @@ body.page-work-case .site-header{
   width: auto;
   height: auto;
   object-fit: contain;
+}
+/* REVD — inverse alt mark (white badge) needs a dark field on the white logo row */
+.page-revd-case .work-case-submark-row__figure--revd-inverse{
+  background: #14120f;
+  border-radius: 10px;
+  padding: clamp(14px, 2.4vw, 24px);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: min(420px, 100%);
+  margin-inline: auto;
 }
 @media (max-width: 900px){
   .work-case-submark-row__grid{
@@ -5051,6 +5085,7 @@ body.page-work-case .site-header{
 }
 .gradys-brand-swatch--charcoal{ background: #222a36; color: #f4efe5; }
 .gradys-brand-swatch--red{ background: #c7152f; color: #fff5ef; }
+.gradys-brand-swatch--terracotta{ background: #c44926; color: #fff5ef; }
 .gradys-brand-swatch--green{ background: #4f6f66; color: #f3eee2; }
 .gradys-brand-swatch--blue{ background: #acc1d0; color: #17303b; }
 .gradys-brand-swatch--yellow{ background: #f0cf8f; color: #3a2d18; }
@@ -5193,6 +5228,23 @@ body.page-work-case .site-header{
   }
 }
 
+@media (max-width: 900px){
+  .section.work-case-brand-swatches ul[class*="brand-swatches"]{
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: clamp(6px, 1.5vw, 12px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-gutter: stable;
+  }
+  .section.work-case-brand-swatches ul[class*="brand-swatches"] > li[class*="brand-swatch"]{
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+  }
+}
+
 .brookstone-brand-strategy{
   margin-top: clamp(20px, 3.5vw, 36px);
 }
@@ -5261,6 +5313,122 @@ body.page-work-case .site-header{
   background: #fff;
   color: rgba(20, 19, 17, 0.82);
 }
+
+/* Logo-strip palette strips — Everflame, Hey Peaches, Lakewood, Living Room Church, Vizion, Wittness */
+.everflame-brand-swatches,
+.hey-peaches-brand-swatches,
+.lakewood-brand-swatches,
+.lrc-brand-swatches,
+.vizion-brand-swatches,
+.witness-brand-swatches{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(10px, 2vw, 16px);
+  margin: clamp(18px, 2.5vw, 26px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.vizion-brand-swatches{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.lrc-brand-swatches{
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.everflame-brand-swatch,
+.hey-peaches-brand-swatch,
+.lakewood-brand-swatch,
+.lrc-brand-swatch,
+.vizion-brand-swatch,
+.witness-brand-swatch{
+  min-height: 92px;
+  border-radius: 10px;
+  border: 1px solid rgba(20, 19, 17, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.35;
+  box-sizing: border-box;
+}
+.everflame-brand-swatch__name,
+.hey-peaches-brand-swatch__name,
+.lakewood-brand-swatch__name,
+.lrc-brand-swatch__name,
+.vizion-brand-swatch__name,
+.witness-brand-swatch__name{
+  display: block;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+.everflame-brand-swatch--navy{ background: #0f172a; color: #f4efe5; }
+.everflame-brand-swatch--orange{ background: #f97316; color: #fff; }
+.everflame-brand-swatch--cream{ background: #f5f0e6; color: #1a1816; }
+.everflame-brand-swatch--sky{ background: #cfe9fc; color: #1a1816; }
+.everflame-brand-swatch--butter{ background: #fef9c3; color: #1a1816; }
+.hey-peaches-brand-swatch--peach{ background: #d87666; color: #1a1816; }
+.hey-peaches-brand-swatch--blush{ background: #f6d7c3; color: #1a1816; }
+.hey-peaches-brand-swatch--cream{ background: #ebe4d5; color: #1a1816; }
+.hey-peaches-brand-swatch--sage{ background: #757d71; color: #1a1816; }
+.hey-peaches-brand-swatch--plum{ background: #26251f; color: #f4eee6; }
+.lakewood-brand-swatch--seashell{ background: #fff9f1; color: #1a1816; }
+.lakewood-brand-swatch--navy{ background: #2f3e46; color: #f4efe5; }
+.lakewood-brand-swatch--sage{ background: #97a78c; color: #1a1816; }
+.lakewood-brand-swatch--driftwood{ background: #b5b294; color: #1a1816; }
+.lakewood-brand-swatch--silver{ background: #c0c0c0; color: #1a1816; }
+.lrc-brand-swatch--ink{ background: #161c22; color: #f4efe5; }
+.lrc-brand-swatch--indigo{ background: #162641; color: #f4efe5; }
+.lrc-brand-swatch--ivory{ background: #f0f0e6; color: #1a1816; }
+.lrc-brand-swatch--cream{ background: #fefce8; color: #1a1816; }
+.lrc-brand-swatch--igloo{ background: #93c5e6; color: #1a1816; }
+.vizion-brand-swatch--navy{ background: #1e3a5f; color: #f4efe5; }
+.vizion-brand-swatch--horizon{
+  --tw-text-opacity: 1;
+  background: rgb(107 155 196 / var(--tw-text-opacity, 1));
+  color: #1a1816;
+}
+.vizion-brand-swatch--cloud{ background: #ffffff; color: #1a1816; }
+.vizion-brand-swatch--black{ background: #000000; color: #f4efe5; }
+.witness-brand-swatch--espresso{ background: #3a2f2a; color: #f4efe5; }
+.witness-brand-swatch--latte{ background: #d7ccc4; color: #1a1816; }
+.witness-brand-swatch--sage{ background: #8b9a7e; color: #fff; }
+.witness-brand-swatch--rust{ background: #9c6b43; color: #fff; }
+.witness-brand-swatch--oat{ background: #efe8df; color: #1a1816; }
+@media (max-width: 900px){
+  .everflame-brand-swatches,
+  .hey-peaches-brand-swatches,
+  .lakewood-brand-swatches,
+  .lrc-brand-swatches,
+  .vizion-brand-swatches,
+  .witness-brand-swatches{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 520px){
+  .everflame-brand-swatches,
+  .hey-peaches-brand-swatches,
+  .lakewood-brand-swatches,
+  .lrc-brand-swatches,
+  .vizion-brand-swatches,
+  .witness-brand-swatches{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 400px){
+  .everflame-brand-swatches,
+  .hey-peaches-brand-swatches,
+  .lakewood-brand-swatches,
+  .lrc-brand-swatches,
+  .vizion-brand-swatches,
+  .witness-brand-swatches{
+    grid-template-columns: 1fr;
+  }
+}
+
 .page-pennwood-case .branding-case-logo-grid--board{
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(18px, 2.6vw, 28px);
@@ -10447,11 +10615,12 @@ button.branding-showcase-frame{
   justify-content: center;
   align-self: flex-start;
   margin-top: clamp(8px, 2vw, 14px);
-  padding: 14px 28px;
+  min-height: 52px;
+  padding: clamp(16px, 2.4vw, 22px) clamp(30px, 4.5vw, 48px);
   border-radius: 0;
   box-sizing: border-box;
   font-family: var(--font-button);
-  font-size: 10px;
+  font-size: clamp(11px, 1.25vw, 14px);
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -11320,6 +11489,89 @@ body.page-services.page-service-social:not(.page-services-hub) .services-split-h
   background: rgba(255, 255, 255, 0.92);
 }
 
+/* Branding + Website design + Social media — header discovery (tan + black type) */
+.page-service-branding .header-discovery,
+.page-service-website .header-discovery,
+.page-service-social .header-discovery{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 16px 28px;
+  border-radius: 0;
+  border: 1px solid rgba(20, 19, 17, 0.22);
+  background: #e9dfd2;
+  color: var(--ink) !important;
+  font-size: clamp(13px, 1.3vw, 16px);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  line-height: 1.15;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.page-service-branding .header-discovery:hover,
+.page-service-website .header-discovery:hover,
+.page-service-social .header-discovery:hover{
+  background: #dfd2c3;
+  color: var(--ink) !important;
+  border-color: rgba(20, 19, 17, 0.32);
+}
+.page-service-branding .header-discovery:focus-visible,
+.page-service-website .header-discovery:focus-visible,
+.page-service-social .header-discovery:focus-visible{
+  outline: 2px solid rgba(20, 19, 17, 0.35);
+  outline-offset: 3px;
+}
+.page-service-website .services-split-hero-moody-cta,
+.page-service-social .services-split-hero-moody-cta{
+  min-height: 58px;
+  padding: clamp(18px, 2.8vw, 26px) clamp(34px, 5vw, 56px);
+  font-size: clamp(12px, 1.4vw, 16px);
+  font-weight: 600;
+  color: var(--ink);
+  background: #e9dfd2;
+  border: 1px solid rgba(20, 19, 17, 0.22);
+}
+.page-service-website .services-split-hero-moody-cta:hover,
+.page-service-social .services-split-hero-moody-cta:hover{
+  background: #dfd2c3;
+  color: var(--ink);
+  border-color: rgba(20, 19, 17, 0.32);
+}
+.page-service-branding .package-card-btn--solid,
+.page-service-website .package-card-btn--solid,
+.page-service-social .package-card-btn--solid{
+  min-height: 56px;
+  padding: 18px 34px;
+  font-size: clamp(12px, 1.15vw, 14px);
+  color: var(--ink);
+}
+.page-service-branding .package-card-btn--solid:hover,
+.page-service-website .package-card-btn--solid:hover,
+.page-service-social .package-card-btn--solid:hover{
+  background: #dfd2c3;
+  color: var(--ink);
+  border-color: rgba(20, 19, 17, 0.32);
+}
+.page-service-branding .package-grid-single-cta .package-card-btn,
+.page-service-website .package-grid-single-cta .package-card-btn,
+.page-service-social .package-grid-single-cta .package-card-btn{
+  max-width: 440px;
+}
+.page-service-website .service-next-step-cta.button.primary,
+.page-service-social .service-next-step-cta.button.primary{
+  min-height: 52px;
+  padding: 17px 36px;
+  font-size: clamp(12px, 1.25vw, 15px);
+  letter-spacing: 0.08em;
+  background: linear-gradient(180deg, #163529 0%, var(--moss) 55%, #142a22 100%);
+  border-color: rgba(10, 18, 14, 0.45);
+}
+.page-service-website .service-next-step-cta.button.primary:hover,
+.page-service-social .service-next-step-cta.button.primary:hover{
+  background: linear-gradient(180deg, #142a22 0%, #0f211a 100%);
+}
+
 .services-overview-jump a:hover{
   color: var(--moss);
   border-bottom-color: rgba(26,51,41,.45);
@@ -12119,7 +12371,7 @@ body.page-contact main > section.home-instagram-strip .instagram-feed-section__i
 .contact-page-grid__heading{
   margin: 0 0 10px;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.05rem, 1.65vw, 1.3rem);
+  font-size: clamp(1.35rem, 2.35vw, 1.85rem);
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -12152,7 +12404,7 @@ body.page-contact main > section.home-instagram-strip .instagram-feed-section__i
 .contact-page-form-title{
   margin: 0 0 clamp(16px, 2.2vw, 22px);
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.05rem, 1.65vw, 1.3rem);
+  font-size: clamp(1.35rem, 2.35vw, 1.85rem);
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -12729,6 +12981,9 @@ a.project-card{
   border-radius: 0;
 }
 .home-services-horiz__acc .service-horiz-tab{
+  flex: 0 0 clamp(92px, 10.5vw, 136px);
+  width: clamp(92px, 10.5vw, 136px);
+  font-size: clamp(15px, 1.75vw, 22px);
   background: var(--home-services-forest);
   border-left-color: rgba(255, 255, 255, 0.14);
   -webkit-text-size-adjust: 100%;
@@ -12762,8 +13017,9 @@ a.project-card{
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: clamp(11px, 1.05vw, 13px);
-  padding: 14px 18px;
+  font-size: clamp(13px, 1.35vw, 17px);
+  padding: clamp(16px, 2.2vw, 20px) clamp(22px, 3vw, 32px);
+  min-height: 48px;
   background: var(--home-services-forest);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: rgba(247, 241, 230, 0.98);
@@ -13286,17 +13542,20 @@ a.project-card{
   outline-offset: 3px;
 }
 .package-card-btn--solid{
-  border: 1px solid #4d5542;
-  background: #555d42;
-  color: #fff;
+  min-height: 52px;
+  padding: 17px 28px;
+  border: 1px solid rgba(20, 19, 17, 0.22);
+  background: #e9dfd2;
+  color: var(--ink);
+  font-size: clamp(11px, 1.05vw, 13px);
 }
 .package-card-btn--solid:hover{
-  background: #4a5139;
-  border-color: #3f4636;
-  color: #fff;
+  background: #dfd2c3;
+  border-color: rgba(20, 19, 17, 0.32);
+  color: var(--ink);
 }
 .package-card-btn--solid:focus-visible{
-  outline: 2px solid rgba(85, 93, 66, 0.85);
+  outline: 2px solid rgba(20, 19, 17, 0.35);
   outline-offset: 3px;
 }
 .package-grid--editorial-cards.package-grid--quad{
@@ -14497,6 +14756,11 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
     font-size: clamp(18px, 4.2vw, 24px);
     letter-spacing: .06em;
   }
+  .home-services-horiz__acc .service-horiz-tab{
+    flex: none;
+    width: 100%;
+    font-size: clamp(19px, 4.4vw, 26px);
+  }
   .service-horiz-tabs--left .service-horiz-tab:first-child,
   .service-horiz-tabs--right .service-horiz-tab:first-child{
     border-top: 0;
@@ -14561,6 +14825,19 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
     padding: 4px 4px 6px;
     margin-inline: auto;
     border-bottom-width: 1px;
+  }
+  .page-service-branding .header-discovery,
+  .page-service-website .header-discovery,
+  .page-service-social .header-discovery{
+    max-width: min(94vw, 360px);
+    padding: 12px 14px;
+    min-height: 46px;
+    font-size: clamp(10px, 2.9vw, 12px);
+    font-weight: 600;
+    border: 1px solid rgba(20, 19, 17, 0.22);
+    border-bottom: 1px solid rgba(20, 19, 17, 0.22);
+    background: #e9dfd2;
+    color: var(--ink) !important;
   }
   .header-discovery__label--desktop{
     display: none;

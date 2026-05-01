@@ -111,7 +111,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-revd.html": {
       name: "REVD Toys",
-      logo: "./Client Logos/black revd.svg",
+      logo: "./Client Logos/red revd.svg",
       services: "Branding + Website",
       niche: "Collectible Toys / Agriculture",
       location: "PA",
