@@ -32,6 +32,8 @@
   --font-button: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
   --font-button-weight: 400;
   --font-button-size: clamp(14px, 1.1vw, 18px);
+  /* Bump for h1 / h2 display typography (+1pt) */
+  --heading-size-add: 1pt;
 }
 
 /* Arome OT ligatures: enabled only alongside all-caps presentation (typically text-transform: uppercase).
@@ -678,7 +680,7 @@ body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
   margin: 0 0 clamp(14px, 2vw, 22px);
   max-width: min(36rem, 100%);
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.85rem, 3.6vw, 2.75rem);
+  font-size: calc(clamp(1.85rem, 3.6vw, 2.75rem) + var(--heading-size-add));
   font-weight: 400;
   line-height: 1.12;
   letter-spacing: 0.02em;
@@ -783,7 +785,7 @@ body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
 .home-recent-projects__title{
   margin: 0;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  font-size: calc(clamp(1.65rem, 3vw, 2.35rem) + var(--heading-size-add));
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.02em;
@@ -1351,7 +1353,7 @@ h3.branding-showcase-title{
 }
 .hero-title{
   margin:0 0 12px;
-  font-size: clamp(28px, 3.9vw, 48px);
+  font-size: calc(clamp(28px, 3.9vw, 48px) + var(--heading-size-add));
   line-height: 1.12;
   letter-spacing: -0.015em;
   font-weight: 400;
@@ -1473,7 +1475,8 @@ h3.branding-showcase-title{
 }
 .hero-side-stat:last-child{
   position: absolute;
-  right: clamp(10px, 3vw, 40px);
+  /* Inset farther from the right edge so the rotated stack sits slightly left on desktop */
+  right: clamp(28px, 4.2vw, 72px);
   /* Crafted Visuals: higher on the band so copy clears the bottom (incl. bottom nav overlap) */
   bottom: clamp(112px, 22vh, 220px);
   transform-origin: right center;
@@ -1695,7 +1698,7 @@ h3.branding-showcase-title{
   font-variant-ligatures: common-ligatures contextual;
   font-weight: 400;
   font-style: normal;
-  font-size: clamp(26px, 3.6vw, 40px);
+  font-size: calc(clamp(26px, 3.6vw, 40px) + var(--heading-size-add));
   line-height: 1.08;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1863,7 +1866,7 @@ h3.branding-showcase-title{
   overflow-wrap: break-word;
   text-wrap: balance;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(30px, 3.8vw, 52px);
+  font-size: calc(clamp(30px, 3.8vw, 52px) + var(--heading-size-add));
   font-weight: 400;
   line-height: 1.12;
   letter-spacing: -0.02em;
@@ -1915,7 +1918,7 @@ h3.branding-showcase-title{
   }
   .about-hero-split__title{
     max-width: none;
-    font-size: clamp(32px, 7vw, 44px);
+    font-size: calc(clamp(32px, 7vw, 44px) + var(--heading-size-add));
   }
   .about-hero-split__media{
     order: 2;
@@ -1959,7 +1962,7 @@ h3.branding-showcase-title{
   margin: 0;
   max-width: 100%;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(2rem, 4.2vw, 3.1rem);
+  font-size: calc(clamp(2rem, 4.2vw, 3.1rem) + var(--heading-size-add));
   font-weight: 400;
   font-style: normal;
   font-variant-ligatures: none;
@@ -2099,7 +2102,7 @@ h3.branding-showcase-title{
 .about-editorial__title{
   margin: 0;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(32px, 4.5vw, 58px);
+  font-size: calc(clamp(32px, 4.5vw, 58px) + var(--heading-size-add));
   font-weight: 400;
   line-height: 1.06;
   letter-spacing: -0.02em;
@@ -2183,7 +2186,7 @@ h3.branding-showcase-title{
     max-width: 560px;
   }
   .about-editorial__title{
-    font-size: clamp(38px, 6vw, 56px);
+    font-size: calc(clamp(38px, 6vw, 56px) + var(--heading-size-add));
     line-height: 1.05;
   }
 }
@@ -2196,7 +2199,7 @@ h3.branding-showcase-title{
     aspect-ratio: 4 / 5;
   }
   .about-editorial__title{
-    font-size: clamp(42px, 9vw, 52px);
+    font-size: calc(clamp(42px, 9vw, 52px) + var(--heading-size-add));
     line-height: 1.04;
     letter-spacing: -0.025em;
   }
@@ -2237,7 +2240,7 @@ h3.branding-showcase-title{
   margin: 0;
   max-width: 26ch;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.65rem, 3.4vw, 2.65rem);
+  font-size: calc(clamp(1.65rem, 3.4vw, 2.65rem) + var(--heading-size-add));
   font-weight: 400;
   font-style: normal;
   font-variant-ligatures: none;
@@ -2339,7 +2342,7 @@ h3.branding-showcase-title{
 .about-who-we-serve__heading{
   margin: 0 0 clamp(28px, 4vw, 48px);
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.85rem, 3.4vw, 2.65rem);
+  font-size: calc(clamp(1.85rem, 3.4vw, 2.65rem) + var(--heading-size-add));
   font-weight: 400;
   line-height: 1.12;
   letter-spacing: 0.02em;
@@ -2517,7 +2520,7 @@ h3.branding-showcase-title{
 .about-remote-collab__title{
   margin: 0;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(32px, 4.5vw, 58px);
+  font-size: calc(clamp(32px, 4.5vw, 58px) + var(--heading-size-add));
   font-weight: 400;
   font-style: normal;
   line-height: 1.06;
@@ -2622,7 +2625,7 @@ h3.branding-showcase-title{
     margin-inline: auto;
   }
   .about-remote-collab__title{
-    font-size: clamp(38px, 6vw, 56px);
+    font-size: calc(clamp(38px, 6vw, 56px) + var(--heading-size-add));
     line-height: 1.05;
   }
 }
@@ -2638,7 +2641,7 @@ h3.branding-showcase-title{
     aspect-ratio: 4 / 5;
   }
   .about-remote-collab__title{
-    font-size: clamp(42px, 9vw, 52px);
+    font-size: calc(clamp(42px, 9vw, 52px) + var(--heading-size-add));
     line-height: 1.04;
     letter-spacing: -0.025em;
   }
@@ -3145,7 +3148,7 @@ body.home-nav-fixed-bottom .home-partners-strip{
   max-width: 36ch;
   text-align: center;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.2rem, 2.1vw, 1.65rem);
+  font-size: calc(clamp(1.2rem, 2.1vw, 1.65rem) + var(--heading-size-add));
   font-weight: 400;
   font-style: normal;
   font-variant-ligatures: none;
@@ -3234,7 +3237,7 @@ body.home-nav-fixed-bottom .home-featured-title{
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
   font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
   font-feature-settings: "liga" 1, "clig" 1, "calt" 1, "dlig" 1;
-  font-size: clamp(1.85rem, 4vw, 2.35rem);
+  font-size: calc(clamp(1.85rem, 4vw, 2.35rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -4108,7 +4111,7 @@ body.page-work-case .site-header{
 .work-case-client-board__client-name{
   margin: 0 0 clamp(14px, 2vw, 20px);
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  font-size: calc(clamp(1.85rem, 3.2vw, 2.5rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: 0.06em;
   line-height: 1.15;
@@ -4123,7 +4126,7 @@ body.page-work-case .site-header{
 .work-case-client-board__name{
   margin: 0;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-size: calc(clamp(2.25rem, 5vw, 3.5rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.05;
@@ -4325,7 +4328,7 @@ body.page-work-case .site-header{
   margin: 0;
   flex: 0 0 auto;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(22px, 2.2vw, 28px);
+  font-size: calc(clamp(22px, 2.2vw, 28px) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: 0.02em;
   color: rgba(247, 241, 230, 0.96);
@@ -4606,7 +4609,7 @@ body.page-work-case .site-header{
 .work-case-challenge-solution__heading{
   margin: 0 0 clamp(12px, 2vw, 18px);
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(18px, 1.6vw, 22px);
+  font-size: calc(clamp(18px, 1.6vw, 22px) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -4637,7 +4640,7 @@ body.page-work-case .site-header{
 .work-case-visual-gallery__title{
   margin: 0 0 clamp(12px, 2vw, 18px);
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+  font-size: calc(clamp(1.65rem, 3.2vw, 2.35rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -4811,7 +4814,7 @@ body.page-work-case .site-header{
 .work-why-worked__title{
   margin: 0 0 12px;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-size: calc(clamp(1.4rem, 2.4vw, 2rem) + var(--heading-size-add));
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #1d1b19;
@@ -5656,7 +5659,7 @@ body.page-work-case .site-header{
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: 400;
-  font-size: clamp(2rem, 4.2vw, 3.25rem);
+  font-size: calc(clamp(2rem, 4.2vw, 3.25rem) + var(--heading-size-add));
   line-height: 1.12;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -6340,7 +6343,7 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
 .page-blaze-yoga-fitness-case #main .blaze-yoga-editorial-split__title{
   margin: 0 0 clamp(18px, 2.6vw, 26px);
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.75rem, 3.8vw, 2.65rem);
+  font-size: calc(clamp(1.75rem, 3.8vw, 2.65rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.12;
@@ -6504,7 +6507,7 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
 .page-outback-toys-case #main .outback-editorial-split__title{
   margin: 0 0 clamp(18px, 2.6vw, 26px);
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.75rem, 3.8vw, 2.65rem);
+  font-size: calc(clamp(1.75rem, 3.8vw, 2.65rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.12;
@@ -6668,7 +6671,7 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
 .page-lakewood-reserve-case #main .lakewood-editorial-split__title{
   margin: 0 0 clamp(18px, 2.6vw, 26px);
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.75rem, 3.8vw, 2.65rem);
+  font-size: calc(clamp(1.75rem, 3.8vw, 2.65rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.12;
@@ -6832,7 +6835,7 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
 .page-flintrock-case #main .flintrock-editorial-split__title{
   margin: 0 0 clamp(18px, 2.6vw, 26px);
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.75rem, 3.8vw, 2.65rem);
+  font-size: calc(clamp(1.75rem, 3.8vw, 2.65rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.12;
@@ -7565,7 +7568,7 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
   font-variant-ligatures: none;
   font-feature-settings: normal;
-  font-size: clamp(2.85rem, 8.5vw, 4.5rem);
+  font-size: calc(clamp(2.85rem, 8.5vw, 4.5rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 1.05;
@@ -8273,7 +8276,7 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
   justify-content: center;
 }
 .page-services .section-title{
-  font-size: clamp(40px, 4.8vw, 58px);
+  font-size: calc(clamp(40px, 4.8vw, 58px) + var(--heading-size-add));
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin-bottom: 0;
@@ -8485,7 +8488,7 @@ body.page-services{
 .page-services-hub .services-editorial--catalog .services-editorial-display{
   text-transform: none;
   letter-spacing: 0.02em;
-  font-size: clamp(32px, 5vw, 52px);
+  font-size: calc(clamp(32px, 5vw, 52px) + var(--heading-size-add));
   line-height: 1.12;
   color: #333;
   margin-bottom: clamp(10px, 1.5vw, 16px);
@@ -8608,7 +8611,7 @@ body.page-services{
 .services-editorial-display{
   margin: 0;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(40px, 7vw, 76px);
+  font-size: calc(clamp(40px, 7vw, 76px) + var(--heading-size-add));
   font-weight: 400;
   line-height: 1.02;
   letter-spacing: 0.06em;
@@ -8860,7 +8863,7 @@ button.services-editorial-cta{
   font-style: normal;
   font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
   font-feature-settings: "liga" 1, "clig" 1, "calt" 1, "dlig" 1;
-  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+  font-size: calc(clamp(1.75rem, 3.6vw, 2.5rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: 0.06em;
   line-height: 1.12;
@@ -9299,7 +9302,7 @@ button.services-editorial-cta{
 .reviews-section-editorial-title{
   margin: 0 auto 10px;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(34px, 4.2vw, 56px);
+  font-size: calc(clamp(34px, 4.2vw, 56px) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -9382,7 +9385,7 @@ button.services-editorial-cta{
 }
 #blog .section-title{
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(40px, 5.2vw, 72px);
+  font-size: calc(clamp(40px, 5.2vw, 72px) + var(--heading-size-add));
   line-height: 1.04;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -9847,7 +9850,7 @@ button.services-editorial-cta{
   margin: 0 0 clamp(28px, 4vw, 40px);
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
-  font-size: clamp(22px, 2.4vw, 30px);
+  font-size: calc(clamp(22px, 2.4vw, 30px) + var(--heading-size-add));
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-align: center;
@@ -9947,7 +9950,7 @@ button.services-editorial-cta{
 }
 .page-services-hub .faq-band--services-hub .faq-heading{
   margin-bottom: clamp(36px, 5vw, 52px);
-  font-size: clamp(22px, 2.8vw, 34px);
+  font-size: calc(clamp(22px, 2.8vw, 34px) + var(--heading-size-add));
   letter-spacing: 0.26em;
   line-height: 1.2;
   color: #fff;
@@ -10366,7 +10369,7 @@ button.branding-showcase-frame{
   text-align: center;
   pointer-events: none;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(32px, 6.8vw, 88px);
+  font-size: calc(clamp(32px, 6.8vw, 88px) + var(--heading-size-add));
   line-height: 0.98;
   letter-spacing: -0.02em;
   text-transform: uppercase;
@@ -10705,7 +10708,7 @@ button.branding-showcase-frame{
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
   font-style: normal;
-  font-size: clamp(34px, 6.4vw, 76px);
+  font-size: calc(clamp(34px, 6.4vw, 76px) + var(--heading-size-add));
   line-height: 1.03;
   letter-spacing: -0.03em;
   color: #faf8f4;
@@ -10807,7 +10810,7 @@ body.page-services.page-service-social:not(.page-services-hub) .services-split-h
   .services-split-hero-moody-title{
     max-width: 100%;
     text-align: center;
-    font-size: clamp(28px, 9vw, 52px);
+    font-size: calc(clamp(28px, 9vw, 52px) + var(--heading-size-add));
   }
   .services-split-hero-moody-cta{
     align-self: center;
@@ -11846,7 +11849,7 @@ body.page-blog .blog-index-section.section-alt{
 .blog-hero__title{
   margin: 0 0 14px;
   color: rgba(255, 255, 255, 0.98);
-  font-size: clamp(42px, 6.5vw, 88px);
+  font-size: calc(clamp(42px, 6.5vw, 88px) + var(--heading-size-add));
   line-height: 1.02;
   letter-spacing: -0.03em;
   font-weight: 400;
@@ -11894,7 +11897,7 @@ body.page-blog .blog-index-section.section-alt{
 .blog-index-header__title{
   margin: 0 0 16px;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-size: calc(clamp(1.5rem, 2.8vw, 2rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -12198,7 +12201,7 @@ body.page-blog .blog-index-section.section-alt{
 .blog-card__title{
   margin: 0 0 12px;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.05rem, 1.35vw, 1.35rem);
+  font-size: calc(clamp(1.05rem, 1.35vw, 1.35rem) + var(--heading-size-add));
   line-height: 1.3;
   font-weight: 400;
   letter-spacing: 0.04em;
@@ -12249,7 +12252,7 @@ body.page-blog .blog-index-section.section-alt{
 .page-blog .blog-index-cta__title{
   margin: 0 0 12px;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.2rem, 2.1vw, 1.55rem);
+  font-size: calc(clamp(1.2rem, 2.1vw, 1.55rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -12489,7 +12492,7 @@ body.page-contact main > section.home-instagram-strip .instagram-feed-section__i
 .contact-page-hero__title{
   margin: 0 0 18px;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(34px, 5.2vw, 68px);
+  font-size: calc(clamp(34px, 5.2vw, 68px) + var(--heading-size-add));
   line-height: 1.05;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -12512,7 +12515,7 @@ body.page-contact main > section.home-instagram-strip .instagram-feed-section__i
 .contact-page-grid__heading{
   margin: 0 0 10px;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.35rem, 2.35vw, 1.85rem);
+  font-size: calc(clamp(1.35rem, 2.35vw, 1.85rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -12545,7 +12548,7 @@ body.page-contact main > section.home-instagram-strip .instagram-feed-section__i
 .contact-page-form-title{
   margin: 0 0 clamp(16px, 2.2vw, 22px);
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.35rem, 2.35vw, 1.85rem);
+  font-size: calc(clamp(1.35rem, 2.35vw, 1.85rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -12610,7 +12613,7 @@ body.page-contact main > section.home-instagram-strip .instagram-feed-section__i
   justify-content: flex-start;
 }
 .services-section .section-head .section-title{
-  font-size: clamp(56px, 7.2vw, 98px);
+  font-size: calc(clamp(56px, 7.2vw, 98px) + var(--heading-size-add));
   line-height: 1.02;
 }
 .services-section .section-head .section-title .section-title-link{
@@ -12639,7 +12642,7 @@ body.page-contact main > section.home-instagram-strip .instagram-feed-section__i
 }
 .section-title{
   margin:0;
-  font-size: clamp(30px, 3.35vw, 44px);
+  font-size: calc(clamp(30px, 3.35vw, 44px) + var(--heading-size-add));
   line-height:1.07;
   letter-spacing: -0.02em;
   font-weight: 400;
@@ -13101,7 +13104,7 @@ a.project-card{
 .home-services-horiz__title{
   margin: 0 0 10px;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(52px, 7vw, 96px);
+  font-size: calc(clamp(52px, 7vw, 96px) + var(--heading-size-add));
   line-height: 0.98;
   letter-spacing: 0.02em;
   font-weight: 400;
@@ -14022,7 +14025,7 @@ details.package--expandable[open] > .package-summary::after{
 .page-legal .legal-body h2{
   margin: clamp(2rem, 4vw, 2.75rem) 0 0.65rem;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(15px, 1.35vw, 18px);
+  font-size: calc(clamp(15px, 1.35vw, 18px) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -14335,7 +14338,7 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   margin: 0;
   max-width: 28ch;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(26px, 3.6vw, 40px);
+  font-size: calc(clamp(26px, 3.6vw, 40px) + var(--heading-size-add));
   font-weight: 400;
   line-height: 1.12;
   letter-spacing: 0.14em;
@@ -15182,7 +15185,7 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   }
   .hero-card{margin: 0}
   .hero-title{
-    font-size: clamp(26px, 5.2vw, 40px);
+    font-size: calc(clamp(26px, 5.2vw, 40px) + var(--heading-size-add));
     letter-spacing: -0.02em;
     line-height: 1.12;
   }
@@ -15192,7 +15195,7 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
     line-height: 1.1;
   }
   .home-services-horiz__title{
-    font-size: clamp(56px, 13vw, 92px);
+    font-size: calc(clamp(56px, 13vw, 92px) + var(--heading-size-add));
     line-height: 0.97;
   }
   .field-row{grid-template-columns: 1fr}
