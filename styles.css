@@ -11921,6 +11921,18 @@ body.page-blog .blog-index-section.section-alt{
   margin: 16px auto 0;
   max-width: min(68ch, 100%);
 }
+.page-blog-post .blog-post-back-wrap{
+  margin-top: clamp(40px, 6vw, 72px);
+  padding-top: clamp(28px, 4vw, 44px);
+  border-top: 1px solid rgba(20, 19, 17, 0.1);
+  text-align: center;
+}
+.page-blog-post a.button.primary.blog-post-back{
+  text-transform: none;
+  letter-spacing: 0.04em;
+  min-width: min(100%, 16rem);
+  padding: 14px 22px;
+}
 .page-blog-post .blog-post-body{
   margin-top: 28px;
   max-width: min(88ch, 100%);
