@@ -5956,7 +5956,7 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
   align-items: center;
   gap: 8px;
 }
-/* Logo strip: full-width row, prev/next centered beneath (e.g. branding.html) */
+/* Logo strip: full-width row, prev/next centered beneath (branding page) */
 .branding-case-scroll-wrap--arrows-below{
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto auto;
@@ -7431,7 +7431,7 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
   margin-top: 0;
 }
 
-/* Portfolio — editorial magazine grid (portfolio.html) */
+/* Portfolio — editorial magazine grid (/portfolio) */
 .portfolio-page--magazine{
   background-color: #ffffff;
   background-image: none;
@@ -7738,7 +7738,7 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
   transform: translateX(-50%);
 }
 
-/* Branding service — "Branding in practice" tiles use portfolio.html thumb + scrim + logo overlays inside home-recent-projects cards */
+/* Branding service — "Branding in practice" tiles use portfolio thumbs + scrim + logo overlays inside home-recent-projects cards */
 .page-service-branding .service-branding-practice .home-recent-projects__media.portfolio-mag-card__media{
   position: absolute;
   inset: 0;
@@ -12234,7 +12234,7 @@ body.page-blog .blog-index-section.section-alt{
     transform: none;
   }
 }
-/* Contact block (contact.html): warm cream, no background photo */
+/* Contact block (/contact): warm cream, no background photo */
 #contact{
   border-top: 0;
   background:
@@ -14953,6 +14953,15 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   }
   body:not(.home-nav-fixed-bottom) .nav-dropdown-flyout{
     border-left-color: rgba(255, 255, 255, 0.28);
+  }
+  /* Homepage hides the Services flyout on desktop only; mobile sheet must list all three service pages */
+  body.home-nav-fixed-bottom .nav-dropdown-flyout{
+    display: flex !important;
+    flex-direction: column;
+    gap: 0;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
   .nav-dropdown-link{
     white-space: normal;

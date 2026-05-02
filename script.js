@@ -17,7 +17,7 @@ function setFooterBioText() {
 
 function setFooterCenterIcon() {
   // Each page sets the correct relative path to Logos/Noble Icon.png; normalizing to ./Logos/
-  // breaks nested routes (e.g. services/branding/index.html → ../../Logos/...).
+  // breaks nested routes (e.g. /services/branding/ → ../../Logos/...).
 }
 
 function setupFooterSocialIcons() {
@@ -85,17 +85,25 @@ function setupFooterSocialIcons() {
   });
 }
 
+/** Last meaningful path segment for directory URLs (/work-foo/ → work-foo). */
+function pathSlugFromLocation() {
+  const parts = location.pathname.split("/").filter(Boolean);
+  let last = parts[parts.length - 1] || "";
+  if (!last || last === "index.html") last = parts[parts.length - 2] || "";
+  return last.toLowerCase();
+}
+
 function setupWorkCaseClientProfiles() {
   if (!document.body.classList.contains("page-work-case")) return;
 
-  const slug = (location.pathname.split("/").pop() || "").toLowerCase();
+  const slug = pathSlugFromLocation();
   const left = document.querySelector(".work-case-client-board__left");
   const right = document.querySelector(".work-case-client-board__right");
   const nextLink = document.querySelector(".work-case-client-board__next");
   if (!(left instanceof HTMLElement) || !(right instanceof HTMLElement) || !(nextLink instanceof HTMLAnchorElement)) return;
 
   const profiles = {
-    "work-brookstone-ind.html": {
+    "work-brookstone-ind": {
       name: "Brookstone Industries",
       logo: "./Clients/Brookstone/Logos/Brookstone-Horizontal Logo-Icon - Main.svg",
       services: "Branding + Website",
@@ -109,7 +117,7 @@ function setupWorkCaseClientProfiles() {
         { label: "LinkedIn", href: "https://linkedin.com/company/brookstone-industries" },
       ],
     },
-    "work-revd.html": {
+    "work-revd": {
       name: "REVD Toys",
       logo: "./Client Logos/red revd.svg",
       services: "Branding + Website",
@@ -123,7 +131,7 @@ function setupWorkCaseClientProfiles() {
         { label: "Instagram", href: "https://www.instagram.com/revdtoys/" },
       ],
     },
-    "work-no-nonsense-neutering.html": {
+    "work-no-nonsense-neutering": {
       name: "No Nonsense Neutering",
       logo: "./Photos/no-nonsense-neutering/nnn-client-logo.png",
       services: "Website",
@@ -136,7 +144,7 @@ function setupWorkCaseClientProfiles() {
         { label: "Facebook", href: "https://facebook.com/NoNonsenseNeutering" },
       ],
     },
-    "work-everflame-financial.html": {
+    "work-everflame-financial": {
       name: "Everflame Financial Consulting",
       logo: "./Client Logos/Everflae.svg",
       services: "Branding",
@@ -146,7 +154,7 @@ function setupWorkCaseClientProfiles() {
         "A financial consulting firm built on themes of rebirth and resilience, guiding individuals, entrepreneurs, and organizations through financial challenges toward their next chapter. Noble crafted a full brand identity centered on the symbolism of an ever-burning flame.",
       links: [],
     },
-    "work-hsf.html": {
+    "work-hsf": {
       name: "Head Strong Flight",
       logo: "./Client Logos/HSF.svg",
       services: "Branding",
@@ -161,7 +169,7 @@ function setupWorkCaseClientProfiles() {
         { label: "TikTok", href: "https://tiktok.com/@headstrongflight" },
       ],
     },
-    "work-da-targets.html": {
+    "work-da-targets": {
       name: "DA Targets",
       logo: "./Client Logos/DA.svg",
       services: "Social Media + Website Management + Print",
@@ -175,7 +183,7 @@ function setupWorkCaseClientProfiles() {
         { label: "Instagram", href: "https://instagram.com/da_targets" },
       ],
     },
-    "work-gradys.html": {
+    "work-gradys": {
       name: "Grady's Grill & Truckstop",
       logo: "./Client Logos/Gradys%202.svg",
       services: "Branding",
@@ -185,7 +193,7 @@ function setupWorkCaseClientProfiles() {
         "A beloved community fixture since 1981, Grady's Grill & Truckstop is a roadside diner with deep roots in tradition and local charm. Noble refreshed their brand identity to honor their history while modernizing their visual presence.",
       links: [],
     },
-    "work-vizion.html": {
+    "work-vizion": {
       name: "Vizion Consulting",
       logo: "./Client Logos/Vizion.svg",
       services: "Branding + Website + Social Media",
@@ -198,7 +206,7 @@ function setupWorkCaseClientProfiles() {
         { label: "Instagram", href: "https://www.instagram.com/vizion.consulting/" },
       ],
     },
-    "work-living-room-church.html": {
+    "work-living-room-church": {
       name: "The Living Room Church",
       logo: "./Client Logos/Living-room-church-logo.jpg",
       services: "Branding",
@@ -212,7 +220,7 @@ function setupWorkCaseClientProfiles() {
         { label: "Facebook", href: "https://facebook.com/TheLivingRoomChurchOrlando" },
       ],
     },
-    "work-witness-coffeehouse.html": {
+    "work-witness-coffeehouse": {
       name: "Wittness Coffeehouse",
       logo: "./Client Logos/Witt2.svg",
       services: "Branding",
@@ -226,7 +234,7 @@ function setupWorkCaseClientProfiles() {
         { label: "Facebook", href: "https://facebook.com/p/Wittness-Coffeehouse-61580196470486" },
       ],
     },
-    "work-hey-peaches.html": {
+    "work-hey-peaches": {
       name: "Hey Peaches",
       logo: "./Client Logos/HeyPeaches.svg",
       services: "Branding",
@@ -239,7 +247,7 @@ function setupWorkCaseClientProfiles() {
         { label: "Instagram", href: "https://instagram.com/shop.heypeaches" },
       ],
     },
-    "work-cosmos.html": {
+    "work-cosmos": {
       name: "Cosmo Floral Design",
       logo: "./Client Logos/Cosmo.svg",
       services: "Branding",
@@ -249,7 +257,7 @@ function setupWorkCaseClientProfiles() {
         'A floral design studio in Lexington, Kentucky, rooted in intention and storytelling. Inspired by the Greek word for "world," founder Hannah\'s brand was built around natural elegance, warm earthy tones, and deeply personal symbolism.',
       links: [{ label: "Instagram", href: "https://instagram.com/cosmo.floraldesign" }],
     },
-    "work-flintrock.html": {
+    "work-flintrock": {
       name: "Flintrock Stables",
       logo: "./Client Logos/Flintrock.svg",
       services: "Social Media",
@@ -262,7 +270,7 @@ function setupWorkCaseClientProfiles() {
         { label: "Instagram", href: "https://www.instagram.com/flintrock_stables/" },
       ],
     },
-    "work-lakewood-reserve.html": {
+    "work-lakewood-reserve": {
       name: "Lakewood Reserve",
       logo: "./Client Logos/Lakewood%20reserv%20Horizontal.svg",
       services: "Branding + Website + Social Media",
@@ -272,7 +280,7 @@ function setupWorkCaseClientProfiles() {
         "A modern lakeside tiny home retreat on Raystown Lake in Pennsylvania, offering elevated comfort surrounded by woods, water, and mountains. Noble handled full brand development, website, and ongoing social media management.",
       links: [{ label: "Instagram", href: "https://instagram.com/lakewoodreserve" }],
     },
-    "work-outback-toys.html": {
+    "work-outback-toys": {
       name: "Outback Toys",
       logo: "./Client Logos/OBT%20black.svg",
       services: "Branding + Website + Social Media",
@@ -285,7 +293,7 @@ function setupWorkCaseClientProfiles() {
         { label: "Instagram", href: "https://instagram.com/outbacktoys" },
       ],
     },
-    "work-blaze-yoga.html": {
+    "work-blaze-yoga": {
       name: "Blaze Yoga Lancaster",
       logo: "./Client Logos/Blaze-yoga-lancaster-header.png",
       services: "Social Media",
@@ -295,7 +303,7 @@ function setupWorkCaseClientProfiles() {
         "A Lancaster-based hot yoga studio centered on movement, discipline, and personal growth. Noble supports Blaze Yoga with social media strategy and content that reflects the studio's motivating community culture.",
       links: [],
     },
-    "work-pennwood.html": {
+    "work-pennwood": {
       name: "Pennwood Development Group",
       logo: "./Client Logos/Primary_Wordmark_RGB.jpg",
       services: "Branding",
@@ -305,7 +313,7 @@ function setupWorkCaseClientProfiles() {
         "Pennwood Development Group is a regional development and investment team focused on strategic growth projects. Noble developed a clean, modern brand presentation to support long-term positioning and trust.",
       links: [],
     },
-    "work-tcc.html": {
+    "work-tcc": {
       name: "The Cultivate Collective",
       logo: "",
       services: "Branding",
@@ -335,7 +343,7 @@ function setupWorkCaseClientProfiles() {
       : "";
 
   left.innerHTML = `
-    <p class="work-case-client-board__back"><a href="./portfolio.html">Back to portfolio</a></p>
+    <p class="work-case-client-board__back"><a href="/portfolio">Back to portfolio</a></p>
     ${logoMarkup}
     <dl class="work-case-client-board__meta" aria-label="Client details">
       <div><dt>Location</dt><dd>${profile.location}</dd></div>
@@ -343,7 +351,7 @@ function setupWorkCaseClientProfiles() {
       <div><dt>Services by Noble</dt><dd>${profile.services}</dd></div>
     </dl>
     ${linksMarkup}
-    <p><a class="work-case-client-board__next" href="${nextLink.getAttribute("href") || "./portfolio.html"}" aria-label="${
+    <p><a class="work-case-client-board__next" href="${nextLink.getAttribute("href") || "/portfolio"}" aria-label="${
     nextLink.getAttribute("aria-label") || "next project: portfolio"
   }">→</a></p>
   `;
@@ -356,7 +364,7 @@ function setupWorkCaseClientProfiles() {
   }
 }
 
-/** index.html — full-screen intro: green lines meet at center, Noble mark, ~5s then dismiss */
+/** Home — full-screen intro: green lines meet at center, Noble mark, ~5s then dismiss */
 function setupHomeSplash() {
   const root = document.getElementById("home-splash");
   if (!root) return;
@@ -618,7 +626,7 @@ function setupPortfolioFilter() {
   });
 }
 
-/** portfolio.html — editorial grid filter */
+/** Portfolio page — editorial grid filter */
 function setupPortfolioMagazineFilter() {
   const root = document.querySelector("[data-portfolio-magazine]");
   if (!root) return;
@@ -1488,7 +1496,7 @@ function setupContactForm() {
   const nextField = form.querySelector('input[name="_next"][data-contact-form-next]');
   if (nextField instanceof HTMLInputElement) {
     try {
-      nextField.value = new URL("contact.html?submitted=true", window.location.href).href;
+      nextField.value = new URL("/contact?submitted=true", window.location.origin).href;
     } catch {
       nextField.removeAttribute("value");
     }
@@ -1508,7 +1516,7 @@ function setupContactForm() {
   }
 }
 
-/** services/index.html — one dialog per service (opened from editorial images) */
+/** Services hub — one dialog per service (opened from editorial images) */
 function setupServicesPricingModals() {
   const idByKey = {
     branding: "pricing-modal-branding",

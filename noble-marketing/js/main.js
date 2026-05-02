@@ -50,7 +50,9 @@ function setupNav() {
 }
 
 function setActiveNavLink() {
-  const filename = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  const parts = location.pathname.split("/").filter(Boolean);
+  let filename = (parts[parts.length - 1] || "index.html").toLowerCase();
+  if (!filename || filename === "index.html") filename = (parts[parts.length - 2] || "index").toLowerCase();
 
   $$("[data-nav-link]").forEach((a) => {
     const match = (a.getAttribute("data-nav-link") || "").toLowerCase() === filename;
