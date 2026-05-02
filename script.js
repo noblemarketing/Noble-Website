@@ -105,7 +105,7 @@ function setupWorkCaseClientProfiles() {
   const profiles = {
     "work-brookstone-ind": {
       name: "Brookstone Industries",
-      logo: "./Clients/Brookstone/Logos/Brookstone-Horizontal Logo-Icon - Main.svg",
+      logo: "/Clients/Brookstone/Logos/Brookstone-Horizontal Logo-Icon - Main.svg",
       services: "Branding + Website",
       niche: "Metal Fabrication / Industrial Manufacturing",
       location: "PA",
@@ -119,7 +119,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-revd": {
       name: "REVD Toys",
-      logo: "./Client Logos/red revd.svg",
+      logo: "/Client%20Logos/red%20revd.svg",
       services: "Branding + Website",
       niche: "Collectible Toys / Agriculture",
       location: "PA",
@@ -133,7 +133,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-no-nonsense-neutering": {
       name: "No Nonsense Neutering",
-      logo: "./Photos/no-nonsense-neutering/nnn-client-logo.png",
+      logo: "/Photos/no-nonsense-neutering/nnn-client-logo.png",
       services: "Website",
       niche: "Nonprofit / Animal Welfare",
       location: "PA",
@@ -146,7 +146,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-everflame-financial": {
       name: "Everflame Financial Consulting",
-      logo: "./Client Logos/Everflae.svg",
+      logo: "/Client%20Logos/Everflae.svg",
       services: "Branding",
       niche: "Financial Consulting",
       location: "PA",
@@ -156,7 +156,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-hsf": {
       name: "Head Strong Flight",
-      logo: "./Client Logos/HSF.svg",
+      logo: "/Client%20Logos/HSF.svg",
       services: "Branding",
       niche: "Archery / Hunting",
       location: "PA",
@@ -171,7 +171,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-da-targets": {
       name: "DA Targets",
-      logo: "./Client Logos/DA.svg",
+      logo: "/Client%20Logos/DA.svg",
       services: "Social Media + Website Management + Print",
       niche: "Firearms Training / Tactical Equipment",
       location: "PA",
@@ -185,7 +185,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-gradys": {
       name: "Grady's Grill & Truckstop",
-      logo: "./Client Logos/Gradys%202.svg",
+      logo: "/Client%20Logos/Gradys%202.svg",
       services: "Branding",
       niche: "Food & Beverage / Diner",
       location: "PA",
@@ -195,7 +195,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-vizion": {
       name: "Vizion Consulting",
-      logo: "./Client Logos/Vizion.svg",
+      logo: "/Client%20Logos/Vizion.svg",
       services: "Branding + Website + Social Media",
       niche: "Leadership & Business Consulting",
       location: "PA",
@@ -208,7 +208,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-living-room-church": {
       name: "The Living Room Church",
-      logo: "./Client Logos/Living-room-church-logo.jpg",
+      logo: "/Client%20Logos/Living-room-church-logo.jpg",
       services: "Branding",
       niche: "Church / Religious Organization",
       location: "FL",
@@ -222,7 +222,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-witness-coffeehouse": {
       name: "Wittness Coffeehouse",
-      logo: "./Client Logos/Witt2.svg",
+      logo: "/Client%20Logos/Witt2.svg",
       services: "Branding",
       niche: "Coffee Shop / Cafe",
       location: "PA",
@@ -236,7 +236,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-hey-peaches": {
       name: "Hey Peaches",
-      logo: "./Client Logos/HeyPeaches.svg",
+      logo: "/Client%20Logos/HeyPeaches.svg",
       services: "Branding",
       niche: "Women's Fashion Boutique",
       location: "PA",
@@ -249,7 +249,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-cosmos": {
       name: "Cosmo Floral Design",
-      logo: "./Client Logos/Cosmo.svg",
+      logo: "/Client%20Logos/Cosmo.svg",
       services: "Branding",
       niche: "Floral Design / Events",
       location: "KY",
@@ -259,7 +259,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-flintrock": {
       name: "Flintrock Stables",
-      logo: "./Client Logos/Flintrock.svg",
+      logo: "/Client%20Logos/Flintrock.svg",
       services: "Social Media",
       niche: "Equestrian / Agriculture",
       location: "PA",
@@ -272,7 +272,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-lakewood-reserve": {
       name: "Lakewood Reserve",
-      logo: "./Client Logos/Lakewood%20reserv%20Horizontal.svg",
+      logo: "/Client%20Logos/Lakewood%20reserv%20Horizontal.svg",
       services: "Branding + Website + Social Media",
       niche: "Hospitality / Short-Term Rental / Tiny Homes",
       location: "PA",
@@ -282,7 +282,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-outback-toys": {
       name: "Outback Toys",
-      logo: "./Client Logos/OBT%20black.svg",
+      logo: "/Client%20Logos/OBT%20black.svg",
       services: "Branding + Website + Social Media",
       niche: "Retail / Farm Toy & Collectibles",
       location: "PA",
@@ -295,7 +295,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-blaze-yoga": {
       name: "Blaze Yoga Lancaster",
-      logo: "./Client Logos/Blaze-yoga-lancaster-header.png",
+      logo: "/Client%20Logos/Blaze-yoga-lancaster-header.png",
       services: "Social Media",
       niche: "Fitness & Wellness",
       location: "PA",
@@ -305,7 +305,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-pennwood": {
       name: "Pennwood Development Group",
-      logo: "./Client Logos/Primary_Wordmark_RGB.jpg",
+      logo: "/Client%20Logos/Primary_Wordmark_RGB.jpg",
       services: "Branding",
       niche: "Real Estate / Development",
       location: "PA",
@@ -343,7 +343,7 @@ function setupWorkCaseClientProfiles() {
       : "";
 
   left.innerHTML = `
-    <p class="work-case-client-board__back"><a href="/portfolio">Back to portfolio</a></p>
+    <p class="work-case-client-board__back"><a href="/portfolio/">Back to portfolio</a></p>
     ${logoMarkup}
     <dl class="work-case-client-board__meta" aria-label="Client details">
       <div><dt>Location</dt><dd>${profile.location}</dd></div>
@@ -351,7 +351,7 @@ function setupWorkCaseClientProfiles() {
       <div><dt>Services by Noble</dt><dd>${profile.services}</dd></div>
     </dl>
     ${linksMarkup}
-    <p><a class="work-case-client-board__next" href="${nextLink.getAttribute("href") || "/portfolio"}" aria-label="${
+    <p><a class="work-case-client-board__next" href="${nextLink.getAttribute("href") || "/portfolio/"}" aria-label="${
     nextLink.getAttribute("aria-label") || "next project: portfolio"
   }">→</a></p>
   `;
@@ -1496,7 +1496,7 @@ function setupContactForm() {
   const nextField = form.querySelector('input[name="_next"][data-contact-form-next]');
   if (nextField instanceof HTMLInputElement) {
     try {
-      nextField.value = new URL("/contact?submitted=true", window.location.origin).href;
+      nextField.value = new URL("/contact/?submitted=true", window.location.origin).href;
     } catch {
       nextField.removeAttribute("value");
     }
@@ -1951,7 +1951,7 @@ function setupBlazeYogaNativeReelVideos(mount) {
     return new URL(`./${path}`, window.location.href).href;
   };
 
-  const blazeReelsManifestUrl = () => new URL("./Clients/BlazeYoga/blaze-local-reels.json", window.location.href).href;
+  const blazeReelsManifestUrl = () => nobleScriptSiblingUrl("./Clients/BlazeYoga/blaze-local-reels.json");
 
   const wireTile = (tile, video) => {
     const setOthersSilent = () => {

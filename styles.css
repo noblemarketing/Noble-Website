@@ -811,6 +811,8 @@ body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
   color: rgba(247, 241, 230, 0.72);
 }
 .home-recent-projects__portfolio-link{
+  position: relative;
+  z-index: 2;
   flex-shrink: 0;
   font-family: var(--font-body);
   font-size: 11px;
@@ -1965,7 +1967,7 @@ h3.branding-showcase-title{
 }
 .about-how-i-work__title{
   margin: 0;
-  max-width: 24ch;
+  max-width: 100%;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
   font-size: clamp(2rem, 4.2vw, 3.1rem);
   font-weight: 400;
@@ -1976,6 +1978,9 @@ h3.branding-showcase-title{
   line-height: 1.15;
   text-transform: none;
   color: var(--moss);
+}
+.about-how-i-work__title-line{
+  display: block;
 }
 .about-how-i-work__title-em{
   font-style: normal;
@@ -2058,7 +2063,7 @@ h3.branding-showcase-title{
 }
 @media (max-width: 900px){
   .about-how-i-work__title{
-    max-width: 26ch;
+    max-width: 100%;
   }
 }
 @media (max-width: 700px){
@@ -14462,6 +14467,8 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   filter: brightness(0) invert(1);
 }
 .footer-center-cta{
+  position: relative;
+  z-index: 2;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
   font-size: clamp(18px, 2.2vw, 24px);
   font-weight: 400;
