@@ -12037,6 +12037,44 @@ body.page-blog .blog-index-section.section-alt{
   border-color: var(--moss);
   color: #f7f5f0;
 }
+@media (max-width: 767px){
+  /* Topic chips on one horizontal row (scroll if needed) */
+  .blog-index-toolbar{
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(10px, 3vw, 14px);
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+  .blog-index-toolbar__label{
+    flex-shrink: 0;
+  }
+  .blog-index-filters{
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .blog-index-filters::-webkit-scrollbar{
+    display: none;
+  }
+  .blog-filter-chip{
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+}
 .blog-index-empty{
   margin: 0 0 clamp(24px, 4vw, 36px);
   padding: clamp(20px, 3vw, 28px);
