@@ -669,6 +669,9 @@ body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
 .home-who-we-are-split__copy{
   text-align: left;
   max-width: 42ch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .home-who-we-are-split__title{
   margin: 0 0 clamp(14px, 2vw, 22px);
@@ -692,23 +695,9 @@ body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
   line-height: 1.65;
   color: rgba(20, 19, 17, 0.62);
 }
-.home-who-we-are-split__link{
-  display: inline-block;
+.home-who-we-are-split__link.button.primary{
   margin-top: clamp(22px, 3.2vw, 36px);
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #1e1c1a;
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 3px;
-  transition: opacity 0.2s ease, color 0.2s ease;
-}
-.home-who-we-are-split__link:hover{
-  opacity: 0.72;
-  color: #000;
+  align-self: flex-start;
 }
 .home-who-we-are-split__gallery{
   display: grid;
@@ -7102,9 +7091,9 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  aspect-ratio: 16 / 9;
-  min-height: clamp(180px, 28vw, 260px);
-  max-height: min(420px, 48vh);
+  aspect-ratio: 16 / 10;
+  min-height: clamp(220px, 34vw, 320px);
+  max-height: min(520px, 56vh);
   overflow: hidden;
   background: rgba(20, 19, 17, 0.06);
   border-bottom: 1px solid rgba(20, 19, 17, 0.08);
@@ -7120,13 +7109,137 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
   .page-blog-post .blog-post-hero{
     aspect-ratio: 4 / 3;
     max-height: none;
-    min-height: 200px;
+    min-height: clamp(220px, 52vw, 280px);
   }
 }
 .page-blog-post .blog-post-hero--portrait-lockup{
   aspect-ratio: 16 / 10;
-  max-height: min(440px, 52vh);
-  min-height: clamp(220px, 36vw, 320px);
+  max-height: min(520px, 58vh);
+  min-height: clamp(240px, 38vw, 340px);
+}
+
+/* Blog post — desktop: reading column + tall sticky hero on the right */
+@media (min-width: 960px){
+  .page-blog-post .blog-article.section.section-alt{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, min(40vw, 420px));
+    align-items: start;
+    column-gap: clamp(28px, 4vw, 52px);
+    row-gap: 0;
+    width: 100%;
+    max-width: min(1240px, 100%);
+    margin-inline: auto;
+    padding-inline: clamp(24px, 5vw, 56px);
+    padding-bottom: clamp(48px, 7vw, 88px);
+    box-sizing: border-box;
+  }
+
+  .page-blog-post .blog-article > .container{
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .page-blog-post .blog-article > .blog-post-hero{
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+    left: auto;
+    transform: none;
+    margin: 0;
+    position: sticky;
+    top: calc(var(--site-header-height) + 16px);
+    align-self: start;
+    aspect-ratio: 3 / 4;
+    min-height: min(72vh, 720px);
+    max-height: calc(100vh - var(--site-header-height) - 28px);
+    max-height: calc(100dvh - var(--site-header-height) - 28px);
+    border-radius: 14px;
+    border: 1px solid rgba(20, 19, 17, 0.08);
+    border-bottom: 1px solid rgba(20, 19, 17, 0.08);
+    box-shadow: 0 20px 56px rgba(20, 19, 17, 0.07);
+  }
+
+  .page-blog-post .blog-article > .blog-post-hero img{
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Inline figures sit on the right within the reading column (pairs stay full width) */
+  .page-blog-post .blog-post-body .blog-post-figure:not(.blog-post-figure--pair){
+    float: right;
+    clear: right;
+    width: min(46%, 320px);
+    margin: clamp(4px, 0.8vw, 10px) 0 clamp(12px, 2vw, 20px) clamp(18px, 2.5vw, 28px);
+  }
+
+  .page-blog-post .blog-post-body .blog-post-figure-pair{
+    float: none;
+    clear: both;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .page-blog-post .blog-post-body::after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .page-blog-post .blog-post-body{
+    max-width: min(72ch, 100%) !important;
+  }
+
+  .page-blog-post .blog-post-body .section-title{
+    clear: both;
+  }
+
+  .page-blog-post .blog-post-body .work-case-growth-strip--blog{
+    clear: both;
+  }
+
+  .page-blog-post .blog-post-body .blog-post-brand-carousel{
+    clear: both;
+  }
+}
+
+/* Blog — formally rejected: full-bleed horizontal brand proofs carousel */
+.page-blog-post .blog-post-brand-carousel{
+  clear: both;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: clamp(8px, 1.5vw, 16px);
+  margin-bottom: clamp(28px, 4vw, 44px);
+  padding: clamp(18px, 2.5vw, 28px) max(20px, env(safe-area-inset-left)) clamp(22px, 3vw, 36px) max(20px, env(safe-area-inset-right));
+  box-sizing: border-box;
+  background: rgba(250, 249, 246, 0.98);
+  border-top: 1px solid rgba(20, 19, 17, 0.06);
+  border-bottom: 1px solid rgba(20, 19, 17, 0.06);
+}
+.page-blog-post .blog-post-brand-carousel .branding-case-scroll-wrap{
+  margin-top: 0;
+  max-width: min(1240px, 100%);
+  margin-inline: auto;
+}
+.page-blog-post .blog-post-brand-carousel .branding-case-scroll{
+  margin: 0;
+  padding: 4px 0 14px;
+}
+.page-blog-post .blog-post-brand-carousel .branding-case-scroll__frame{
+  aspect-ratio: 4 / 5;
+}
+.page-blog-post .blog-post-brand-carousel .branding-case-scroll__frame img{
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Blog — case-study style metrics inside narrow article column (not viewport-wide breakpoints) */
@@ -13642,16 +13755,6 @@ a.project-card{
     radial-gradient(ellipse 50% 42% at 100% 100%, rgba(122, 90, 58, 0.07), transparent 52%),
     radial-gradient(ellipse 45% 38% at 0% 85%, rgba(26, 51, 41, 0.05), transparent 48%),
     linear-gradient(180deg, #f8f6f1 0%, #f0ebe2 100%);
-}
-.page-service-branding .section-branding-packages.section--packages-editorial::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath fill='%231a3329' fill-opacity='0.03' d='M60 0L75 45h45L82.5 72.75 97.5 120 60 92.25 22.5 120 37.5 72.75 0 45h45z'/%3E%3C/svg%3E");
-  background-size: 120px 120px;
-  opacity: 0.45;
-  pointer-events: none;
-  mix-blend-mode: multiply;
 }
 .page-service-branding .section-branding-packages > .container{
   position: relative;

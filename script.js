@@ -201,10 +201,7 @@ function setupWorkCaseClientProfiles() {
       location: "PA",
       about:
         "A values-driven consulting firm based in York/Lancaster, PA, helping leaders and organizations achieve meaningful growth through servant leadership, integrity, and strategic guidance. Noble developed their full brand identity and website.",
-      links: [
-        { label: "Website", href: "https://vizionconsulting.com" },
-        { label: "Instagram", href: "https://www.instagram.com/vizion.consulting/" },
-      ],
+      links: [{ label: "Instagram", href: "https://www.instagram.com/vizion.consulting/" }],
     },
     "work-living-room-church": {
       name: "The Living Room Church",
@@ -283,7 +280,7 @@ function setupWorkCaseClientProfiles() {
     "work-outback-toys": {
       name: "Outback Toys",
       logo: "/Client%20Logos/OBT%20black.svg",
-      services: "Branding + Website + Social Media",
+      services: "Social Media",
       niche: "Retail / Farm Toy & Collectibles",
       location: "PA",
       about:

@@ -107,7 +107,6 @@ def replace_work_blog_links(content: str) -> str:
         "flint-rock-stables-organic-community-social",
         "lakewood-reserve-organic-social-growth",
         "outback-toys-first-month-organic-social",
-        "studio-notes-branding-clarity",
         "you-have-been-formally-rejected",
     ]
     for slug in blog_slugs:
