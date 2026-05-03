@@ -2917,6 +2917,26 @@ h3.branding-showcase-title{
   grid-template-columns: repeat(4, minmax(0, 1fr));
   max-width: min(1120px, 100%);
 }
+/* Client / work case pages — metrics in a 2×2 grid (two per row); single column stays below 641px */
+@media (min-width: 641px){
+  .page-work-case .home-stats-grid.home-stats-grid--4{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .page-work-case .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(2n)::after{
+    display: none;
+  }
+  .page-work-case .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(n+3){
+    border-top: 1px solid var(--clay);
+    padding-top: clamp(24px, 4vw, 40px);
+  }
+  .page-work-case .home-stats-strip.home-stats-strip--blaze-case .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(n+3),
+  .page-work-case .home-stats-strip.home-stats-strip--flintrock-case .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(n+3),
+  .page-work-case .home-stats-strip.home-stats-strip--lakewood-case .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(n+3),
+  .page-work-case .home-stats-strip.home-stats-strip--da-targets-case .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(n+3),
+  .page-work-case .home-stats-strip.home-stats-strip--outback-toys-case .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(n+3){
+    border-top-color: rgba(247, 241, 230, 0.22);
+  }
+}
 .home-stats-strip.home-stats-strip--blaze-case,
 .home-stats-strip.home-stats-strip--flintrock-case,
 .home-stats-strip.home-stats-strip--lakewood-case,
