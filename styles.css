@@ -2913,9 +2913,14 @@ h3.branding-showcase-title{
 }
 
 /* Work case — Blaze Yoga organic social metrics (homepage stats layout, moss field + cream type) */
+/* Four columns from 641px up only — unconditional repeat(4) here was overriding the mobile 1-column rule */
 .home-stats-grid.home-stats-grid--4{
-  grid-template-columns: repeat(4, minmax(0, 1fr));
   max-width: min(1120px, 100%);
+}
+@media (min-width: 641px){
+  .home-stats-grid.home-stats-grid--4{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 /* Client / work case pages — metrics in a 2×2 grid (two per row); single column stays below 641px */
 @media (min-width: 641px){
@@ -2929,71 +2934,36 @@ h3.branding-showcase-title{
     border-top: 1px solid var(--clay);
     padding-top: clamp(24px, 4vw, 40px);
   }
-  .page-work-case .home-stats-strip.home-stats-strip--blaze-case .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(n+3),
-  .page-work-case .home-stats-strip.home-stats-strip--flintrock-case .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(n+3),
-  .page-work-case .home-stats-strip.home-stats-strip--lakewood-case .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(n+3),
-  .page-work-case .home-stats-strip.home-stats-strip--da-targets-case .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(n+3),
-  .page-work-case .home-stats-strip.home-stats-strip--outback-toys-case .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(n+3){
+  .page-work-case .home-stats-strip.home-stats-strip--moss-social .home-stats-grid.home-stats-grid--4 .home-stats-cell:nth-child(n+3){
     border-top-color: rgba(247, 241, 230, 0.22);
   }
 }
-.home-stats-strip.home-stats-strip--blaze-case,
-.home-stats-strip.home-stats-strip--flintrock-case,
-.home-stats-strip.home-stats-strip--lakewood-case,
-.home-stats-strip.home-stats-strip--da-targets-case,
-.home-stats-strip.home-stats-strip--outback-toys-case{
+/* Organic social KPI strips — moss field + cream type (add .home-stats-strip--moss-social on the section) */
+.home-stats-strip.home-stats-strip--moss-social{
   background: var(--moss);
   border-top: 1px solid rgba(247, 241, 230, 0.12);
 }
-.home-stats-strip.home-stats-strip--blaze-case .home-stats-figure,
-.home-stats-strip.home-stats-strip--flintrock-case .home-stats-figure,
-.home-stats-strip.home-stats-strip--lakewood-case .home-stats-figure,
-.home-stats-strip.home-stats-strip--da-targets-case .home-stats-figure,
-.home-stats-strip.home-stats-strip--outback-toys-case .home-stats-figure{
+.home-stats-strip.home-stats-strip--moss-social .home-stats-figure{
   color: #f7f1e6;
 }
-.home-stats-strip.home-stats-strip--blaze-case .home-stats-affix,
-.home-stats-strip.home-stats-strip--flintrock-case .home-stats-affix,
-.home-stats-strip.home-stats-strip--lakewood-case .home-stats-affix,
-.home-stats-strip.home-stats-strip--da-targets-case .home-stats-affix,
-.home-stats-strip.home-stats-strip--outback-toys-case .home-stats-affix{
+.home-stats-strip.home-stats-strip--moss-social .home-stats-affix{
   color: #f7f1e6;
 }
-.home-stats-strip.home-stats-strip--blaze-case .home-stats-label,
-.home-stats-strip.home-stats-strip--flintrock-case .home-stats-label,
-.home-stats-strip.home-stats-strip--lakewood-case .home-stats-label,
-.home-stats-strip.home-stats-strip--da-targets-case .home-stats-label,
-.home-stats-strip.home-stats-strip--outback-toys-case .home-stats-label{
+.home-stats-strip.home-stats-strip--moss-social .home-stats-label{
   color: rgba(247, 241, 230, 0.92);
 }
-.home-stats-strip.home-stats-strip--blaze-case .home-stats-label--two-lines,
-.home-stats-strip.home-stats-strip--flintrock-case .home-stats-label--two-lines,
-.home-stats-strip.home-stats-strip--lakewood-case .home-stats-label--two-lines,
-.home-stats-strip.home-stats-strip--da-targets-case .home-stats-label--two-lines,
-.home-stats-strip.home-stats-strip--outback-toys-case .home-stats-label--two-lines{
+.home-stats-strip.home-stats-strip--moss-social .home-stats-label--two-lines{
   color: rgba(247, 241, 230, 0.92);
 }
-.home-stats-strip.home-stats-strip--blaze-case .home-stats-cell:not(:last-child)::after,
-.home-stats-strip.home-stats-strip--flintrock-case .home-stats-cell:not(:last-child)::after,
-.home-stats-strip.home-stats-strip--lakewood-case .home-stats-cell:not(:last-child)::after,
-.home-stats-strip.home-stats-strip--da-targets-case .home-stats-cell:not(:last-child)::after,
-.home-stats-strip.home-stats-strip--outback-toys-case .home-stats-cell:not(:last-child)::after{
+.home-stats-strip.home-stats-strip--moss-social .home-stats-cell:not(:last-child)::after{
   background: rgba(247, 241, 230, 0.38);
   opacity: 1;
 }
 @media (max-width: 640px){
-  .home-stats-strip.home-stats-strip--blaze-case .home-stats-cell,
-  .home-stats-strip.home-stats-strip--flintrock-case .home-stats-cell,
-  .home-stats-strip.home-stats-strip--lakewood-case .home-stats-cell,
-  .home-stats-strip.home-stats-strip--da-targets-case .home-stats-cell,
-  .home-stats-strip.home-stats-strip--outback-toys-case .home-stats-cell{
+  .home-stats-strip.home-stats-strip--moss-social .home-stats-cell{
     border-top: 1px solid rgba(247, 241, 230, 0.2);
   }
-  .home-stats-strip.home-stats-strip--blaze-case .home-stats-cell:first-child,
-  .home-stats-strip.home-stats-strip--flintrock-case .home-stats-cell:first-child,
-  .home-stats-strip.home-stats-strip--lakewood-case .home-stats-cell:first-child,
-  .home-stats-strip.home-stats-strip--da-targets-case .home-stats-cell:first-child,
-  .home-stats-strip.home-stats-strip--outback-toys-case .home-stats-cell:first-child{
+  .home-stats-strip.home-stats-strip--moss-social .home-stats-cell:first-child{
     border-top: 0;
   }
 }
