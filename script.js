@@ -407,9 +407,6 @@ function setupHomeHeaderScrollPin() {
 
   const PIN = "home-header--pinned-top";
   const BODY_TOP = "home-header-nav-top";
-  /** Stay pinned until hero clears the bar by this many px (stops pin ↔ unpin flicker at the threshold) */
-  const PIN_RELEASE_PX = 10;
-
   const isHomeMobileNavTop = () =>
     typeof window.matchMedia === "function" && window.matchMedia("(max-width: 760px)").matches;
 
@@ -426,6 +423,7 @@ function setupHomeHeaderScrollPin() {
   };
 
   let pinned = false;
+  let pinnedLocked = false;
   let raf = 0;
 
   const update = () => {
@@ -438,6 +436,7 @@ function setupHomeHeaderScrollPin() {
       header.style.setProperty("transform", "translate3d(0, 0, 0)");
       header.classList.toggle("is-elevated", window.scrollY > 10);
       pinned = true;
+      pinnedLocked = true;
       return;
     }
 
@@ -447,23 +446,25 @@ function setupHomeHeaderScrollPin() {
     const maxTop = Math.max(0, vh - headerH);
     const rawTop = heroRect.bottom - headerH;
     const navTop = Math.max(0, Math.min(rawTop, maxTop));
+    const navTopPx = Math.round(navTop);
 
     header.style.setProperty("top", "0");
     header.style.setProperty("bottom", "auto");
-    header.style.setProperty("transform", `translate3d(0, ${navTop}px, 0)`);
-
-    let shouldPin;
-    if (pinned) {
-      shouldPin = rawTop <= PIN_RELEASE_PX;
-    } else {
-      shouldPin = navTop <= 0.5;
+    if (pinnedLocked || navTopPx <= 0) {
+      pinnedLocked = true;
+      pinned = true;
+      header.style.setProperty("transform", "translate3d(0, 0, 0)");
+      document.body.classList.add(BODY_TOP);
+      header.classList.add(PIN);
+      header.classList.add("is-elevated");
+      return;
     }
-    pinned = shouldPin;
 
-    document.body.classList.toggle(BODY_TOP, shouldPin);
-    header.classList.toggle(PIN, shouldPin);
-
-    header.classList.toggle("is-elevated", window.scrollY > 10 || shouldPin);
+    pinned = false;
+    header.style.setProperty("transform", `translate3d(0, ${navTopPx}px, 0)`);
+    document.body.classList.remove(BODY_TOP);
+    header.classList.remove(PIN);
+    header.classList.toggle("is-elevated", window.scrollY > 10);
   };
 
   const schedule = () => {
