@@ -1910,11 +1910,25 @@ h3.branding-showcase-title{
   display: block;
   width: 100%;
   margin: clamp(10px, 2vw, 18px) 0 0;
+  justify-self: stretch;
 }
 .about-hero-mobile-photo img{
   width: 100%;
   height: auto;
   display: block;
+}
+@media (min-width: 901px){
+  .about-hero-split__split{
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 36vw);
+    align-items: start;
+    column-gap: clamp(20px, 4vw, 72px);
+  }
+  .about-hero-mobile-photo{
+    margin: clamp(52px, 8vw, 96px) max(24px, env(safe-area-inset-right, 0px), calc((100vw - min(var(--container), calc(100vw - 48px))) / 2)) 0 0;
+    align-self: start;
+    justify-self: end;
+    width: min(100%, 520px);
+  }
 }
 @media (max-width: 900px){
   .page-about{
@@ -1929,6 +1943,21 @@ h3.branding-showcase-title{
   .about-hero-split__title{
     max-width: none;
     font-size: calc(clamp(32px, 7vw, 44px) + var(--heading-size-add));
+  }
+  .about-hero-mobile-photo{
+    width: 100%;
+    max-width: none;
+    margin: clamp(6px, 1.8vw, 14px) 0 0;
+    padding-left: max(22px, env(safe-area-inset-left, 0px), calc((100vw - min(var(--container), calc(100vw - 48px))) / 2));
+    padding-right: max(22px, env(safe-area-inset-right, 0px), calc((100vw - min(var(--container), calc(100vw - 48px))) / 2));
+    box-sizing: border-box;
+  }
+  .about-hero-mobile-photo img{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center top;
   }
 }
 
