@@ -486,6 +486,16 @@ function setupHomeHeaderScrollPin() {
 /** One rAF-throttled scroll handler for header shadow + hide-on-scroll (avoids duplicate scroll listeners sitewide). */
 function setupHeaderScrollUi() {
   if (document.body.classList.contains("home-nav-fixed-bottom")) return;
+  if (
+    document.body.classList.contains("page-about") &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(max-width: 900px)").matches
+  ) {
+    const header = document.querySelector("[data-elevate]");
+    header?.classList.remove("is-scroll-hidden");
+    header?.classList.add("is-elevated");
+    return;
+  }
 
   const header = document.querySelector("[data-elevate]");
   const nav = document.getElementById("site-nav");
