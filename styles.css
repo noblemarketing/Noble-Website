@@ -1906,6 +1906,16 @@ h3.branding-showcase-title{
   line-height: 1.72;
   color: rgba(20, 19, 17, 0.76);
 }
+.about-hero-mobile-photo{
+  display: block;
+  width: 100%;
+  margin: clamp(10px, 2vw, 18px) 0 0;
+}
+.about-hero-mobile-photo img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
 @media (max-width: 900px){
   .page-about{
     overflow-x: clip;
