@@ -1674,6 +1674,8 @@ function setupNobleInstagramHorizontalFeed() {
 
     const feedPostThumbUrl = (post) => {
       if (!post || typeof post !== "object") return "";
+      const local = typeof post.localThumb === "string" ? post.localThumb.trim() : "";
+      if (local && local.startsWith("/")) return local;
       const sizes = post.sizes && typeof post.sizes === "object" ? post.sizes : null;
       const fromSizes = (k) => {
         const b = sizes && sizes[k] && typeof sizes[k].mediaUrl === "string" ? sizes[k].mediaUrl.trim() : "";
@@ -1735,14 +1737,16 @@ function setupNobleInstagramHorizontalFeed() {
       img.height = 400;
       img.loading = "lazy";
       img.decoding = "async";
-      const fbUrl = feedPostThumbFallbackUrl(post);
-      if (fbUrl && fbUrl !== thumb) {
+      const fbCandidates = [feedPostThumbFallbackUrl(post)].filter((u) => u && u !== thumb);
+      if (fbCandidates.length) {
+        let fbIndex = 0;
         img.addEventListener(
           "error",
           () => {
-            img.src = fbUrl;
+            if (fbIndex >= fbCandidates.length) return;
+            img.src = fbCandidates[fbIndex++];
           },
-          { once: true },
+          { once: fbCandidates.length > 1 },
         );
       }
       span.appendChild(img);
@@ -1795,9 +1799,15 @@ function setupNobleInstagramHorizontalFeed() {
         ? window.NOBLE_INSTAGRAM_FEED_EMBEDDED
         : null;
 
+    const liveFeedUrl =
+      typeof window !== "undefined" && typeof window.NOBLE_INSTAGRAM_FEED_URL === "string"
+        ? window.NOBLE_INSTAGRAM_FEED_URL.trim()
+        : "";
+
     const urlCandidates = Array.from(
       new Set(
         [
+          liveFeedUrl,
           nobleScriptSiblingUrl("./instagram-feed.json"),
           new URL("./instagram-feed.json", window.location.href).href,
         ].filter(Boolean),
