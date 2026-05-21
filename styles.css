@@ -14280,6 +14280,7 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
 }
 .instagram-feed-section__rail{
   display: flex;
+  align-items: flex-start;
   gap: clamp(8px, 1.5vw, 12px);
   overflow-x: auto;
   overflow-y: hidden;
@@ -14296,16 +14297,20 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   display: none;
 }
 .instagram-feed-section__post{
+  display: block;
   flex: 0 0 clamp(148px, 26vw, 210px);
+  width: clamp(148px, 26vw, 210px);
   scroll-snap-align: start;
   position: relative;
-  /* IG portrait feed ratio — avoids awkward square crops on tall reels/static posts */
+  /* Uniform IG portrait tiles — intrinsic img size must not drive layout */
   aspect-ratio: 4 / 5;
+  height: auto;
   min-height: 0;
   overflow: hidden;
   border: 1px solid rgba(20, 19, 17, 0.08);
   background: rgba(20, 19, 17, 0.06);
   line-height: 0;
+  text-decoration: none;
 }
 .instagram-feed-section__post:hover .instagram-feed-section__thumb img,
 .instagram-feed-section__post:focus-visible .instagram-feed-section__thumb img{
@@ -14317,17 +14322,15 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   z-index: 1;
 }
 .instagram-feed-section__thumb{
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  position: relative;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }
 .instagram-feed-section__thumb img{
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 100%;
+  max-width: none;
   object-fit: cover;
   object-position: center;
   transition: transform 0.35s ease;

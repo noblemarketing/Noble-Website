@@ -1733,8 +1733,6 @@ function setupNobleInstagramHorizontalFeed() {
       const img = document.createElement("img");
       img.src = thumb;
       img.alt = "";
-      img.width = 320;
-      img.height = 400;
       img.loading = "lazy";
       img.decoding = "async";
       const fbCandidates = [feedPostThumbFallbackUrl(post)].filter((u) => u && u !== thumb);
