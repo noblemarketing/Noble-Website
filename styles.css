@@ -11525,6 +11525,12 @@ body.page-services.page-service-social:not(.page-services-hub) .services-split-h
   color: #fff;
   border-bottom-color: rgba(255, 255, 255, 0.55);
 }
+.page-service-branding .header-discovery:focus-visible,
+.page-service-website .header-discovery:focus-visible,
+.page-service-social .header-discovery:focus-visible{
+  outline: 2px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 3px;
+}
 .page-service-branding .brand-mark,
 .page-service-website .brand-mark,
 .page-service-social .brand-mark{
@@ -11546,39 +11552,6 @@ body.page-services.page-service-social:not(.page-services-hub) .services-split-h
   background: rgba(255, 255, 255, 0.92);
 }
 
-/* Branding + Website design + Social media — header discovery (tan + black type) */
-.page-service-branding .header-discovery,
-.page-service-website .header-discovery,
-.page-service-social .header-discovery{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 54px;
-  padding: 16px 28px;
-  border-radius: 0;
-  border: 1px solid rgba(20, 19, 17, 0.22);
-  background: #e9dfd2;
-  color: var(--ink) !important;
-  font-size: clamp(13px, 1.3vw, 16px);
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-  line-height: 1.15;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-.page-service-branding .header-discovery:hover,
-.page-service-website .header-discovery:hover,
-.page-service-social .header-discovery:hover{
-  background: #dfd2c3;
-  color: var(--ink) !important;
-  border-color: rgba(20, 19, 17, 0.32);
-}
-.page-service-branding .header-discovery:focus-visible,
-.page-service-website .header-discovery:focus-visible,
-.page-service-social .header-discovery:focus-visible{
-  outline: 2px solid rgba(20, 19, 17, 0.35);
-  outline-offset: 3px;
-}
 .page-service-website .services-split-hero-moody-cta,
 .page-service-social .services-split-hero-moody-cta{
   min-height: 58px;
@@ -15050,15 +15023,8 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   .page-service-branding .header-discovery,
   .page-service-website .header-discovery,
   .page-service-social .header-discovery{
-    max-width: min(94vw, 360px);
-    padding: 12px 14px;
-    min-height: 46px;
-    font-size: clamp(10px, 2.9vw, 12px);
-    font-weight: 600;
-    border: 1px solid rgba(20, 19, 17, 0.22);
-    border-bottom: 1px solid rgba(20, 19, 17, 0.22);
-    background: #e9dfd2;
-    color: var(--ink) !important;
+    max-width: min(52vw, 220px);
+    color: rgba(255, 255, 255, 0.9);
   }
   .header-discovery__label--desktop{
     display: none;
