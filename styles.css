@@ -7190,36 +7190,8 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
     object-position: center;
   }
 
-  /* Inline figures sit on the right within the reading column (pairs stay full width) */
-  .page-blog-post .blog-post-body .blog-post-figure:not(.blog-post-figure--pair){
-    float: right;
-    clear: right;
-    width: min(46%, 320px);
-    margin: clamp(4px, 0.8vw, 10px) 0 clamp(12px, 2vw, 20px) clamp(18px, 2.5vw, 28px);
-  }
-
-  .page-blog-post .blog-post-body .blog-post-figure-pair{
-    float: none;
-    clear: both;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .page-blog-post .blog-post-body::after{
-    content: "";
-    display: block;
-    clear: both;
-  }
-
-  .page-blog-post .blog-post-body .section-title{
-    clear: both;
-  }
-
-  .page-blog-post .blog-post-body .work-case-growth-strip--blog{
-    clear: both;
-  }
-
+  .page-blog-post .blog-post-body .section-title,
+  .page-blog-post .blog-post-body .work-case-growth-strip--blog,
   .page-blog-post .blog-post-body .blog-post-brand-carousel{
     clear: both;
   }
@@ -11982,10 +11954,83 @@ body.page-blog .blog-index-section.section-alt{
 .page-blog-post .blog-post-body p:last-child{
   margin-bottom: 0;
 }
+/* Inline image galleries — 1 col mobile, 2 cols tablet+, up to 3 on desktop */
+.page-blog-post .blog-post-gallery{
+  display: grid;
+  gap: clamp(12px, 2vw, 20px);
+  margin: clamp(1.75rem, 3.5vw, 2.5rem) 0;
+  clear: both;
+  width: 100%;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+@media (min-width: 560px){
+  .page-blog-post .blog-post-gallery{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .page-blog-post .blog-post-gallery--count-1{
+    grid-template-columns: minmax(0, 1fr);
+    max-width: min(560px, 100%);
+  }
+}
+@media (min-width: 960px){
+  .page-blog-post .blog-post-gallery--count-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .page-blog-post .blog-post-gallery--count-3,
+  .page-blog-post .blog-post-gallery:not(.blog-post-gallery--count-1):not(.blog-post-gallery--count-2){
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.page-blog-post .blog-post-gallery .blog-post-figure{
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.page-blog-post .blog-post-gallery .blog-post-figure img{
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+  border: 1px solid rgba(20, 19, 17, 0.08);
+  background: rgba(20, 19, 17, 0.04);
+}
+.page-blog-post .blog-post-gallery .blog-post-figure__crop{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(20, 19, 17, 0.08);
+  background: rgba(20, 19, 17, 0.04);
+}
+.page-blog-post .blog-post-gallery .blog-post-figure__crop img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border: none;
+  border-radius: 0;
+  aspect-ratio: auto;
+}
+.page-blog-post .blog-post-gallery .blog-post-figure figcaption{
+  margin-top: 0.65rem;
+  font-size: clamp(12px, 1vw, 13px);
+  line-height: 1.5;
+  color: rgba(20, 19, 17, 0.68);
+  flex: 0 0 auto;
+}
+/* Standalone figure (outside gallery — rare after JS grouping) */
 .page-blog-post .blog-post-figure{
   margin: clamp(1.75rem, 3.5vw, 2.5rem) 0;
 }
-.page-blog-post .blog-post-figure img{
+.page-blog-post .blog-post-body > .blog-post-figure img{
   display: block;
   width: 100%;
   height: auto;
@@ -11998,42 +12043,14 @@ body.page-blog .blog-index-section.section-alt{
   line-height: 1.55;
   color: rgba(20, 19, 17, 0.68);
 }
+/* Legacy wrapper — same grid as .blog-post-gallery */
 .page-blog-post .blog-post-figure-pair{
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(12px, 2vw, 18px);
+  gap: clamp(12px, 2vw, 20px);
   margin: clamp(1.75rem, 3.5vw, 2.5rem) 0;
-  align-items: stretch;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.page-blog-post .blog-post-figure-pair .blog-post-figure--pair{
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-.page-blog-post .blog-post-figure-pair .blog-post-figure__crop{
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid rgba(20, 19, 17, 0.08);
-  background: rgba(20, 19, 17, 0.04);
-}
-.page-blog-post .blog-post-figure-pair .blog-post-figure__crop img{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border: none;
-  border-radius: 0;
-}
-.page-blog-post .blog-post-figure-pair .blog-post-figure--pair figcaption{
-  flex: 0 0 auto;
-}
-@media (max-width: 640px){
+@media (max-width: 559px){
   .page-blog-post .blog-post-figure-pair{
     grid-template-columns: 1fr;
   }

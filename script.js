@@ -2157,6 +2157,68 @@ function setupBlazeYogaReelsEmbeds() {
     });
 }
 
+/** Group consecutive blog figures into responsive 2–3 column galleries. */
+function setupBlogPostGalleries() {
+  const applyGalleryCountClass = (gallery) => {
+    const n = gallery.querySelectorAll(".blog-post-figure").length;
+    gallery.classList.remove("blog-post-gallery--count-1", "blog-post-gallery--count-2", "blog-post-gallery--count-3");
+    if (n <= 1) gallery.classList.add("blog-post-gallery--count-1");
+    else if (n === 2) gallery.classList.add("blog-post-gallery--count-2");
+    else gallery.classList.add("blog-post-gallery--count-3");
+  };
+
+  document.querySelectorAll(".page-blog-post .blog-post-body").forEach((body) => {
+    body.querySelectorAll(".blog-post-figure-pair").forEach((pair) => {
+      pair.classList.add("blog-post-gallery", "blog-post-gallery--count-2");
+      pair.classList.remove("blog-post-figure-pair");
+      pair.setAttribute("role", "group");
+      pair.setAttribute("aria-label", "Image gallery");
+    });
+
+    body.querySelectorAll(".blog-post-gallery").forEach((gallery) => {
+      if (!gallery.classList.contains("blog-post-gallery--count-1") &&
+        !gallery.classList.contains("blog-post-gallery--count-2") &&
+        !gallery.classList.contains("blog-post-gallery--count-3")) {
+        applyGalleryCountClass(gallery);
+      }
+    });
+
+    const pending = [];
+    let anchor = null;
+
+    const flush = () => {
+      if (!pending.length) return;
+      const gallery = document.createElement("div");
+      gallery.className = "blog-post-gallery";
+      gallery.setAttribute("role", "group");
+      gallery.setAttribute("aria-label", "Image gallery");
+      anchor.before(gallery);
+      pending.forEach((fig) => gallery.appendChild(fig));
+      applyGalleryCountClass(gallery);
+      pending.length = 0;
+      anchor = null;
+    };
+
+    Array.from(body.children).forEach((child) => {
+      if (child instanceof HTMLElement && child.classList.contains("blog-post-gallery")) {
+        return;
+      }
+      if (
+        child instanceof HTMLElement &&
+        child.classList.contains("blog-post-figure") &&
+        !child.classList.contains("blog-post-figure--pair") &&
+        !child.closest(".blog-post-gallery")
+      ) {
+        if (!pending.length) anchor = child;
+        pending.push(child);
+        return;
+      }
+      flush();
+    });
+    flush();
+  });
+}
+
 function setupBlogIndexFilters() {
   const root = document.querySelector("[data-blog-filters]");
   const list = document.querySelector(".blog-index--grid");
@@ -2273,6 +2335,7 @@ setupProjectStripAuto();
 setupServiceAccordion();
 setupAddonsCarousel();
 setupServicesScrollReveal();
+setupBlogPostGalleries();
 setupBlogIndexFilters();
 setupContactForm();
 setupBrandingTierReveal();
