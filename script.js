@@ -233,7 +233,9 @@ function setupWorkCaseClientProfiles() {
     },
     "work-32-below-ice-cream": {
       name: "32° Below Ice Cream Shop",
-      logo: "",
+      logo: "/Client%20Logos/32-below-logo.png",
+      logoClass: "work-case-32-below-logo-mark",
+      logoInName: true,
       services: "Social Media",
       niche: "Ice Cream Shop / Food & Beverage",
       location: "Lititz, PA",
@@ -248,6 +250,8 @@ function setupWorkCaseClientProfiles() {
     "work-hatchworks": {
       name: "Hatchworks",
       logo: "/Client%20Logos/hatchworks-logo.png",
+      logoClass: "work-case-hatchworks-logo-mark",
+      logoInName: true,
       services: "Social Media",
       niche: "Coworking / Shared Workspace",
       location: "Lancaster, PA",
@@ -258,6 +262,8 @@ function setupWorkCaseClientProfiles() {
     "work-remax-pinnacle": {
       name: "RE/MAX Pinnacle",
       logo: "/Client%20Logos/remax-pinnacle-logo.png",
+      logoClass: "work-case-remax-pinnacle-logo-mark",
+      logoInName: true,
       services: "Social Media",
       niche: "Real Estate",
       location: "Lancaster, PA",
@@ -362,18 +368,11 @@ function setupWorkCaseClientProfiles() {
   const profile = profiles[slug];
   if (!profile) return;
 
-  if (slug === "work-32-below-ice-cream" || slug === "work-remax-pinnacle" || slug === "work-hatchworks") {
-    const rightTitle = right.querySelector(".work-case-client-board__about-title");
-    if (rightTitle) rightTitle.textContent = "About the Client";
-    const aboutOnly = right.querySelector(".work-case-client-board__about");
-    if (aboutOnly instanceof HTMLElement) {
-      aboutOnly.innerHTML = `<p class="lead">${profile.about}</p>`;
-    }
-    return;
-  }
-
+  const logoExtraClass = profile.logoClass ? ` ${profile.logoClass}` : "";
   const logoMarkup = profile.logo
-    ? `<figure class="work-case-client-board__logo"><img class="work-case-client-board__mark work-case-client-board__mark--hero" src="${profile.logo}" alt="${profile.name} logo" loading="lazy" decoding="async"></figure>`
+    ? profile.logoInName
+      ? `<h1 class="work-case-client-board__name"><img class="work-case-client-board__mark work-case-client-board__mark--hero${logoExtraClass}" src="${profile.logo}" alt="${profile.name} logo" loading="lazy" decoding="async"></h1>`
+      : `<figure class="work-case-client-board__logo"><img class="work-case-client-board__mark work-case-client-board__mark--hero${logoExtraClass}" src="${profile.logo}" alt="${profile.name} logo" loading="lazy" decoding="async"></figure>`
     : `<h1 class="work-case-client-board__name">${profile.name}</h1>`;
 
   const linksMarkup =

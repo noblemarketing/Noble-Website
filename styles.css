@@ -7810,6 +7810,12 @@ body.portfolio-page--magazine .site-header.is-elevated{
     brightness(0) invert(1)
     drop-shadow(0 2px 14px rgba(0, 0, 0, 0.55));
 }
+.page-32-below-ice-cream-case #main .work-case-client-board__name .work-case-32-below-logo-mark,
+.page-32-below-ice-cream-case #main .work-case-client-board__logo .work-case-32-below-logo-mark{
+  max-width: min(100%, 280px);
+  width: auto;
+  height: auto;
+}
 .branding-case-accordion[aria-labelledby="32-below-social-posts-heading"] .branding-case-accordion__intro .work-case-showcase__lede{
   margin-bottom: clamp(18px, 2.6vw, 28px);
 }
@@ -7836,7 +7842,8 @@ body.portfolio-page--magazine .site-header.is-elevated{
   height: auto;
   filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.45));
 }
-.page-hatchworks-case #main .work-case-client-board__name .work-case-hatchworks-logo-mark{
+.page-hatchworks-case #main .work-case-client-board__name .work-case-hatchworks-logo-mark,
+.page-hatchworks-case #main .work-case-client-board__logo .work-case-hatchworks-logo-mark{
   max-width: min(100%, 280px);
   width: auto;
   height: auto;
@@ -7867,7 +7874,8 @@ body.portfolio-page--magazine .site-header.is-elevated{
   object-fit: cover;
   object-position: center;
 }
-.page-remax-pinnacle-case #main .work-case-client-board__name .work-case-remax-pinnacle-logo-mark{
+.page-remax-pinnacle-case #main .work-case-client-board__name .work-case-remax-pinnacle-logo-mark,
+.page-remax-pinnacle-case #main .work-case-client-board__logo .work-case-remax-pinnacle-logo-mark{
   max-width: min(100%, 340px);
   width: auto;
   height: auto;
