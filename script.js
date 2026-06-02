@@ -261,9 +261,6 @@ function setupWorkCaseClientProfiles() {
     },
     "work-brad-zimmerman-team": {
       name: "The Brad Zimmerman Team",
-      logo: "/Client%20Logos/brad-zimmerman-team-logo.png",
-      logoClass: "work-case-brad-zimmerman-team-logo-mark",
-      logoInName: true,
       services: "Social Media",
       niche: "Real Estate",
       location: "Lancaster, PA",
