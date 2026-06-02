@@ -7810,12 +7810,6 @@ body.portfolio-page--magazine .site-header.is-elevated{
     brightness(0) invert(1)
     drop-shadow(0 2px 14px rgba(0, 0, 0, 0.55));
 }
-.page-32-below-ice-cream-case #main .work-case-client-board__name .work-case-32-below-logo-mark,
-.page-32-below-ice-cream-case #main .work-case-client-board__logo .work-case-32-below-logo-mark{
-  max-width: min(100%, 280px);
-  width: auto;
-  height: auto;
-}
 .branding-case-accordion[aria-labelledby="32-below-social-posts-heading"] .branding-case-accordion__intro .work-case-showcase__lede{
   margin-bottom: clamp(18px, 2.6vw, 28px);
 }
@@ -7836,21 +7830,6 @@ body.portfolio-page--magazine .site-header.is-elevated{
   max-height: none;
   object-fit: cover;
   object-position: center;
-}
-.work-case-social-analytics{
-  padding-bottom: clamp(40px, 6vw, 64px);
-  background: #ffffff;
-}
-.work-case-social-analytics__intro{
-  padding-top: clamp(8px, 1.5vw, 16px);
-  margin-bottom: clamp(20px, 3vw, 32px);
-}
-.work-case-social-analytics__intro .work-case-showcase__lede{
-  margin: clamp(12px, 2vw, 18px) 0 0;
-  max-width: 62ch;
-}
-.home-stats-strip--32-below-case.home-stats-strip--moss-social{
-  margin-bottom: 0;
 }
 .portfolio-mag-card__logo-overlay--32-below{
   max-width: min(56%, 200px);

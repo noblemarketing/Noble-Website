@@ -233,7 +233,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-32-below-ice-cream": {
       name: "32° Below Ice Cream Shop",
-      logo: "/Client%20Logos/32-below-logo.png",
+      logo: "",
       services: "Social Media",
       niche: "Ice Cream Shop / Food & Beverage",
       location: "Lititz, PA",
@@ -338,6 +338,16 @@ function setupWorkCaseClientProfiles() {
 
   const profile = profiles[slug];
   if (!profile) return;
+
+  if (slug === "work-32-below-ice-cream") {
+    const rightTitle = right.querySelector(".work-case-client-board__about-title");
+    if (rightTitle) rightTitle.textContent = "About the Client";
+    const aboutOnly = right.querySelector(".work-case-client-board__about");
+    if (aboutOnly instanceof HTMLElement) {
+      aboutOnly.innerHTML = `<p class="lead">${profile.about}</p>`;
+    }
+    return;
+  }
 
   const logoMarkup = profile.logo
     ? `<figure class="work-case-client-board__logo"><img class="work-case-client-board__mark work-case-client-board__mark--hero" src="${profile.logo}" alt="${profile.name} logo" loading="lazy" decoding="async"></figure>`
