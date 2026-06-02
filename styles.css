@@ -7816,11 +7816,6 @@ body.portfolio-page--magazine .site-header.is-elevated{
   width: auto;
   height: auto;
 }
-.page-32-below-ice-cream-case #main .work-case-logo-band__img{
-  max-width: min(100%, 340px);
-  width: auto;
-  height: auto;
-}
 .branding-case-accordion[aria-labelledby="32-below-social-posts-heading"] .branding-case-accordion__intro .work-case-showcase__lede{
   margin-bottom: clamp(18px, 2.6vw, 28px);
 }
