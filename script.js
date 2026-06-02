@@ -259,6 +259,22 @@ function setupWorkCaseClientProfiles() {
         "Hatchworks is a coworking space in Lancaster, PA—offering shared workspaces, private offices, and conference rooms for freelancers, remote teams, and growing businesses who want a flexible place to work and connect.",
       links: [],
     },
+    "work-brad-zimmerman-team": {
+      name: "The Brad Zimmerman Team",
+      logo: "/Client%20Logos/brad-zimmerman-team-logo.png",
+      logoClass: "work-case-brad-zimmerman-team-logo-mark",
+      logoInName: true,
+      services: "Social Media",
+      niche: "Real Estate",
+      location: "Lancaster, PA",
+      about:
+        "The Brad Zimmerman Team is a RE/MAX Pinnacle real estate team serving Lancaster County and surrounding markets—combining marketing expertise, modern listing presentation, and a client-first approach to help buyers and sellers move with confidence.",
+      links: [
+        { label: "Website", href: "https://www.bradshomesales.com/" },
+        { label: "Instagram", href: "https://www.instagram.com/bradshomesales/" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/in/bradshomesales" },
+      ],
+    },
     "work-remax-pinnacle": {
       name: "RE/MAX Pinnacle",
       logo: "/Client%20Logos/remax-pinnacle-logo.png",
