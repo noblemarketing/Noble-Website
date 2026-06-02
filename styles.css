@@ -7874,11 +7874,19 @@ body.portfolio-page--magazine .site-header.is-elevated{
   object-fit: cover;
   object-position: center;
 }
+.page-brad-zimmerman-team-case #main .work-case-client-board__name:has(> img:only-child){
+  line-height: normal;
+  overflow: visible;
+}
 .page-brad-zimmerman-team-case #main .work-case-client-board__name .work-case-brad-zimmerman-team-logo-mark,
 .page-brad-zimmerman-team-case #main .work-case-client-board__logo .work-case-brad-zimmerman-team-logo-mark{
+  display: block;
   max-width: min(100%, 320px);
+  max-height: none;
   width: auto;
   height: auto;
+  object-fit: contain;
+  margin: 0;
 }
 .portfolio-mag-card__logo-overlay--brad-zimmerman-team{
   max-width: min(88%, 300px);
