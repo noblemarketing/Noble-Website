@@ -231,6 +231,20 @@ function setupWorkCaseClientProfiles() {
         { label: "Facebook", href: "https://facebook.com/p/Wittness-Coffeehouse-61580196470486" },
       ],
     },
+    "work-32-below-ice-cream": {
+      name: "32° Below Ice Cream Shop",
+      logo: "/Client%20Logos/32-below-logo.png",
+      services: "Social Media",
+      niche: "Ice Cream Shop / Food & Beverage",
+      location: "Lititz, PA",
+      about:
+        "Brad and Kate Zimmerman and their five kids are huge ice cream lovers—it was always a dream to own a shop together. They purchased Brickerville Ice Cream Shop in spring 2022, ran it for one season, then freshened things up and rebranded as 32° Below Ice Cream Shop while keeping the same delicious, locally sourced Pennsylvania creamery ice cream. You will often see the family—and a few of the kids—behind the counter during the season. Be sure to visit their second location in downtown Lititz on East Main Street: seasonal scoops and outdoor seating at Bricker Village (10 E 28th Division Hwy), plus a year-round indoor parlor downtown (110 E Main St).",
+      links: [
+        { label: "Website", href: "https://www.32belowicecreamshop.com/" },
+        { label: "Facebook", href: "https://www.facebook.com/32belowicecreamshop" },
+        { label: "Instagram", href: "https://www.instagram.com/32belowicecreamshop/" },
+      ],
+    },
     "work-hey-peaches": {
       name: "Hey Peaches",
       logo: "/Client%20Logos/HeyPeaches.svg",
