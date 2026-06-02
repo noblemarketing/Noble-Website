@@ -7844,12 +7844,12 @@ body.portfolio-page--magazine .site-header.is-elevated{
 }
 .page-hatchworks-case #main .work-case-client-board__name .work-case-hatchworks-logo-mark,
 .page-hatchworks-case #main .work-case-client-board__logo .work-case-hatchworks-logo-mark{
-  max-width: min(100%, 280px);
+  max-width: min(100%, 320px);
   width: auto;
   height: auto;
 }
 .portfolio-mag-card__logo-overlay--hatchworks{
-  max-width: min(62%, 220px);
+  max-width: min(78%, 280px);
   height: auto;
   filter: brightness(0) invert(1) drop-shadow(0 2px 14px rgba(0, 0, 0, 0.45));
 }
