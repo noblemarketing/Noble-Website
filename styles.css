@@ -7874,6 +7874,26 @@ body.portfolio-page--magazine .site-header.is-elevated{
   object-fit: cover;
   object-position: center;
 }
+.page-brad-zimmerman-team-case #main .work-case-client-board__name:has(> img:only-child){
+  line-height: normal;
+  overflow: visible;
+}
+.page-brad-zimmerman-team-case #main .work-case-client-board__name .work-case-brad-zimmerman-team-logo-mark,
+.page-brad-zimmerman-team-case #main .work-case-client-board__logo .work-case-brad-zimmerman-team-logo-mark{
+  display: block;
+  max-width: min(100%, 300px);
+  max-height: none;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0;
+}
+.portfolio-mag-card__logo-overlay--brad-zimmerman-team{
+  max-width: min(92%, 300px);
+  max-height: min(110px, 26vw);
+  height: auto;
+  filter: brightness(0) invert(1) drop-shadow(0 2px 14px rgba(0, 0, 0, 0.45));
+}
 .branding-case-accordion[aria-labelledby="brad-zimmerman-team-social-posts-heading"] .branding-case-accordion__intro .work-case-showcase__lede{
   margin-bottom: clamp(18px, 2.6vw, 28px);
 }
