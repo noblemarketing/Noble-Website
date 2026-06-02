@@ -245,6 +245,16 @@ function setupWorkCaseClientProfiles() {
         { label: "Instagram", href: "https://www.instagram.com/32belowicecreamshop/" },
       ],
     },
+    "work-hatchworks": {
+      name: "Hatchworks",
+      logo: "/Client%20Logos/hatchworks-logo.png",
+      services: "Social Media",
+      niche: "Coworking / Shared Workspace",
+      location: "Lancaster, PA",
+      about:
+        "Hatchworks is a coworking space in Lancaster, PA—offering shared workspaces, private offices, and conference rooms for freelancers, remote teams, and growing businesses who want a flexible place to work and connect.",
+      links: [],
+    },
     "work-remax-pinnacle": {
       name: "RE/MAX Pinnacle",
       logo: "/Client%20Logos/remax-pinnacle-logo.png",
@@ -352,7 +362,7 @@ function setupWorkCaseClientProfiles() {
   const profile = profiles[slug];
   if (!profile) return;
 
-  if (slug === "work-32-below-ice-cream" || slug === "work-remax-pinnacle") {
+  if (slug === "work-32-below-ice-cream" || slug === "work-remax-pinnacle" || slug === "work-hatchworks") {
     const rightTitle = right.querySelector(".work-case-client-board__about-title");
     if (rightTitle) rightTitle.textContent = "About the Client";
     const aboutOnly = right.querySelector(".work-case-client-board__about");
