@@ -245,6 +245,19 @@ function setupWorkCaseClientProfiles() {
         { label: "Instagram", href: "https://www.instagram.com/32belowicecreamshop/" },
       ],
     },
+    "work-remax-pinnacle": {
+      name: "RE/MAX Pinnacle",
+      logo: "/Client%20Logos/remax-pinnacle-logo.png",
+      services: "Social Media",
+      niche: "Real Estate",
+      location: "Lancaster, PA",
+      about:
+        "RE/MAX Pinnacle is a Lancaster and Dauphin County brokerage with offices across Central Pennsylvania—built on local market knowledge, agent expertise, and a commitment to helping buyers and sellers move with confidence.",
+      links: [
+        { label: "Website", href: "https://pinnacle-lancaster-pa.remax.com/" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/company/remaxpinnacle" },
+      ],
+    },
     "work-hey-peaches": {
       name: "Hey Peaches",
       logo: "/Client%20Logos/HeyPeaches.svg",
@@ -339,7 +352,7 @@ function setupWorkCaseClientProfiles() {
   const profile = profiles[slug];
   if (!profile) return;
 
-  if (slug === "work-32-below-ice-cream") {
+  if (slug === "work-32-below-ice-cream" || slug === "work-remax-pinnacle") {
     const rightTitle = right.querySelector(".work-case-client-board__about-title");
     if (rightTitle) rightTitle.textContent = "About the Client";
     const aboutOnly = right.querySelector(".work-case-client-board__about");
