@@ -1522,98 +1522,6 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
   border-color: rgba(20, 19, 17, 0.28);
 }
 
-/* Bracketed highlights — first block flush with container/tagline left; second stays bottom-right */
-.hero-side-stats{
-  position: absolute;
-  z-index: 3;
-  inset: 0;
-  right: auto;
-  width: 100%;
-  pointer-events: none;
-}
-.hero-side-stat{
-  margin: 0;
-  flex-shrink: 0;
-  max-width: min(220px, 40vw);
-  color: #fff;
-  transform: rotate(90deg);
-  text-shadow: none;
-}
-/* Same horizontal start as .container / .hero-subtitle */
-.hero-side-stat:first-child{
-  position: absolute;
-  left: calc((100% - min(var(--container), calc(100% - 48px))) / 2 - clamp(72px, 12vw, 152px));
-  /* Intentional Process: sit lower so rotated copy is not clipped at the top */
-  top: clamp(196px, 31vh, 328px);
-  right: auto;
-  transform: rotate(270deg);
-  transform-origin: left center;
-}
-.hero-side-stat:first-child .hero-side-stat-line{
-  text-align: right;
-  justify-content: flex-end;
-}
-.hero-side-stat:first-child .hero-side-stat-stack{
-  align-items: flex-end;
-}
-.hero-side-stat:last-child{
-  position: absolute;
-  /* Inset farther from the right edge so the rotated stack sits slightly left on desktop */
-  right: clamp(28px, 4.2vw, 72px);
-  /* Crafted Visuals: higher on the band so copy clears the bottom (incl. bottom nav overlap) */
-  bottom: clamp(112px, 22vh, 220px);
-  transform-origin: right center;
-}
-.hero-side-stat-line{
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: flex-end;
-  gap: 0.35em;
-  margin: 0;
-  text-align: right;
-  font-family: var(--font-body);
-  font-style: normal;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  line-height: 1.35;
-  color: rgba(255, 255, 255, 0.82);
-}
-.hero-side-bracket{
-  font-style: normal;
-  opacity: 0.72;
-  font-size: 1em;
-  line-height: 1.2;
-  flex-shrink: 0;
-}
-.hero-side-stat-stack{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-  min-width: 0;
-}
-.hero-side-stat-kicker{
-  display: block;
-  font-family: var(--font-body);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  font-weight: 400;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.94);
-}
-.hero-side-stat-value{
-  display: block;
-  font-family: inherit;
-  font-size: 12px;
-  line-height: 1.32;
-  font-weight: 400;
-  font-style: normal;
-  color: rgba(255, 255, 255, 0.9);
-}
-
 .stat{
   padding: 14px 14px;
   border-radius: 18px;
@@ -15463,10 +15371,6 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
     margin-inline: auto;
     font-size: calc(clamp(18px, 5vw, 28px) + var(--heading-size-add));
     line-height: 1.14;
-  }
-  /* Bracketed vertical hero copy — too busy on narrow viewports (already aria-hidden) */
-  .hero-side-stats{
-    display: none;
   }
   .hero-card{margin: 0}
   .hero-title{
