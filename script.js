@@ -1788,7 +1788,7 @@ function setupNobleInstagramHorizontalFeed() {
 
     const location = document.createElement("p");
     location.className = "instagram-feed-section__location";
-    location.textContent = "Studio in South Central Pennsylvania";
+    location.textContent = "Boutique Marketing Studio in South Central Pennsylvania";
 
     const row = document.createElement("div");
     row.className = "instagram-feed-section__row";
@@ -1800,7 +1800,8 @@ function setupNobleInstagramHorizontalFeed() {
     ctaLink.href = profileHref(username);
     ctaLink.target = "_blank";
     ctaLink.rel = "noopener noreferrer";
-    ctaLink.textContent = "Follow us here";
+    ctaLink.innerHTML =
+      '<span class="instagram-feed-section__cta-line">Follow</span><span class="instagram-feed-section__cta-line">Noble</span>';
     ctaCol.appendChild(ctaLink);
 
     const rail = document.createElement("div");

@@ -3249,15 +3249,15 @@ body.home-nav-fixed-bottom #clients .clients-stamp-cell--clients-stamp-row-solo{
   }
 }
 
-/* Homepage — partner logos band (dark band; selective white knockouts) */
+/* Homepage — partner logos band (moss green; selective white knockouts) */
 .home-partners-strip{
-  background: #0a0a0a;
+  background: var(--moss);
   color: rgba(255, 255, 255, 0.94);
   padding: clamp(40px, 6vw, 72px) 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 body.home-nav-fixed-bottom .home-partners-strip{
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .home-partners-strip__inner{
   max-width: var(--container);
@@ -14467,16 +14467,20 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
 .instagram-feed-section__cta{
   display: block;
   margin: 0;
-  font-family: var(--font-body);
+  font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
   font-size: clamp(1.35rem, 2.4vw, 2.15rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: 0.02em;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.02;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
   color: rgba(36, 44, 38, 0.72);
-  max-width: 8ch;
+  max-width: none;
   transition: color 0.2s ease;
+}
+.instagram-feed-section__cta-line{
+  display: block;
 }
 .instagram-feed-section__cta:hover,
 .instagram-feed-section__cta:focus-visible{
