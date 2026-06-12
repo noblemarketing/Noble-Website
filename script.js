@@ -20,19 +20,25 @@ function setFooterCenterIcon() {
   // breaks nested routes (e.g. /services/branding/ → ../../Logos/...).
 }
 
+/** Moss fill matches `.site-footer` so glyphs read as knockouts on solid LinkedIn / Facebook tiles. */
+const NOBLE_SOCIAL_ICON_CUT = "var(--moss)";
+const NOBLE_SOCIAL_ICON_BY_NETWORK = {
+  linkedin: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="currentColor"/><g fill="${NOBLE_SOCIAL_ICON_CUT}"><circle cx="8.5" cy="7.85" r="1.25"/><rect x="7.65" y="10.15" width="1.75" height="7.35" rx="0.25"/><path d="M12.75 10.15h2.25c1.2 0 2.1.68 2.1 2.08v5.27h-2.15v-4.7c0-.58-.32-1-.9-1-.78 0-1.15.56-1.15 1.18v4.52h-2.15V10.15z"/></g></svg>`,
+  facebook: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path fill="${NOBLE_SOCIAL_ICON_CUT}" d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/></svg>`,
+  instagram: `<svg class="footer-social-icon footer-social-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.85" fill="none" stroke="currentColor" stroke-width="1.65"/><circle cx="17.45" cy="6.55" r="1.15" fill="currentColor"/></svg>`,
+};
+const NOBLE_SOCIAL_NETWORKS = [
+  { key: "linkedin", href: "https://www.linkedin.com/company/noble-marketing-design/?viewAsMember=true", label: "LinkedIn" },
+  { key: "facebook", href: "https://www.facebook.com/people/Noble-Marketing/100063772796053/", label: "Facebook" },
+  { key: "instagram", href: "https://www.instagram.com/thenoblemarketing/", label: "Instagram" },
+];
+
+function getNobleSocialIconSvg(key) {
+  return NOBLE_SOCIAL_ICON_BY_NETWORK[key] || "";
+}
+
 function setupFooterSocialIcons() {
-  /** Moss fill matches `.site-footer` so glyphs read as knockouts on solid LinkedIn / Facebook tiles (ref: light gray on dark). */
-  const cut = "var(--moss)";
-  const iconByNetwork = {
-    linkedin: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="currentColor"/><g fill="${cut}"><circle cx="8.5" cy="7.85" r="1.25"/><rect x="7.65" y="10.15" width="1.75" height="7.35" rx="0.25"/><path d="M12.75 10.15h2.25c1.2 0 2.1.68 2.1 2.08v5.27h-2.15v-4.7c0-.58-.32-1-.9-1-.78 0-1.15.56-1.15 1.18v4.52h-2.15V10.15z"/></g></svg>`,
-    facebook: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path fill="${cut}" d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/></svg>`,
-    instagram: `<svg class="footer-social-icon footer-social-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.85" fill="none" stroke="currentColor" stroke-width="1.65"/><circle cx="17.45" cy="6.55" r="1.15" fill="currentColor"/></svg>`,
-  };
-  const networks = [
-    { key: "linkedin", href: "https://www.linkedin.com/company/noble-marketing-design/?viewAsMember=true", label: "LinkedIn" },
-    { key: "facebook", href: "https://www.facebook.com/people/Noble-Marketing/100063772796053/", label: "Facebook" },
-    { key: "instagram", href: "https://www.instagram.com/thenoblemarketing/", label: "Instagram" },
-  ];
+  const networks = NOBLE_SOCIAL_NETWORKS;
 
   $$(".site-footer").forEach((footer) => {
     const bio = $(".footer-bio", footer);
@@ -76,7 +82,7 @@ function setupFooterSocialIcons() {
       a.target = "_blank";
       a.rel = "noopener noreferrer";
       a.setAttribute("aria-label", label);
-      a.innerHTML = `${iconByNetwork[key]}<span class="sr-only">${label}</span>`;
+      a.innerHTML = `${getNobleSocialIconSvg(key)}<span class="sr-only">${label}</span>`;
       bioSocial.appendChild(a);
     });
 
@@ -549,23 +555,15 @@ function setupHomeSplash() {
   window.setTimeout(dismiss, 3000);
 }
 
-/** One rAF-throttled scroll handler for header shadow + hide-on-scroll (sitewide, including homepage). */
+/** One rAF-throttled scroll handler for header shadow + hide-on-scroll (desktop/tablet only). */
 function setupHeaderScrollUi() {
-  if (
-    document.body.classList.contains("page-about") &&
-    !document.body.classList.contains("home-nav-fixed-bottom") &&
-    typeof window.matchMedia === "function" &&
-    window.matchMedia("(max-width: 900px)").matches
-  ) {
-    const header = document.querySelector("[data-elevate]");
-    header?.classList.remove("is-scroll-hidden");
-    header?.classList.add("is-elevated");
-    return;
-  }
-
   const header = document.querySelector("[data-elevate]");
   const nav = document.getElementById("site-nav");
   if (!header) return;
+
+  const mqMobile =
+    typeof window.matchMedia === "function" ? window.matchMedia("(max-width: 760px)") : null;
+  const isMobileNavPinned = () => Boolean(mqMobile?.matches);
 
   const HIDE = "is-scroll-hidden";
   let lastY = window.scrollY;
@@ -575,6 +573,12 @@ function setupHeaderScrollUi() {
     raf = 0;
     const y = window.scrollY;
     header.classList.toggle("is-elevated", y > 10);
+
+    if (isMobileNavPinned()) {
+      header.classList.remove(HIDE);
+      lastY = y;
+      return;
+    }
 
     if (nav?.classList.contains("is-open")) {
       header.classList.remove(HIDE);
@@ -596,8 +600,10 @@ function setupHeaderScrollUi() {
     raf = requestAnimationFrame(apply);
   };
 
+  header.classList.remove(HIDE);
   apply();
   window.addEventListener("scroll", onScroll, { passive: true });
+  mqMobile?.addEventListener("change", apply);
 }
 
 function setupMobileNav() {
@@ -1635,36 +1641,6 @@ function nobleScriptSiblingUrl(relativePath) {
 /** Noble Marketing Instagram profile (strip tiles + defensive link wrapper). */
 const NOBLE_INSTAGRAM_PROFILE = "https://www.instagram.com/thenoblemarketing/";
 
-const NOBLE_SOCIAL_LINKS = [
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/thenoblemarketing/",
-    icon: "instagram",
-  },
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/people/Noble-Marketing/100063772796053/",
-    icon: "facebook",
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/noble-marketing-design/?viewAsMember=true",
-    icon: "linkedin",
-  },
-];
-
-function nobleSocialIconSvg(name) {
-  const icons = {
-    instagram:
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8m9.2 1.4a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>',
-    facebook:
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M14 4h3V1h-3c-2.8 0-4.5 1.7-4.5 4.6V10H6v3h3.5v10H13V13h3.4l.6-3H13V5.2C13 4.5 13.3 4 14 4z"/></svg>',
-    linkedin:
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1-.02 5 2.5 2.5 0 0 1 .02-5M3 8.98h4v12H3v-12m7 0h3.8v1.7h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.7 2.6 4.7 6v6.4H17v-5.7c0-1.4 0-3.1-1.9-3.1-1.9 0-2.2 1.5-2.2 3v5.8H10V8.98z"/></svg>',
-  };
-  return icons[name] || "";
-}
-
 /** Ensure each fallback grid photo is inside a link to Noble's Instagram (idempotent). */
 function ensureInstagramStripFallbackLinked() {
   document.querySelectorAll(".home-instagram-strip__grid img").forEach((img) => {
@@ -1815,16 +1791,16 @@ function setupNobleInstagramHorizontalFeed() {
     if (!rail.childElementCount) return null;
 
     const social = document.createElement("div");
-    social.className = "instagram-feed-section__social";
+    social.className = "instagram-feed-section__social footer-social";
     social.setAttribute("aria-label", "Social links");
-    NOBLE_SOCIAL_LINKS.forEach((item) => {
+    NOBLE_SOCIAL_NETWORKS.forEach(({ key, label, href }) => {
       const link = document.createElement("a");
-      link.className = "instagram-feed-section__social-link";
-      link.href = item.href;
+      link.className = "footer-social-link";
+      link.href = href;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
-      link.setAttribute("aria-label", item.label);
-      link.innerHTML = nobleSocialIconSvg(item.icon);
+      link.setAttribute("aria-label", label);
+      link.innerHTML = `${getNobleSocialIconSvg(key)}<span class="sr-only">${label}</span>`;
       social.appendChild(link);
     });
 

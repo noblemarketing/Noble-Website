@@ -14440,33 +14440,19 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(14px, 2vw, 22px);
+  gap: clamp(10px, 1.4vw, 14px);
   flex: 0 0 auto;
   padding-inline: clamp(4px, 1vw, 12px);
 }
-.instagram-feed-section__social-link{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(28px, 3vw, 34px);
-  height: clamp(28px, 3vw, 34px);
-  color: #f7f1e6;
-  text-decoration: none;
-  transition: color 0.2s ease, transform 0.2s ease;
+.instagram-feed-section__social.footer-social{
+  flex-wrap: nowrap;
 }
-.instagram-feed-section__social-link svg{
-  width: 100%;
-  height: 100%;
-  display: block;
+.instagram-feed-section__social .footer-social-link{
+  color: rgba(232, 230, 226, 0.92);
 }
-.instagram-feed-section__social-link:hover,
-.instagram-feed-section__social-link:focus-visible{
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-.instagram-feed-section__social-link:focus-visible{
-  outline: 2px solid rgba(247, 241, 230, 0.85);
-  outline-offset: 3px;
+.instagram-feed-section__social .footer-social-link:hover,
+.instagram-feed-section__social .footer-social-link:focus-visible{
+  color: #fff;
 }
 @media (max-width: 980px){
   .instagram-feed-section__row{
@@ -14491,7 +14477,7 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
     flex-direction: row;
     justify-content: center;
     margin-left: 0;
-    gap: clamp(18px, 4vw, 28px);
+    gap: clamp(10px, 2vw, 14px);
   }
 }
 @media (max-width: 560px){
@@ -15135,6 +15121,14 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   }
   .site-header.is-elevated{
     background: #f7f1e6;
+  }
+  .site-header.is-scroll-hidden{
+    transform: none;
+    pointer-events: auto;
+  }
+  body.home-nav-fixed-bottom .site-header.is-scroll-hidden{
+    transform: none;
+    pointer-events: auto;
   }
   body:not(.home-nav-fixed-bottom) .site-header,
   body:not(.home-nav-fixed-bottom) .site-header.is-elevated{
