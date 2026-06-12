@@ -22,8 +22,26 @@
   <script src="/instagram-feed-fallback.js" defer></script>
   <script src="/script.js" defer></script>
 </head>
-<body class="home-nav-fixed-bottom">
-<header class="site-header" data-elevate>
+<body class="home-nav-fixed-bottom home-header-nav-top home-splash-active">
+  <div
+    id="home-splash"
+    class="home-splash"
+    role="dialog"
+    aria-modal="true"
+    aria-busy="true"
+    aria-labelledby="home-splash-title"
+  >
+    <h2 id="home-splash-title" class="sr-only">Noble Marketing &amp; Design</h2>
+    <button type="button" class="home-splash__skip">Skip intro</button>
+    <div class="home-splash__lines" aria-hidden="true">
+      <span class="home-splash__line home-splash__line--top"></span>
+      <span class="home-splash__line home-splash__line--bottom"></span>
+    </div>
+    <div class="home-splash__mark">
+      <img src="/Logos/noble-icon.png" alt="" width="72" height="72" loading="eager" decoding="async" />
+    </div>
+  </div>
+<header class="site-header home-header--pinned-top" data-elevate>
   <div class="container header-inner">
     <a class="brand" href="/" aria-current="page">
       <img class="brand-mark" src="/Logos/noble-icon.png" width="42" height="42" alt="Noble" />
@@ -61,7 +79,7 @@
               <img src="/Logos/noble-logo.png" width="280" height="75" alt="" decoding="async" />
             </a>
             <h1 class="hero-title hero-title--typewriter">
-              <span class="hero-title-eyebrow">Boutique studio · South Central Pennsylvania</span>
+              <span class="hero-title-eyebrow">Boutique marketing studio · South Central Pennsylvania</span>
               <span class="hero-title-lead">Branding &amp; design for</span>
               <span class="hero-title-type">
                 <span

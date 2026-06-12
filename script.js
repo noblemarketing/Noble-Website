@@ -1,6 +1,6 @@
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-const HOME_SPLASH_ENABLED = false;
+const HOME_SPLASH_ENABLED = true;
 
 function setYear() {
   const el = $("#year");
@@ -549,97 +549,11 @@ function setupHomeSplash() {
   window.setTimeout(dismiss, 3000);
 }
 
-function setupHomeHeaderScrollPin() {
-  if (!document.body.classList.contains("home-nav-fixed-bottom")) return;
-
-  const header = document.querySelector("[data-elevate]");
-  const hero = document.querySelector("#top.hero");
-  if (!(header instanceof HTMLElement) || !hero) return;
-
-  const PIN = "home-header--pinned-top";
-  const BODY_TOP = "home-header-nav-top";
-  const isHomeMobileNavTop = () =>
-    typeof window.matchMedia === "function" && window.matchMedia("(max-width: 760px)").matches;
-
-  /** Keeps CSS --site-header-height in sync with the fixed header’s painted height (incl. borders + safe-area padding). */
-  const syncMeasuredHeaderHeight = () => {
-    if (!isHomeMobileNavTop()) {
-      document.documentElement.style.removeProperty("--site-header-measured");
-      return;
-    }
-    const h = Math.ceil(header.getBoundingClientRect().height);
-    if (h > 0) {
-      document.documentElement.style.setProperty("--site-header-measured", `${h}px`);
-    }
-  };
-
-  let pinned = false;
-  let pinnedLocked = false;
-  let raf = 0;
-
-  const update = () => {
-    syncMeasuredHeaderHeight();
-    if (isHomeMobileNavTop()) {
-      document.body.classList.add(BODY_TOP);
-      header.classList.add(PIN);
-      header.style.setProperty("top", "0");
-      header.style.setProperty("bottom", "auto");
-      header.style.setProperty("transform", "translate3d(0, 0, 0)");
-      header.classList.toggle("is-elevated", window.scrollY > 10);
-      pinned = true;
-      pinnedLocked = true;
-      return;
-    }
-
-    const heroRect = hero.getBoundingClientRect();
-    const headerH = header.offsetHeight;
-    const vh = window.innerHeight;
-    const maxTop = Math.max(0, vh - headerH);
-    const rawTop = heroRect.bottom - headerH;
-    const navTop = Math.max(0, Math.min(rawTop, maxTop));
-    const navTopPx = Math.round(navTop);
-
-    header.style.setProperty("top", "0");
-    header.style.setProperty("bottom", "auto");
-    if (pinnedLocked || navTopPx <= 0) {
-      pinnedLocked = true;
-      pinned = true;
-      header.style.setProperty("transform", "translate3d(0, 0, 0)");
-      document.body.classList.add(BODY_TOP);
-      header.classList.add(PIN);
-      header.classList.add("is-elevated");
-      return;
-    }
-
-    pinned = false;
-    header.style.setProperty("transform", `translate3d(0, ${navTopPx}px, 0)`);
-    document.body.classList.remove(BODY_TOP);
-    header.classList.remove(PIN);
-    header.classList.toggle("is-elevated", window.scrollY > 10);
-  };
-
-  const schedule = () => {
-    if (raf) return;
-    raf = requestAnimationFrame(() => {
-      raf = 0;
-      update();
-    });
-  };
-
-  update();
-  window.addEventListener("scroll", schedule, { passive: true });
-  window.addEventListener("resize", schedule, { passive: true });
-  window.addEventListener("load", schedule, { passive: true });
-  if (document.fonts?.ready) {
-    document.fonts.ready.then(() => schedule());
-  }
-}
-
-/** One rAF-throttled scroll handler for header shadow + hide-on-scroll (avoids duplicate scroll listeners sitewide). */
+/** One rAF-throttled scroll handler for header shadow + hide-on-scroll (sitewide, including homepage). */
 function setupHeaderScrollUi() {
-  if (document.body.classList.contains("home-nav-fixed-bottom")) return;
   if (
     document.body.classList.contains("page-about") &&
+    !document.body.classList.contains("home-nav-fixed-bottom") &&
     typeof window.matchMedia === "function" &&
     window.matchMedia("(max-width: 900px)").matches
   ) {
@@ -1788,7 +1702,7 @@ function setupNobleInstagramHorizontalFeed() {
 
     const location = document.createElement("p");
     location.className = "instagram-feed-section__location";
-    location.textContent = "Boutique Marketing Studio in South Central Pennsylvania";
+    location.textContent = "Boutique marketing studio · South Central Pennsylvania";
 
     const row = document.createElement("div");
     row.className = "instagram-feed-section__row";
@@ -2471,6 +2385,7 @@ function setupBackToTop() {
 setYear();
 setFooterBioText();
 setFooterCenterIcon();
+setupHomeSplash();
 setupFooterSocialIcons();
 setupWorkCaseClientProfiles();
 if (document.readyState === "loading") {
@@ -2478,9 +2393,7 @@ if (document.readyState === "loading") {
 } else {
   setupHeroTypewriter();
 }
-setupHomeSplash();
 setupHeaderScrollUi();
-setupHomeHeaderScrollPin();
 setupMobileNav();
 setupActiveNav();
 setupPortfolioFilter();

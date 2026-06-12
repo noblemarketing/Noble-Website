@@ -418,34 +418,15 @@ body:not(.home-nav-fixed-bottom) .nav-dropdown-link[aria-current="page"]{
   z-index: 1;
 }
 
-/* Homepage: nav bottom-aligns to hero bottom (JS sets top), then sticks to viewport top — no padding interpolation (avoids scroll jank) */
+/* Homepage: fixed top nav (hide on scroll down, show on scroll up) */
 body.home-nav-fixed-bottom{
-  --home-bottom-nav-h: 88px;
+  --home-bottom-nav-h: 0px;
 }
 body.home-nav-fixed-bottom #main{
-  padding-top: 0;
-  padding-bottom: calc(var(--home-bottom-nav-h) + env(safe-area-inset-bottom, 0px));
-}
-/* Homepage phones: header stays at top (not bottom-docked); drop main bottom pad reserved for bottom bar */
-@media (max-width: 760px){
-  /* Wrapped discovery CTA row can exceed a fixed px guess — script sets --site-header-measured
-     from the real header box so #main padding and .hero negative margin cancel (no paper strip). */
-  body.home-nav-fixed-bottom{
-    --site-header-height: var(
-      --site-header-measured,
-      calc(108px + env(safe-area-inset-top, 0px))
-    );
-  }
-  body.home-nav-fixed-bottom #main{
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-}
-body.home-nav-fixed-bottom.home-header-nav-top #main{
   padding-top: var(--site-header-height);
   padding-bottom: 0;
 }
-/* Pull hero back up so padding doesn't reflow the hero (fixes jump / "second band" when nav pins) */
-body.home-nav-fixed-bottom.home-header-nav-top .hero{
+body.home-nav-fixed-bottom .hero{
   margin-top: calc(-1 * var(--site-header-height));
 }
 body.home-nav-fixed-bottom .site-header{
@@ -453,24 +434,18 @@ body.home-nav-fixed-bottom .site-header{
   bottom: auto;
   left: 0;
   right: 0;
-  border-bottom: none;
-  border-top: 1px solid rgba(20, 19, 17, 0.1);
+  border-top: none;
+  border-bottom: 1px solid rgba(20, 19, 17, 0.1);
   box-shadow: none;
-  /* Approximate "nav at bottom of viewport" before first JS frame (inline transform overrides after) */
-  transform: translate3d(0, calc(100dvh - var(--home-bottom-nav-h)), 0);
-  /* Position follows scroll via inline transform — no transition on transform (avoids lag) */
-  transition: background 0.2s ease;
-}
-@supports not (height: 100dvh){
-  body.home-nav-fixed-bottom .site-header{
-    transform: translate3d(0, calc(100vh - var(--home-bottom-nav-h)), 0);
-  }
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s ease;
 }
 body.home-nav-fixed-bottom .site-header.is-elevated{
   box-shadow: none;
 }
 body.home-nav-fixed-bottom .site-header.is-scroll-hidden{
-  transform: translateY(calc(100% + 16px));
+  transform: translateY(-100%);
+  pointer-events: none;
 }
 body.home-nav-fixed-bottom .header-inner{
   position: relative;
@@ -15354,11 +15329,6 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
     pointer-events:auto;
   }
   body.home-nav-fixed-bottom .site-nav{
-    top: auto;
-    bottom: calc(100% + 8px);
-    transform-origin: bottom right;
-  }
-  body.home-nav-fixed-bottom .site-header.home-header--pinned-top .site-nav{
     top: 68px;
     bottom: auto;
     transform-origin: top right;
@@ -15443,6 +15413,16 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
     z-index: 5;
     padding-block: clamp(16px, 4dvh, 40px);
   }
+  body.home-nav-fixed-bottom .hero-title-eyebrow{
+    position: absolute;
+    top: clamp(14px, 3.5vh, 28px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(38rem, calc(100% - 28px));
+    margin: 0;
+    text-align: center;
+    z-index: 4;
+  }
   body.home-nav-fixed-bottom .hero-inner .container{
     display: flex;
     justify-content: center;
@@ -15469,6 +15449,7 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   body.home-nav-fixed-bottom .hero-title--typewriter{
     align-items: center;
     text-align: center;
+    gap: clamp(8px, 1.4vw, 14px);
   }
   body.home-nav-fixed-bottom .hero-title-lead{
     font-size: calc(clamp(24px, 6.2vw, 38px) + var(--heading-size-add));
