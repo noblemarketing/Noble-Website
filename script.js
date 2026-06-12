@@ -423,6 +423,76 @@ function setupWorkCaseClientProfiles() {
   }
 }
 
+/** Home hero — type out audience types, pause, delete, cycle */
+function setupHeroTypewriter() {
+  const root = document.querySelector("[data-hero-typewriter]");
+  const textEl = document.querySelector("[data-hero-typewriter-text]");
+  if (!(root instanceof HTMLElement) || !(textEl instanceof HTMLElement)) return;
+
+  const raw = root.getAttribute("data-phrases") || "";
+  const phrases = raw
+    .split("|")
+    .map((p) => p.trim())
+    .filter(Boolean);
+  if (!phrases.length) return;
+
+  const cursor = root.querySelector(".hero-typewriter__cursor");
+  const prefersReduced =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (prefersReduced) {
+    textEl.textContent = phrases[0];
+    cursor?.remove();
+    return;
+  }
+
+  let phraseIndex = 0;
+  let charIndex = phrases[0].length;
+  let deleting = false;
+  let timer = 0;
+
+  const typeMs = 72;
+  const deleteMs = 42;
+  const pauseTypedMs = 2400;
+  const pauseDeletedMs = 420;
+
+  const schedule = (fn, delay) => {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(fn, delay);
+  };
+
+  const tick = () => {
+    const current = phrases[phraseIndex];
+
+    if (!deleting) {
+      if (charIndex < current.length) {
+        charIndex += 1;
+        textEl.textContent = current.slice(0, charIndex);
+        schedule(tick, typeMs);
+        return;
+      }
+      deleting = true;
+      schedule(tick, pauseTypedMs);
+      return;
+    }
+
+    if (charIndex > 0) {
+      charIndex -= 1;
+      textEl.textContent = current.slice(0, charIndex);
+      schedule(tick, deleteMs);
+      return;
+    }
+
+    deleting = false;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    schedule(tick, pauseDeletedMs);
+  };
+
+  textEl.textContent = phrases[0].slice(0, charIndex);
+  schedule(tick, pauseTypedMs);
+}
+
 /** Home — full-screen intro: green lines meet at center, Noble mark, ~5s then dismiss */
 function setupHomeSplash() {
   const root = document.getElementById("home-splash");
@@ -1632,6 +1702,36 @@ function nobleScriptSiblingUrl(relativePath) {
 /** Noble Marketing Instagram profile (strip tiles + defensive link wrapper). */
 const NOBLE_INSTAGRAM_PROFILE = "https://www.instagram.com/thenoblemarketing/";
 
+const NOBLE_SOCIAL_LINKS = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/thenoblemarketing/",
+    icon: "instagram",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/people/Noble-Marketing/100063772796053/",
+    icon: "facebook",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/noble-marketing-design/?viewAsMember=true",
+    icon: "linkedin",
+  },
+];
+
+function nobleSocialIconSvg(name) {
+  const icons = {
+    instagram:
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8m9.2 1.4a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>',
+    facebook:
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M14 4h3V1h-3c-2.8 0-4.5 1.7-4.5 4.6V10H6v3h3.5v10H13V13h3.4l.6-3H13V5.2C13 4.5 13.3 4 14 4z"/></svg>',
+    linkedin:
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1-.02 5 2.5 2.5 0 0 1 .02-5M3 8.98h4v12H3v-12m7 0h3.8v1.7h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.7 2.6 4.7 6v6.4H17v-5.7c0-1.4 0-3.1-1.9-3.1-1.9 0-2.2 1.5-2.2 3v5.8H10V8.98z"/></svg>',
+  };
+  return icons[name] || "";
+}
+
 /** Ensure each fallback grid photo is inside a link to Noble's Instagram (idempotent). */
 function ensureInstagramStripFallbackLinked() {
   document.querySelectorAll(".home-instagram-strip__grid img").forEach((img) => {
@@ -1667,68 +1767,22 @@ function setupNobleInstagramHorizontalFeed() {
     const wrap = document.createElement("div");
     wrap.className = "instagram-feed-section__inner site-instagram-prefooter__inner";
 
-    const profile = document.createElement("div");
-    profile.className = "instagram-feed-section__profile";
+    const location = document.createElement("p");
+    location.className = "instagram-feed-section__location";
+    location.textContent = "Studio in South Central Pennsylvania";
 
-    const avatarLink = document.createElement("a");
-    avatarLink.className = "instagram-feed-section__avatar-link";
-    avatarLink.href = profileHref(username);
-    avatarLink.target = "_blank";
-    avatarLink.rel = "noopener noreferrer";
-    const avatar = document.createElement("img");
-    avatar.className = "instagram-feed-section__avatar";
-    avatar.src = String(data.profilePictureUrl || "").trim();
-    avatar.alt = `@${username} on Instagram`;
-    avatar.width = 88;
-    avatar.height = 88;
-    avatar.loading = "lazy";
-    avatar.decoding = "async";
-    avatarLink.appendChild(avatar);
+    const row = document.createElement("div");
+    row.className = "instagram-feed-section__row";
 
-    const meta = document.createElement("div");
-    meta.className = "instagram-feed-section__meta";
-
-    const handle = document.createElement("a");
-    handle.className = "instagram-feed-section__handle";
-    handle.href = profileHref(username);
-    handle.target = "_blank";
-    handle.rel = "noopener noreferrer";
-    handle.textContent = `@${username}`;
-
-    meta.appendChild(handle);
-
-    const bioText = typeof data.biography === "string" ? data.biography.trim() : "";
-    if (bioText) {
-      const bio = document.createElement("p");
-      bio.className = "instagram-feed-section__bio";
-      bio.style.whiteSpace = "pre-line";
-      bio.textContent = bioText;
-      meta.appendChild(bio);
-    }
-
-    const siteRaw = typeof data.website === "string" ? data.website.trim() : "";
-    if (siteRaw) {
-      let href = siteRaw;
-      try {
-        href = new URL(siteRaw.includes("://") ? siteRaw : `https://${siteRaw}`).href;
-      } catch {
-        href = siteRaw.includes("://") ? siteRaw : `https://${siteRaw}`;
-      }
-      const web = document.createElement("a");
-      web.className = "instagram-feed-section__website";
-      web.href = href;
-      web.target = "_blank";
-      web.rel = "noopener noreferrer";
-      try {
-        web.textContent = new URL(href).hostname.replace(/^www\./, "");
-      } catch {
-        web.textContent = "Website";
-      }
-      meta.appendChild(web);
-    }
-
-    profile.appendChild(avatarLink);
-    profile.appendChild(meta);
+    const ctaCol = document.createElement("div");
+    ctaCol.className = "instagram-feed-section__cta-col";
+    const ctaLink = document.createElement("a");
+    ctaLink.className = "instagram-feed-section__cta";
+    ctaLink.href = profileHref(username);
+    ctaLink.target = "_blank";
+    ctaLink.rel = "noopener noreferrer";
+    ctaLink.textContent = "Follow us here";
+    ctaCol.appendChild(ctaLink);
 
     const rail = document.createElement("div");
     rail.className = "instagram-feed-section__rail";
@@ -1768,7 +1822,8 @@ function setupNobleInstagramHorizontalFeed() {
       return m && !/\.mp4(\?|$)/i.test(m) ? m : "";
     };
 
-    data.posts.forEach((post, i) => {
+    const posts = data.posts.slice(0, 6);
+    posts.forEach((post, i) => {
       if (!post || typeof post !== "object") return;
       const thumb = feedPostThumbUrl(post);
       const linkUrl = typeof post.permalink === "string" ? post.permalink.trim() : "";
@@ -1825,12 +1880,25 @@ function setupNobleInstagramHorizontalFeed() {
 
     if (!rail.childElementCount) return null;
 
-    const row = document.createElement("div");
-    row.className = "instagram-feed-section__row";
+    const social = document.createElement("div");
+    social.className = "instagram-feed-section__social";
+    social.setAttribute("aria-label", "Social links");
+    NOBLE_SOCIAL_LINKS.forEach((item) => {
+      const link = document.createElement("a");
+      link.className = "instagram-feed-section__social-link";
+      link.href = item.href;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("aria-label", item.label);
+      link.innerHTML = nobleSocialIconSvg(item.icon);
+      social.appendChild(link);
+    });
 
-    row.appendChild(profile);
+    row.appendChild(ctaCol);
     row.appendChild(rail);
+    row.appendChild(social);
 
+    wrap.appendChild(location);
     wrap.appendChild(row);
     return wrap;
   };
@@ -2385,6 +2453,7 @@ setFooterBioText();
 setFooterCenterIcon();
 setupFooterSocialIcons();
 setupWorkCaseClientProfiles();
+setupHeroTypewriter();
 setupHomeSplash();
 setupHeaderScrollUi();
 setupHomeHeaderScrollPin();
