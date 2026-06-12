@@ -426,8 +426,10 @@ function setupWorkCaseClientProfiles() {
 /** Home hero — type out audience types, pause, delete, cycle */
 function setupHeroTypewriter() {
   const root = document.querySelector("[data-hero-typewriter]");
-  const textEl = document.querySelector("[data-hero-typewriter-text]");
-  if (!(root instanceof HTMLElement) || !(textEl instanceof HTMLElement)) return;
+  if (!(root instanceof HTMLElement)) return;
+
+  const textEl = root.querySelector("[data-hero-typewriter-text]");
+  if (!(textEl instanceof HTMLElement)) return;
 
   const raw = root.getAttribute("data-phrases") || "";
   const phrases = raw
@@ -441,56 +443,73 @@ function setupHeroTypewriter() {
     typeof window.matchMedia === "function" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  root.classList.add("hero-typewriter--active");
+
+  const blinkCursor = () => {
+    if (!(cursor instanceof HTMLElement)) return;
+    let visible = true;
+    window.setInterval(() => {
+      visible = !visible;
+      cursor.style.opacity = visible ? "1" : "0";
+    }, 520);
+  };
+
   if (prefersReduced) {
+    let index = 0;
     textEl.textContent = phrases[0];
-    cursor?.remove();
+    blinkCursor();
+    window.setInterval(() => {
+      index = (index + 1) % phrases.length;
+      textEl.textContent = phrases[index];
+    }, 3500);
     return;
   }
 
   let phraseIndex = 0;
-  let charIndex = phrases[0].length;
+  let charIndex = 0;
   let deleting = false;
   let timer = 0;
 
-  const typeMs = 72;
-  const deleteMs = 42;
-  const pauseTypedMs = 2400;
-  const pauseDeletedMs = 420;
+  const typeMs = 58;
+  const deleteMs = 34;
+  const pauseFullMs = 1700;
+  const pauseEmptyMs = 260;
 
-  const schedule = (fn, delay) => {
+  const schedule = (delay) => {
     window.clearTimeout(timer);
-    timer = window.setTimeout(fn, delay);
+    timer = window.setTimeout(step, delay);
   };
 
-  const tick = () => {
-    const current = phrases[phraseIndex];
+  const step = () => {
+    const phrase = phrases[phraseIndex];
 
     if (!deleting) {
-      if (charIndex < current.length) {
-        charIndex += 1;
-        textEl.textContent = current.slice(0, charIndex);
-        schedule(tick, typeMs);
-        return;
+      charIndex += 1;
+      textEl.textContent = phrase.slice(0, charIndex);
+      if (charIndex >= phrase.length) {
+        deleting = true;
+        schedule(pauseFullMs);
+      } else {
+        schedule(typeMs);
       }
-      deleting = true;
-      schedule(tick, pauseTypedMs);
       return;
     }
 
-    if (charIndex > 0) {
-      charIndex -= 1;
-      textEl.textContent = current.slice(0, charIndex);
-      schedule(tick, deleteMs);
+    charIndex -= 1;
+    textEl.textContent = phrase.slice(0, charIndex);
+    if (charIndex <= 0) {
+      deleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      schedule(pauseEmptyMs);
       return;
     }
-
-    deleting = false;
-    phraseIndex = (phraseIndex + 1) % phrases.length;
-    schedule(tick, pauseDeletedMs);
+    schedule(deleteMs);
   };
 
-  textEl.textContent = phrases[0].slice(0, charIndex);
-  schedule(tick, pauseTypedMs);
+  textEl.textContent = "";
+  charIndex = 0;
+  deleting = false;
+  schedule(350);
 }
 
 /** Home — full-screen intro: green lines meet at center, Noble mark, ~5s then dismiss */
@@ -2453,7 +2472,11 @@ setFooterBioText();
 setFooterCenterIcon();
 setupFooterSocialIcons();
 setupWorkCaseClientProfiles();
-setupHeroTypewriter();
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", setupHeroTypewriter, { once: true });
+} else {
+  setupHeroTypewriter();
+}
 setupHomeSplash();
 setupHeaderScrollUi();
 setupHomeHeaderScrollPin();

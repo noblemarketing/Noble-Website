@@ -1425,6 +1425,9 @@ h3.branding-showcase-title{
   font-style: normal;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.92);
+  opacity: 1;
+}
+.hero-typewriter--active .hero-typewriter__cursor{
   animation: hero-typewriter-blink 0.78s step-end infinite;
 }
 @keyframes hero-typewriter-blink{
@@ -1438,8 +1441,7 @@ h3.branding-showcase-title{
   color: rgba(255, 255, 255, 0.88);
 }
 @media (prefers-reduced-motion: reduce){
-  .hero-typewriter__cursor{
-    display: none;
+  .hero-typewriter--active .hero-typewriter__cursor{
     animation: none;
   }
 }
