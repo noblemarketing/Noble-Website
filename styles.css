@@ -487,13 +487,23 @@ body.home-nav-fixed-bottom .site-header.home-header--pinned-top{
   border-bottom: 1px solid rgba(20, 19, 17, 0.1);
 }
 body.home-nav-fixed-bottom .hero-band{
-  min-height: 640px;
-  height: calc(100vh + clamp(48px, 8vh, 120px));
+  min-height: 760px;
+  height: calc(100vh + clamp(96px, 16vh, 220px));
 }
 @supports (height: 100dvh){
   body.home-nav-fixed-bottom .hero-band{
-    height: calc(100dvh + clamp(48px, 8vh, 120px));
+    height: calc(100dvh + clamp(96px, 16vh, 220px));
   }
+}
+body.home-nav-fixed-bottom .hero-card{
+  width: min(920px, 94%);
+}
+body.home-nav-fixed-bottom .hero-card .hero-home-wordmark{
+  margin: 0 0 clamp(14px, 2.4vw, 28px);
+}
+body.home-nav-fixed-bottom .hero-card .hero-home-wordmark img{
+  width: min(280px, 72vw);
+  max-height: clamp(48px, 9vh, 92px);
 }
 /* Homepage — Services band (#services) on solid white instead of .section-alt cream wash */
 body.home-nav-fixed-bottom #services.section-alt{
@@ -1379,13 +1389,13 @@ h3.branding-showcase-title{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: clamp(6px, 1vw, 12px);
-  margin-bottom: clamp(8px, 1.5vw, 14px);
+  gap: clamp(10px, 1.6vw, 20px);
+  margin-bottom: clamp(12px, 2vw, 22px);
 }
 .hero-title-eyebrow{
   display: block;
   font-family: var(--font-body);
-  font-size: clamp(11px, 1.05vw, 13px);
+  font-size: clamp(12px, 1.25vw, 16px);
   font-weight: 600;
   font-style: normal;
   letter-spacing: 0.16em;
@@ -1396,22 +1406,22 @@ h3.branding-showcase-title{
 .hero-title-lead{
   display: block;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: calc(clamp(24px, 3.2vw, 42px) + var(--heading-size-add));
+  font-size: calc(clamp(30px, 4.2vw, 56px) + var(--heading-size-add));
   font-weight: 400;
   font-style: normal;
-  line-height: 1.08;
+  line-height: 1.06;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #fff;
 }
 .hero-title-type{
   display: block;
-  min-height: 1.12em;
+  min-height: 1.15em;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: calc(clamp(28px, 4vw, 54px) + var(--heading-size-add));
+  font-size: calc(clamp(36px, 5.2vw, 72px) + var(--heading-size-add));
   font-weight: 400;
   font-style: italic;
-  line-height: 1.08;
+  line-height: 1.06;
   letter-spacing: 0.01em;
   text-transform: none;
   color: #fff;
@@ -1435,9 +1445,9 @@ h3.branding-showcase-title{
 }
 .hero-subtitle--support{
   margin-top: 0;
-  max-width: 36ch;
-  font-size: clamp(15px, 1.45vw, 18px);
-  line-height: 1.5;
+  max-width: 40ch;
+  font-size: clamp(17px, 1.75vw, 24px);
+  line-height: 1.45;
   color: rgba(255, 255, 255, 0.88);
 }
 @media (prefers-reduced-motion: reduce){
@@ -15425,7 +15435,7 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   body.home-nav-fixed-bottom .hero-card{
     margin-inline: auto;
     text-align: center;
-    width: min(34rem, 100%);
+    width: min(38rem, 100%);
   }
   body.home-nav-fixed-bottom .hero-card .hero-home-wordmark{
     margin-inline: auto;
@@ -15445,15 +15455,16 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
     text-align: center;
   }
   body.home-nav-fixed-bottom .hero-title-lead{
-    font-size: calc(clamp(20px, 5.4vw, 32px) + var(--heading-size-add));
+    font-size: calc(clamp(24px, 6.2vw, 38px) + var(--heading-size-add));
   }
   body.home-nav-fixed-bottom .hero-title-type{
-    font-size: calc(clamp(24px, 6.8vw, 40px) + var(--heading-size-add));
+    font-size: calc(clamp(30px, 8vw, 48px) + var(--heading-size-add));
   }
   body.home-nav-fixed-bottom .hero-subtitle--support{
     text-align: center;
-    max-width: 28ch;
+    max-width: 30ch;
     margin-inline: auto;
+    font-size: clamp(16px, 4.2vw, 20px);
   }
   /* Bracketed vertical hero copy — too busy on narrow viewports (already aria-hidden) */
   .hero-side-stats{
