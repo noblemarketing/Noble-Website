@@ -81,5 +81,5 @@ function Update-SvgEmbeddedPng {
 }
 
 $base = Split-Path $PSScriptRoot -Parent
-Update-SvgEmbeddedPng (Join-Path $base 'Client Logos\VZNshort.svg')
-Update-SvgEmbeddedPng (Join-Path $base 'Client Logos\VZNshort2.svg')
+Update-SvgEmbeddedPng (Join-Path $base 'client-logos\VZNshort.svg')
+Update-SvgEmbeddedPng (Join-Path $base 'client-logos\VZNshort2.svg')

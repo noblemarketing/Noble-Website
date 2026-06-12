@@ -16,7 +16,7 @@ function setFooterBioText() {
 }
 
 function setFooterCenterIcon() {
-  // Each page sets the correct relative path to Logos/Noble Icon.png; normalizing to ./Logos/
+  // Each page sets the correct relative path to Logos/noble-icon.png; normalizing to ./Logos/
   // breaks nested routes (e.g. /services/branding/ → ../../Logos/...).
 }
 
@@ -105,7 +105,7 @@ function setupWorkCaseClientProfiles() {
   const profiles = {
     "work-brookstone-ind": {
       name: "Brookstone Industries",
-      logo: "/Clients/Brookstone/Logos/Brookstone-Horizontal Logo-Icon - Main.svg",
+      logo: "/client-logos/Brookstone-Horizontal-Logo-Icon-Main.svg",
       services: "Branding + Website",
       niche: "Metal Fabrication / Industrial Manufacturing",
       location: "PA",
@@ -119,12 +119,12 @@ function setupWorkCaseClientProfiles() {
     },
     "work-revd": {
       name: "REVD Toys",
-      logo: "/Client%20Logos/red%20revd.svg",
+      logo: "/client-logos/red-revd.svg",
       services: "Branding + Website",
       niche: "Collectible Toys / Agriculture",
       location: "PA",
       about:
-        "Founded in 2025, REVD Toys creates precision-engineered, scale model farm toys and collectibles for serious collectors and ag enthusiasts. Noble delivered full brand identity, custom retail packaging, and a Shopify website.",
+        "Founded in 2025, REVD Toys creates precision-engineered, scale model farm toys and collectibles for serious collectors and ag enthusiasts. I delivered full brand identity, custom retail packaging, and a Shopify website.",
       links: [
         { label: "Website", href: "https://revdtoys.com" },
         { label: "Facebook", href: "https://facebook.com/p/REVD-Toys-61577368115099" },
@@ -146,17 +146,17 @@ function setupWorkCaseClientProfiles() {
     },
     "work-everflame-financial": {
       name: "Everflame Financial Consulting",
-      logo: "/Client%20Logos/Everflae.svg",
+      logo: "/client-logos/Everflae.svg",
       services: "Branding",
       niche: "Financial Consulting",
       location: "PA",
       about:
-        "A financial consulting firm built on themes of rebirth and resilience, guiding individuals, entrepreneurs, and organizations through financial challenges toward their next chapter. Noble crafted a full brand identity centered on the symbolism of an ever-burning flame.",
+        "A financial consulting firm built on themes of rebirth and resilience, guiding individuals, entrepreneurs, and organizations through financial challenges toward their next chapter.",
       links: [],
     },
     "work-hsf": {
       name: "Head Strong Flight",
-      logo: "/Client%20Logos/HSF.svg",
+      logo: "/client-logos/HSF.svg",
       services: "Branding",
       niche: "Archery / Hunting",
       location: "PA",
@@ -171,12 +171,12 @@ function setupWorkCaseClientProfiles() {
     },
     "work-da-targets": {
       name: "DA Targets",
-      logo: "/Client%20Logos/DA.svg",
+      logo: "/client-logos/DA.svg",
       services: "Social Media + Website Management + Print",
       niche: "Firearms Training / Tactical Equipment",
       location: "PA",
       about:
-        "A Pennsylvania-based company making self-healing polymer shooting targets with a patented color-change feature for instant visual feedback. Serving military, law enforcement, and civilian shooters, Noble manages their social media content and print materials.",
+        "A Pennsylvania-based company making self-healing polymer shooting targets with a patented color-change feature for instant visual feedback. Serving military, law enforcement, and civilian shooters.",
       links: [
         { label: "Website", href: "https://da-targets.com" },
         { label: "Facebook", href: "https://facebook.com/DaTargets" },
@@ -185,32 +185,32 @@ function setupWorkCaseClientProfiles() {
     },
     "work-gradys": {
       name: "Grady's Grill & Truckstop",
-      logo: "/Client%20Logos/Gradys%202.svg",
+      logo: "/client-logos/gradys-2.svg",
       services: "Branding",
       niche: "Food & Beverage / Diner",
       location: "PA",
       about:
-        "A beloved community fixture since 1981, Grady's Grill & Truckstop is a roadside diner with deep roots in tradition and local charm. Noble refreshed their brand identity to honor their history while modernizing their visual presence.",
+        "A beloved community fixture since 1981, Grady's Grill & Truckstop is a roadside diner with deep roots in tradition and local charm. I refreshed their brand identity to honor their history while modernizing their visual presence.",
       links: [],
     },
     "work-vizion": {
       name: "Vizion Consulting",
-      logo: "/Client%20Logos/Vizion.svg",
+      logo: "/client-logos/Vizion.svg",
       services: "Branding + Website + Social Media",
       niche: "Leadership & Business Consulting",
       location: "PA",
       about:
-        "A values-driven consulting firm based in York/Lancaster, PA, helping leaders and organizations achieve meaningful growth through servant leadership, integrity, and strategic guidance. Noble developed their full brand identity and website.",
+        "A values-driven consulting firm based in York/Lancaster, PA, helping leaders and organizations achieve meaningful growth through servant leadership, integrity, and strategic guidance. I developed their full brand identity and website.",
       links: [{ label: "Instagram", href: "https://www.instagram.com/vizion.consulting/" }],
     },
     "work-living-room-church": {
       name: "The Living Room Church",
-      logo: "/Client%20Logos/Living-room-church-logo.jpg",
+      logo: "/client-logos/Living-room-church-logo.jpg",
       services: "Branding",
       niche: "Church / Religious Organization",
       location: "FL",
       about:
-        "A community-centered church based in Winter Springs, Florida (near Orlando), focused on authentic connection and gathering. Noble created their brand identity to reflect warmth, belonging, and faith.",
+        "A community-centered church based in Winter Springs, Florida (near Orlando), focused on authentic connection and gathering. I created their brand identity to reflect warmth, belonging, and faith.",
       links: [
         { label: "Website", href: "https://thelivingroomorl.square.site" },
         { label: "Instagram", href: "https://instagram.com/thelivingroomchurchorl" },
@@ -219,12 +219,12 @@ function setupWorkCaseClientProfiles() {
     },
     "work-witness-coffeehouse": {
       name: "Wittness Coffeehouse",
-      logo: "/Client%20Logos/Witt2.svg",
+      logo: "/client-logos/Witt2.svg",
       services: "Branding",
       niche: "Coffee Shop / Cafe",
       location: "PA",
       about:
-        "A new coffeehouse in Strasburg, PA built around community, presence, and connection over a great cup of coffee. Noble created a brand identity blending vintage apothecary charm with modern warmth to reflect the cafe's inviting spirit.",
+        "A new coffeehouse in Strasburg, PA built around community, presence, and connection over a great cup of coffee. I created a brand identity blending vintage apothecary charm with modern warmth to reflect the cafe's inviting spirit.",
       links: [
         { label: "Website", href: "https://wittnesscoffeehouse.com" },
         { label: "Instagram", href: "https://instagram.com/wittnesscoffeehouse" },
@@ -233,7 +233,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-32-below-ice-cream": {
       name: "32° Below Ice Cream Shop",
-      logo: "/Client%20Logos/32-below-logo.png",
+      logo: "/client-logos/32-below-logo.png",
       logoClass: "work-case-32-below-logo-mark",
       logoInName: true,
       services: "Social Media",
@@ -249,7 +249,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-hatchworks": {
       name: "Hatchworks",
-      logo: "/Client%20Logos/hatchworks-logo.png",
+      logo: "/client-logos/hatchworks-logo.png",
       logoClass: "work-case-hatchworks-logo-mark",
       logoInName: true,
       services: "Social Media",
@@ -261,7 +261,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-brad-zimmerman-team": {
       name: "The Brad Zimmerman Team",
-      logo: "/Client%20Logos/brad-zimmerman-team-logo.png",
+      logo: "/client-logos/brad-zimmerman-team-logo.png",
       logoClass: "work-case-brad-zimmerman-team-logo-mark",
       logoInName: true,
       services: "Social Media",
@@ -277,7 +277,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-remax-pinnacle": {
       name: "RE/MAX Pinnacle",
-      logo: "/Client%20Logos/remax-pinnacle-logo.png",
+      logo: "/client-logos/remax-pinnacle-logo.png",
       logoClass: "work-case-remax-pinnacle-logo-mark",
       logoInName: true,
       services: "Social Media",
@@ -292,7 +292,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-hey-peaches": {
       name: "Hey Peaches",
-      logo: "/Client%20Logos/HeyPeaches.svg",
+      logo: "/client-logos/HeyPeaches.svg",
       services: "Branding",
       niche: "Women's Fashion Boutique",
       location: "PA",
@@ -305,7 +305,7 @@ function setupWorkCaseClientProfiles() {
     },
     "work-cosmos": {
       name: "Cosmo Floral Design",
-      logo: "/Client%20Logos/Cosmo.svg",
+      logo: "/client-logos/Cosmo.svg",
       services: "Branding",
       niche: "Floral Design / Events",
       location: "KY",
@@ -315,12 +315,12 @@ function setupWorkCaseClientProfiles() {
     },
     "work-flintrock": {
       name: "Flintrock Stables",
-      logo: "/Client%20Logos/Flintrock.svg",
+      logo: "/client-logos/Flintrock.svg",
       services: "Social Media",
       niche: "Equestrian / Agriculture",
       location: "PA",
       about:
-        "A premier equestrian facility in Lititz, Lancaster County, PA — part of the family-owned Flintrock Corporation. Noble manages their social media, showcasing their riding programs, horse care, and community events.",
+        "A premier equestrian facility in Lititz, Lancaster County, PA — part of the family-owned Flintrock Corporation.",
       links: [
         { label: "Website", href: "https://flintrockcorporation.com" },
         { label: "Instagram", href: "https://www.instagram.com/flintrock_stables/" },
@@ -328,17 +328,17 @@ function setupWorkCaseClientProfiles() {
     },
     "work-lakewood-reserve": {
       name: "Lakewood Reserve",
-      logo: "/Client%20Logos/Lakewood%20reserv%20Horizontal.svg",
+      logo: "/client-logos/lakewood-reserv-horizontal.svg",
       services: "Branding + Website + Social Media",
       niche: "Hospitality / Short-Term Rental / Tiny Homes",
       location: "PA",
       about:
-        "A modern lakeside tiny home retreat on Raystown Lake in Pennsylvania, offering elevated comfort surrounded by woods, water, and mountains. Noble handled full brand development, website, and ongoing social media management.",
+        "A modern lakeside tiny home retreat on Raystown Lake in Pennsylvania, offering elevated comfort surrounded by woods, water, and mountains. I handled full brand development, website, and ongoing social media management.",
       links: [{ label: "Instagram", href: "https://instagram.com/lakewoodreserve" }],
     },
     "work-outback-toys": {
       name: "Outback Toys",
-      logo: "/Client%20Logos/OBT%20black.svg",
+      logo: "/client-logos/obt-black.svg",
       services: "Social Media",
       niche: "Retail / Farm Toy & Collectibles",
       location: "PA",
@@ -351,22 +351,22 @@ function setupWorkCaseClientProfiles() {
     },
     "work-blaze-yoga": {
       name: "Blaze Yoga Lancaster",
-      logo: "/Client%20Logos/Blaze-yoga-lancaster-header.png",
+      logo: "/client-logos/Blaze-yoga-lancaster-header.png",
       services: "Social Media",
       niche: "Fitness & Wellness",
       location: "PA",
       about:
-        "A Lancaster-based hot yoga studio centered on movement, discipline, and personal growth. Noble supports Blaze Yoga with social media strategy and content that reflects the studio's motivating community culture.",
+        "A Lancaster-based hot yoga studio centered on movement, discipline, and personal growth. I support Blaze Yoga with social media strategy and content that reflects the studio's motivating community culture.",
       links: [],
     },
     "work-pennwood": {
       name: "Pennwood Development Group",
-      logo: "/Client%20Logos/Primary_Wordmark_RGB.jpg",
+      logo: "/client-logos/Primary_Wordmark_RGB.jpg",
       services: "Branding",
       niche: "Real Estate / Development",
       location: "PA",
       about:
-        "Pennwood Development Group is a regional development and investment team focused on strategic growth projects. Noble developed a clean, modern brand presentation to support long-term positioning and trust.",
+        "Pennwood Development Group is a regional development and investment team focused on strategic growth projects. I developed a clean, modern brand presentation to support long-term positioning and trust.",
       links: [],
     },
     "work-tcc": {
@@ -376,7 +376,7 @@ function setupWorkCaseClientProfiles() {
       niche: "Faith-Led Organization",
       location: "PA",
       about:
-        "The Cultivate Collective is a values-driven organization with a mission rooted in faith, community, and growth. Noble supported brand direction to communicate purpose with clarity and warmth.",
+        "The Cultivate Collective is a values-driven organization with a mission rooted in faith, community, and growth. I supported brand direction to communicate purpose with clarity and warmth.",
       links: [],
     },
   };

@@ -74,13 +74,13 @@ def replace_assets(content: str) -> str:
 
     # src="./Logos/..." through ../../../../ 
     content = re.sub(
-        r'(src)="(\.{1,2}/)+(Logos|Photos|portfolio|Client Logos|Clients|Font)(/[^"]*)"',
+        r'(src)="(\.{1,2}/)+(Logos|Photos|portfolio|client-logos|Clients|Font)(/[^"]*)"',
         abs_img,
         content,
     )
     # url('./Photos in inline styles
     content = re.sub(
-        r"url\((['\"]?)(\.\./)*(Photos|Client Logos|portfolio)([^'\")]*)('\"?)\)",
+        r"url\((['\"]?)(\.\./)*(Photos|client-logos|portfolio)([^'\")]*)('\"?)\)",
         lambda m: f"url({m.group(1)}/{m.group(3)}{m.group(4)}{m.group(5)})".replace("//", "/").replace("(/", "("),
         content,
     )
