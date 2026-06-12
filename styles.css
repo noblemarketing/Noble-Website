@@ -1,4 +1,4 @@
-﻿:root{
+:root{
   --bg: #0f1110;
   --bg2: #141513;
   --paper: #f7f1e6;
@@ -1548,9 +1548,9 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
 /* Three-column intro — below hero */
 .noble-intro-band{
   padding: clamp(40px, 6vw, 72px) 0;
-  background: var(--moss);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border-top: 1px solid rgba(20, 19, 17, 0.08);
+  border-bottom: 1px solid rgba(20, 19, 17, 0.08);
 }
 .noble-intro-grid{
   display: grid;
@@ -1565,7 +1565,7 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.96);
+  color: var(--earth2);
   line-height: 1.2;
   white-space: nowrap;
 }
@@ -1580,7 +1580,7 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
   font-size: var(--font-body-size);
   font-weight: var(--font-body-weight);
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
 }
 @media (max-width: 760px){
   .noble-intro-grid{
@@ -14334,27 +14334,29 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   color: rgba(247, 241, 230, 0.96);
 }
 .instagram-feed-section__row{
-  display: grid;
-  grid-template-columns: minmax(0, clamp(120px, 14vw, 200px)) minmax(0, 1fr) auto;
-  gap: clamp(14px, 2.5vw, 32px);
+  display: flex;
   align-items: center;
+  justify-content: flex-start;
+  gap: clamp(8px, 1.1vw, 14px);
   width: 100%;
   box-sizing: border-box;
 }
 .instagram-feed-section__cta-col{
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  flex: 0 0 auto;
   min-width: 0;
+  padding-right: clamp(2px, 0.5vw, 6px);
 }
 .instagram-feed-section__cta{
   display: block;
   margin: 0;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.35rem, 2.4vw, 2.15rem);
+  font-size: clamp(1.85rem, 3.4vw, 3.35rem);
   font-weight: 400;
   font-style: normal;
-  line-height: 1.02;
+  line-height: 0.98;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
@@ -14377,8 +14379,10 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 2px;
+  flex: 1 1 auto;
   min-width: 0;
-  width: 100%;
+  max-width: min(880px, 72vw);
+  width: auto;
   background: rgba(255, 255, 255, 0.28);
 }
 .instagram-feed-section__post{
@@ -14434,6 +14438,8 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   align-items: center;
   justify-content: center;
   gap: clamp(14px, 2vw, 22px);
+  flex: 0 0 auto;
+  margin-left: auto;
   padding-inline: clamp(4px, 1vw, 12px);
 }
 .instagram-feed-section__social-link{
@@ -14462,22 +14468,26 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
 }
 @media (max-width: 980px){
   .instagram-feed-section__row{
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
     gap: clamp(20px, 4vw, 28px);
   }
   .instagram-feed-section__cta-col{
     justify-content: center;
+    padding-right: 0;
   }
   .instagram-feed-section__cta{
-    max-width: none;
     text-align: center;
   }
   .instagram-feed-section__rail{
+    max-width: none;
+    width: 100%;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .instagram-feed-section__social{
     flex-direction: row;
     justify-content: center;
+    margin-left: 0;
     gap: clamp(18px, 4vw, 28px);
   }
 }
