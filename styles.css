@@ -1566,7 +1566,7 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 400;
-  color: var(--earth2);
+  color: var(--moss);
   line-height: 1.2;
   white-space: nowrap;
 }
@@ -2848,7 +2848,7 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
   transform: translateY(-50%);
   width: 1px;
   height: min(68%, 132px);
-  background: var(--clay);
+  background: var(--moss);
   opacity: 0.85;
 }
 .home-stats-figure{
