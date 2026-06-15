@@ -7116,6 +7116,26 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
 .page-blog-post .blog-post-hero{
   display: none;
 }
+body.page-blog-post-da-targets .blog-post-hero,
+body.page-blog-post-outback-toys .blog-post-hero,
+body.page-blog-post-lakewood-reserve-website .blog-post-hero{
+  display: block;
+  margin: 0;
+  width: 100%;
+}
+body.page-blog-post-da-targets .blog-post-hero img,
+body.page-blog-post-outback-toys .blog-post-hero img,
+body.page-blog-post-lakewood-reserve-website .blog-post-hero img{
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+body.page-blog-post-da-targets .blog-article > .container,
+body.page-blog-post-outback-toys .blog-article > .container,
+body.page-blog-post-lakewood-reserve-website .blog-article > .container{
+  padding-top: clamp(24px, 4vw, 40px);
+}
 .page-blog-post .blog-article > .container{
   padding-top: clamp(28px, 4.5vw, 52px);
 }
@@ -11815,8 +11835,11 @@ body.page-services.page-service-social:not(.page-services-hub) .services-split-h
 
 /* Blog index — full-width image hero + header + card grid + topic filters */
 /* Hero image starts at viewport top; fixed nav sits above (z-index) with frosted bar */
-body.page-blog #main{
+body.page-blog:not(.page-blog-post) #main{
   padding-top: 0;
+}
+body.page-blog-post #main{
+  padding-top: var(--site-header-height);
 }
 body.page-blog,
 body.page-blog-post{
@@ -14334,6 +14357,24 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   font-weight: 400;
   letter-spacing: 0.04em;
   color: rgba(247, 241, 230, 0.96);
+}
+body.page-about .instagram-feed-section__location{
+  color: var(--moss);
+}
+body.page-about .instagram-feed-section__social .footer-social-link{
+  color: var(--moss);
+}
+body.page-about .instagram-feed-section__social .footer-social-link .footer-social-icon g,
+body.page-about .instagram-feed-section__social .footer-social-link .footer-social-icon > path{
+  fill: var(--paper);
+}
+body.page-about .instagram-feed-section__social .footer-social-link:hover,
+body.page-about .instagram-feed-section__social .footer-social-link:focus-visible{
+  color: #1a3329;
+  opacity: 1;
+}
+body.page-about .instagram-feed-section__social .footer-social-link:focus-visible{
+  outline-color: var(--moss);
 }
 .instagram-feed-section__row{
   display: flex;
