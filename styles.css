@@ -8431,6 +8431,7 @@ body.page-services{
 main > section.section.home-instagram-strip{
   padding-top: 0;
   padding-bottom: 0;
+  border-top: none;
 }
 main > section.section:has(+ section.home-instagram-strip){
   padding-bottom: clamp(40px, 6vw, 72px);
@@ -14320,6 +14321,9 @@ input:focus, select:focus, textarea:focus{
   background: #586358;
   color: #f7f1e6;
 }
+.home-instagram-strip.instagram-feed-section{
+  width: 100%;
+}
 /* Home page only: editorial reviews strip stacks flush with next section */
 body.home-nav-fixed-bottom .services-reviews-section.reviews-section--editorial.section-alt{
   border-bottom: none;
@@ -14392,12 +14396,12 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
 .instagram-feed-section__rail{
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 1px;
+  gap: 0;
   flex: 0 0 auto;
   min-width: 0;
   width: min(920px, 74vw);
   max-width: 100%;
-  background: rgba(255, 255, 255, 0.32);
+  background: transparent;
 }
 .instagram-feed-section__post{
   display: block;
@@ -14409,6 +14413,10 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   background: rgba(20, 19, 17, 0.18);
   line-height: 0;
   text-decoration: none;
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.22);
+}
+.instagram-feed-section__post:last-child{
+  box-shadow: none;
 }
 .instagram-feed-section__post:hover .instagram-feed-section__thumb img,
 .instagram-feed-section__post:focus-visible .instagram-feed-section__thumb img{
@@ -14459,11 +14467,12 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   flex-wrap: nowrap;
 }
 .instagram-feed-section__social .footer-social-link{
-  color: rgba(247, 241, 230, 0.94);
+  color: rgba(247, 241, 230, 0.96);
+  padding: 6px;
 }
 .instagram-feed-section__social .footer-social-link .footer-social-icon{
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
 }
 .instagram-feed-section__social .footer-social-link:hover,
 .instagram-feed-section__social .footer-social-link:focus-visible{
@@ -14521,12 +14530,6 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   padding-top: clamp(48px, 7vw, 88px);
   padding-bottom: clamp(40px, 6vw, 72px);
   gap: clamp(28px, 5vw, 44px);
-}
-/* Pre-footer strip (tiles + handle only — no hero title/icons) */
-.site-instagram-prefooter .site-instagram-prefooter__inner{
-  padding-top: clamp(36px, 5.5vw, 64px);
-  padding-bottom: clamp(32px, 5vw, 56px);
-  gap: clamp(20px, 3.5vw, 32px);
 }
 .home-social-showcase__title{
   margin: 0;

@@ -62,13 +62,22 @@ const NOBLE_SOCIAL_ICON_BY_NETWORK = {
   facebook: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path fill="${NOBLE_SOCIAL_ICON_CUT}" d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/></svg>`,
   instagram: `<svg class="footer-social-icon footer-social-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.85" fill="none" stroke="currentColor" stroke-width="1.65"/><circle cx="17.45" cy="6.55" r="1.15" fill="currentColor"/></svg>`,
 };
+/** White stroke icons for the moss Instagram pre-footer strip (matches homepage reference). */
+const NOBLE_SOCIAL_ICON_FEED_BY_NETWORK = {
+  linkedin: `<svg class="footer-social-icon footer-social-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.65"/><g fill="currentColor"><circle cx="8.5" cy="7.85" r="1.25"/><rect x="7.65" y="10.15" width="1.75" height="7.35" rx="0.25"/><path d="M12.75 10.15h2.25c1.2 0 2.1.68 2.1 2.08v5.27h-2.15v-4.7c0-.58-.32-1-.9-1-.78 0-1.15.56-1.15 1.18v4.52h-2.15V10.15z"/></g></svg>`,
+  facebook: `<svg class="footer-social-icon footer-social-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.65"/><path fill="currentColor" d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/></svg>`,
+  instagram: NOBLE_SOCIAL_ICON_BY_NETWORK.instagram,
+};
 const NOBLE_SOCIAL_NETWORKS = [
   { key: "linkedin", href: "https://www.linkedin.com/company/noble-marketing-design/?viewAsMember=true", label: "LinkedIn" },
   { key: "facebook", href: "https://www.facebook.com/people/Noble-Marketing/100063772796053/", label: "Facebook" },
   { key: "instagram", href: "https://www.instagram.com/thenoblemarketing/", label: "Instagram" },
 ];
 
-function getNobleSocialIconSvg(key) {
+function getNobleSocialIconSvg(key, variant = "footer") {
+  if (variant === "feed") {
+    return NOBLE_SOCIAL_ICON_FEED_BY_NETWORK[key] || NOBLE_SOCIAL_ICON_BY_NETWORK[key] || "";
+  }
   return NOBLE_SOCIAL_ICON_BY_NETWORK[key] || "";
 }
 
@@ -1707,6 +1716,51 @@ function ensureNobleInstagramFeedMount() {
   main.appendChild(section);
 }
 
+function loadNobleInstagramFeedFallback() {
+  return new Promise((resolve) => {
+    if (
+      typeof window !== "undefined" &&
+      window.NOBLE_INSTAGRAM_FEED_EMBEDDED &&
+      typeof window.NOBLE_INSTAGRAM_FEED_EMBEDDED === "object"
+    ) {
+      resolve();
+      return;
+    }
+
+    const existing = document.querySelector('script[src*="instagram-feed-fallback.js"]');
+    if (existing) {
+      if (existing.dataset.nobleLoaded === "true") {
+        resolve();
+        return;
+      }
+      existing.addEventListener(
+        "load",
+        () => {
+          existing.dataset.nobleLoaded = "true";
+          resolve();
+        },
+        { once: true },
+      );
+      existing.addEventListener("error", () => resolve(), { once: true });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "/instagram-feed-fallback.js";
+    script.defer = true;
+    script.addEventListener(
+      "load",
+      () => {
+        script.dataset.nobleLoaded = "true";
+        resolve();
+      },
+      { once: true },
+    );
+    script.addEventListener("error", () => resolve(), { once: true });
+    document.head.appendChild(script);
+  });
+}
+
 /** Pre-footer Instagram strip from `instagram-feed.json` (Behold-style payload: profile + horizontal thumbnails). */
 function setupNobleInstagramHorizontalFeed() {
   ensureNobleInstagramFeedMount();
@@ -1852,7 +1906,7 @@ function setupNobleInstagramHorizontalFeed() {
       link.target = "_blank";
       link.rel = "noopener noreferrer";
       link.setAttribute("aria-label", label);
-      link.innerHTML = `${getNobleSocialIconSvg(key)}<span class="sr-only">${label}</span>`;
+      link.innerHTML = `${getNobleSocialIconSvg(key, "feed")}<span class="sr-only">${label}</span>`;
       social.appendChild(link);
     });
 
@@ -1881,6 +1935,8 @@ function setupNobleInstagramHorizontalFeed() {
   };
 
   const fetchNobleInstagramFeedData = async () => {
+    await loadNobleInstagramFeedFallback();
+
     const embedded =
       typeof window !== "undefined" &&
       window.NOBLE_INSTAGRAM_FEED_EMBEDDED &&
