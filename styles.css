@@ -15456,13 +15456,16 @@ body.home-splash-active{
   position: fixed;
   inset: 0;
   z-index: 10001;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   background: var(--paper);
   transition: opacity 0.45s ease;
   /* Lines stop short of center so they don’t meet on the logo (half icon + gap) */
   --splash-center-clearance: clamp(44px, 11vw, 58px);
+}
+body.home-splash-active .home-splash{
+  display: flex;
 }
 .home-splash.home-splash--done{
   opacity: 0;

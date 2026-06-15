@@ -1,6 +1,41 @@
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 const HOME_SPLASH_ENABLED = true;
+const NOBLE_SITE_SESSION_KEY = "noble-site-session";
+
+function markNobleSiteSession() {
+  try {
+    sessionStorage.setItem(NOBLE_SITE_SESSION_KEY, "1");
+  } catch {
+    /* sessionStorage unavailable — splash may repeat */
+  }
+}
+
+function hasNobleSiteSession() {
+  try {
+    return sessionStorage.getItem(NOBLE_SITE_SESSION_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function isSameSiteReferrer() {
+  const ref = document.referrer;
+  if (!ref) return false;
+  try {
+    return new URL(ref).origin === window.location.origin;
+  } catch {
+    return false;
+  }
+}
+
+/** Show home splash only on first external entry to the homepage (not internal return visits). */
+function shouldShowHomeSplash() {
+  if (!HOME_SPLASH_ENABLED) return false;
+  if (isSameSiteReferrer()) return false;
+  if (hasNobleSiteSession()) return false;
+  return true;
+}
 
 function setYear() {
   const el = $("#year");
@@ -518,22 +553,17 @@ function setupHeroTypewriter() {
   schedule(350);
 }
 
-/** Home — full-screen intro: green lines meet at center, Noble mark, ~5s then dismiss */
+/** Home — full-screen intro: green lines meet at center, Noble mark, ~3s then dismiss */
 function setupHomeSplash() {
   const root = document.getElementById("home-splash");
   if (!root) return;
-
-  if (!HOME_SPLASH_ENABLED) {
-    document.body.classList.remove("home-splash-active");
-    root.remove();
-    return;
-  }
 
   const prefersReduced =
     typeof window.matchMedia === "function" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const dismiss = () => {
+    markNobleSiteSession();
     document.body.classList.remove("home-splash-active");
     root.classList.add("home-splash--done");
     root.setAttribute("aria-hidden", "true");
@@ -544,10 +574,12 @@ function setupHomeSplash() {
     }, 480);
   };
 
-  if (prefersReduced) {
+  if (!shouldShowHomeSplash() || prefersReduced) {
     dismiss();
     return;
   }
+
+  document.body.classList.add("home-splash-active");
 
   const skip = root.querySelector(".home-splash__skip");
   skip?.addEventListener("click", dismiss);
@@ -2362,6 +2394,9 @@ setYear();
 setFooterBioText();
 setFooterCenterIcon();
 setupHomeSplash();
+if (!document.getElementById("home-splash")) {
+  markNobleSiteSession();
+}
 setupFooterSocialIcons();
 setupWorkCaseClientProfiles();
 if (document.readyState === "loading") {
