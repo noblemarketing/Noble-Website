@@ -8427,15 +8427,13 @@ body.page-services{
   padding-top: clamp(72px, 10vw, 112px);
   padding-bottom: clamp(72px, 10vw, 112px);
 }
-/* Instagram pre-footer: remove double vertical rhythm above strip (section padding + inner padding) */
-.page-services main > section.section.home-instagram-strip{
+/* Instagram pre-footer: avoid double vertical rhythm above strip (section padding + inner padding) */
+main > section.section.home-instagram-strip{
   padding-top: 0;
+  padding-bottom: 0;
 }
-.page-services main > section.section.section-alt:has(+ section.home-instagram-strip){
+main > section.section:has(+ section.home-instagram-strip){
   padding-bottom: clamp(40px, 6vw, 72px);
-}
-.page-services main > section.home-instagram-strip .instagram-feed-section__inner.site-instagram-prefooter__inner{
-  padding-top: clamp(12px, 2vw, 24px);
 }
 .page-services .section .portfolio-page-lead,
 .page-services .social-showcase-lead{
@@ -12595,17 +12593,6 @@ body.page-contact #contact{
 body.page-contact .section.section-alt{
   background: #ffffff;
 }
-/* Contact: same Instagram pre-footer spacing as service pages (no double top pad) */
-body.page-contact main > section.section.home-instagram-strip{
-  padding-top: 0;
-}
-body.page-contact main > section#contact:has(+ section.home-instagram-strip){
-  padding-bottom: clamp(40px, 6vw, 72px);
-}
-body.page-contact main > section.home-instagram-strip .instagram-feed-section__inner.site-instagram-prefooter__inner{
-  padding-top: clamp(12px, 2vw, 24px);
-}
-
 /* Contact page — editorial hero + two-column grid */
 .page-contact main > .contact-page-hero:first-of-type{
   margin-top: 0;
@@ -14358,29 +14345,11 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   letter-spacing: 0.04em;
   color: rgba(247, 241, 230, 0.96);
 }
-body.page-about .instagram-feed-section__location{
-  color: var(--moss);
-}
-body.page-about .instagram-feed-section__social .footer-social-link{
-  color: var(--moss);
-}
-body.page-about .instagram-feed-section__social .footer-social-link .footer-social-icon g,
-body.page-about .instagram-feed-section__social .footer-social-link .footer-social-icon > path{
-  fill: var(--paper);
-}
-body.page-about .instagram-feed-section__social .footer-social-link:hover,
-body.page-about .instagram-feed-section__social .footer-social-link:focus-visible{
-  color: #1a3329;
-  opacity: 1;
-}
-body.page-about .instagram-feed-section__social .footer-social-link:focus-visible{
-  outline-color: var(--moss);
-}
 .instagram-feed-section__row{
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(12px, 1.8vw, 22px);
+  gap: clamp(24px, 3.6vw, 42px);
   width: fit-content;
   max-width: 100%;
   margin-inline: auto;
@@ -14423,12 +14392,12 @@ body.page-about .instagram-feed-section__social .footer-social-link:focus-visibl
 .instagram-feed-section__rail{
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 2px;
+  gap: 1px;
   flex: 0 0 auto;
   min-width: 0;
-  width: min(880px, 72vw);
+  width: min(920px, 74vw);
   max-width: 100%;
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.32);
 }
 .instagram-feed-section__post{
   display: block;
@@ -14482,7 +14451,7 @@ body.page-about .instagram-feed-section__social .footer-social-link:focus-visibl
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(10px, 1.4vw, 14px);
+  gap: clamp(12px, 1.6vw, 16px);
   flex: 0 0 auto;
   padding-inline: clamp(4px, 1vw, 12px);
 }
@@ -14490,7 +14459,11 @@ body.page-about .instagram-feed-section__social .footer-social-link:focus-visibl
   flex-wrap: nowrap;
 }
 .instagram-feed-section__social .footer-social-link{
-  color: rgba(232, 230, 226, 0.92);
+  color: rgba(247, 241, 230, 0.94);
+}
+.instagram-feed-section__social .footer-social-link .footer-social-icon{
+  width: 22px;
+  height: 22px;
 }
 .instagram-feed-section__social .footer-social-link:hover,
 .instagram-feed-section__social .footer-social-link:focus-visible{
@@ -14501,7 +14474,7 @@ body.page-about .instagram-feed-section__social .footer-social-link:focus-visibl
     flex-direction: column;
     align-items: center;
     width: 100%;
-    gap: clamp(20px, 4vw, 28px);
+    gap: clamp(22px, 4.5vw, 32px);
   }
   .instagram-feed-section__cta-col{
     justify-content: center;
@@ -14516,10 +14489,10 @@ body.page-about .instagram-feed-section__social .footer-social-link:focus-visibl
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .instagram-feed-section__social{
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     margin-left: 0;
-    gap: clamp(10px, 2vw, 14px);
+    gap: clamp(12px, 2vw, 16px);
   }
 }
 @media (max-width: 560px){

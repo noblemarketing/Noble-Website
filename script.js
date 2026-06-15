@@ -1688,8 +1688,28 @@ function ensureInstagramStripFallbackLinked() {
   });
 }
 
+/** Ensure pre-footer Instagram strip exists on every page with a site footer. */
+function ensureNobleInstagramFeedMount() {
+  if (document.querySelector("[data-noble-instagram-feed]")) return;
+  const main = document.querySelector("main");
+  if (!main) return;
+
+  const section = document.createElement("section");
+  section.className = "section home-instagram-strip site-instagram-prefooter instagram-feed-section";
+  section.setAttribute("data-reveal-on-scroll", "");
+  section.setAttribute("aria-label", "Instagram");
+
+  const container = document.createElement("div");
+  container.className = "container";
+  container.setAttribute("data-noble-instagram-feed", "");
+
+  section.appendChild(container);
+  main.appendChild(section);
+}
+
 /** Pre-footer Instagram strip from `instagram-feed.json` (Behold-style payload: profile + horizontal thumbnails). */
 function setupNobleInstagramHorizontalFeed() {
+  ensureNobleInstagramFeedMount();
   const mounts = document.querySelectorAll("[data-noble-instagram-feed]");
   if (!mounts.length) return;
 
@@ -1878,8 +1898,8 @@ function setupNobleInstagramHorizontalFeed() {
       new Set(
         [
           liveFeedUrl,
+          "/instagram-feed.json",
           nobleScriptSiblingUrl("./instagram-feed.json"),
-          new URL("./instagram-feed.json", window.location.href).href,
         ].filter(Boolean),
       ),
     );
