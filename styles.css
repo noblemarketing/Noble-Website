@@ -7709,7 +7709,7 @@ body.portfolio-page--magazine .site-header.is-elevated{
 }
 .portfolio-mag-card__media--baker > img:first-child{
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center 30%;
 }
 .portfolio-mag-card__media--hsf > img:first-child{
   object-fit: cover;
