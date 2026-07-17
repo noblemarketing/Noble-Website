@@ -1376,7 +1376,7 @@ h3.branding-showcase-title{
   font-style: normal;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--moss);
   line-height: 1.35;
 }
 .hero-title-lead{
@@ -4232,9 +4232,10 @@ body.page-work-case .site-header{
   filter: none;
 }
 
-/* Vizion + Everflame — vector wordmarks in hero */
+/* Vizion + Everflame + Baker — vector wordmarks in hero */
 .page-vizion-case #main .work-case-client-board__name .work-case-vizion-logo-mark,
-.page-everflame-financial-case #main .work-case-client-board__name .work-case-everflame-logo-mark{
+.page-everflame-financial-case #main .work-case-client-board__name .work-case-everflame-logo-mark,
+.page-baker-accounting-case #main .work-case-client-board__name .work-case-baker-logo-mark{
   display: block;
   max-width: min(440px, 100%);
   max-height: min(100px, 18vw);
@@ -4243,6 +4244,10 @@ body.page-work-case .site-header{
   object-fit: contain;
   margin: 0;
   filter: none;
+}
+.page-baker-accounting-case #main .work-case-client-board__name .work-case-baker-logo-mark{
+  max-width: min(480px, 100%);
+  max-height: min(110px, 20vw);
 }
 .work-case-client-board__meta{
   margin: clamp(28px, 4vw, 40px) 0 0;
@@ -5317,13 +5322,14 @@ body.page-work-case .site-header{
   color: rgba(20, 19, 17, 0.82);
 }
 
-/* Logo-strip palette strips — Everflame, Hey Peaches, Lakewood, Living Room Church, Vizion, Wittness */
+/* Logo-strip palette strips — Everflame, Hey Peaches, Lakewood, Living Room Church, Vizion, Wittness, Baker */
 .everflame-brand-swatches,
 .hey-peaches-brand-swatches,
 .lakewood-brand-swatches,
 .lrc-brand-swatches,
 .vizion-brand-swatches,
-.witness-brand-swatches{
+.witness-brand-swatches,
+.baker-brand-swatches{
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: clamp(10px, 2vw, 16px);
@@ -5331,7 +5337,8 @@ body.page-work-case .site-header{
   padding: 0;
   list-style: none;
 }
-.vizion-brand-swatches{
+.vizion-brand-swatches,
+.baker-brand-swatches{
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .lrc-brand-swatches{
@@ -5342,7 +5349,8 @@ body.page-work-case .site-header{
 .lakewood-brand-swatch,
 .lrc-brand-swatch,
 .vizion-brand-swatch,
-.witness-brand-swatch{
+.witness-brand-swatch,
+.baker-brand-swatch{
   min-height: 92px;
   border-radius: 10px;
   border: 1px solid rgba(20, 19, 17, 0.12);
@@ -5361,7 +5369,8 @@ body.page-work-case .site-header{
 .lakewood-brand-swatch__name,
 .lrc-brand-swatch__name,
 .vizion-brand-swatch__name,
-.witness-brand-swatch__name{
+.witness-brand-swatch__name,
+.baker-brand-swatch__name{
   display: block;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -5396,6 +5405,10 @@ body.page-work-case .site-header{
 }
 .vizion-brand-swatch--cloud{ background: #ffffff; color: #1a1816; }
 .vizion-brand-swatch--black{ background: #000000; color: #f4efe5; }
+.baker-brand-swatch--navy{ background: #1f2558; color: #f4efe5; }
+.baker-brand-swatch--steel{ background: #6796b6; color: #1a1816; }
+.baker-brand-swatch--mist{ background: #eef4f9; color: #1a1816; }
+.baker-brand-swatch--charcoal{ background: #231f20; color: #f4efe5; }
 .witness-brand-swatch--espresso{ background: #3a2f2a; color: #f4efe5; }
 .witness-brand-swatch--latte{ background: #d7ccc4; color: #1a1816; }
 .witness-brand-swatch--sage{ background: #8b9a7e; color: #fff; }
@@ -5407,7 +5420,8 @@ body.page-work-case .site-header{
   .lakewood-brand-swatches,
   .lrc-brand-swatches,
   .vizion-brand-swatches,
-  .witness-brand-swatches{
+  .witness-brand-swatches,
+  .baker-brand-swatches{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
@@ -5417,7 +5431,8 @@ body.page-work-case .site-header{
   .lakewood-brand-swatches,
   .lrc-brand-swatches,
   .vizion-brand-swatches,
-  .witness-brand-swatches{
+  .witness-brand-swatches,
+  .baker-brand-swatches{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -5427,7 +5442,8 @@ body.page-work-case .site-header{
   .lakewood-brand-swatches,
   .lrc-brand-swatches,
   .vizion-brand-swatches,
-  .witness-brand-swatches{
+  .witness-brand-swatches,
+  .baker-brand-swatches{
     grid-template-columns: 1fr;
   }
 }
@@ -5486,6 +5502,27 @@ body.page-work-case .site-header{
 }
 .page-vizion-case #main .vizion-social-carousel .branding-case-scroll__frame{
   aspect-ratio: 4 / 5;
+}
+.page-baker-accounting-case #main .baker-brand-carousel{
+  background: #ffffff;
+  padding-top: clamp(10px, 1.6vw, 18px);
+  padding-bottom: clamp(4px, 1vw, 10px);
+}
+.page-baker-accounting-case #main .baker-brand-carousel .branding-case-scroll-wrap{
+  margin-top: 0;
+}
+.page-baker-accounting-case #main .baker-brand-carousel .branding-case-scroll__frame{
+  aspect-ratio: 4 / 5;
+}
+.page-baker-accounting-case #main .baker-brand-carousel .branding-case-scroll__frame img{
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+}
+.page-baker-accounting-case .work-case-logo-band__img{
+  max-width: min(720px, 100%);
 }
 .page-vizion-case #main .vizion-social-carousel .branding-case-scroll__frame img{
   width: 100%;
@@ -7670,6 +7707,10 @@ body.portfolio-page--magazine .site-header.is-elevated{
   object-fit: cover;
   filter: grayscale(1);
 }
+.portfolio-mag-card__media--baker > img:first-child{
+  object-fit: cover;
+  object-position: center 40%;
+}
 .portfolio-mag-card__media--hsf > img:first-child{
   object-fit: cover;
   object-position: 42% 38%;
@@ -7772,6 +7813,11 @@ body.portfolio-page--magazine .site-header.is-elevated{
 .portfolio-mag-card__logo-overlay--vizion{
   max-height: min(170px, 36vw);
   max-width: 84%;
+}
+.portfolio-mag-card__logo-overlay--baker{
+  max-height: min(150px, 34vw);
+  max-width: 88%;
+  filter: brightness(0) invert(1);
 }
 .portfolio-mag-card__logo-overlay--brookstone{
   max-height: min(280px, 60vw);
@@ -15421,119 +15467,6 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
       height: calc(100dvh - env(safe-area-inset-bottom, 0px));
       min-height: calc(100dvh - env(safe-area-inset-bottom, 0px));
     }
-  }
-}
-
-/* Home — full-screen intro (index only): thin green lines + centered Noble mark */
-body.home-splash-active{
-  overflow: hidden;
-}
-.home-splash{
-  position: fixed;
-  inset: 0;
-  z-index: 10001;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: var(--paper);
-  transition: opacity 0.45s ease;
-  /* Lines stop short of center so they don’t meet on the logo (half icon + gap) */
-  --splash-center-clearance: clamp(44px, 11vw, 58px);
-}
-body.home-splash-active .home-splash{
-  display: flex;
-}
-.home-splash.home-splash--done{
-  opacity: 0;
-  pointer-events: none;
-}
-.home-splash__skip{
-  position: absolute;
-  top: clamp(16px, 3vw, 28px);
-  right: clamp(16px, 3vw, 28px);
-  z-index: 3;
-  margin: 0;
-  padding: 10px 14px;
-  font: inherit;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--moss);
-  background: rgba(247, 241, 230, 0.92);
-  border: 1px solid rgba(26, 51, 41, 0.25);
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-.home-splash__skip:hover{
-  background: rgba(26, 51, 41, 0.08);
-  color: #1a3329;
-}
-.home-splash__skip:focus-visible{
-  outline: 2px solid var(--moss);
-  outline-offset: 3px;
-}
-.home-splash__lines{
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-.home-splash__line{
-  position: absolute;
-  left: 50%;
-  width: 1px;
-  margin-left: -0.5px;
-  background: var(--moss);
-  will-change: height;
-}
-.home-splash__line--top{
-  top: 0;
-  height: 0;
-  transform-origin: top center;
-  animation: home-splash-line-down 1.25s cubic-bezier(0.45, 0, 0.2, 1) forwards;
-}
-.home-splash__line--bottom{
-  bottom: 0;
-  height: 0;
-  transform-origin: bottom center;
-  animation: home-splash-line-up 1.25s cubic-bezier(0.45, 0, 0.2, 1) forwards;
-}
-@keyframes home-splash-line-down{
-  from{
-    height: 0;
-  }
-  to{
-    height: calc(50vh - var(--splash-center-clearance));
-  }
-}
-@keyframes home-splash-line-up{
-  from{
-    height: 0;
-  }
-  to{
-    height: calc(50vh - var(--splash-center-clearance));
-  }
-}
-.home-splash__mark{
-  position: relative;
-  z-index: 2;
-  opacity: 0;
-  animation: home-splash-icon-in 0.85s ease 0.75s forwards;
-}
-.home-splash__mark img{
-  display: block;
-  width: clamp(44px, 7.5vw, 64px);
-  height: auto;
-  margin: 0 auto;
-}
-@keyframes home-splash-icon-in{
-  from{
-    opacity: 0;
-    transform: scale(0.88);
-  }
-  to{
-    opacity: 1;
-    transform: scale(1);
   }
 }
 

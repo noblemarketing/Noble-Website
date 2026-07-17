@@ -1,41 +1,5 @@
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-const HOME_SPLASH_ENABLED = true;
-const NOBLE_SITE_SESSION_KEY = "noble-site-session";
-
-function markNobleSiteSession() {
-  try {
-    sessionStorage.setItem(NOBLE_SITE_SESSION_KEY, "1");
-  } catch {
-    /* sessionStorage unavailable — splash may repeat */
-  }
-}
-
-function hasNobleSiteSession() {
-  try {
-    return sessionStorage.getItem(NOBLE_SITE_SESSION_KEY) === "1";
-  } catch {
-    return false;
-  }
-}
-
-function isSameSiteReferrer() {
-  const ref = document.referrer;
-  if (!ref) return false;
-  try {
-    return new URL(ref).origin === window.location.origin;
-  } catch {
-    return false;
-  }
-}
-
-/** Show home splash only on first external entry to the homepage (not internal return visits). */
-function shouldShowHomeSplash() {
-  if (!HOME_SPLASH_ENABLED) return false;
-  if (isSameSiteReferrer()) return false;
-  if (hasNobleSiteSession()) return false;
-  return true;
-}
 
 function setYear() {
   const el = $("#year");
@@ -252,6 +216,16 @@ function setupWorkCaseClientProfiles() {
       about:
         "A values-driven consulting firm based in York/Lancaster, PA, helping leaders and organizations achieve meaningful growth through servant leadership, integrity, and strategic guidance. I developed their full brand identity and website.",
       links: [{ label: "Instagram", href: "https://www.instagram.com/vizion.consulting/" }],
+    },
+    "work-baker-accounting": {
+      name: "Baker Accounting Services",
+      logo: "/client-logos/Baker-Accounting.svg",
+      services: "Branding",
+      niche: "Accounting / CPA Advisory + HR",
+      location: "Red Lion, PA",
+      about:
+        "Baker Accounting Services helps growing organizations improve profitability, cash flow, and people operations—pairing CPA advisory with dedicated HR support. I created their full brand identity, stationery, and social profile assets.",
+      links: [{ label: "Website", href: "https://bakerasc.com" }],
     },
     "work-living-room-church": {
       name: "The Living Room Church",
@@ -560,40 +534,6 @@ function setupHeroTypewriter() {
   charIndex = 0;
   deleting = false;
   schedule(350);
-}
-
-/** Home — full-screen intro: green lines meet at center, Noble mark, ~3s then dismiss */
-function setupHomeSplash() {
-  const root = document.getElementById("home-splash");
-  if (!root) return;
-
-  const prefersReduced =
-    typeof window.matchMedia === "function" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  const dismiss = () => {
-    markNobleSiteSession();
-    document.body.classList.remove("home-splash-active");
-    root.classList.add("home-splash--done");
-    root.setAttribute("aria-hidden", "true");
-    root.removeAttribute("aria-busy");
-    if ("inert" in root) root.inert = true;
-    window.setTimeout(() => {
-      root.remove();
-    }, 480);
-  };
-
-  if (!shouldShowHomeSplash() || prefersReduced) {
-    dismiss();
-    return;
-  }
-
-  document.body.classList.add("home-splash-active");
-
-  const skip = root.querySelector(".home-splash__skip");
-  skip?.addEventListener("click", dismiss);
-
-  window.setTimeout(dismiss, 3000);
 }
 
 /** One rAF-throttled scroll handler for header shadow + hide-on-scroll (desktop/tablet only). */
@@ -1699,6 +1639,7 @@ function ensureInstagramStripFallbackLinked() {
 
 /** Ensure pre-footer Instagram strip exists on every page with a site footer. */
 function ensureNobleInstagramFeedMount() {
+  if (document.body.classList.contains("page-services-hub")) return;
   if (document.querySelector("[data-noble-instagram-feed]")) return;
   const main = document.querySelector("main");
   if (!main) return;
@@ -2469,10 +2410,6 @@ function setupBackToTop() {
 setYear();
 setFooterBioText();
 setFooterCenterIcon();
-setupHomeSplash();
-if (!document.getElementById("home-splash")) {
-  markNobleSiteSession();
-}
 setupFooterSocialIcons();
 setupWorkCaseClientProfiles();
 if (document.readyState === "loading") {
