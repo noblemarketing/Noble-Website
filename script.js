@@ -8,10 +8,89 @@ function setYear() {
 
 function setFooterBioText() {
   const text =
-    "Noble Marketing & Design is a boutique marketing & design studio that helps businesses elevate their online presence with branding and strategic marketing materials.";
+    "Noble Marketing & Design is a boutique marketing & design studio in Lititz, PA, helping South Central Pennsylvania businesses elevate their online presence with branding and strategic marketing materials.";
   $$(".footer-bio-text").forEach((el) => {
     el.textContent = text;
   });
+}
+
+/** Local SEO — ProfessionalService / LocalBusiness JSON-LD (NAP + GBP-aligned entity). */
+const NOBLE_LOCAL_BUSINESS_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://www.thenoblemarketing.com/#business",
+  name: "Noble Marketing & Design",
+  url: "https://www.thenoblemarketing.com/",
+  logo: "https://www.thenoblemarketing.com/Logos/noble-logo.png",
+  image: "https://www.thenoblemarketing.com/Photos/AudreyHBranding-7568.jpg",
+  description:
+    "Boutique branding, website design, and organic social media studio serving Lancaster County and South Central Pennsylvania.",
+  email: "audrey@thenoblemarketing.com",
+  founder: {
+    "@type": "Person",
+    name: "Audrey Heller",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Lititz",
+    addressRegion: "PA",
+    postalCode: "17543",
+    addressCountry: "US",
+  },
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Lancaster County, PA" },
+    { "@type": "AdministrativeArea", name: "South Central Pennsylvania" },
+  ],
+  priceRange: "$$",
+  sameAs: [
+    "https://www.instagram.com/thenoblemarketing/",
+    "https://www.facebook.com/people/Noble-Marketing/100063772796053/",
+    "https://www.linkedin.com/company/noble-marketing-design/",
+  ],
+  knowsAbout: ["Branding", "Logo Design", "Website Design", "Social Media Marketing"],
+  makesOffer: [
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Branding & Design",
+        url: "https://www.thenoblemarketing.com/services/branding",
+      },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Website Design",
+        url: "https://www.thenoblemarketing.com/services/website-design",
+      },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Social Media Management",
+        url: "https://www.thenoblemarketing.com/services/social-media",
+      },
+    },
+  ],
+};
+
+function setupLocalBusinessSchema() {
+  const alreadyPresent = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).some((el) => {
+    try {
+      const data = JSON.parse(el.textContent || "");
+      return data && (data["@id"] === NOBLE_LOCAL_BUSINESS_SCHEMA["@id"] || data["@type"] === "ProfessionalService");
+    } catch {
+      return false;
+    }
+  });
+  if (alreadyPresent) return;
+
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(NOBLE_LOCAL_BUSINESS_SCHEMA);
+  document.head.appendChild(script);
 }
 
 function setFooterCenterIcon() {
@@ -2410,6 +2489,7 @@ function setupBackToTop() {
 setYear();
 setFooterBioText();
 setFooterCenterIcon();
+setupLocalBusinessSchema();
 setupFooterSocialIcons();
 setupWorkCaseClientProfiles();
 if (document.readyState === "loading") {
