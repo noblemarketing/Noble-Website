@@ -7155,18 +7155,23 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
 }
 body.page-blog-post-da-targets .blog-post-hero,
 body.page-blog-post-outback-toys .blog-post-hero,
-body.page-blog-post-lakewood-reserve-website .blog-post-hero{
+body.page-blog-post-lakewood-reserve-website .blog-post-hero,
+body.page-blog-post-vsling-archery .blog-post-hero{
   display: block;
   margin: 0;
   width: 100%;
 }
 body.page-blog-post-da-targets .blog-post-hero img,
 body.page-blog-post-outback-toys .blog-post-hero img,
-body.page-blog-post-lakewood-reserve-website .blog-post-hero img{
+body.page-blog-post-lakewood-reserve-website .blog-post-hero img,
+body.page-blog-post-vsling-archery .blog-post-hero img{
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
+  image-rendering: auto;
+  -ms-interpolation-mode: bicubic;
 }
 body.page-blog-post-da-targets .blog-article > .container,
 body.page-blog-post-outback-toys .blog-article > .container,
@@ -7235,11 +7240,15 @@ body.page-blog-post-lakewood-reserve-website .blog-article > .container{
   overflow: visible;
 }
 .page-blog-post .blog-post-brand-carousel .branding-case-scroll__frame img{
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
   max-height: none;
   object-fit: contain;
   object-position: center;
+  margin-inline: auto;
+  image-rendering: auto;
+  -ms-interpolation-mode: bicubic;
 }
 
 /* Blog — case-study style metrics inside narrow article column (not viewport-wide breakpoints) */
@@ -12144,24 +12153,31 @@ body.page-blog .blog-index-section.section-alt{
 }
 .page-blog-post .blog-post-gallery .blog-post-figure img{
   display: block;
-  width: 100%;
-  height: auto;
+  width: auto;
   max-width: 100%;
+  height: auto;
   aspect-ratio: auto;
   object-fit: contain;
   object-position: center;
+  margin-inline: auto;
   border-radius: 12px;
   border: 1px solid rgba(20, 19, 17, 0.08);
   background: transparent;
+  image-rendering: auto;
+  -ms-interpolation-mode: bicubic;
 }
 .page-blog-post .blog-post-figure--natural img,
 .page-blog-post .blog-post-body > .blog-post-figure img{
+  display: block;
   aspect-ratio: auto;
   min-height: 0;
-  width: 100%;
-  height: auto;
+  width: auto;
   max-width: 100%;
+  height: auto;
   object-fit: contain;
+  margin-inline: auto;
+  image-rendering: auto;
+  -ms-interpolation-mode: bicubic;
 }
 @media (min-width: 560px){
   .page-blog-post .blog-post-gallery--count-1,
@@ -12185,14 +12201,17 @@ body.page-blog .blog-index-section.section-alt{
   position: static;
   inset: auto;
   display: block;
-  width: 100%;
-  height: auto;
+  width: auto;
   max-width: 100%;
+  height: auto;
   object-fit: contain;
   object-position: center;
+  margin-inline: auto;
   border: none;
   border-radius: 10px;
   aspect-ratio: auto;
+  image-rendering: auto;
+  -ms-interpolation-mode: bicubic;
 }
 .page-blog-post .blog-post-gallery .blog-post-figure figcaption{
   margin-top: 0.65rem;
@@ -12207,10 +12226,14 @@ body.page-blog .blog-index-section.section-alt{
 }
 .page-blog-post .blog-post-body > .blog-post-figure img{
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  margin-inline: auto;
   border-radius: 10px;
   border: 1px solid rgba(20, 19, 17, 0.08);
+  image-rendering: auto;
+  -ms-interpolation-mode: bicubic;
 }
 .page-blog-post .blog-post-figure figcaption{
   margin-top: 0.65rem;
