@@ -2375,6 +2375,7 @@ function setupBlogPostGalleries() {
         child instanceof HTMLElement &&
         child.classList.contains("blog-post-figure") &&
         !child.classList.contains("blog-post-figure--pair") &&
+        !child.classList.contains("blog-post-figure--natural") &&
         !child.closest(".blog-post-gallery")
       ) {
         if (!pending.length) anchor = child;

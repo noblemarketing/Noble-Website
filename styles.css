@@ -12157,6 +12157,39 @@ body.page-blog .blog-index-section.section-alt{
   border: 1px solid rgba(20, 19, 17, 0.08);
   background: rgba(20, 19, 17, 0.04);
 }
+/* Baker blog: keep natural image ratios — no forced 4:5 crop */
+body.page-blog-post-baker-accounting .blog-post-gallery .blog-post-figure img,
+body.page-blog-post-baker-accounting .blog-post-figure--natural img,
+body.page-blog-post-baker-accounting .blog-post-body > .blog-post-figure img{
+  aspect-ratio: auto;
+  min-height: 0;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+}
+body.page-blog-post-baker-accounting .blog-post-gallery .blog-post-figure__crop{
+  aspect-ratio: auto;
+  min-height: 0;
+  overflow: visible;
+  height: auto;
+}
+body.page-blog-post-baker-accounting .blog-post-gallery .blog-post-figure__crop img{
+  position: static;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+@media (min-width: 560px){
+  body.page-blog-post-baker-accounting .blog-post-gallery--count-1,
+  body.page-blog-post-baker-accounting .blog-post-figure--natural{
+    max-width: min(960px, 100%);
+    margin-inline: auto;
+  }
+}
 .page-blog-post .blog-post-gallery .blog-post-figure__crop{
   position: relative;
   width: 100%;
