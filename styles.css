@@ -15919,6 +15919,335 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   *{scroll-behavior:auto !important; transition:none !important; animation:none !important}
 }
 
+/* ==========================================================================
+   Homepage palette preview (body.page-home only)
+   Cream #E5DECA · Ocean Blue #7E9DA2 · Avocado #898433 · Olive #45441A · Dark Green #282C15
+   Other pages keep :root moss / cream / earth tokens unchanged.
+   ========================================================================== */
+body.page-home{
+  --cream: #E5DECA;
+  --ocean: #7E9DA2;
+  --avocado: #898433;
+  --olive: #45441A;
+  --dark-green: #282C15;
+
+  /* Existing tokens remapped for descendants that already use var(--*) */
+  --bg: #282C15;
+  --bg2: #45441A;
+  --paper: #E5DECA;
+  --paper2: #E5DECA;
+  --ink: #282C15;
+  --muted: rgba(40, 44, 21, 0.72);
+  --line: rgba(40, 44, 21, 0.16);
+  --earth: #7E9DA2;
+  --earth2: #7E9DA2;
+  --moss: #898433; /* primary accent → avocado */
+  --clay: #7E9DA2;
+  --color-surface: #E5DECA;
+  --color-border: color-mix(in srgb, #45441A 18%, #E5DECA);
+  --color-text-muted: #45441A;
+
+  color: var(--dark-green);
+  background-color: #E5DECA;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23a)' opacity='0.07'/%3E%3C/svg%3E"),
+    url("./graphics/noble-stamp-1.svg"),
+    url("./graphics/noble-stamp-2.svg"),
+    url("./graphics/noble-stamp-3.svg"),
+    radial-gradient(1400px 900px at 20% -10%, rgba(229, 222, 202, 0), transparent 55%),
+    radial-gradient(900px 700px at 110% 20%, rgba(137, 132, 51, 0.16), transparent 55%),
+    linear-gradient(180deg, rgba(229, 222, 202, 0.92), rgba(229, 222, 202, 0.95));
+}
+
+/* Header / nav */
+body.page-home .site-header,
+body.page-home .site-header.is-elevated,
+body.page-home .site-header.home-header--pinned-top{
+  background: rgba(229, 222, 202, 0.86);
+  border-bottom-color: rgba(40, 44, 21, 0.12);
+}
+body.page-home .site-header.is-elevated{
+  background: rgba(229, 222, 202, 0.94);
+}
+body.page-home .nav-link{
+  color: rgba(40, 44, 21, 0.82);
+}
+body.page-home .nav-link:hover{
+  color: #282C15;
+  border-bottom-color: rgba(126, 157, 162, 0.7);
+}
+body.page-home .nav-link.is-active,
+body.page-home .nav-link[aria-current="page"],
+body.page-home .nav-dropdown:has(.nav-dropdown-link[aria-current="page"]) > .nav-link{
+  color: #282C15;
+  border-bottom-color: #898433;
+}
+body.page-home .header-discovery{
+  color: #282C15;
+}
+body.page-home .header-discovery:hover{
+  color: #898433;
+  border-bottom-color: rgba(137, 132, 51, 0.55);
+}
+body.page-home .nav-toggle{
+  border-color: rgba(40, 44, 21, 0.22);
+  background: rgba(229, 222, 202, 0.5);
+}
+body.page-home .nav-toggle-lines::before,
+body.page-home .nav-toggle-lines::after{
+  background: #282C15;
+}
+body.page-home .brand-mark{
+  filter: brightness(0);
+  opacity: 0.92;
+}
+
+/* Buttons */
+body.page-home .button{
+  color: #282C15;
+  background: rgba(229, 222, 202, 0.88);
+  border-color: rgba(40, 44, 21, 0.16);
+}
+body.page-home .button:hover{
+  background: #E5DECA;
+}
+body.page-home .button.primary,
+body.page-home .hero-card .button.primary{
+  background: #898433;
+  color: #282C15;
+  border-color: rgba(40, 44, 21, 0.28);
+}
+body.page-home .button.primary:hover,
+body.page-home .hero-card .button.primary:hover{
+  background: #45441A;
+  color: #E5DECA;
+  border-color: rgba(40, 44, 21, 0.4);
+}
+body.page-home .button.ghost,
+body.page-home .hero-card .button.ghost{
+  background: #7E9DA2;
+  color: #282C15;
+  border-color: rgba(40, 44, 21, 0.22);
+}
+body.page-home .button.ghost:hover,
+body.page-home .hero-card .button.ghost:hover{
+  background: color-mix(in srgb, #7E9DA2 82%, #282C15);
+  color: #282C15;
+}
+
+/* Light surfaces / cards */
+body.page-home .noble-intro-band,
+body.page-home .home-stats-strip,
+body.page-home .home-who-we-are-split,
+body.page-home .home-services-horiz,
+body.page-home #services.section-alt,
+body.page-home .home-client-voices.section-alt,
+body.page-home .home-featured-section{
+  background: #E5DECA;
+  --home-services-bg: #E5DECA;
+}
+body.page-home .noble-intro-band,
+body.page-home .home-stats-strip,
+body.page-home .home-who-we-are-split,
+body.page-home .home-featured-section{
+  border-color: rgba(40, 44, 21, 0.1);
+}
+body.page-home .home-stats-strip{
+  border-top-color: #7E9DA2;
+}
+body.page-home .noble-intro-side{
+  color: #898433;
+}
+body.page-home .home-who-we-are-split__title,
+body.page-home .home-services-horiz__title,
+body.page-home .home-featured-title{
+  color: #45441A;
+}
+body.page-home .home-who-we-are-split__lead,
+body.page-home .home-featured-lead,
+body.page-home .home-featured-kicker{
+  color: rgba(40, 44, 21, 0.68);
+}
+body.page-home .home-featured-kicker{
+  color: #7E9DA2;
+}
+
+/* Stats — avocado figures on cream */
+body.page-home .home-stats-figure,
+body.page-home .home-stats-label{
+  color: #898433;
+}
+body.page-home .home-stats-cell:not(:last-child)::after{
+  background: #898433;
+}
+
+/* Services accordion — olive field, avocado active/CTA */
+body.page-home .home-services-horiz{
+  --home-services-forest: #45441A;
+}
+body.page-home .home-services-horiz__acc.service-horiz-acc{
+  background: #45441A;
+  border-color: rgba(229, 222, 202, 0.18);
+}
+body.page-home .home-services-horiz__acc .service-horiz-tab{
+  background: #45441A;
+  color: #E5DECA;
+  border-left-color: rgba(229, 222, 202, 0.16);
+}
+body.page-home .home-services-horiz__acc .service-horiz-tab[aria-expanded="true"]{
+  background: #898433;
+  color: #282C15;
+}
+body.page-home .home-services-horiz__acc .service-horiz-tab:hover{
+  background: color-mix(in srgb, #45441A 70%, #898433);
+  color: #E5DECA;
+}
+body.page-home .home-services-horiz__acc .service-horiz-tab[aria-expanded="true"]:hover{
+  background: #898433;
+  color: #282C15;
+}
+body.page-home .home-services-horiz__cta.button.primary{
+  background: #898433;
+  color: #282C15;
+  border-color: rgba(40, 44, 21, 0.28);
+}
+body.page-home .home-services-horiz__cta.button.primary:hover{
+  background: #282C15;
+  color: #E5DECA;
+}
+
+/* Recent projects showcase */
+body.page-home .home-recent-projects--showcase{
+  background: #E5DECA;
+  color: #282C15;
+}
+body.page-home .home-recent-projects--showcase .home-recent-projects__title,
+body.page-home .home-recent-projects--showcase .home-recent-projects__portfolio-link{
+  color: #45441A;
+}
+body.page-home .home-recent-projects--showcase .home-recent-projects__portfolio-link{
+  border-bottom-color: #7E9DA2;
+}
+body.page-home .home-recent-projects--showcase .home-recent-projects__portfolio-link:hover{
+  border-bottom-color: #45441A;
+}
+body.page-home .home-recent-projects--showcase .home-recent-projects__portfolio-link:focus-visible,
+body.page-home .home-recent-projects--showcase .home-recent-projects__card:focus-visible{
+  outline-color: #45441A;
+}
+body.page-home .home-recent-projects--showcase .home-recent-projects__card,
+body.page-home .home-recent-projects--showcase .home-recent-projects__cell--large .home-recent-projects__card{
+  background: color-mix(in srgb, #7E9DA2 22%, #E5DECA);
+  color: #282C15;
+}
+
+/* Client Voices */
+body.page-home .home-client-voices__panel--cream{
+  background: #E5DECA;
+}
+body.page-home .home-client-voices__panel--tan{
+  background: color-mix(in srgb, #7E9DA2 28%, #E5DECA);
+}
+body.page-home .home-client-voices__quote p{
+  color: #282C15;
+}
+body.page-home .home-client-voices__body{
+  color: rgba(40, 44, 21, 0.78);
+}
+body.page-home .home-client-voices__attr{
+  color: #45441A;
+}
+
+/* Partners — olive band, cream type */
+body.page-home .home-partners-strip{
+  background: #45441A;
+  color: #E5DECA;
+  border-top-color: rgba(229, 222, 202, 0.14);
+  border-bottom-color: rgba(229, 222, 202, 0.12);
+}
+body.page-home .home-partners-strip__title{
+  color: #E5DECA;
+}
+body.page-home .home-partners-strip__link:focus-visible{
+  outline-color: #E5DECA;
+}
+
+/* Featured blog cards */
+body.page-home .portfolio-mag-card__cat{
+  color: #7E9DA2;
+}
+body.page-home .portfolio-mag-card__title{
+  color: #45441A;
+}
+body.page-home .portfolio-mag-card__excerpt{
+  color: rgba(40, 44, 21, 0.62);
+}
+body.page-home .portfolio-mag-card__title::after{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 6' preserveAspectRatio='none'%3E%3Cpath d='M0 4.2 Q120 1.6 240 4.2' fill='none' stroke='%23898433' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* Instagram pre-footer — olive band */
+body.page-home .home-instagram-strip{
+  background: #45441A;
+  color: #E5DECA;
+}
+body.page-home .instagram-feed-section__location{
+  color: #E5DECA;
+}
+body.page-home .instagram-feed-section__cta{
+  color: #E5DECA;
+}
+body.page-home .instagram-feed-section__cta:hover,
+body.page-home .instagram-feed-section__cta:focus-visible{
+  color: #E5DECA;
+  opacity: 0.88;
+}
+body.page-home .instagram-feed-section__cta:focus-visible{
+  outline-color: #E5DECA;
+}
+
+/* Footer — dark green */
+body.page-home .site-footer{
+  background: #282C15;
+  color: #E5DECA;
+  border-top-color: rgba(229, 222, 202, 0.14);
+}
+body.page-home .footer-bio-text,
+body.page-home .footer-center-copyright,
+body.page-home .footer-col a,
+body.page-home .footer-social-link{
+  color: rgba(229, 222, 202, 0.9);
+}
+body.page-home .footer-col h3,
+body.page-home .footer-center-cta{
+  color: #E5DECA !important;
+}
+body.page-home .footer-center-cta{
+  border-bottom-color: rgba(229, 222, 202, 0.5);
+}
+body.page-home .footer-center-cta:hover{
+  border-bottom-color: rgba(229, 222, 202, 0.8);
+}
+body.page-home .footer-col a:hover,
+body.page-home .footer-social-link:hover{
+  color: #E5DECA;
+}
+body.page-home .footer-referral{
+  color: rgba(229, 222, 202, 0.78);
+}
+body.page-home .footer-col .footer-referral a{
+  color: #7E9DA2;
+}
+body.page-home .footer-col .footer-referral a:hover{
+  color: #E5DECA;
+}
+
+/* Focus rings on homepage */
+body.page-home :focus-visible{
+  outline-color: #898433;
+}
+
+
 
 
 
