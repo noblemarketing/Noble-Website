@@ -16038,8 +16038,6 @@ body.page-home .hero-card .button.ghost:hover{
 
 /* Light surfaces / cards */
 body.page-home .noble-intro-band,
-body.page-home .home-stats-strip,
-body.page-home .home-who-we-are-split,
 body.page-home .home-services-horiz,
 body.page-home #services.section-alt,
 body.page-home .home-client-voices.section-alt,
@@ -16047,14 +16045,12 @@ body.page-home .home-featured-section{
   background: #E5DECA;
   --home-services-bg: #E5DECA;
 }
+body.page-home .home-who-we-are-split{
+  background: #fff;
+}
 body.page-home .noble-intro-band,
-body.page-home .home-stats-strip,
-body.page-home .home-who-we-are-split,
 body.page-home .home-featured-section{
   border-color: rgba(40, 44, 21, 0.1);
-}
-body.page-home .home-stats-strip{
-  border-top-color: #7E9DA2;
 }
 body.page-home .noble-intro-side{
   color: #282C15;
@@ -16073,13 +16069,19 @@ body.page-home .home-featured-kicker{
   color: #7E9DA2;
 }
 
-/* Stats — dark green figures on cream */
+/* Stats — ocean blue field, white type */
+body.page-home .home-stats-strip{
+  background: #7E9DA2;
+  border-top-color: #7E9DA2;
+  color: #fff;
+}
 body.page-home .home-stats-figure,
+body.page-home .home-stats-affix,
 body.page-home .home-stats-label{
-  color: #282C15;
+  color: #fff;
 }
 body.page-home .home-stats-cell:not(:last-child)::after{
-  background: #282C15;
+  background: #fff;
 }
 
 /* Services accordion — dark green field and active/CTA */
