@@ -1055,7 +1055,7 @@ body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
   .home-recent-projects--showcase .home-recent-projects__cell:not(.home-recent-projects__cell--large):not(.home-recent-projects__cell--top){
     grid-column: auto;
   }
-  .home-recent-projects--showcase .home-recent-projects__cell:nth-child(5){
+  .home-recent-projects--showcase .home-recent-projects__cell:nth-child(5):not(.home-recent-projects__cell--large):not(.home-recent-projects__cell--top){
     grid-column: 1 / -1;
     width: calc((100% - clamp(4px, 0.6vw, 8px)) / 2);
     justify-self: center;
@@ -1079,7 +1079,7 @@ body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
   .home-recent-projects--showcase .home-recent-projects__cell:not(.home-recent-projects__cell--large):not(.home-recent-projects__cell--top){
     grid-column: auto;
   }
-  .home-recent-projects--showcase .home-recent-projects__cell:nth-child(5){
+  .home-recent-projects--showcase .home-recent-projects__cell:nth-child(5):not(.home-recent-projects__cell--large):not(.home-recent-projects__cell--top){
     grid-column: 1 / -1;
     width: calc((100% - clamp(4px, 0.6vw, 8px)) / 2);
     justify-self: center;
