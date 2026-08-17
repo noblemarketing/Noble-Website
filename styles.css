@@ -13564,15 +13564,15 @@ a.project-card{
   border-left: 0;
 }
 .service-horiz-tab[aria-expanded="true"]{
-  background: #3a4840;
+  background: #282C15;
   color: #fff;
 }
 .service-horiz-tab:hover{
-  background: #445346;
+  background: #282C15;
   color: #fff;
 }
 .service-horiz-tab[aria-expanded="true"]:hover{
-  background: #4d5e50;
+  background: #282C15;
   color: #fff;
 }
 .service-horiz-tab:focus-visible{
@@ -13699,7 +13699,7 @@ a.project-card{
 /* Home — horizontal services accordion (tabs start right; dock left on open) */
 .home-services-horiz{
   --home-services-bg: #ffffff;
-  --home-services-forest: #2d3b33;
+  --home-services-forest: #282C15;
   background: var(--home-services-bg);
   padding-top: clamp(40px, 6vw, 72px);
   padding-bottom: clamp(48px, 7vw, 88px);
@@ -13756,10 +13756,10 @@ a.project-card{
   text-size-adjust: 100%;
 }
 .home-services-horiz__acc .service-horiz-tab[aria-expanded="true"]{
-  background: #35463d;
+  background: #282C15;
 }
 .home-services-horiz__acc .service-horiz-tab:hover{
-  background: #3d5046;
+  background: #282C15;
 }
 .service-horiz-tabs--left:empty{
   flex: 0 0 0;
@@ -14780,7 +14780,7 @@ input:focus, select:focus, textarea:focus{
 /* Home — social + Instagram strip above footer */
 .home-instagram-strip{
   border-top: none;
-  background: #586358;
+  background: #282C15;
   color: #f7f1e6;
 }
 .home-instagram-strip.instagram-feed-section{
@@ -16188,6 +16188,7 @@ body.page-home .portfolio-mag-card__title::after{
 }
 
 /* Instagram pre-footer — dark green band */
+body.page-home section.home-instagram-strip.site-instagram-prefooter,
 body.page-home .home-instagram-strip{
   background: #282C15;
   color: #E5DECA;
