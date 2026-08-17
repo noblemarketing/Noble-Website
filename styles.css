@@ -13564,15 +13564,15 @@ a.project-card{
   border-left: 0;
 }
 .service-horiz-tab[aria-expanded="true"]{
-  background: #282C15;
+  background: #3a4840;
   color: #fff;
 }
 .service-horiz-tab:hover{
-  background: #282C15;
+  background: #445346;
   color: #fff;
 }
 .service-horiz-tab[aria-expanded="true"]:hover{
-  background: #282C15;
+  background: #4d5e50;
   color: #fff;
 }
 .service-horiz-tab:focus-visible{
@@ -13699,7 +13699,7 @@ a.project-card{
 /* Home — horizontal services accordion (tabs start right; dock left on open) */
 .home-services-horiz{
   --home-services-bg: #ffffff;
-  --home-services-forest: #282C15;
+  --home-services-forest: #2d3b33;
   background: var(--home-services-bg);
   padding-top: clamp(40px, 6vw, 72px);
   padding-bottom: clamp(48px, 7vw, 88px);
@@ -13756,10 +13756,10 @@ a.project-card{
   text-size-adjust: 100%;
 }
 .home-services-horiz__acc .service-horiz-tab[aria-expanded="true"]{
-  background: #282C15;
+  background: #35463d;
 }
 .home-services-horiz__acc .service-horiz-tab:hover{
-  background: #282C15;
+  background: #3d5046;
 }
 .service-horiz-tabs--left:empty{
   flex: 0 0 0;
@@ -14780,7 +14780,7 @@ input:focus, select:focus, textarea:focus{
 /* Home — social + Instagram strip above footer */
 .home-instagram-strip{
   border-top: none;
-  background: #282C15;
+  background: #586358;
   color: #f7f1e6;
 }
 .home-instagram-strip.instagram-feed-section{
@@ -15918,340 +15918,6 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
 @media (prefers-reduced-motion: reduce){
   *{scroll-behavior:auto !important; transition:none !important; animation:none !important}
 }
-
-/* ==========================================================================
-   Homepage palette preview (body.page-home only)
-   Backgrounds only: white #ffffff · ocean blue #7E9DA2 · tan #C6BDA5
-   Other pages keep :root moss / cream / earth tokens unchanged.
-   ========================================================================== */
-body.page-home{
-  --cream: #ffffff;
-  --tan: #C6BDA5;
-  --ocean: #7E9DA2;
-  --avocado: #282C15;
-  --olive: #282C15;
-  --dark-green: #282C15;
-
-  /* Existing tokens remapped for descendants that already use var(--*) */
-  --bg: #282C15;
-  --bg2: #282C15;
-  --paper: #ffffff;
-  --paper2: #ffffff;
-  --ink: #282C15;
-  --muted: rgba(40, 44, 21, 0.72);
-  --line: rgba(40, 44, 21, 0.16);
-  --earth: #7E9DA2;
-  --earth2: #7E9DA2;
-  --moss: #282C15;
-  --clay: #7E9DA2;
-  --color-surface: #ffffff;
-  --color-border: color-mix(in srgb, #282C15 18%, #ffffff);
-  --color-text-muted: #282C15;
-
-  color: var(--dark-green);
-  background-color: #ffffff;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23a)' opacity='0.07'/%3E%3C/svg%3E"),
-    url("./graphics/noble-stamp-1.svg"),
-    url("./graphics/noble-stamp-2.svg"),
-    url("./graphics/noble-stamp-3.svg"),
-    radial-gradient(1400px 900px at 20% -10%, rgba(255, 255, 255, 0), transparent 55%),
-    radial-gradient(900px 700px at 110% 20%, rgba(198, 189, 165, 0.28), transparent 55%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.95));
-}
-
-/* Header / nav */
-body.page-home .site-header,
-body.page-home .site-header.is-elevated,
-body.page-home .site-header.home-header--pinned-top{
-  background: rgba(255, 255, 255, 0.9);
-  border-bottom-color: rgba(40, 44, 21, 0.12);
-}
-body.page-home .site-header.is-elevated{
-  background: rgba(255, 255, 255, 0.96);
-}
-body.page-home .nav-link{
-  color: rgba(40, 44, 21, 0.82);
-}
-body.page-home .nav-link:hover{
-  color: #282C15;
-  border-bottom-color: rgba(126, 157, 162, 0.7);
-}
-body.page-home .nav-link.is-active,
-body.page-home .nav-link[aria-current="page"],
-body.page-home .nav-dropdown:has(.nav-dropdown-link[aria-current="page"]) > .nav-link{
-  color: #282C15;
-  border-bottom-color: #282C15;
-}
-body.page-home .header-discovery{
-  color: #282C15;
-}
-body.page-home .header-discovery:hover{
-  color: #282C15;
-  border-bottom-color: rgba(40, 44, 21, 0.55);
-}
-body.page-home .nav-toggle{
-  border-color: rgba(40, 44, 21, 0.22);
-  background: rgba(255, 255, 255, 0.5);
-}
-body.page-home .nav-toggle-lines::before,
-body.page-home .nav-toggle-lines::after{
-  background: #282C15;
-}
-body.page-home .brand-mark{
-  filter: brightness(0);
-  opacity: 0.92;
-}
-
-/* Buttons */
-body.page-home .button{
-  color: #282C15;
-  background: #fff;
-  border-color: rgba(40, 44, 21, 0.16);
-}
-body.page-home .button:hover{
-  background: #fff;
-}
-body.page-home .button.primary,
-body.page-home .hero-card .button.primary{
-  background: #7E9DA2;
-  color: #fff;
-  border-color: rgba(40, 44, 21, 0.18);
-}
-body.page-home .button.primary:hover,
-body.page-home .hero-card .button.primary:hover{
-  background: color-mix(in srgb, #7E9DA2 82%, #282C15);
-  color: #fff;
-  border-color: rgba(40, 44, 21, 0.28);
-}
-body.page-home .button.ghost,
-body.page-home .hero-card .button.ghost{
-  background: #7E9DA2;
-  color: #282C15;
-  border-color: rgba(40, 44, 21, 0.22);
-}
-body.page-home .button.ghost:hover,
-body.page-home .hero-card .button.ghost:hover{
-  background: color-mix(in srgb, #7E9DA2 82%, #282C15);
-  color: #282C15;
-}
-
-/* Light surfaces / cards */
-body.page-home .home-services-horiz,
-body.page-home #services.section-alt,
-body.page-home .home-featured-section{
-  background: #fff;
-  --home-services-bg: #fff;
-}
-body.page-home .home-who-we-are-split,
-body.page-home .noble-intro-band{
-  background: #fff;
-}
-body.page-home .home-featured-section{
-  border-color: rgba(40, 44, 21, 0.1);
-}
-body.page-home .noble-intro-side{
-  color: #282C15;
-}
-body.page-home .home-who-we-are-split__title,
-body.page-home .home-services-horiz__title,
-body.page-home .home-featured-title{
-  color: #282C15;
-}
-body.page-home .home-who-we-are-split__lead,
-body.page-home .home-featured-lead,
-body.page-home .home-featured-kicker{
-  color: rgba(40, 44, 21, 0.68);
-}
-body.page-home .home-featured-kicker{
-  color: #7E9DA2;
-}
-
-/* Stats — ocean blue field, white type */
-body.page-home .home-stats-strip{
-  background: #7E9DA2;
-  border-top-color: #7E9DA2;
-  color: #fff;
-}
-body.page-home .home-stats-figure,
-body.page-home .home-stats-affix,
-body.page-home .home-stats-label{
-  color: #fff;
-}
-body.page-home .home-stats-cell:not(:last-child)::after{
-  background: #fff;
-}
-
-/* Services accordion — ocean blue field, white type */
-body.page-home .home-services-horiz{
-  --home-services-forest: #7E9DA2;
-}
-body.page-home .home-services-horiz__acc.service-horiz-acc{
-  background: #7E9DA2;
-  border-color: rgba(255, 255, 255, 0.22);
-}
-body.page-home .home-services-horiz__acc .service-horiz-tab{
-  background: #7E9DA2;
-  color: #fff;
-  border-left-color: rgba(255, 255, 255, 0.22);
-}
-body.page-home .home-services-horiz__acc .service-horiz-tab[aria-expanded="true"]{
-  background: #C6BDA5;
-  color: #282C15;
-}
-body.page-home .home-services-horiz__acc .service-horiz-tab:hover{
-  background: color-mix(in srgb, #7E9DA2 70%, #C6BDA5);
-  color: #fff;
-}
-body.page-home .home-services-horiz__acc .service-horiz-tab[aria-expanded="true"]:hover{
-  background: #C6BDA5;
-  color: #282C15;
-}
-body.page-home .home-services-horiz__cta.button.primary{
-  background: #fff;
-  color: #282C15;
-  border-color: rgba(40, 44, 21, 0.16);
-}
-body.page-home .home-services-horiz__cta.button.primary:hover{
-  background: #C6BDA5;
-  color: #282C15;
-}
-
-/* Recent projects showcase — tan field */
-body.page-home .home-recent-projects--showcase{
-  background: #C6BDA5;
-  color: #282C15;
-}
-body.page-home .home-recent-projects--showcase .home-recent-projects__title,
-body.page-home .home-recent-projects--showcase .home-recent-projects__portfolio-link{
-  color: #282C15;
-}
-body.page-home .home-recent-projects--showcase .home-recent-projects__portfolio-link{
-  border-bottom-color: #7E9DA2;
-}
-body.page-home .home-recent-projects--showcase .home-recent-projects__portfolio-link:hover{
-  border-bottom-color: #282C15;
-}
-body.page-home .home-recent-projects--showcase .home-recent-projects__portfolio-link:focus-visible,
-body.page-home .home-recent-projects--showcase .home-recent-projects__card:focus-visible{
-  outline-color: #282C15;
-}
-body.page-home .home-recent-projects--showcase .home-recent-projects__card,
-body.page-home .home-recent-projects--showcase .home-recent-projects__cell--large .home-recent-projects__card{
-  background: #fff;
-  color: #282C15;
-}
-
-/* Client Voices — tan / white panels */
-body.page-home .home-client-voices.section-alt{
-  background: #fff;
-}
-body.page-home .home-client-voices__panel--cream{
-  background: #C6BDA5;
-}
-body.page-home .home-client-voices__panel--tan{
-  background: #fff;
-}
-body.page-home .home-client-voices__quote p{
-  color: #282C15;
-}
-body.page-home .home-client-voices__body{
-  color: rgba(40, 44, 21, 0.78);
-}
-body.page-home .home-client-voices__attr{
-  color: #282C15;
-}
-
-/* Partners — ocean blue so knockout logos stay visible */
-body.page-home .home-partners-strip{
-  background: #7E9DA2;
-  color: #fff;
-  border-top-color: rgba(255, 255, 255, 0.18);
-  border-bottom-color: rgba(255, 255, 255, 0.14);
-}
-body.page-home .home-partners-strip__title{
-  color: #fff;
-}
-body.page-home .home-partners-strip__link:focus-visible{
-  outline-color: #fff;
-}
-
-/* Featured blog cards */
-body.page-home .portfolio-mag-card__cat{
-  color: #7E9DA2;
-}
-body.page-home .portfolio-mag-card__title{
-  color: #282C15;
-}
-body.page-home .portfolio-mag-card__excerpt{
-  color: rgba(40, 44, 21, 0.62);
-}
-body.page-home .portfolio-mag-card__title::after{
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 6' preserveAspectRatio='none'%3E%3Cpath d='M0 4.2 Q120 1.6 240 4.2' fill='none' stroke='%23282C15' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E");
-}
-
-/* Instagram pre-footer — tan band, dark type */
-body.page-home section.home-instagram-strip.site-instagram-prefooter,
-body.page-home .home-instagram-strip{
-  background: #C6BDA5;
-  color: #282C15;
-}
-body.page-home .instagram-feed-section__location{
-  color: #282C15;
-}
-body.page-home .instagram-feed-section__cta{
-  color: #282C15;
-}
-body.page-home .instagram-feed-section__cta:hover,
-body.page-home .instagram-feed-section__cta:focus-visible{
-  color: #282C15;
-  opacity: 0.88;
-}
-body.page-home .instagram-feed-section__cta:focus-visible{
-  outline-color: #282C15;
-}
-
-/* Footer — tan field, dark type */
-body.page-home .site-footer{
-  background: #C6BDA5;
-  color: #282C15;
-  border-top-color: rgba(40, 44, 21, 0.14);
-}
-body.page-home .footer-bio-text,
-body.page-home .footer-center-copyright,
-body.page-home .footer-col a,
-body.page-home .footer-social-link{
-  color: rgba(40, 44, 21, 0.88);
-}
-body.page-home .footer-col h3,
-body.page-home .footer-center-cta{
-  color: #282C15 !important;
-}
-body.page-home .footer-center-cta{
-  border-bottom-color: rgba(40, 44, 21, 0.45);
-}
-body.page-home .footer-center-cta:hover{
-  border-bottom-color: rgba(40, 44, 21, 0.8);
-}
-body.page-home .footer-col a:hover,
-body.page-home .footer-social-link:hover{
-  color: #282C15;
-}
-body.page-home .footer-referral{
-  color: rgba(40, 44, 21, 0.72);
-}
-body.page-home .footer-col .footer-referral a{
-  color: #282C15;
-}
-body.page-home .footer-col .footer-referral a:hover{
-  color: #282C15;
-}
-
-/* Focus rings on homepage */
-body.page-home :focus-visible{
-  outline-color: #282C15;
-}
-
 
 
 
