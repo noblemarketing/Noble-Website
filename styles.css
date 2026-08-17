@@ -15921,19 +15921,20 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
 
 /* ==========================================================================
    Homepage palette preview (body.page-home only)
-   Cream #E5DECA · Ocean Blue #7E9DA2 · Avocado #898433 · Olive #45441A · Dark Green #282C15
+   Cream #E5DECA · Ocean Blue #7E9DA2 · Dark Green #282C15
+   Avocado and olive yellow-greens are removed; dark bands match the footer.
    Other pages keep :root moss / cream / earth tokens unchanged.
    ========================================================================== */
 body.page-home{
   --cream: #E5DECA;
   --ocean: #7E9DA2;
-  --avocado: #898433;
-  --olive: #45441A;
+  --avocado: #282C15;
+  --olive: #282C15;
   --dark-green: #282C15;
 
   /* Existing tokens remapped for descendants that already use var(--*) */
   --bg: #282C15;
-  --bg2: #45441A;
+  --bg2: #282C15;
   --paper: #E5DECA;
   --paper2: #E5DECA;
   --ink: #282C15;
@@ -15941,11 +15942,11 @@ body.page-home{
   --line: rgba(40, 44, 21, 0.16);
   --earth: #7E9DA2;
   --earth2: #7E9DA2;
-  --moss: #898433; /* primary accent → avocado */
+  --moss: #282C15;
   --clay: #7E9DA2;
   --color-surface: #E5DECA;
-  --color-border: color-mix(in srgb, #45441A 18%, #E5DECA);
-  --color-text-muted: #45441A;
+  --color-border: color-mix(in srgb, #282C15 18%, #E5DECA);
+  --color-text-muted: #282C15;
 
   color: var(--dark-green);
   background-color: #E5DECA;
@@ -15955,7 +15956,7 @@ body.page-home{
     url("./graphics/noble-stamp-2.svg"),
     url("./graphics/noble-stamp-3.svg"),
     radial-gradient(1400px 900px at 20% -10%, rgba(229, 222, 202, 0), transparent 55%),
-    radial-gradient(900px 700px at 110% 20%, rgba(137, 132, 51, 0.16), transparent 55%),
+    radial-gradient(900px 700px at 110% 20%, rgba(40, 44, 21, 0.16), transparent 55%),
     linear-gradient(180deg, rgba(229, 222, 202, 0.92), rgba(229, 222, 202, 0.95));
 }
 
@@ -15980,14 +15981,14 @@ body.page-home .nav-link.is-active,
 body.page-home .nav-link[aria-current="page"],
 body.page-home .nav-dropdown:has(.nav-dropdown-link[aria-current="page"]) > .nav-link{
   color: #282C15;
-  border-bottom-color: #898433;
+  border-bottom-color: #282C15;
 }
 body.page-home .header-discovery{
   color: #282C15;
 }
 body.page-home .header-discovery:hover{
-  color: #898433;
-  border-bottom-color: rgba(137, 132, 51, 0.55);
+  color: #282C15;
+  border-bottom-color: rgba(40, 44, 21, 0.55);
 }
 body.page-home .nav-toggle{
   border-color: rgba(40, 44, 21, 0.22);
@@ -16013,13 +16014,13 @@ body.page-home .button:hover{
 }
 body.page-home .button.primary,
 body.page-home .hero-card .button.primary{
-  background: #898433;
-  color: #282C15;
+  background: #282C15;
+  color: #E5DECA;
   border-color: rgba(40, 44, 21, 0.28);
 }
 body.page-home .button.primary:hover,
 body.page-home .hero-card .button.primary:hover{
-  background: #45441A;
+  background: #282C15;
   color: #E5DECA;
   border-color: rgba(40, 44, 21, 0.4);
 }
@@ -16056,12 +16057,12 @@ body.page-home .home-stats-strip{
   border-top-color: #7E9DA2;
 }
 body.page-home .noble-intro-side{
-  color: #898433;
+  color: #282C15;
 }
 body.page-home .home-who-we-are-split__title,
 body.page-home .home-services-horiz__title,
 body.page-home .home-featured-title{
-  color: #45441A;
+  color: #282C15;
 }
 body.page-home .home-who-we-are-split__lead,
 body.page-home .home-featured-lead,
@@ -16072,43 +16073,43 @@ body.page-home .home-featured-kicker{
   color: #7E9DA2;
 }
 
-/* Stats — avocado figures on cream */
+/* Stats — dark green figures on cream */
 body.page-home .home-stats-figure,
 body.page-home .home-stats-label{
-  color: #898433;
+  color: #282C15;
 }
 body.page-home .home-stats-cell:not(:last-child)::after{
-  background: #898433;
+  background: #282C15;
 }
 
-/* Services accordion — olive field, avocado active/CTA */
+/* Services accordion — dark green field and active/CTA */
 body.page-home .home-services-horiz{
-  --home-services-forest: #45441A;
+  --home-services-forest: #282C15;
 }
 body.page-home .home-services-horiz__acc.service-horiz-acc{
-  background: #45441A;
+  background: #282C15;
   border-color: rgba(229, 222, 202, 0.18);
 }
 body.page-home .home-services-horiz__acc .service-horiz-tab{
-  background: #45441A;
+  background: #282C15;
   color: #E5DECA;
   border-left-color: rgba(229, 222, 202, 0.16);
 }
 body.page-home .home-services-horiz__acc .service-horiz-tab[aria-expanded="true"]{
-  background: #898433;
-  color: #282C15;
+  background: #282C15;
+  color: #E5DECA;
 }
 body.page-home .home-services-horiz__acc .service-horiz-tab:hover{
-  background: color-mix(in srgb, #45441A 70%, #898433);
+  background: color-mix(in srgb, #282C15 70%, #282C15);
   color: #E5DECA;
 }
 body.page-home .home-services-horiz__acc .service-horiz-tab[aria-expanded="true"]:hover{
-  background: #898433;
-  color: #282C15;
+  background: #282C15;
+  color: #E5DECA;
 }
 body.page-home .home-services-horiz__cta.button.primary{
-  background: #898433;
-  color: #282C15;
+  background: #282C15;
+  color: #E5DECA;
   border-color: rgba(40, 44, 21, 0.28);
 }
 body.page-home .home-services-horiz__cta.button.primary:hover{
@@ -16123,17 +16124,17 @@ body.page-home .home-recent-projects--showcase{
 }
 body.page-home .home-recent-projects--showcase .home-recent-projects__title,
 body.page-home .home-recent-projects--showcase .home-recent-projects__portfolio-link{
-  color: #45441A;
+  color: #282C15;
 }
 body.page-home .home-recent-projects--showcase .home-recent-projects__portfolio-link{
   border-bottom-color: #7E9DA2;
 }
 body.page-home .home-recent-projects--showcase .home-recent-projects__portfolio-link:hover{
-  border-bottom-color: #45441A;
+  border-bottom-color: #282C15;
 }
 body.page-home .home-recent-projects--showcase .home-recent-projects__portfolio-link:focus-visible,
 body.page-home .home-recent-projects--showcase .home-recent-projects__card:focus-visible{
-  outline-color: #45441A;
+  outline-color: #282C15;
 }
 body.page-home .home-recent-projects--showcase .home-recent-projects__card,
 body.page-home .home-recent-projects--showcase .home-recent-projects__cell--large .home-recent-projects__card{
@@ -16155,12 +16156,12 @@ body.page-home .home-client-voices__body{
   color: rgba(40, 44, 21, 0.78);
 }
 body.page-home .home-client-voices__attr{
-  color: #45441A;
+  color: #282C15;
 }
 
-/* Partners — olive band, cream type */
+/* Partners — dark green band, cream type */
 body.page-home .home-partners-strip{
-  background: #45441A;
+  background: #282C15;
   color: #E5DECA;
   border-top-color: rgba(229, 222, 202, 0.14);
   border-bottom-color: rgba(229, 222, 202, 0.12);
@@ -16177,18 +16178,18 @@ body.page-home .portfolio-mag-card__cat{
   color: #7E9DA2;
 }
 body.page-home .portfolio-mag-card__title{
-  color: #45441A;
+  color: #282C15;
 }
 body.page-home .portfolio-mag-card__excerpt{
   color: rgba(40, 44, 21, 0.62);
 }
 body.page-home .portfolio-mag-card__title::after{
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 6' preserveAspectRatio='none'%3E%3Cpath d='M0 4.2 Q120 1.6 240 4.2' fill='none' stroke='%23898433' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 6' preserveAspectRatio='none'%3E%3Cpath d='M0 4.2 Q120 1.6 240 4.2' fill='none' stroke='%23282C15' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
-/* Instagram pre-footer — olive band */
+/* Instagram pre-footer — dark green band */
 body.page-home .home-instagram-strip{
-  background: #45441A;
+  background: #282C15;
   color: #E5DECA;
 }
 body.page-home .instagram-feed-section__location{
@@ -16244,7 +16245,7 @@ body.page-home .footer-col .footer-referral a:hover{
 
 /* Focus rings on homepage */
 body.page-home :focus-visible{
-  outline-color: #898433;
+  outline-color: #282C15;
 }
 
 
