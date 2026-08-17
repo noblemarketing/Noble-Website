@@ -559,10 +559,10 @@ body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
   max-width: 40rem;
 }
 .home-client-voices__panel--cream{
-  background: #ffffff;
+  background: #faf8f4;
 }
 .home-client-voices__panel--tan{
-  background: #ffffff;
+  background: #e9dfd2;
 }
 .home-client-voices__quote{
   margin: 0 0 clamp(18px, 2.5vw, 28px);
@@ -958,6 +958,114 @@ body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
   .home-recent-projects__cell--large .home-recent-projects__card{
     min-height: 0;
     aspect-ratio: 16 / 10;
+  }
+}
+
+/* Homepage recent projects — centered headline + four equal tiles */
+.home-recent-projects--showcase{
+  padding-block: clamp(72px, 10vw, 120px);
+  background: #edebe0;
+  border-top: none;
+  border-bottom: none;
+  color: #1a1816;
+}
+.home-recent-projects--showcase .container{
+  max-width: min(1280px, calc(100% - clamp(32px, 6vw, 80px)));
+}
+.home-recent-projects--showcase .home-recent-projects__header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+.home-recent-projects--showcase .home-recent-projects__title{
+  max-width: 18ch;
+  font-family: var(--font-body);
+  font-size: clamp(1.65rem, 3.4vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #1a1816;
+}
+.home-recent-projects--showcase .home-recent-projects__portfolio-link{
+  margin-top: clamp(14px, 1.8vw, 20px);
+  font-size: clamp(14px, 1.15vw, 16px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: #1a1816;
+  border-bottom: 1px solid #1a1816;
+  padding-bottom: 1px;
+}
+.home-recent-projects--showcase .home-recent-projects__portfolio-link:hover{
+  opacity: 0.7;
+  border-bottom-color: #1a1816;
+}
+.home-recent-projects--showcase .home-recent-projects__portfolio-link:focus-visible{
+  outline: 2px solid #1a1816;
+  outline-offset: 4px;
+}
+.home-recent-projects--showcase .home-recent-projects__grid{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(8px, 1vw, 12px);
+}
+.home-recent-projects--showcase .home-recent-projects__cell,
+.home-recent-projects--showcase .home-recent-projects__cell--large,
+.home-recent-projects--showcase .home-recent-projects__cell--top{
+  grid-column: auto;
+  grid-row: auto;
+}
+.home-recent-projects--showcase .home-recent-projects__card,
+.home-recent-projects--showcase .home-recent-projects__cell--large .home-recent-projects__card{
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+  border: none;
+  background: #d8d5cf;
+  color: #1a1816;
+}
+.home-recent-projects--showcase .home-recent-projects__card:hover{
+  border-color: transparent;
+  transform: none;
+}
+.home-recent-projects--showcase .home-recent-projects__card:focus-visible{
+  outline: 2px solid #1a1816;
+  outline-offset: 3px;
+}
+.home-recent-projects--showcase .home-recent-projects__caption{
+  display: none;
+}
+@media (max-width: 960px){
+  .home-recent-projects--showcase .home-recent-projects__grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .home-recent-projects--showcase .home-recent-projects__cell,
+  .home-recent-projects--showcase .home-recent-projects__cell--large,
+  .home-recent-projects--showcase .home-recent-projects__cell--top{
+    grid-column: auto;
+  }
+  .home-recent-projects--showcase .home-recent-projects__card,
+  .home-recent-projects--showcase .home-recent-projects__cell--large .home-recent-projects__card{
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+}
+@media (max-width: 560px){
+  .home-recent-projects--showcase .home-recent-projects__header{
+    align-items: center;
+  }
+  .home-recent-projects--showcase .home-recent-projects__grid{
+    grid-template-columns: 1fr 1fr;
+  }
+  .home-recent-projects--showcase .home-recent-projects__cell,
+  .home-recent-projects--showcase .home-recent-projects__cell--large,
+  .home-recent-projects--showcase .home-recent-projects__cell--top{
+    grid-column: auto;
+  }
+  .home-recent-projects--showcase .home-recent-projects__card,
+  .home-recent-projects--showcase .home-recent-projects__cell--large .home-recent-projects__card{
+    min-height: 0;
+    aspect-ratio: 4 / 5;
   }
 }
 
