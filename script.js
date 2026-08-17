@@ -250,6 +250,8 @@ function setupWorkCaseClientProfiles() {
     "work-hsf": {
       name: "Head Strong Flight",
       logo: "/client-logos/HSF.svg",
+      logoClass: "work-case-hsf-logo-mark",
+      logoInName: true,
       services: "Branding",
       niche: "Archery / Hunting",
       location: "PA",
@@ -1719,7 +1721,8 @@ function ensureInstagramStripFallbackLinked() {
 /** Ensure pre-footer Instagram strip exists on every page with a site footer. */
 function ensureNobleInstagramFeedMount() {
   if (document.body.classList.contains("page-services-hub")) return;
-  if (document.querySelector("[data-noble-instagram-feed]")) return;
+  /* Mid-page proof-grid mounts must not suppress the sitewide pre-footer. */
+  if (document.querySelector(".site-instagram-prefooter [data-noble-instagram-feed]")) return;
   const main = document.querySelector("main");
   if (!main) return;
 
@@ -1792,71 +1795,44 @@ function setupNobleInstagramHorizontalFeed() {
     return u ? `https://www.instagram.com/${encodeURIComponent(u)}/` : NOBLE_INSTAGRAM_PROFILE;
   };
 
-  const buildInner = (data) => {
-    if (!data || typeof data.username !== "string" || !Array.isArray(data.posts) || data.posts.length === 0) {
-      return null;
+  const feedPostThumbUrl = (post) => {
+    if (!post || typeof post !== "object") return "";
+    const local = typeof post.localThumb === "string" ? post.localThumb.trim() : "";
+    if (local && local.startsWith("/")) return local;
+    const sizes = post.sizes && typeof post.sizes === "object" ? post.sizes : null;
+    const fromSizes = (k) => {
+      const b = sizes && sizes[k] && typeof sizes[k].mediaUrl === "string" ? sizes[k].mediaUrl.trim() : "";
+      return b && !/\.mp4(\?|$)/i.test(b) ? b : "";
+    };
+    /* Prefer Behold-hosted sizes first — Instagram CDN URLs in thumbnailUrl/mediaUrl expire often and break thumbnails. */
+    const sz =
+      fromSizes("large") || fromSizes("medium") || fromSizes("full") || fromSizes("small");
+    if (sz) return sz;
+    const m = typeof post.mediaUrl === "string" ? post.mediaUrl.trim() : "";
+    if (m && !/\.mp4(\?|$)/i.test(m)) return m;
+    const t = typeof post.thumbnailUrl === "string" ? post.thumbnailUrl.trim() : "";
+    if (t && !/\.mp4(\?|$)/i.test(t)) return t;
+    const kids = Array.isArray(post.children) ? post.children : [];
+    for (let c = 0; c < kids.length; c++) {
+      const ch = kids[c];
+      const u = feedPostThumbUrl(ch);
+      if (u) return u;
     }
-    const username = String(data.username).replace(/^@/, "").trim();
-    if (!username) return null;
+    return "";
+  };
 
-    const wrap = document.createElement("div");
-    wrap.className = "instagram-feed-section__inner site-instagram-prefooter__inner";
+  const feedPostThumbFallbackUrl = (post) => {
+    if (!post || typeof post !== "object") return "";
+    const t = typeof post.thumbnailUrl === "string" ? post.thumbnailUrl.trim() : "";
+    if (t && !/\.mp4(\?|$)/i.test(t)) return t;
+    const m = typeof post.mediaUrl === "string" ? post.mediaUrl.trim() : "";
+    return m && !/\.mp4(\?|$)/i.test(m) ? m : "";
+  };
 
-    const location = document.createElement("p");
-    location.className = "instagram-feed-section__location";
-    location.textContent = "Boutique marketing studio · South Central Pennsylvania";
-
-    const row = document.createElement("div");
-    row.className = "instagram-feed-section__row";
-
-    const ctaCol = document.createElement("div");
-    ctaCol.className = "instagram-feed-section__cta-col";
-    const ctaLink = document.createElement("a");
-    ctaLink.className = "instagram-feed-section__cta";
-    ctaLink.href = profileHref(username);
-    ctaLink.target = "_blank";
-    ctaLink.rel = "noopener noreferrer";
-    ctaLink.innerHTML =
-      '<span class="instagram-feed-section__cta-line">Follow</span><span class="instagram-feed-section__cta-line">Noble</span>';
-    ctaCol.appendChild(ctaLink);
-
+  const createPostsRail = (data, imgOptions) => {
     const rail = document.createElement("div");
     rail.className = "instagram-feed-section__rail";
     rail.setAttribute("role", "list");
-
-    const feedPostThumbUrl = (post) => {
-      if (!post || typeof post !== "object") return "";
-      const local = typeof post.localThumb === "string" ? post.localThumb.trim() : "";
-      if (local && local.startsWith("/")) return local;
-      const sizes = post.sizes && typeof post.sizes === "object" ? post.sizes : null;
-      const fromSizes = (k) => {
-        const b = sizes && sizes[k] && typeof sizes[k].mediaUrl === "string" ? sizes[k].mediaUrl.trim() : "";
-        return b && !/\.mp4(\?|$)/i.test(b) ? b : "";
-      };
-      /* Prefer Behold-hosted sizes first — Instagram CDN URLs in thumbnailUrl/mediaUrl expire often and break thumbnails. */
-      const sz =
-        fromSizes("large") || fromSizes("medium") || fromSizes("full") || fromSizes("small");
-      if (sz) return sz;
-      const m = typeof post.mediaUrl === "string" ? post.mediaUrl.trim() : "";
-      if (m && !/\.mp4(\?|$)/i.test(m)) return m;
-      const t = typeof post.thumbnailUrl === "string" ? post.thumbnailUrl.trim() : "";
-      if (t && !/\.mp4(\?|$)/i.test(t)) return t;
-      const kids = Array.isArray(post.children) ? post.children : [];
-      for (let c = 0; c < kids.length; c++) {
-        const ch = kids[c];
-        const u = feedPostThumbUrl(ch);
-        if (u) return u;
-      }
-      return "";
-    };
-
-    const feedPostThumbFallbackUrl = (post) => {
-      if (!post || typeof post !== "object") return "";
-      const t = typeof post.thumbnailUrl === "string" ? post.thumbnailUrl.trim() : "";
-      if (t && !/\.mp4(\?|$)/i.test(t)) return t;
-      const m = typeof post.mediaUrl === "string" ? post.mediaUrl.trim() : "";
-      return m && !/\.mp4(\?|$)/i.test(m) ? m : "";
-    };
 
     const posts = data.posts.slice(0, 6);
     posts.forEach((post, i) => {
@@ -1888,6 +1864,20 @@ function setupNobleInstagramHorizontalFeed() {
       img.alt = "";
       img.loading = "lazy";
       img.decoding = "async";
+      if (imgOptions && imgOptions.fetchPriority) {
+        img.fetchPriority = imgOptions.fetchPriority;
+      }
+      if (imgOptions && imgOptions.sizes) {
+        img.sizes = imgOptions.sizes;
+      }
+      const dim =
+        post.sizes && typeof post.sizes === "object"
+          ? post.sizes.medium || post.sizes.large || post.sizes.small
+          : null;
+      if (dim && dim.width && dim.height) {
+        img.width = dim.width;
+        img.height = dim.height;
+      }
       const fbCandidates = [feedPostThumbFallbackUrl(post)].filter((u) => u && u !== thumb);
       if (fbCandidates.length) {
         let fbIndex = 0;
@@ -1914,7 +1904,52 @@ function setupNobleInstagramHorizontalFeed() {
       rail.appendChild(a);
     });
 
-    if (!rail.childElementCount) return null;
+    return rail.childElementCount ? rail : null;
+  };
+
+  const buildInner = (data, layout) => {
+    if (!data || typeof data.username !== "string" || !Array.isArray(data.posts) || data.posts.length === 0) {
+      return null;
+    }
+    const username = String(data.username).replace(/^@/, "").trim();
+    if (!username) return null;
+
+    if (layout === "proof-grid") {
+      const rail = createPostsRail(data, {
+        fetchPriority: "low",
+        sizes: "(max-width: 640px) 50vw, 33vw",
+      });
+      if (!rail) return null;
+      rail.classList.add("instagram-feed-section__rail--proof-grid");
+      const wrap = document.createElement("div");
+      wrap.className = "instagram-feed-section__inner instagram-feed-section__inner--proof-grid";
+      wrap.appendChild(rail);
+      return wrap;
+    }
+
+    const wrap = document.createElement("div");
+    wrap.className = "instagram-feed-section__inner site-instagram-prefooter__inner";
+
+    const location = document.createElement("p");
+    location.className = "instagram-feed-section__location";
+    location.textContent = "Boutique marketing studio · South Central Pennsylvania";
+
+    const row = document.createElement("div");
+    row.className = "instagram-feed-section__row";
+
+    const ctaCol = document.createElement("div");
+    ctaCol.className = "instagram-feed-section__cta-col";
+    const ctaLink = document.createElement("a");
+    ctaLink.className = "instagram-feed-section__cta";
+    ctaLink.href = profileHref(username);
+    ctaLink.target = "_blank";
+    ctaLink.rel = "noopener noreferrer";
+    ctaLink.innerHTML =
+      '<span class="instagram-feed-section__cta-line">Follow</span><span class="instagram-feed-section__cta-line">Noble</span>';
+    ctaCol.appendChild(ctaLink);
+
+    const rail = createPostsRail(data);
+    if (!rail) return null;
 
     const social = document.createElement("div");
     social.className = "instagram-feed-section__social footer-social";
@@ -1965,6 +2000,8 @@ function setupNobleInstagramHorizontalFeed() {
         ? window.NOBLE_INSTAGRAM_FEED_EMBEDDED
         : null;
 
+    /* TODO (optional): set window.NOBLE_INSTAGRAM_FEED_URL to a hosted feed JSON URL
+       (e.g. Behold) in the page <head> before script.js. Leave empty to use /instagram-feed.json. */
     const liveFeedUrl =
       typeof window !== "undefined" && typeof window.NOBLE_INSTAGRAM_FEED_URL === "string"
         ? window.NOBLE_INSTAGRAM_FEED_URL.trim()
@@ -2004,8 +2041,9 @@ function setupNobleInstagramHorizontalFeed() {
   const promise = fetchNobleInstagramFeedData();
 
   mounts.forEach((mount) => {
+    const layout = mount.getAttribute("data-noble-instagram-feed") === "proof-grid" ? "proof-grid" : "prefooter";
     promise.then((data) => {
-      const inner = buildInner(data);
+      const inner = buildInner(data, layout);
       mount.textContent = "";
       if (inner) {
         mount.appendChild(inner);

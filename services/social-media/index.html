@@ -173,6 +173,67 @@
             </ul>
           </article>
         </div>
+        <div class="social-package-compare" role="region" aria-label="Package comparison" tabindex="0">
+          <table class="social-package-compare__table">
+            <caption class="sr-only">Compare Starter, Foundational, Growth, and Premier Presence packages</caption>
+            <thead>
+              <tr>
+                <th scope="col"><span class="sr-only">Feature</span></th>
+                <th scope="col">Starter Presence</th>
+                <th scope="col">Foundational Presence</th>
+                <th scope="col" class="social-package-compare__col--featured" aria-label="Growth Presence, Most popular">
+                  <span class="social-package-compare__tier">Growth Presence</span>
+                  <span class="social-package-compare__popular">Most popular</span>
+                </th>
+                <th scope="col">Premier Presence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Posts per month</th>
+                <td>6</td>
+                <td>8</td>
+                <td class="social-package-compare__col--featured">10</td>
+                <td>12</td>
+              </tr>
+              <tr>
+                <th scope="row">On-brand post copy</th>
+                <td><span class="social-package-compare__yes" aria-hidden="true">✓</span><span class="sr-only">Included</span></td>
+                <td><span class="social-package-compare__yes" aria-hidden="true">✓</span><span class="sr-only">Included</span></td>
+                <td class="social-package-compare__col--featured"><span class="social-package-compare__yes" aria-hidden="true">✓</span><span class="sr-only">Included</span></td>
+                <td><span class="social-package-compare__yes" aria-hidden="true">✓</span><span class="sr-only">Included</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Monthly planning</th>
+                <td>Topic direction only</td>
+                <td>Planning aligned to monthly priorities</td>
+                <td class="social-package-compare__col--featured">Planning aligned to monthly priorities</td>
+                <td>Planning aligned to monthly priorities</td>
+              </tr>
+              <tr>
+                <th scope="row">Short-form video / reels</th>
+                <td><span class="social-package-compare__no" aria-hidden="true">—</span><span class="sr-only">Not included</span></td>
+                <td><span class="social-package-compare__no" aria-hidden="true">—</span><span class="sr-only">Not included</span></td>
+                <td class="social-package-compare__col--featured"><span class="social-package-compare__yes" aria-hidden="true">✓</span><span class="sr-only">Included</span></td>
+                <td>Reels emphasis</td>
+              </tr>
+              <tr>
+                <th scope="row">Scheduling &amp; go-live support</th>
+                <td><span class="social-package-compare__yes" aria-hidden="true">✓</span><span class="sr-only">Included</span></td>
+                <td><span class="social-package-compare__yes" aria-hidden="true">✓</span><span class="sr-only">Included</span></td>
+                <td class="social-package-compare__col--featured"><span class="social-package-compare__yes" aria-hidden="true">✓</span><span class="sr-only">Included</span></td>
+                <td><span class="social-package-compare__yes" aria-hidden="true">✓</span><span class="sr-only">Included</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Monthly strategy check-in</th>
+                <td><span class="social-package-compare__no" aria-hidden="true">—</span><span class="sr-only">Not included</span></td>
+                <td><span class="social-package-compare__yes" aria-hidden="true">✓</span><span class="sr-only">Included</span></td>
+                <td class="social-package-compare__col--featured"><span class="social-package-compare__yes" aria-hidden="true">✓</span><span class="sr-only">Included</span></td>
+                <td><span class="social-package-compare__yes" aria-hidden="true">✓</span><span class="sr-only">Included</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div class="package-grid-single-cta">
           <a class="package-card-btn package-card-btn--solid" href="/contact/">Book a Discovery Call</a>
         </div>
@@ -262,6 +323,30 @@
             </a>
           </li>
         </ul>
+      </div>
+    </section>
+    <section class="section section-social-proof-feed instagram-feed-section instagram-feed-section--proof-grid" data-reveal-on-scroll aria-labelledby="social-proof-feed-heading">
+      <div class="container">
+        <header class="section-social-proof-feed__header">
+          <h2 id="social-proof-feed-heading" class="section-title">Proof in the feed</h2>
+          <p class="lead">The same cohesive approach I bring to clients, on my own feed.</p>
+        </header>
+        <!--
+          Reuses the sitewide Instagram renderer (script.js + /instagram-feed.json + instagram-feed-fallback.js).
+          No Elfsight / SnapWidget / extra Behold embed — tiles come from the same 6-post payload as the pre-footer.
+
+          TODO (optional live remote feed): if you want JSON from a hosted feed instead of the repo file,
+          paste the HTTPS URL in this page's <head>, BEFORE /script.js:
+
+            <script>window.NOBLE_INSTAGRAM_FEED_URL = "PASTE_FEED_JSON_URL_HERE";</script>
+
+          Example: a Behold feed JSON endpoint. Leave this unset to keep using /instagram-feed.json.
+          Do not invent or commit API keys / widget IDs here.
+        -->
+        <div data-noble-instagram-feed="proof-grid"></div>
+        <p class="section-social-proof-feed__cta-wrap">
+          <a class="section-social-proof-feed__cta" href="https://www.instagram.com/thenoblemarketing/" target="_blank" rel="noopener noreferrer">Follow @thenoblemarketing</a>
+        </p>
       </div>
     </section>
     <section class="section section-social-approach" data-reveal-on-scroll>
@@ -395,6 +480,7 @@
             <a class="footer-social-link" href="https://www.facebook.com/people/Noble-Marketing/100063772796053/" target="_blank" rel="noopener noreferrer">Facebook</a>
             <a class="footer-social-link" href="https://www.linkedin.com/company/noble-marketing-design/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
+          <p class="footer-referral">Know a business that needs this? <a href="/contact/">Ask about our referral thank-you.</a></p>
         </div>
       </div>
     </div>
