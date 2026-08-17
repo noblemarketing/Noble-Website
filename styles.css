@@ -980,13 +980,15 @@ body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
   margin-bottom: clamp(36px, 5vw, 56px);
 }
 .home-recent-projects--showcase .home-recent-projects__title{
-  max-width: 18ch;
-  font-family: var(--font-body);
+  max-width: 22ch;
+  font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
   font-size: clamp(1.65rem, 3.4vw, 2.75rem);
   font-weight: 400;
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   color: #1a1816;
+  font-variant-ligatures: none;
+  font-feature-settings: normal;
 }
 .home-recent-projects--showcase .home-recent-projects__portfolio-link{
   margin-top: clamp(14px, 1.8vw, 20px);
@@ -3090,6 +3092,47 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
   }
 }
 
+/* Social services — results strip (homepage stats cells, linked to case stories) */
+.home-stats-strip--results{
+  background: #ffffff;
+  border-top: 1px solid var(--clay);
+  border-bottom: 1px solid var(--clay);
+}
+.home-stats-strip__heading{
+  margin: 0 0 clamp(28px, 4vw, 44px);
+  text-align: center;
+  font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-size: calc(clamp(1.45rem, 2.6vw, 2rem) + var(--heading-size-add));
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  font-variant-ligatures: none;
+}
+.home-stats-cell--link{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease;
+}
+.home-stats-cell--link:hover{
+  background: rgba(26, 51, 41, 0.04);
+}
+.home-stats-cell--link:focus-visible{
+  outline: 2px solid var(--moss);
+  outline-offset: -2px;
+}
+.home-stats-client{
+  margin: 10px 0 0;
+  font-family: var(--font-body);
+  font-size: clamp(12px, 1.05vw, 14px);
+  font-weight: var(--font-body-weight);
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Homepage — client stamp grid on warm cream (no framed cells) */
 .section-clients-stamp{
   padding: clamp(56px, 8vw, 88px) 0 clamp(64px, 9vw, 96px);
@@ -4798,6 +4841,19 @@ body.page-work-case .site-header{
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.work-case-visual-gallery__media--natural{
+  aspect-ratio: auto;
+  height: auto;
+  overflow: visible;
+  background: transparent;
+}
+.work-case-visual-gallery__media--natural img{
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
 }
 .work-case-visual-gallery__caption{
   margin: clamp(12px, 2vw, 16px) 0 0;
@@ -11512,34 +11568,25 @@ body.page-services.page-service-social:not(.page-services-hub) .services-split-h
   flex: 1 1 100%;
   width: 100%;
 }
-.page-service-social .section-social-approach__next{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
+.page-service-social .faq-band{
+  --faq-bg: url("/Photos/AudreyHBranding-7999.png");
 }
-.page-service-social .section-social-approach__next .section-title{
-  margin-top: clamp(58px, 8.55vw, 101px);
+.page-service-social .section-social-next{
+  text-align: center;
+}
+.page-service-social .section-social-next .section-title{
   margin-bottom: clamp(12px, 2vw, 20px);
-  text-align: left;
 }
-.page-service-social .section-social-approach__next .lead.service-next-step-lead{
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: clamp(10px, 1.8vw, 16px);
-  text-align: left;
+.page-service-social .section-social-next .lead.service-next-step-lead{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: clamp(16px, 2.4vw, 24px);
   max-width: 52ch;
 }
-.page-service-social .section-social-approach .service-next-step-lead{
-  white-space: normal;
-}
-.page-service-social .section-social-approach .service-next-step-cta{
-  align-self: flex-start;
+.page-service-social .section-social-next .service-next-step-cta{
+  display: inline-flex;
 }
 @media (min-width: 901px){
-  .page-service-social .section-social-approach__next{
-    margin-top: auto;
-  }
   .page-service-social .section-social-approach__media{
     align-items: flex-end;
   }
@@ -11577,28 +11624,6 @@ body.page-services.page-service-social:not(.page-services-hub) .services-split-h
     grid-row: 5;
     width: 100%;
     min-width: 0;
-  }
-  .page-service-social .section-social-approach__next{
-    grid-row: 6;
-    align-items: center;
-    align-self: stretch;
-    width: 100%;
-    margin-top: 0;
-  }
-  .page-service-social #social .section-social-approach__next .section-title{
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: clamp(28px, 4vw, 44px);
-  }
-  .page-service-social #social .section-social-approach__next .lead.service-next-step-lead{
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 52ch;
-  }
-  .page-service-social .section-social-approach .service-next-step-cta{
-    align-self: center;
   }
 }
 .page-service-branding .section-branding-packages .section-title,

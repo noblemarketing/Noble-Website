@@ -20,6 +20,54 @@
   <link rel="stylesheet" href="/styles.css" />
   <script src="/instagram-feed-fallback.js" defer></script>
   <script src="/script.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do I need to provide photos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not necessarily. Many clients share what they have, and I build the rest with branded graphics, curated visuals, and art direction. If we need fresh photography, I'll help you plan a simple shoot."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which platforms do you cover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most clients focus on Instagram and Facebook, with LinkedIn for B2B brands. We'll pick the platforms where your audience actually spends time — not every platform at once."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a contract minimum?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Packages are monthly retainers. I recommend at least three months, since organic social compounds — but we'll talk through what makes sense on our discovery call."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who writes the captions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I do. Every caption is written in your brand voice and reviewed with you before anything goes live."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does onboarding look like?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We start with a discovery call, then I build your strategy and first content calendar. Most clients see their first posts go live within two weeks of signing."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="page-services page-service-social">
 <header class="site-header" data-elevate>
@@ -130,6 +178,33 @@
         </div>
       </div>
     </section>
+    <section class="section home-stats-strip home-stats-strip--results" data-reveal-on-scroll aria-labelledby="social-results-heading">
+      <div class="container">
+        <h2 id="social-results-heading" class="home-stats-strip__heading">Real results from organic social.</h2>
+        <div class="home-stats-grid home-stats-grid--4" role="list">
+          <a class="home-stats-cell home-stats-cell--link" role="listitem" href="/blog/outback-toys-first-month-organic-social">
+            <p class="home-stats-figure">300<span class="home-stats-affix">K+</span></p>
+            <p class="home-stats-label">Views on a single viral reel</p>
+            <p class="home-stats-client">Outback Toys</p>
+          </a>
+          <a class="home-stats-cell home-stats-cell--link" role="listitem" href="/blog/blaze-yoga-lancaster-organic-social-reach">
+            <p class="home-stats-figure">32,500<span class="home-stats-affix">+</span></p>
+            <p class="home-stats-label">Organic Facebook views</p>
+            <p class="home-stats-client">Blaze Yoga Lancaster</p>
+          </a>
+          <a class="home-stats-cell home-stats-cell--link" role="listitem" href="/blog/flint-rock-stables-organic-community-social">
+            <p class="home-stats-figure">48,500<span class="home-stats-affix">+</span></p>
+            <p class="home-stats-label">Total Facebook views</p>
+            <p class="home-stats-client">Flintrock Stables</p>
+          </a>
+          <a class="home-stats-cell home-stats-cell--link" role="listitem" href="/blog/lakewood-reserve-organic-social-growth">
+            <p class="home-stats-figure">1,500<span class="home-stats-affix">%</span></p>
+            <p class="home-stats-label">Facebook views increase</p>
+            <p class="home-stats-client">Lakewood Reserve</p>
+          </a>
+        </div>
+      </div>
+    </section>
     <section class="section home-recent-projects service-social-practice" data-reveal-on-scroll aria-labelledby="service-social-spotlight-title">
       <div class="container">
         <header class="home-recent-projects__header">
@@ -197,11 +272,6 @@
             <p class="section-social-approach__lead">Feeds work when the rhythm is realistic. I plan around your voice, seasons, and capacity—pairing caption work with visuals that match the brand system you already have (or one I build with you).</p>
             <p class="section-social-approach__sublead">Packages are monthly retainers: you get a calendar rhythm, polished post copy, scheduling support, and check-ins scaled to the tier—so busy teams stay on-brand without living in Canva.</p>
             <a class="section-social-approach__cta" href="/about/">Meet the studio &amp; founder</a>
-            <div class="section-social-approach__next">
-              <h2 class="section-title">Next step</h2>
-              <p class="lead service-next-step-lead">Ready when you are! Let’s create the brand you’ve been dreaming of.</p>
-              <a class="button primary service-next-step-cta" href="/contact/">Start a project</a>
-            </div>
           </div>
           <div class="section-social-approach__media">
             <figure class="section-social-approach__figure section-social-approach__figure--solo">
@@ -209,6 +279,77 @@
             </figure>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="faq-band" data-faq-accordion data-reveal-on-scroll aria-labelledby="social-faq-heading">
+      <div class="faq-band-bg" aria-hidden="true"></div>
+      <div class="faq-band-scrim" aria-hidden="true"></div>
+      <div class="faq-band-inner">
+        <h2 id="social-faq-heading" class="faq-heading">Common questions.</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3 class="faq-item-heading">
+              <button type="button" class="faq-trigger" id="social-faq-photos-btn" aria-expanded="false" aria-controls="social-faq-photos">
+                <span class="faq-q">Do I need to provide photos?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="social-faq-photos" role="region" aria-labelledby="social-faq-photos-btn" hidden>
+              <p>Not necessarily. Many clients share what they have, and I build the rest with branded graphics, curated visuals, and art direction. If we need fresh photography, I&apos;ll help you plan a simple shoot.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-item-heading">
+              <button type="button" class="faq-trigger" id="social-faq-platforms-btn" aria-expanded="false" aria-controls="social-faq-platforms">
+                <span class="faq-q">Which platforms do you cover?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="social-faq-platforms" role="region" aria-labelledby="social-faq-platforms-btn" hidden>
+              <p>Most clients focus on Instagram and Facebook, with LinkedIn for B2B brands. We&apos;ll pick the platforms where your audience actually spends time&mdash;not every platform at once.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-item-heading">
+              <button type="button" class="faq-trigger" id="social-faq-contract-btn" aria-expanded="false" aria-controls="social-faq-contract">
+                <span class="faq-q">Is there a contract minimum?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="social-faq-contract" role="region" aria-labelledby="social-faq-contract-btn" hidden>
+              <p>Packages are monthly retainers. I recommend at least three months, since organic social compounds&mdash;but we&apos;ll talk through what makes sense on our discovery call.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-item-heading">
+              <button type="button" class="faq-trigger" id="social-faq-captions-btn" aria-expanded="false" aria-controls="social-faq-captions">
+                <span class="faq-q">Who writes the captions?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="social-faq-captions" role="region" aria-labelledby="social-faq-captions-btn" hidden>
+              <p>I do. Every caption is written in your brand voice and reviewed with you before anything goes live.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-item-heading">
+              <button type="button" class="faq-trigger" id="social-faq-onboarding-btn" aria-expanded="false" aria-controls="social-faq-onboarding">
+                <span class="faq-q">What does onboarding look like?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="social-faq-onboarding" role="region" aria-labelledby="social-faq-onboarding-btn" hidden>
+              <p>We start with a discovery call, then I build your strategy and first content calendar. Most clients see their first posts go live within two weeks of signing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-social-next" data-reveal-on-scroll>
+      <div class="container">
+        <h2 class="section-title">Next step</h2>
+        <p class="lead service-next-step-lead">Ready when you are! Let’s build a feed your audience actually looks forward to.</p>
+        <a class="button primary service-next-step-cta" href="/contact/">Start a project</a>
       </div>
     </section>
   </div>
