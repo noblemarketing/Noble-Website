@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="/Logos/noble-icon.png" type="image/png" sizes="any" />
+  <title>The studio is in session | Noble</title>
+  <meta name="description" content="Noble Marketing & Design is making a few thoughtful edits. We'll be back shortly." />
+  <style>
+    @font-face{
+      font-family: "Arome";
+      src:
+        url("/Font/Arome.otf") format("opentype"),
+        url("/Font/Arome.woff2") format("woff2"),
+        url("/Font/Arome.woff") format("woff"),
+        url("/Font/Arome.ttf") format("truetype");
+      font-display: swap;
+      font-style: normal;
+      font-weight: 400;
+    }
+    :root{
+      --moss: #1a3329;
+      --cream: #f7f1e6;
+    }
+    *{ box-sizing: border-box; }
+    html, body{
+      margin: 0;
+      min-height: 100%;
+    }
+    body{
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(32px, 6vw, 72px) 24px;
+      color: var(--cream);
+      background-color: var(--moss);
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23a)' opacity='0.08'/%3E%3C/svg%3E"),
+        url("/graphics/noble-stamp-1.svg"),
+        url("/graphics/noble-stamp-2.svg");
+      background-repeat: repeat, no-repeat, no-repeat;
+      background-size: 180px, min(42vw, 320px), min(36vw, 260px);
+      background-position: 0 0, 8% 78%, 92% 12%;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-weight: 300;
+      text-align: center;
+    }
+    .lock{
+      max-width: 36rem;
+    }
+    .lock__logo{
+      display: inline-block;
+      margin: 0 0 clamp(28px, 4vw, 40px);
+    }
+    .lock__logo img{
+      display: block;
+      width: min(280px, 72vw);
+      height: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.96;
+    }
+    h1{
+      margin: 0 0 18px;
+      font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+    p{
+      margin: 0 auto 28px;
+      max-width: 38ch;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: rgba(247, 241, 230, 0.88);
+    }
+    a{
+      color: var(--cream);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(247, 241, 230, 0.55);
+      font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    a:hover{ border-bottom-color: var(--cream); }
+  </style>
+</head>
+<body>
+  <main class="lock">
+    <a class="lock__logo" href="mailto:audrey@thenoblemarketing.com" aria-label="Email Noble">
+      <img src="/Logos/noble-logo.png" width="280" height="75" alt="Noble Marketing &amp; Design" />
+    </a>
+    <h1>The studio is in session.</h1>
+    <p>The site is undergoing some edits. Come back soon.</p>
+    <a href="mailto:audrey@thenoblemarketing.com">Say hello anyway</a>
+  </main>
+</body>
+</html>
