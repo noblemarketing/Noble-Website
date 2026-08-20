@@ -49,7 +49,7 @@ const TITLES = {
   "work-vizion/index.html": "Vizion Consulting Branding Case Study | Noble",
   "work-living-room-church/index.html":
     "Living Room Church Branding Case Study | Noble",
-  "work-witness-coffeehouse/index.html":
+  "work-wittness-coffeehouse/index.html":
     "Wittness Coffeehouse Branding Case Study | Noble",
   "work-32-below-ice-cream/index.html":
     "32° Below Ice Cream Social Media Case Study | Noble",

@@ -18,7 +18,7 @@
   <link rel="apple-touch-icon" href="/Logos/noble-icon.png" />
     <meta name="description" content="Custom, conversion-focused website design for small businesses across Pennsylvania. Built for credibility and lasting quality. Start your project today." />
   <title>Custom Website Design for Small Businesses in PA | Noble</title>
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/styles.css?v=stationery-site-45" />
   <script src="/instagram-feed-fallback.js" defer></script>
   <script src="/script.js" defer></script>
 </head>
@@ -51,26 +51,44 @@
   </div>
 </header>
 <main id="main">
-  <section class="services-split-hero services-split-hero--moody-editorial" data-reveal-on-scroll>
-    <div class="container">
-      <div class="services-split-hero-stage">
-        <div class="services-split-hero-panels">
-          <div class="services-split-hero-left">
-            <p class="services-split-hero-eyebrow">Website Design</p>
-            <h1 class="services-split-hero-moody-title">
-              <span class="services-split-hero-moody-line">Less noise</span>
-              <span class="services-split-hero-moody-line">More impact</span>
-            </h1>
-            <a class="services-split-hero-moody-cta" href="/portfolio/#portfolio-filter-website">See our work</a>
-          </div>
-          <div class="services-split-hero-right">
-            <div class="services-split-hero-inset services-split-hero-inset--moody">
-              <img src="/Photos/AudreyHBranding-7323.jpg" width="400" height="600" alt="Designer at a laptop in a light studio—website design at Noble" loading="lazy" decoding="async" />
-            </div>
-          </div>
+  <section class="hero service-page-hero" data-reveal-on-scroll>
+    <div class="hero-band hero-band--split">
+      <div class="hero-split-copy">
+        <div class="hero-card">
+          <h1 class="hero-title">
+            <span class="hero-title-eyebrow">Website Design</span>
+            <span class="hero-title-lead">Less noise</span>
+            <span class="hero-title-lead">More impact</span>
+          </h1>
+          <p class="home-hero-actions">
+            <a class="button primary" href="/portfolio/#portfolio-filter-website">See our work</a>
+          </p>
         </div>
       </div>
+      <figure class="hero-split-photo">
+        <img src="/Photos/AudreyHBranding-7323.jpg" width="400" height="600" alt="Designer at a laptop in a light studio—website design at Noble" decoding="async" />
+      </figure>
     </div>
+  </section>
+  <section class="service-work-stripe" aria-label="Selected website projects">
+    <a class="service-work-stripe__cell" href="/work-brookstone-ind" aria-label="Brookstone Industries">
+      <img src="/Photos/brookstone/brookstone-brand-in-action-hat.png" width="1200" height="1600" alt="" loading="lazy" decoding="async" />
+    </a>
+    <a class="service-work-stripe__cell" href="/work-lakewood-reserve" aria-label="Lakewood Reserve">
+      <img src="/Photos/lakewood-reserve/lakewood-cabin-exterior.png" width="1200" height="1600" alt="" loading="lazy" decoding="async" />
+    </a>
+    <a class="service-work-stripe__cell" href="/work-revd" aria-label="Revd Toys">
+      <img src="/Photos/revd-toys/revd-website-mockup.png" width="1200" height="1600" alt="" loading="lazy" decoding="async" />
+    </a>
+    <a class="service-work-stripe__cell" href="/work-no-nonsense-neutering" aria-label="No Nonsense Neutering">
+      <img src="/portfolio/nnn-portfolio-thumb.png" width="1600" height="1000" alt="" loading="lazy" decoding="async" />
+    </a>
+    <a class="service-work-stripe__cell" href="/work-da-targets" aria-label="DA Targets">
+      <img src="/Photos/da-targets/da-desert-web.png" width="1600" height="1000" alt="" loading="lazy" decoding="async" />
+    </a>
+    <a class="service-work-stripe__cell" href="/work-lakewood-reserve" aria-label="Lakewood Reserve website">
+      <img src="/Photos/lakewood-reserve/lakewood-website-laptop-mockup.png" width="1600" height="1000" alt="" loading="lazy" decoding="async" />
+    </a>
   </section>
   <div id="websites">
     <section class="section section--packages-editorial section-website-packages" data-reveal-on-scroll>
@@ -136,7 +154,9 @@
             <p class="package-card-footnote"><strong>Best for:</strong> Established businesses, rebrands, e-commerce, and anyone who wants their website to be a genuine competitive advantage.</p>
           </article>
         </div>
-        <div class="social-package-compare" role="region" aria-label="Package comparison" tabindex="0">
+        <details class="social-package-compare-details">
+          <summary>Compare packages</summary>
+          <div class="social-package-compare" role="region" aria-label="Package comparison" tabindex="0">
           <table class="social-package-compare__table">
             <caption class="sr-only">Compare Signature, Custom, and Premium website packages</caption>
             <thead>
@@ -219,7 +239,8 @@
               </tr>
             </tbody>
           </table>
-        </div>
+          </div>
+        </details>
         <div class="package-grid-single-cta">
           <a class="package-card-btn package-card-btn--solid" href="/contact/">Start a Project</a>
         </div>

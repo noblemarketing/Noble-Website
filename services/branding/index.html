@@ -18,7 +18,7 @@
   <link rel="apple-touch-icon" href="/Logos/noble-icon.png" />
     <meta name="description" content="Custom logo and brand identity design in Lancaster, Harrisburg, and across PA. Boutique branding packages starting at $850. Book a discovery call today." />
   <title>Brand Identity & Logo Design in Lancaster County, PA | Noble</title>
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/styles.css?v=stationery-site-45" />
   <script src="/instagram-feed-fallback.js" defer></script>
   <script src="/script.js" defer></script>
 </head>
@@ -51,26 +51,44 @@
   </div>
 </header>
 <main id="main">
-  <section class="services-split-hero services-split-hero--moody-editorial" data-reveal-on-scroll>
-    <div class="container">
-      <div class="services-split-hero-stage">
-        <div class="services-split-hero-panels">
-          <div class="services-split-hero-left">
-            <p class="services-split-hero-eyebrow">Branding</p>
-            <h1 class="services-split-hero-moody-title">
-              <span class="services-split-hero-moody-line">From strategy</span>
-              <span class="services-split-hero-moody-line">to lasting identity</span>
-            </h1>
-            <a class="services-split-hero-moody-cta" href="/portfolio/#portfolio-filter-branding">Brands I've Built</a>
-          </div>
-          <div class="services-split-hero-right">
-            <div class="services-split-hero-inset services-split-hero-inset--moody">
-              <img src="/Photos/AudreyHBranding-7830.jpg" width="400" height="600" alt="Branding and design studio detail" loading="lazy" decoding="async" />
-            </div>
-          </div>
+  <section class="hero service-page-hero" data-reveal-on-scroll>
+    <div class="hero-band hero-band--split">
+      <div class="hero-split-copy">
+        <div class="hero-card">
+          <h1 class="hero-title">
+            <span class="hero-title-eyebrow">Branding</span>
+            <span class="hero-title-lead">From strategy</span>
+            <span class="hero-title-lead">to lasting identity</span>
+          </h1>
+          <p class="home-hero-actions">
+            <a class="button primary" href="/portfolio/#portfolio-filter-branding">Brands I&apos;ve Built</a>
+          </p>
         </div>
       </div>
+      <figure class="hero-split-photo">
+        <img src="/Photos/AudreyHBranding-7830.jpg" width="400" height="600" alt="Branding and design studio detail" decoding="async" />
+      </figure>
     </div>
+  </section>
+  <section class="service-work-stripe" aria-label="Selected branding projects">
+    <a class="service-work-stripe__cell" href="/work-brookstone-ind" aria-label="Brookstone Industries">
+      <img src="/Photos/brookstone/brookstone-brand-in-action-hat.png" width="1200" height="1600" alt="" loading="lazy" decoding="async" />
+    </a>
+    <a class="service-work-stripe__cell" href="/work-cosmos" aria-label="Cosmo Floral Design">
+      <img src="/Photos/cosmo-floral/cosmo-kraft-bouquet.png" width="1200" height="1600" alt="" loading="lazy" decoding="async" />
+    </a>
+    <a class="service-work-stripe__cell" href="/work-hsf/" aria-label="Head Strong Flight">
+      <img src="/Photos/head-strong-flight/hsf-in-use-archer-hoodie.png" width="1200" height="1600" alt="" loading="lazy" decoding="async" />
+    </a>
+    <a class="service-work-stripe__cell" href="/work-hey-peaches" aria-label="Hey Peaches">
+      <img src="/Photos/hey-peaches/hey-peaches-chair-lifestyle.png" width="1200" height="1600" alt="" loading="lazy" decoding="async" />
+    </a>
+    <a class="service-work-stripe__cell" href="/work-vizion" aria-label="Vizion Consulting">
+      <img src="/Photos/vizion-consulting/vizion-business-cards.png" width="1200" height="1600" alt="" loading="lazy" decoding="async" />
+    </a>
+    <a class="service-work-stripe__cell" href="/work-gradys" aria-label="Grady's Grill">
+      <img src="/Photos/gradys/gradys-tire-work-wear.png" width="1200" height="1600" alt="" loading="lazy" decoding="async" />
+    </a>
   </section>
   <div id="branding">
     <section class="section section--packages-editorial section-branding-packages" data-reveal-on-scroll>
@@ -120,7 +138,9 @@
             </ul>
           </article>
         </div>
-        <div class="social-package-compare" role="region" aria-label="Package comparison" tabindex="0">
+        <details class="social-package-compare-details">
+          <summary>Compare packages</summary>
+          <div class="social-package-compare" role="region" aria-label="Package comparison" tabindex="0">
           <table class="social-package-compare__table">
             <caption class="sr-only">Compare Basic, Premier, and Elite branding packages</caption>
             <thead>
@@ -209,7 +229,8 @@
               </tr>
             </tbody>
           </table>
-        </div>
+          </div>
+        </details>
         <div class="package-grid-single-cta">
           <a class="package-card-btn package-card-btn--solid" href="/contact/">Book a Discovery Call</a>
         </div>

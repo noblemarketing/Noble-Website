@@ -98,11 +98,10 @@ function setFooterCenterIcon() {
   // breaks nested routes (e.g. /services/branding/ → ../../Logos/...).
 }
 
-/** Moss fill matches `.site-footer` so glyphs read as knockouts on solid LinkedIn / Facebook tiles. */
-const NOBLE_SOCIAL_ICON_CUT = "var(--moss)";
+/** Filled tiles; letterforms are punched out so they match whatever sits behind the icon. */
 const NOBLE_SOCIAL_ICON_BY_NETWORK = {
-  linkedin: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="currentColor"/><g fill="${NOBLE_SOCIAL_ICON_CUT}"><circle cx="8.5" cy="7.85" r="1.25"/><rect x="7.65" y="10.15" width="1.75" height="7.35" rx="0.25"/><path d="M12.75 10.15h2.25c1.2 0 2.1.68 2.1 2.08v5.27h-2.15v-4.7c0-.58-.32-1-.9-1-.78 0-1.15.56-1.15 1.18v4.52h-2.15V10.15z"/></g></svg>`,
-  facebook: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path fill="${NOBLE_SOCIAL_ICON_CUT}" d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/></svg>`,
+  linkedin: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="currentColor"/><g class="footer-social-icon__cut"><circle cx="8.5" cy="7.85" r="1.25"/><rect x="7.65" y="10.15" width="1.75" height="7.35" rx="0.25"/><path d="M12.75 10.15h2.25c1.2 0 2.1.68 2.1 2.08v5.27h-2.15v-4.7c0-.58-.32-1-.9-1-.78 0-1.15.56-1.15 1.18v4.52h-2.15V10.15z"/></g></svg>`,
+  facebook: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path class="footer-social-icon__cut" d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/></svg>`,
   instagram: `<svg class="footer-social-icon footer-social-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.85" fill="none" stroke="currentColor" stroke-width="1.65"/><circle cx="17.45" cy="6.55" r="1.15" fill="currentColor"/></svg>`,
 };
 /** White stroke icons for the moss Instagram pre-footer strip (matches homepage reference). */
@@ -132,6 +131,16 @@ function setupFooterSocialIcons() {
     if (!(bio instanceof HTMLElement)) return;
 
     const connectCol = $(".footer-nav-groups .footer-col:last-child", footer);
+    if (connectCol instanceof HTMLElement) {
+      $$('a[href^="mailto:"]', connectCol).forEach((a) => {
+        if (!(a instanceof HTMLAnchorElement) || a.dataset.emailLabelled === "1") return;
+        const full = (a.textContent || "").trim() || "audrey@thenoblemarketing.com";
+        a.dataset.emailLabelled = "1";
+        a.setAttribute("aria-label", full);
+        a.innerHTML = `<span class="footer-email-full">${full}</span><span class="footer-email-short">Email</span>`;
+      });
+    }
+
     let existingLinks = $$(".footer-social-link", connectCol || footer).filter((a) => a instanceof HTMLAnchorElement);
     if (existingLinks.length === 0) {
       existingLinks = networks.map(({ href, label }) => {
@@ -322,7 +331,7 @@ function setupWorkCaseClientProfiles() {
         { label: "Facebook", href: "https://facebook.com/TheLivingRoomChurchOrlando" },
       ],
     },
-    "work-witness-coffeehouse": {
+    "work-wittness-coffeehouse": {
       name: "Wittness Coffeehouse",
       logo: "/client-logos/Witt2.svg",
       services: "Branding",
@@ -666,6 +675,27 @@ function setupHeaderScrollUi() {
   apply();
   window.addEventListener("scroll", onScroll, { passive: true });
   mqMobile?.addEventListener("change", apply);
+}
+
+function setupHomeServicesPin() {
+  const section = document.querySelector(".home-services-stack");
+  if (!section || !document.body.classList.contains("page-home")) return;
+
+  let raf = 0;
+  const apply = () => {
+    raf = 0;
+    const rect = section.getBoundingClientRect();
+    const pinning = rect.top <= 0 && rect.bottom > 72;
+    document.body.classList.toggle("home-services-pinning", pinning);
+  };
+  const onScroll = () => {
+    if (raf) return;
+    raf = requestAnimationFrame(apply);
+  };
+
+  apply();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
 }
 
 function setupMobileNav() {
@@ -2426,6 +2456,109 @@ function setupBlogPostGalleries() {
   });
 }
 
+/** Blog magazine closing images → mobile accordion + horizontal swipe gallery. */
+function setupBlogMagazineGalleryScroll() {
+  if (!document.body.classList.contains("page-blog-post")) return;
+
+  document.querySelectorAll(".blog-magazine").forEach((article) => {
+    if (article.querySelector("[data-blog-gallery-scroll]")) return;
+
+    const visuals = article.querySelector(".blog-magazine__visuals");
+    const row = article.querySelector(":scope > .blog-magazine__row");
+    if (!visuals && !row) return;
+
+    const sourceFigures = [];
+    const seen = new Set();
+    const collect = (root) => {
+      if (!root) return;
+      root.querySelectorAll("figure").forEach((fig) => {
+        if (seen.has(fig)) return;
+        const img = fig.querySelector("img");
+        if (!img) return;
+        seen.add(fig);
+        sourceFigures.push(fig);
+      });
+    };
+    collect(visuals);
+    collect(row);
+    if (sourceFigures.length < 2) return;
+
+    if (visuals) visuals.classList.add("blog-magazine__visuals--has-mobile-gallery");
+    if (row) row.classList.add("blog-magazine__row--has-mobile-gallery");
+
+    const wrap = document.createElement("div");
+    wrap.className = "blog-magazine__gallery-acc";
+    wrap.setAttribute("data-blog-gallery-scroll", "");
+
+    const details = document.createElement("details");
+    details.className = "accordion blog-magazine__gallery-details";
+    details.open = true;
+
+    const summary = document.createElement("summary");
+    summary.innerHTML =
+      '<span class="acc-title">Gallery</span>' +
+      '<span class="branding-case-acc-end">' +
+      '<span class="branding-case-scroll-hint">Swipe</span>' +
+      '<span class="branding-case-acc-icon" aria-hidden="true"></span>' +
+      "</span>";
+
+    const panel = document.createElement("div");
+    panel.className = "acc-panel acc-panel--branding-scroll blog-magazine__gallery-panel";
+
+    const scroll = document.createElement("div");
+    scroll.className = "branding-case-scroll blog-magazine__gallery-track";
+    scroll.setAttribute("role", "list");
+    scroll.setAttribute("aria-label", "Project gallery");
+
+    const isReelGallery =
+      Boolean(visuals?.classList.contains("blog-magazine__visuals--reels")) ||
+      Boolean(row?.classList.contains("blog-magazine__row--reels"));
+
+    sourceFigures.forEach((fig) => {
+      const img = fig.querySelector("img");
+      const cap = fig.querySelector("figcaption");
+      if (!img) return;
+
+      const item = document.createElement("figure");
+      item.className = "branding-case-scroll__item blog-magazine__gallery-item";
+      item.setAttribute("role", "listitem");
+
+      const frame = document.createElement("div");
+      frame.className = "branding-case-scroll__frame";
+      if (isReelGallery) frame.classList.add("branding-case-scroll__frame--reel");
+
+      const clone = img.cloneNode(true);
+      clone.loading = "lazy";
+      clone.decoding = "async";
+      frame.appendChild(clone);
+      item.appendChild(frame);
+
+      if (cap && cap.textContent.trim()) {
+        const caption = document.createElement("figcaption");
+        caption.className = "branding-case-scroll__caption";
+        caption.textContent = cap.textContent.trim();
+        item.appendChild(caption);
+      }
+
+      scroll.appendChild(item);
+    });
+
+    panel.appendChild(scroll);
+    details.appendChild(summary);
+    details.appendChild(panel);
+    wrap.appendChild(details);
+
+    if (row) row.after(wrap);
+    else if (visuals) {
+      const split = visuals.closest(".blog-magazine__split");
+      if (split) split.after(wrap);
+      else visuals.after(wrap);
+    } else {
+      article.appendChild(wrap);
+    }
+  });
+}
+
 function setupBlogIndexFilters() {
   const root = document.querySelector("[data-blog-filters]");
   const list = document.querySelector(".blog-index--grid");
@@ -2537,6 +2670,7 @@ if (document.readyState === "loading") {
   setupHeroTypewriter();
 }
 setupHeaderScrollUi();
+setupHomeServicesPin();
 setupMobileNav();
 setupActiveNav();
 setupPortfolioFilter();
@@ -2547,6 +2681,7 @@ setupServiceAccordion();
 setupAddonsCarousel();
 setupServicesScrollReveal();
 setupBlogPostGalleries();
+setupBlogMagazineGalleryScroll();
 setupBlogIndexFilters();
 setupContactForm();
 setupBrandingTierReveal();
@@ -2563,5 +2698,144 @@ setupServicesPricingModals();
 setupHomeInstagramFeed();
 setupNobleInstagramHorizontalFeed();
 setupBlazeYogaReelsEmbeds();
+function setupHomeTimeline() {
+  const section = document.querySelector(".home-timeline");
+  const root = document.querySelector("[data-home-timeline]");
+  if (!section || !root) return;
+
+  const steps = Array.from(root.querySelectorAll("[data-timeline-step]"));
+  const pip = root.querySelector("[data-timeline-pip]");
+  const hub = root.querySelector("[data-timeline-hub]");
+  const n = steps.length;
+  if (n === 0) return;
+
+  const mobileMq = window.matchMedia("(max-width: 860px)");
+  let raf = 0;
+
+  const progress = () => {
+    const rect = section.getBoundingClientRect();
+    const total = section.offsetHeight - window.innerHeight;
+    if (total <= 1) return 0;
+    const scrolled = -rect.top;
+    return Math.max(0, Math.min(1, scrolled / total));
+  };
+
+  const layout = () => {
+    if (mobileMq.matches) return;
+
+    const t = progress();
+    const index = t * (n - 1);
+    const active = Math.round(index);
+    const panelW = root.clientWidth;
+    const panelH = root.clientHeight;
+    const angleStep = 22;
+    const baseDeg = 0;
+    const radius = Math.max(140, Math.min(panelH * 0.42, panelW * 0.86));
+
+    steps.forEach((btn, i) => {
+      const li = btn.parentElement;
+      btn.classList.toggle("is-active", i === active);
+      const dist = Math.abs(i - index);
+      btn.style.opacity = String(Math.max(0.18, 1 - dist * 0.28));
+
+      const rad = (((i - index) * angleStep) + baseDeg) * (Math.PI / 180);
+      const x = Math.cos(rad) * radius;
+      const y = Math.sin(rad) * radius;
+      li.style.transform = `translate(${x}px, ${y}px)`;
+      const onPanel = x >= 10;
+      li.style.visibility = onPanel ? "visible" : "hidden";
+      li.style.pointerEvents = onPanel ? "auto" : "none";
+    });
+
+    if (pip) {
+      const pipRad = baseDeg * (Math.PI / 180);
+      pip.style.transform = `translate(${Math.cos(pipRad) * radius}px, ${Math.sin(pipRad) * radius}px)`;
+    }
+    if (hub) {
+      hub.textContent = String(active + 1).padStart(2, "0");
+    }
+  };
+
+  const onScroll = () => {
+    if (raf) return;
+    raf = window.requestAnimationFrame(() => {
+      raf = 0;
+      layout();
+    });
+  };
+
+  steps.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      const start = section.getBoundingClientRect().top + window.scrollY;
+      const total = Math.max(1, section.offsetHeight - window.innerHeight);
+      window.scrollTo({ top: start + (i / (n - 1)) * total, behavior: "smooth" });
+    });
+  });
+
+  layout();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+}
+
+function setupHomeWorkReel() {
+  const root = document.querySelector("[data-home-work-reel]");
+  if (!root) return;
+  const track = root.querySelector(".home-work-reel__track");
+  const group = root.querySelector(".home-work-reel__group");
+  if (!track || !group) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (reduceMotion.matches) {
+    root.classList.add("is-static");
+    return;
+  }
+
+  const clone = group.cloneNode(true);
+  clone.setAttribute("aria-hidden", "true");
+  clone.querySelectorAll("a").forEach((link) => {
+    link.setAttribute("tabindex", "-1");
+  });
+  track.appendChild(clone);
+  root.classList.add("is-animated");
+
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      root.classList.toggle("is-paused", !entry.isIntersecting);
+    },
+    { threshold: 0.08 }
+  );
+  io.observe(root);
+}
+
+function setupTestimonialFlips() {
+  const cards = document.querySelectorAll("[data-testimonial-flip]");
+  if (!cards.length) return;
+
+  const coarse = window.matchMedia("(hover: none), (pointer: coarse)");
+
+  const setOpen = (btn, open) => {
+    btn.classList.toggle("is-flipped", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  };
+
+  cards.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const next = !btn.classList.contains("is-flipped");
+      cards.forEach((other) => setOpen(other, other === btn && next));
+    });
+    btn.addEventListener("mouseenter", () => {
+      if (coarse.matches) return;
+      setOpen(btn, true);
+    });
+    btn.addEventListener("mouseleave", () => {
+      if (coarse.matches) return;
+      setOpen(btn, false);
+    });
+  });
+}
+
+setupHomeTimeline();
+setupHomeWorkReel();
+setupTestimonialFlips();
 setupBackToTop();
 

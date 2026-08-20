@@ -58,7 +58,7 @@ const DESCRIPTIONS = {
     "Vizion Consulting branding case study by Noble in PA &mdash; logo, business cards, website, and social for a strategy firm. See how the brand shows up everywhere.",
   "work-living-room-church/index.html":
     "The Living Room Church branding case study by Noble in Pennsylvania &mdash; warm, welcoming identity design for a faith community. View the full case study.",
-  "work-witness-coffeehouse/index.html":
+  "work-wittness-coffeehouse/index.html":
     "Wittness Coffeehouse branding case study by Noble in PA &mdash; logo, packaging, and visual identity for a Lancaster-area coffee shop. Explore the brand work.",
   "work-32-below-ice-cream/index.html":
     "32&deg; Below Ice Cream social media case study by Noble in Lititz, PA &mdash; on-brand content for a family-owned scoop shop with two locations. View the work.",
