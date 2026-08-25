@@ -7679,14 +7679,12 @@ body.portfolio-page--magazine .site-header.is-elevated{
 .portfolio-mag__title{
   margin: 0;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-variant-ligatures: none;
-  font-feature-settings: normal;
   font-size: calc(clamp(2.85rem, 8.5vw, 4.5rem) + var(--heading-size-add));
   font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 1.05;
   color: rgba(20, 19, 17, 0.96);
-  text-transform: lowercase;
+  text-transform: uppercase;
 }
 .portfolio-mag__filters{
   display: flex;
