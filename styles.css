@@ -15886,12 +15886,13 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   height: 28px;
   display: block;
   flex-shrink: 0;
-  fill: currentColor;
-  isolation: isolate;
 }
-.footer-social-link .footer-social-icon__cut{
+.footer-social-link .footer-social-icon mask .footer-social-icon__mask-bg{
+  fill: #fff;
+}
+.footer-social-link .footer-social-icon mask .footer-social-icon__cut,
+.footer-social-link .footer-social-icon mask .footer-social-icon__cut *{
   fill: #000;
-  mix-blend-mode: destination-out;
 }
 .footer-social-link .footer-social-icon--stroke{
   fill: none;

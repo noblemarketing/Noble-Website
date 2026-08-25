@@ -98,12 +98,24 @@ function setFooterCenterIcon() {
   // breaks nested routes (e.g. /services/branding/ → ../../Logos/...).
 }
 
-/** Filled tiles; letterforms are punched out so they match whatever sits behind the icon. */
+/** Unique mask ids so multiple LinkedIn/Facebook icons on one page don't collide. */
+let nobleSocialIconMaskSeq = 0;
+
+/** Filled tiles; letterforms are masked out so the footer moss shows through. */
 const NOBLE_SOCIAL_ICON_BY_NETWORK = {
-  linkedin: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="currentColor"/><g class="footer-social-icon__cut"><circle cx="8.5" cy="7.85" r="1.25"/><rect x="7.65" y="10.15" width="1.75" height="7.35" rx="0.25"/><path d="M12.75 10.15h2.25c1.2 0 2.1.68 2.1 2.08v5.27h-2.15v-4.7c0-.58-.32-1-.9-1-.78 0-1.15.56-1.15 1.18v4.52h-2.15V10.15z"/></g></svg>`,
-  facebook: `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path class="footer-social-icon__cut" d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/></svg>`,
   instagram: `<svg class="footer-social-icon footer-social-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.85" fill="none" stroke="currentColor" stroke-width="1.65"/><circle cx="17.45" cy="6.55" r="1.15" fill="currentColor"/></svg>`,
 };
+
+function nobleSocialFilledIcon(key) {
+  const maskId = `noble-social-cut-${key}-${++nobleSocialIconMaskSeq}`;
+  if (key === "linkedin") {
+    return `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><mask id="${maskId}" maskUnits="userSpaceOnUse"><rect class="footer-social-icon__mask-bg" width="24" height="24" fill="#fff"/><g class="footer-social-icon__cut" fill="#000"><circle cx="8.5" cy="7.85" r="1.25"/><rect x="7.65" y="10.15" width="1.75" height="7.35" rx="0.25"/><path d="M12.75 10.15h2.25c1.2 0 2.1.68 2.1 2.08v5.27h-2.15v-4.7c0-.58-.32-1-.9-1-.78 0-1.15.56-1.15 1.18v4.52h-2.15V10.15z"/></g></mask><rect width="24" height="24" rx="5" fill="currentColor" mask="url(#${maskId})"/></svg>`;
+  }
+  if (key === "facebook") {
+    return `<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><mask id="${maskId}" maskUnits="userSpaceOnUse"><rect class="footer-social-icon__mask-bg" width="24" height="24" fill="#fff"/><path class="footer-social-icon__cut" fill="#000" d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/></mask><circle cx="12" cy="12" r="10" fill="currentColor" mask="url(#${maskId})"/></svg>`;
+  }
+  return "";
+}
 /** White stroke icons for the moss Instagram pre-footer strip (matches homepage reference). */
 const NOBLE_SOCIAL_ICON_FEED_BY_NETWORK = {
   linkedin: `<svg class="footer-social-icon footer-social-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.65"/><g fill="currentColor"><circle cx="8.5" cy="7.85" r="1.25"/><rect x="7.65" y="10.15" width="1.75" height="7.35" rx="0.25"/><path d="M12.75 10.15h2.25c1.2 0 2.1.68 2.1 2.08v5.27h-2.15v-4.7c0-.58-.32-1-.9-1-.78 0-1.15.56-1.15 1.18v4.52h-2.15V10.15z"/></g></svg>`,
@@ -120,6 +132,7 @@ function getNobleSocialIconSvg(key, variant = "footer") {
   if (variant === "feed") {
     return NOBLE_SOCIAL_ICON_FEED_BY_NETWORK[key] || NOBLE_SOCIAL_ICON_BY_NETWORK[key] || "";
   }
+  if (key === "linkedin" || key === "facebook") return nobleSocialFilledIcon(key);
   return NOBLE_SOCIAL_ICON_BY_NETWORK[key] || "";
 }
 
