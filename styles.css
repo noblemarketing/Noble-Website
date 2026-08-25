@@ -17836,16 +17836,19 @@ body.page-home .instagram-feed-section__social .footer-social-link:focus-visible
 }
 
 /* Closing CTA */
-body.page-home .home-close-cta{
+body.page-home .home-close-cta,
+.page-service-social .home-close-cta{
   background: var(--color-white);
   padding-block: clamp(72px, 10vw, 120px);
   text-align: center;
 }
-body.page-home .home-close-cta__title{
+body.page-home .home-close-cta__title,
+.page-service-social .home-close-cta__title{
   margin: 0 0 12px;
   font-size: clamp(2rem, 4.5vw, 3.4rem);
 }
-body.page-home .home-close-cta__lead{
+body.page-home .home-close-cta__lead,
+.page-service-social .home-close-cta__lead{
   margin: 0 auto 28px;
   max-width: 38ch;
   color: var(--color-ink);
