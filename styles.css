@@ -16925,19 +16925,25 @@ body.page-home .hero-title-lead-break{
     z-index: 0;
     overflow: hidden;
   }
-  body.page-home .hero-split-photo picture,
-  body.page-home .hero-split-photo img{
+  body.page-home .hero-split-photo picture{
     display: block;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
   }
   body.page-home .hero-split-photo img{
+    display: block;
+    position: absolute;
+    inset: 0;
     object-fit: cover;
-    object-position: center bottom;
-    width: 122%;
+    object-position: 42% 70%;
+    width: 100%;
     max-width: none;
+    min-width: 100%;
+    min-height: 100%;
     height: 100%;
-    transform: translateX(12%);
+    transform: none;
   }
   body.page-home .hero-split-copy{
     position: absolute;
