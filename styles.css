@@ -2098,7 +2098,7 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
 .about-how-i-work__intro{
   margin: 0;
   padding-top: clamp(4px, 0.8vw, 10px);
-  max-width: min(52ch, 100%);
+  max-width: min(40rem, 100%);
 }
 .about-how-i-work__eyebrow{
   margin: 0 0 clamp(10px, 1.5vw, 16px);
@@ -2114,22 +2114,16 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
   margin: 0;
   max-width: 100%;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: calc(clamp(2rem, 4.2vw, 3.1rem) + var(--heading-size-add));
+  font-size: calc(clamp(32px, 4.5vw, 58px) + var(--heading-size-add));
   font-weight: 400;
   font-style: normal;
-  font-variant-ligatures: none;
-  font-feature-settings: normal;
-  letter-spacing: 0.01em;
-  line-height: 1.15;
-  text-transform: none;
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+  text-transform: uppercase;
   color: var(--moss);
 }
 .about-how-i-work__title-line{
   display: block;
-}
-.about-how-i-work__title-em{
-  font-style: normal;
-  font-weight: 400;
 }
 .about-how-i-work__strip{
   margin-top: 0;
@@ -2209,6 +2203,8 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
 @media (max-width: 900px){
   .about-how-i-work__title{
     max-width: 100%;
+    font-size: calc(clamp(38px, 6vw, 56px) + var(--heading-size-add));
+    line-height: 1.05;
   }
 }
 @media (max-width: 700px){
@@ -2217,6 +2213,13 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
   }
   .about-how-i-work__card{
     min-height: clamp(240px, 52vw, 360px);
+  }
+}
+@media (max-width: 520px){
+  .about-how-i-work__title{
+    font-size: calc(clamp(42px, 9vw, 52px) + var(--heading-size-add));
+    line-height: 1.04;
+    letter-spacing: -0.025em;
   }
 }
 @media (prefers-reduced-motion: reduce){
