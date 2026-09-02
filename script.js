@@ -690,6 +690,88 @@ function setupHeaderScrollUi() {
   mqMobile?.addEventListener("change", apply);
 }
 
+function setupHomeClientVoicesPin() {
+  const section = document.querySelector(".home-client-voices");
+  const pin = section?.querySelector(".home-client-voices__pin");
+  if (!section || !pin || !document.body.classList.contains("page-home")) return;
+
+  const mq =
+    typeof window.matchMedia === "function" ? window.matchMedia("(max-width: 900px)") : null;
+  const header = document.querySelector(".site-header");
+  let raf = 0;
+  let photoH = 0;
+  let headerH = 0;
+
+  const measure = () => {
+    const vh = window.innerHeight || 0;
+    photoH = Math.max(200, Math.min(400, Math.round(vh * 0.42)));
+    headerH = header ? Math.round(header.getBoundingClientRect().height) : 0;
+    section.style.setProperty("--home-voices-photo-h", `${photoH}px`);
+  };
+
+  const clearPin = () => {
+    section.classList.remove("is-js-pin");
+    pin.style.position = "";
+    pin.style.top = "";
+    pin.style.bottom = "";
+    pin.style.left = "";
+    pin.style.right = "";
+    pin.style.width = "";
+    pin.style.height = "";
+    pin.style.zIndex = "";
+    section.style.removeProperty("--home-voices-photo-h");
+  };
+
+  const apply = () => {
+    raf = 0;
+    if (!mq?.matches) {
+      clearPin();
+      return;
+    }
+
+    section.classList.add("is-js-pin");
+    const sectionRect = section.getBoundingClientRect();
+    const h = photoH;
+    if (h <= 0) return;
+
+    pin.style.left = "0px";
+    pin.style.right = "0px";
+    pin.style.width = "100%";
+    pin.style.height = `${h}px`;
+    pin.style.zIndex = "2";
+
+    if (sectionRect.top >= headerH) {
+      pin.style.position = "absolute";
+      pin.style.top = "0px";
+      pin.style.bottom = "auto";
+    } else if (sectionRect.bottom <= headerH + h) {
+      pin.style.position = "absolute";
+      pin.style.top = "auto";
+      pin.style.bottom = "0px";
+    } else {
+      pin.style.position = "fixed";
+      pin.style.top = `${headerH}px`;
+      pin.style.bottom = "auto";
+    }
+  };
+
+  const onScroll = () => {
+    if (raf) return;
+    raf = requestAnimationFrame(apply);
+  };
+
+  const onResize = () => {
+    measure();
+    apply();
+  };
+
+  measure();
+  apply();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onResize, { passive: true });
+  mq?.addEventListener("change", onResize);
+}
+
 function setupHomeServicesPin() {
   const section = document.querySelector(".home-services-stack");
   if (!section || !document.body.classList.contains("page-home")) return;
@@ -2683,6 +2765,7 @@ if (document.readyState === "loading") {
   setupHeroTypewriter();
 }
 setupHeaderScrollUi();
+setupHomeClientVoicesPin();
 setupHomeServicesPin();
 setupMobileNav();
 setupActiveNav();

@@ -129,14 +129,8 @@ body{
   line-height: 1.62;
   font-weight: var(--font-body-weight);
   -webkit-font-smoothing: antialiased;
-  overflow-x: clip;
   max-width: 100%;
   overscroll-behavior-x: none;
-}
-@supports not (overflow-x: clip){
-  body{
-    overflow-x: hidden;
-  }
 }
 
 /* Body copy: sans-serif everywhere (overrides any stray serif on paragraphs / lists) */
@@ -470,8 +464,9 @@ body.home-nav-fixed-bottom #services.section-alt{
 }
 /* Homepage — Client voices: sticky image column + three full-viewport testimonial panels */
 /* No .section-alt wash/borders here — avoids tan bars above/below; panels keep their own fills */
+/* Do not set overflow-x here: clip/hidden on one axis computes overflow-y to auto and
+   makes position:sticky jitter on iOS while the page scrolls. html/body already clip X. */
 body.home-nav-fixed-bottom .home-client-voices.section-alt{
-  overflow-x: clip;
   background: #ffffff;
   border-top: none;
   border-bottom: none;
@@ -492,7 +487,10 @@ body.home-nav-fixed-bottom .home-client-voices.section-alt{
   min-height: 520px;
   margin: 0;
   padding: 0;
-  z-index: 0;
+  z-index: 1;
+}
+.home-client-voices__pin{
+  height: 100%;
 }
 body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__sticky{
   top: 0;
@@ -501,16 +499,20 @@ body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__sticky{
   min-height: 520px;
 }
 .home-client-voices__figure{
+  position: relative;
   margin: 0;
   height: 100%;
   min-height: 100%;
   overflow: hidden;
   background: rgba(20, 19, 17, 0.08);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .home-client-voices__figure img{
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  min-height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
@@ -583,59 +585,93 @@ body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
   font-weight: 500;
   color: rgba(20, 19, 17, 0.52);
 }
-/* Narrow viewports: photo first (full width), then quotes — flex column so sticky photo works while panels scroll */
+/* Narrow viewports: photo overlays the quote column (same grid cell) so the
+   pin lives in a tall track — CSS sticky on a short flex/grid row jitters on iOS.
+   JS (.is-js-pin) swaps sticky for position:fixed with integer pixel offsets. */
 @media (max-width: 900px){
+  .home-client-voices{
+    --home-voices-photo-h: min(42vh, 400px);
+    position: relative;
+  }
+  @supports (height: 1svh){
+    .home-client-voices{
+      --home-voices-photo-h: min(42svh, 400px);
+    }
+  }
   .home-client-voices__split{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 1fr;
     align-items: stretch;
-    gap: clamp(14px, 3vw, 24px);
+    gap: 0;
     width: 100%;
   }
   .home-client-voices__sticky{
-    position: sticky;
-    top: 0;
+    grid-area: 1 / 1;
+    position: relative;
+    top: auto;
     align-self: stretch;
     width: 100%;
-    flex: 0 0 auto;
-    height: min(44vh, 420px);
-    max-height: min(520px, 52vh);
-    min-height: min(220px, 36vh);
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    z-index: 2;
+    pointer-events: none;
   }
-  body.home-nav-fixed-bottom:not(.home-header-nav-top) .home-client-voices__sticky{
-    top: 0;
-    height: min(42vh, 400px);
-    max-height: min(480px, 48vh);
-    min-height: 200px;
-  }
+  body.home-nav-fixed-bottom:not(.home-header-nav-top) .home-client-voices__sticky,
   body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__sticky{
+    top: auto;
+    height: auto;
+    max-height: none;
+    min-height: 0;
+  }
+  .home-client-voices__pin{
+    position: sticky;
+    top: var(--site-header-height);
+    height: var(--home-voices-photo-h);
+    min-height: 200px;
+    pointer-events: auto;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .home-client-voices.is-js-pin .home-client-voices__pin{
+    position: absolute;
     top: 0;
-    height: min(44vh, 420px);
-    max-height: min(520px, 52vh);
-    min-height: min(220px, 36vh);
+    right: 0;
+    left: 0;
   }
   .home-client-voices__stack{
-    flex: 1 1 auto;
+    grid-area: 1 / 1;
     min-width: 0;
     width: 100%;
+    padding-top: var(--home-voices-photo-h);
+    z-index: 1;
   }
   .home-client-voices__panel{
-    min-height: 100vh;
-    min-height: 100dvh;
+    min-height: calc(100vh - var(--site-header-height) - var(--home-voices-photo-h));
     padding: clamp(32px, 8vw, 56px) clamp(14px, 3.5vw, 24px) clamp(40px, 8vw, 72px);
   }
+  @supports (height: 1svh){
+    .home-client-voices__panel{
+      min-height: calc(100svh - var(--site-header-height) - var(--home-voices-photo-h));
+    }
+  }
   body.home-nav-fixed-bottom:not(.home-header-nav-top) .home-client-voices__panel{
-    min-height: calc(100vh - var(--home-bottom-nav-h));
-    min-height: calc(100dvh - var(--home-bottom-nav-h));
+    min-height: calc(100vh - var(--site-header-height) - var(--home-voices-photo-h));
     padding-bottom: max(
       clamp(40px, 8vw, 72px),
       calc(var(--home-bottom-nav-h) + env(safe-area-inset-bottom, 0px) + 20px)
     );
   }
   body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
-    min-height: calc(100vh - var(--site-header-height));
-    min-height: calc(100dvh - var(--site-header-height));
-    padding-top: max(clamp(32px, 8vw, 56px), calc(env(safe-area-inset-top, 0px) + 6px));
+    min-height: calc(100vh - var(--site-header-height) - var(--home-voices-photo-h));
+    padding-top: clamp(32px, 8vw, 56px);
+  }
+  @supports (height: 1svh){
+    body.home-nav-fixed-bottom:not(.home-header-nav-top) .home-client-voices__panel,
+    body.home-nav-fixed-bottom.home-header-nav-top .home-client-voices__panel{
+      min-height: calc(100svh - var(--site-header-height) - var(--home-voices-photo-h));
+    }
   }
   .home-client-voices__quote p{
     font-size: clamp(1.05rem, 4.6vw, 1.55rem);
