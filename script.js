@@ -1398,10 +1398,11 @@ function setupReviewsCarousel() {
 }
 
 function setupStatsCounter() {
-  const root = document.querySelector("[data-stats-counter]");
-  if (!root) return;
+  document.querySelectorAll("[data-stats-counter]").forEach(setupStatsCounterRoot);
+}
 
-  const nums = $$(".home-stats-num", root);
+function setupStatsCounterRoot(root) {
+  const nums = $$(".home-stats-num, .organic-proof__num", root);
   if (nums.length === 0) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -2654,6 +2655,24 @@ function setupBlogMagazineGalleryScroll() {
   });
 }
 
+function localISODate() {
+  const t = new Date();
+  const m = String(t.getMonth() + 1).padStart(2, "0");
+  const d = String(t.getDate()).padStart(2, "0");
+  return `${t.getFullYear()}-${m}-${d}`;
+}
+
+function setupBlogPublishSchedule() {
+  const today = localISODate();
+
+  document.querySelectorAll(".blog-index__item[data-publish-on]").forEach((el) => {
+    const on = el.getAttribute("data-publish-on");
+    if (!on || today >= on) return;
+    el.hidden = true;
+    el.setAttribute("data-blog-unpublished", "");
+  });
+}
+
 function setupBlogIndexFilters() {
   const root = document.querySelector("[data-blog-filters]");
   const list = document.querySelector(".blog-index--grid");
@@ -2668,6 +2687,10 @@ function setupBlogIndexFilters() {
     const key = filter === "all" ? "all" : String(filter).toLowerCase();
     let visible = 0;
     items.forEach((li) => {
+      if (li.hasAttribute("data-blog-unpublished")) {
+        li.hidden = true;
+        return;
+      }
       const raw = (li.getAttribute("data-blog-tags") || "").toLowerCase();
       const show = key === "all" || raw.split(/\s+/).includes(key);
       li.hidden = !show;
@@ -2778,6 +2801,7 @@ setupAddonsCarousel();
 setupServicesScrollReveal();
 setupBlogPostGalleries();
 setupBlogMagazineGalleryScroll();
+setupBlogPublishSchedule();
 setupBlogIndexFilters();
 setupContactForm();
 setupBrandingTierReveal();
