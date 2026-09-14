@@ -3126,230 +3126,28 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
   text-underline-offset: 3px;
 }
 
-/* Earned-attention proof board — homepage + social */
-.organic-proof{
-  padding: clamp(56px, 8vw, 104px) 0;
-  background: var(--color-green);
-  color: var(--color-white);
-  scroll-margin-top: calc(var(--site-header-height) + 8px);
+.home-stats-strip--open{
+  background: var(--color-white);
+  border-top: none;
+  border-bottom: none;
+  padding-top: clamp(56px, 8vw, 88px);
+  padding-bottom: clamp(56px, 8vw, 88px);
 }
-.organic-proof__intro{
-  max-width: 38rem;
-  margin: 0 auto clamp(32px, 5vw, 56px);
-  text-align: center;
+.home-stats-strip--open .home-stats-grid{
+  gap: clamp(18px, 2.5vw, 28px);
+  max-width: 1040px;
 }
-.organic-proof__kicker{
-  margin: 0 0 0.85em;
-  font-family: var(--font-body);
-  font-size: clamp(11px, 1.05vw, 13px);
-  font-weight: var(--font-body-weight);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(247, 241, 230, 0.78);
+.home-stats-strip--open .home-stats-cell:not(:last-child)::after{
+  display: none;
 }
-.organic-proof__title{
-  margin: 0;
-  font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: calc(clamp(1.7rem, 3.6vw, 2.65rem) + var(--heading-size-add));
-  font-weight: 400;
-  line-height: 1.18;
-  letter-spacing: 0.01em;
-  color: #f7f1e6;
-  font-variant-ligatures: none;
-  text-wrap: balance;
+.home-stats-strip--open .home-stats-figure,
+.home-stats-strip--open .home-stats-affix,
+.home-stats-strip--open .home-stats-label{
+  color: var(--color-green);
 }
-.organic-proof__lead{
-  margin: 1em auto 0;
-  max-width: 42ch;
-  font-family: var(--font-body);
-  font-size: clamp(15px, 1.5vw, 18px);
-  font-weight: var(--font-body-weight);
-  line-height: 1.55;
-  color: rgba(247, 241, 230, 0.86);
-}
-.organic-proof__board{
-  border: 1px solid rgba(247, 241, 230, 0.28);
-}
-.organic-proof__feature,
-.organic-proof__card{
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  background: transparent;
-  transition: background 0.2s ease;
-}
-.organic-proof__feature:hover,
-.organic-proof__card:hover{
-  background: rgba(247, 241, 230, 0.06);
-}
-.organic-proof__feature:focus-visible,
-.organic-proof__card:focus-visible{
-  outline: 2px solid #f7f1e6;
-  outline-offset: -2px;
-}
-.organic-proof__feature{
-  display: flex;
-  flex-direction: column;
-  gap: clamp(12px, 2vw, 20px);
-  padding: clamp(24px, 4vw, 40px) clamp(20px, 3.5vw, 36px);
-  border-bottom: 1px solid rgba(247, 241, 230, 0.28);
-}
-.organic-proof__figure{
-  margin: 0;
-  font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(56px, 10vw, 92px);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  color: #f7f1e6;
-  font-variant-numeric: tabular-nums;
-  font-variant-ligatures: none;
-}
-.organic-proof__figure .organic-proof__affix,
-.organic-proof__card-figure .organic-proof__affix{
-  font-size: 0.58em;
-  letter-spacing: -0.02em;
-  margin-left: 0.04em;
-}
-.organic-proof__insight{
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: clamp(16px, 1.7vw, 20px);
-  font-weight: var(--font-body-weight);
-  line-height: 1.45;
-  color: #f7f1e6;
-  text-wrap: pretty;
-}
-.organic-proof__support{
-  margin: 0.55em 0 0;
-  font-family: var(--font-body);
-  font-size: clamp(12px, 1.1vw, 14px);
-  font-weight: var(--font-body-weight);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(247, 241, 230, 0.72);
-}
-.organic-proof__client{
-  margin: 1.1em 0 0;
-  font-family: var(--font-body);
-  font-size: clamp(13px, 1.15vw, 15px);
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: #f7f1e6;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.organic-proof__row{
-  display: grid;
-  grid-template-columns: 1fr;
-}
-.organic-proof__card{
-  padding: clamp(24px, 3.5vw, 36px) clamp(20px, 3.5vw, 32px);
-  border-bottom: 1px solid rgba(247, 241, 230, 0.28);
-  min-width: 0;
-}
-.organic-proof__card:last-child{
-  border-bottom: 0;
-}
-.organic-proof__card-figure{
-  margin: 0 0 0.55em;
-  font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(44px, 7vw, 64px);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: #f7f1e6;
-  font-variant-numeric: tabular-nums;
-  font-variant-ligatures: none;
-}
-.organic-proof__quote{
-  margin: clamp(28px, 4vw, 40px) auto 0;
-  max-width: 44ch;
-  padding: 0;
-  border: 0;
-  text-align: center;
-}
-.organic-proof__quote p{
-  margin: 0;
-  font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.05rem, 2.1vw, 1.35rem);
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.4;
-  color: #f7f1e6;
-  font-variant-ligatures: none;
-}
-.organic-proof__tally{
-  margin: clamp(28px, 4vw, 40px) auto 0;
-  max-width: 46ch;
-  text-align: center;
-  font-family: var(--font-body);
-  font-size: clamp(13px, 1.2vw, 15px);
-  font-weight: var(--font-body-weight);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  line-height: 1.55;
-  color: rgba(247, 241, 230, 0.78);
-}
-@media (min-width: 800px){
-  .organic-proof__feature{
-    flex-direction: row;
-    align-items: center;
-    gap: clamp(28px, 5vw, 56px);
-  }
-  .organic-proof__figure{
-    flex: 0 0 auto;
-  }
-  .organic-proof__feature-copy{
-    flex: 1 1 auto;
-    min-width: 0;
-    max-width: 36rem;
-  }
-  .organic-proof__row{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .organic-proof__card{
-    border-bottom: 0;
-    border-right: 1px solid rgba(247, 241, 230, 0.28);
-  }
-  .organic-proof__card:last-child{
-    border-right: 0;
-  }
-}
-@media (min-width: 800px) and (max-width: 1024px){
-  .organic-proof__card{
-    padding: 28px 18px;
-  }
-  .organic-proof__card-figure{
-    font-size: clamp(40px, 5vw, 52px);
-  }
-  .organic-proof__row .organic-proof__insight{
-    font-size: 15px;
-  }
-}
-@media (max-width: 799px){
-  .organic-proof__intro{
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .organic-proof__lead{
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .organic-proof__feature,
-  .organic-proof__card{
-    text-align: center;
-  }
-  .organic-proof__feature-copy{
-    max-width: 36rem;
-    margin-inline: auto;
-  }
-  .organic-proof__quote,
-  .organic-proof__tally{
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+@media (max-width: 640px){
+  .home-stats-strip--open .home-stats-cell{
+    border-top: 0;
   }
 }
 
@@ -17577,12 +17375,6 @@ body.page-home .home-stats-label{
   color: var(--color-green);
 }
 body.page-home .home-stats-figure{
-  font-family: var(--home-serif);
-}
-body.page-home .organic-proof__title,
-body.page-home .organic-proof__figure,
-body.page-home .organic-proof__card-figure,
-body.page-home .organic-proof__quote p{
   font-family: var(--home-serif);
 }
 
