@@ -3103,12 +3103,12 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
   font-variant-ligatures: none;
 }
 .home-stats-detail{
-  margin: 10px auto 0;
-  max-width: 26ch;
+  margin: 12px auto 0;
+  max-width: 36ch;
   font-family: var(--font-body);
-  font-size: clamp(13px, 1.2vw, 15px);
+  font-size: clamp(13px, 1.25vw, 15px);
   font-weight: var(--font-body-weight);
-  line-height: 1.45;
+  line-height: 1.5;
   letter-spacing: 0.01em;
   color: var(--color-ink);
 }
@@ -17390,12 +17390,23 @@ body.page-home .home-stats-figure{
   font-family: var(--home-serif);
 }
 body.page-home .home-stats-strip__heading{
+  max-width: 16ch;
+  margin-left: auto;
+  margin-right: auto;
   color: var(--color-green);
   font-family: var(--home-serif);
+  font-size: clamp(1.55rem, 3.1vw, 2.4rem);
   font-variant-ligatures: none;
+  text-wrap: balance;
+}
+body.page-home .home-stats-strip__note{
+  max-width: 42ch;
+  color: var(--color-green);
+  opacity: 0.82;
 }
 body.page-home .home-stats-detail{
   color: var(--color-green);
+  opacity: 0.88;
 }
 
 /* Client work slideshow — photos from case pages */
