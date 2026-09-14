@@ -3102,6 +3102,16 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
   color: var(--ink);
   font-variant-ligatures: none;
 }
+.home-stats-detail{
+  margin: 10px auto 0;
+  max-width: 26ch;
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: var(--font-body-weight);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  color: var(--color-ink);
+}
 .home-stats-cell--link{
   display: block;
   text-decoration: none;
@@ -3142,7 +3152,9 @@ body.home-nav-fixed-bottom .hero-card .hero-subtitle.hero-subtitle--support{
 }
 .home-stats-strip--open .home-stats-figure,
 .home-stats-strip--open .home-stats-affix,
-.home-stats-strip--open .home-stats-label{
+.home-stats-strip--open .home-stats-label,
+.home-stats-strip--open .home-stats-strip__heading,
+.home-stats-strip--open .home-stats-detail{
   color: var(--color-green);
 }
 @media (max-width: 640px){
@@ -17376,6 +17388,14 @@ body.page-home .home-stats-label{
 }
 body.page-home .home-stats-figure{
   font-family: var(--home-serif);
+}
+body.page-home .home-stats-strip__heading{
+  color: var(--color-green);
+  font-family: var(--home-serif);
+  font-variant-ligatures: none;
+}
+body.page-home .home-stats-detail{
+  color: var(--color-green);
 }
 
 /* Client work slideshow — photos from case pages */
