@@ -508,16 +508,41 @@ function setupWorkCaseClientProfiles() {
     },
   };
 
+  const heroes = {
+    "work-brookstone-ind": ["/Photos/brookstone/brookstone-brand-in-action-hat.png", "Brookstone Industries cap"],
+    "work-revd": ["/Photos/revd-toys/revd-website-mockup.png", "REVD Toys website on a laptop"],
+    "work-no-nonsense-neutering": ["/portfolio/nnn/nnn-carousel-vet-handling-cat.png", "Veterinary staff with a cat at No Nonsense Neutering"],
+    "work-everflame-financial": ["/Photos/everflame/everflame-branded-polo.png", "Everflame Financial branded polo"],
+    "work-hsf": ["/Photos/head-strong-flight/hsf-in-use-archer-hoodie.png", "Head Strong Flight hoodie"],
+    "work-da-targets": ["/Photos/da-targets/da-teaser-range-day.png", "DA Targets at the range"],
+    "work-gradys": ["/Photos/gradys/gradys-tire-work-wear.png", "Grady's Grill workwear"],
+    "work-vizion": ["/Photos/vizion-consulting/vizion-business-cards.png", "Vizion Consulting business cards"],
+    "work-baker-accounting": ["/Photos/baker-accounting/baker-gallery-team.png", "Baker Accounting Services team"],
+    "work-living-room-church": ["/Photos/living-room-church/living-room-church-community-prayer.png", "The Living Room Church community"],
+    "work-wittness-coffeehouse": ["/Photos/wittness-coffeehouse/wittness-mugs-toast-bricks.png", "Guests toasting with Wittness mugs"],
+    "work-32-below-ice-cream": ["/Photos/32-below-ice-cream/32-below-hanging-sign.png", "32° Below Ice Cream Shop sign"],
+    "work-hatchworks": ["/Photos/hatchworks/hatch-brand-01.jpg", "Hatchworks brand photography"],
+    "work-brad-zimmerman-team": ["/Photos/brad-zimmerman-team/bzt-brand-02.jpg", "Portrait of Brad Zimmerman"],
+    "work-remax-pinnacle": ["/portfolio/remax-pinnacle-portfolio-thumb.jpg", "RE/MAX Pinnacle"],
+    "work-hey-peaches": ["/Photos/hey-peaches/hey-peaches-chair-lifestyle.png", "Hey Peaches lifestyle photograph"],
+    "work-cosmos": ["/Photos/cosmo-floral/cosmo-florist-studio-bw.png", "Cosmo Floral Design studio"],
+    "work-flintrock": ["/Photos/flintrock/flintrock-young-rider.png", "Young rider at Flintrock Stables"],
+    "work-lakewood-reserve": ["/Photos/lakewood-reserve/lakewood-cabin-exterior.png", "Lakewood Reserve cabin"],
+    "work-outback-toys": ["/Photos/outback-toys/obt-case-ih-steiger-arrival.png", "Farm equipment at Outback Toys"],
+    "work-blaze-yoga": ["/Photos/blaze-yoga/blaze-invest-in-your-body.png", "Blaze Yoga Lancaster"],
+    "work-pennwood": ["/Photos/pennwood/pennwood-building-brand.png", "Pennwood Development Group"],
+  };
+
   const profile = profiles[slug];
   if (!profile) return;
 
-  const logoExtraClass = profile.logoClass ? ` ${profile.logoClass}` : "";
-  const logoMarkup = profile.logo
-    ? profile.logoInName
-      ? `<h1 class="work-case-client-board__name"><img class="work-case-client-board__mark work-case-client-board__mark--hero${logoExtraClass}" src="${profile.logo}" alt="${profile.name} logo" loading="lazy" decoding="async"></h1>`
-      : `<figure class="work-case-client-board__logo"><img class="work-case-client-board__mark work-case-client-board__mark--hero${logoExtraClass}" src="${profile.logo}" alt="${profile.name} logo" loading="lazy" decoding="async"></figure>`
-    : `<h1 class="work-case-client-board__name">${profile.name}</h1>`;
+  const board = left.closest(".work-case-client-board");
+  const article = board instanceof HTMLElement ? board.closest("article") : null;
+  if (!(board instanceof HTMLElement) || !(article instanceof HTMLElement)) return;
 
+  const hero = heroes[slug];
+  const eyebrow = String(profile.services || "Portfolio").split("+")[0].trim().replace(/^Website$/i, "Website Design");
+  const leadClass = profile.name.length > 18 ? " hero-title-lead--long" : "";
   const linksMarkup =
     profile.links && profile.links.length > 0
       ? `<p class="work-case-client-board__client-links">${profile.links
@@ -527,26 +552,56 @@ function setupWorkCaseClientProfiles() {
           )
           .join("")}</p>`
       : "";
+  const photoMarkup = hero
+    ? `<figure class="hero-split-photo"><img src="${hero[0]}" alt="${hero[1]}" decoding="async" /></figure>`
+    : `<figure class="hero-split-photo" aria-hidden="true"></figure>`;
 
-  left.innerHTML = `
-    <p class="work-case-client-board__back"><a href="/portfolio/">Back to portfolio</a></p>
-    ${logoMarkup}
-    <dl class="work-case-client-board__meta" aria-label="Client details">
-      <div><dt>Location</dt><dd>${profile.location}</dd></div>
-      <div><dt>Niche</dt><dd>${profile.niche}</dd></div>
-      <div><dt>Services by Noble</dt><dd>${profile.services}</dd></div>
-    </dl>
-    ${linksMarkup}
-    <p><a class="work-case-client-board__next" href="${nextLink.getAttribute("href") || "/portfolio/"}" aria-label="${
-    nextLink.getAttribute("aria-label") || "next project: portfolio"
-  }">→</a></p>
+  const heroEl = document.createElement("section");
+  heroEl.className = "hero service-page-hero work-case-hero";
+  heroEl.innerHTML = `
+    <div class="hero-band hero-band--split">
+      <div class="hero-split-copy">
+        <div class="hero-card">
+          <h1 class="hero-title">
+            <span class="hero-title-eyebrow">${eyebrow}</span>
+            <span class="hero-title-lead${leadClass}">${profile.name}</span>
+          </h1>
+          <p class="home-hero-actions">
+            <a class="button primary" href="#case-work">See the work</a>
+          </p>
+        </div>
+      </div>
+      ${photoMarkup}
+    </div>
   `;
 
-  const rightTitle = right.querySelector(".work-case-client-board__about-title");
-  if (rightTitle) rightTitle.textContent = "About the Client";
-  const about = right.querySelector(".work-case-client-board__about");
-  if (about instanceof HTMLElement) {
-    about.innerHTML = `<p class="lead">${profile.about}</p>`;
+  const aboutEl = document.createElement("section");
+  aboutEl.className = "section work-case-about";
+  aboutEl.setAttribute("aria-labelledby", "work-case-about-title");
+  aboutEl.innerHTML = `
+    <div class="container work-case-about__grid">
+      <div class="work-case-about__facts">
+        <dl class="work-case-client-board__meta" aria-label="Client details">
+          <div><dt>Location</dt><dd>${profile.location}</dd></div>
+          <div><dt>Niche</dt><dd>${profile.niche}</dd></div>
+          <div><dt>Services by Noble</dt><dd>${profile.services}</dd></div>
+        </dl>
+        ${linksMarkup}
+      </div>
+      <div class="work-case-about__story">
+        <h2 id="work-case-about-title" class="section-title">About the client</h2>
+        <p class="work-case-about__lead">${profile.about}</p>
+      </div>
+    </div>
+  `;
+
+  article.before(heroEl);
+  board.replaceWith(aboutEl);
+  const following = aboutEl.nextElementSibling;
+  if (following instanceof HTMLElement) {
+    if (!following.id) following.id = "case-work";
+    const cta = heroEl.querySelector(".button");
+    if (cta instanceof HTMLAnchorElement) cta.href = `#${following.id}`;
   }
 }
 
