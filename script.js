@@ -660,6 +660,8 @@ function setupWorkCaseClientProfiles() {
     const cta = heroEl.querySelector(".work-case-hero__cta");
     if (cta instanceof HTMLAnchorElement) cta.href = `#${following.id}`;
   }
+  const challenge = article.querySelector(".work-case-challenge-solution");
+  if (challenge instanceof HTMLElement) aboutEl.after(challenge);
 }
 
 /** Home hero — type out audience types, pause, delete, cycle */
