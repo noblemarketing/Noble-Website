@@ -513,7 +513,7 @@ function setupWorkCaseClientProfiles() {
     "work-revd": ["/Photos/revd-toys/revd-website-mockup.png", "REVD Toys website on a laptop"],
     "work-no-nonsense-neutering": ["/portfolio/nnn/nnn-carousel-vet-handling-cat.png", "Veterinary staff with a cat at No Nonsense Neutering"],
     "work-everflame-financial": ["/Photos/everflame/everflame-branded-polo.png", "Everflame Financial branded polo"],
-    "work-hsf": ["/Photos/head-strong-flight/hsf-in-use-archer-hoodie.png", "Head Strong Flight hoodie"],
+    "work-hsf": ["/Photos/head-strong-flight/hsf-hero-deer.jpg", "Deer standing in tall grass beneath dark trees"],
     "work-da-targets": ["/Photos/da-targets/da-hero-range.jpg", "A man setting orange DA Targets on a rail at dusk"],
     "work-gradys": ["/Photos/gradys/gradys-tire-work-wear.png", "Grady's Grill workwear"],
     "work-vizion": ["/Photos/vizion-consulting/vizion-business-cards.png", "Vizion Consulting business cards"],

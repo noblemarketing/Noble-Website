@@ -16306,6 +16306,7 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
   gap: 2px;
   align-content: start;
 }
+.footer-col h2,
 .footer-col h3{
   margin: 0 0 10px;
   font-size: clamp(15px, 1.2vw, 18px);
@@ -16427,6 +16428,7 @@ body.home-nav-fixed-bottom .home-instagram-strip.site-instagram-prefooter{
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px clamp(6px, 1.8vw, 12px);
   }
+  .footer-col h2,
   .footer-col h3{
     font-size: clamp(10px, 2.9vw, 14px);
     letter-spacing: 0.07em;
@@ -17707,6 +17709,8 @@ body.page-work-case .work-case-hero__img{
   height: 100%;
   object-fit: cover;
   object-position: center 32%;
+  filter: blur(25px);
+  transform: scale(1.08);
 }
 body.page-outback-toys-case .work-case-hero__img{
   object-position: center 68%;
@@ -17723,11 +17727,19 @@ body.page-blaze-yoga-alt-case .work-case-hero__img{
 body.page-hey-peaches-case .work-case-hero__img{
   object-position: 38% center;
 }
+body.page-hsf-case .work-case-hero__img{
+  object-position: center 50%;
+  filter: blur(25px);
+  transform: scale(1.4);
+  transform-origin: 0% 46%;
+}
 body.page-remax-pinnacle-case .work-case-hero__img{
   object-position: 58% 42%;
 }
 body.page-brad-zimmerman-team-case .work-case-hero__img{
-  object-position: center 46%;
+  object-position: center top;
+  filter: blur(25px);
+  transform: translateY(72px) scale(1.08);
 }
 body.page-wittness-coffeehouse-case .work-case-hero__img{
   object-position: 62% center;
@@ -18670,6 +18682,7 @@ body:not(.page-home) .footer-center-copyright,
 body:not(.page-home) .footer-col a,
 body:not(.page-home) .footer-social-link,
 body:not(.page-home) .footer-referral,
+body:not(.page-home) .footer-col h2,
 body:not(.page-home) .footer-col h3,
 body:not(.page-home) .footer-center-cta{
   color: var(--color-white);
