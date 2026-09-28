@@ -17747,6 +17747,12 @@ body.page-wittness-coffeehouse-case .work-case-hero__img{
 body.page-pennwood-case .work-case-hero__img{
   object-position: center 58%;
 }
+body.page-cosmos-case .work-case-hero__img{
+  object-position: center 8%;
+}
+body.page-32-below-ice-cream-case .work-case-hero__img{
+  object-position: center 55%;
+}
 body.page-work-case .work-case-hero__shade{
   background:
     linear-gradient(90deg, rgba(14, 12, 10, 0.82) 0%, rgba(14, 12, 10, 0.58) 36%, rgba(14, 12, 10, 0.22) 62%, rgba(14, 12, 10, 0.4) 100%),
