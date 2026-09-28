@@ -520,7 +520,7 @@ function setupWorkCaseClientProfiles() {
     "work-baker-accounting": ["/Photos/baker-accounting/baker-gallery-team.png", "Baker Accounting Services team"],
     "work-living-room-church": ["/Photos/living-room-church/living-room-church-community-prayer.png", "The Living Room Church community"],
     "work-wittness-coffeehouse": ["/Photos/wittness-coffeehouse/wittness-mugs-toast-bricks.png", "Guests toasting with Wittness mugs"],
-    "work-32-below-ice-cream": ["/Photos/32-below-ice-cream/32-below-hanging-sign.png", "32° Below Ice Cream Shop sign"],
+    "work-32-below-ice-cream": ["/Photos/32-below-ice-cream/32-below-storefront-hero.jpg", "32° Below Ice Cream Shop storefront in Lititz, with the hanging sign and window logo"],
     "work-hatchworks": ["/Photos/hatchworks/hatch-brand-01.jpg", "Hatchworks brand photography"],
     "work-brad-zimmerman-team": ["/Photos/brad-zimmerman-team/bzt-brand-02.jpg", "Portrait of Brad Zimmerman"],
     "work-remax-pinnacle": ["/portfolio/remax-pinnacle-portfolio-thumb.jpg", "RE/MAX Pinnacle"],
@@ -533,6 +533,44 @@ function setupWorkCaseClientProfiles() {
     "work-pennwood": ["/Photos/pennwood/pennwood-building-brand.png", "Pennwood Development Group"],
   };
 
+  const heroStats = {
+    "work-outback-toys": [
+      { value: "300K+", label: "Views on one reel" },
+      { value: "100K", label: "Facebook followers" },
+      { value: "3,000", label: "New Instagram followers" },
+    ],
+    "work-da-targets": [
+      { value: "46,900+", label: "Facebook views" },
+      { value: "2,900%", label: "View increase" },
+      { value: "53,600+", label: "Instagram views" },
+    ],
+    "work-flintrock": [
+      { value: "90%", label: "Views increase" },
+      { value: "92%", label: "Reach increase" },
+      { value: "123%", label: "Content interactions" },
+    ],
+    "work-blaze-yoga": [
+      { value: "198%", label: "Instagram reach" },
+      { value: "217%", label: "Facebook views" },
+      { value: "159K", label: "Instagram views" },
+    ],
+    "work-lakewood-reserve": [
+      { value: "1,500%", label: "Facebook views" },
+      { value: "11,700+", label: "Instagram views" },
+      { value: "1,100%", label: "Instagram reach" },
+    ],
+    "work-remax-pinnacle": [
+      { value: "46.9K", label: "Total views" },
+      { value: "62%", label: "Reach increase" },
+      { value: "72%", label: "More content" },
+    ],
+    "work-32-below-ice-cream": [
+      { value: "90K+", label: "Organic views" },
+      { value: "332%", label: "Facebook views" },
+      { value: "348%", label: "Facebook reach" },
+    ],
+  };
+
   const profile = profiles[slug];
   if (!profile) return;
 
@@ -541,37 +579,52 @@ function setupWorkCaseClientProfiles() {
   if (!(board instanceof HTMLElement) || !(article instanceof HTMLElement)) return;
 
   const hero = heroes[slug];
-  const eyebrow = String(profile.services || "Portfolio").split("+")[0].trim().replace(/^Website$/i, "Website Design");
-  const leadClass = profile.name.length > 18 ? " hero-title-lead--long" : "";
+  const stats = heroStats[slug] || [];
+  const esc = (value) =>
+    String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   const linksMarkup =
     profile.links && profile.links.length > 0
       ? `<p class="work-case-client-board__client-links">${profile.links
           .map(
             (link) =>
-              `<a class="work-case-client-board__client-link" href="${link.href}" target="_blank" rel="noopener noreferrer">${link.label}</a>`
+              `<a class="work-case-client-board__client-link" href="${esc(link.href)}" target="_blank" rel="noopener noreferrer">${esc(link.label)}</a>`
           )
           .join("")}</p>`
       : "";
   const photoMarkup = hero
-    ? `<figure class="hero-split-photo"><img src="${hero[0]}" alt="${hero[1]}" decoding="async" /></figure>`
-    : `<figure class="hero-split-photo" aria-hidden="true"></figure>`;
+    ? `<img class="work-case-hero__img" src="${esc(hero[0])}" alt="${esc(hero[1])}" decoding="async" />`
+    : "";
+  const statsMarkup = stats.length
+    ? `<ul class="work-case-hero__stats">${stats
+        .map(
+          (stat) =>
+            `<li class="work-case-hero__stat"><span class="work-case-hero__stat-value">${esc(stat.value)}</span><span class="work-case-hero__stat-label">${esc(stat.label)}</span></li>`
+        )
+        .join("")}</ul>`
+    : "";
 
   const heroEl = document.createElement("section");
-  heroEl.className = "hero service-page-hero work-case-hero";
+  heroEl.className = "work-case-hero work-case-hero--overlay";
   heroEl.innerHTML = `
-    <div class="hero-band hero-band--split">
-      <div class="hero-split-copy">
-        <div class="hero-card">
-          <h1 class="hero-title">
-            <span class="hero-title-eyebrow">${eyebrow}</span>
-            <span class="hero-title-lead${leadClass}">${profile.name}</span>
-          </h1>
-          <p class="home-hero-actions">
-            <a class="button primary" href="#case-work">See the work</a>
+    <div class="work-case-hero__media">${photoMarkup}</div>
+    <div class="work-case-hero__shade" aria-hidden="true"></div>
+    <div class="work-case-hero__content">
+      <div class="work-case-hero__layout">
+        <div class="work-case-hero__copy">
+          <h1 class="work-case-hero__title">${esc(profile.name)}</h1>
+          <p class="work-case-hero__meta">
+            <span>${esc(profile.location)}</span>
+            <span>${esc(profile.niche)}</span>
+            <span>${esc(profile.services)}</span>
           </p>
+          <a class="work-case-hero__cta" href="#case-work">See the work</a>
         </div>
+        ${statsMarkup}
       </div>
-      ${photoMarkup}
     </div>
   `;
 
@@ -595,12 +648,21 @@ function setupWorkCaseClientProfiles() {
     </div>
   `;
 
+  const caseMain = document.getElementById("main");
+  if (caseMain instanceof HTMLElement) {
+    const nextHref = nextLink.getAttribute("href");
+    if (nextHref) {
+      caseMain.dataset.workCaseNextHref = nextHref;
+      caseMain.dataset.workCaseNextAria = nextLink.getAttribute("aria-label") || "Next portfolio project";
+    }
+  }
+
   article.before(heroEl);
   board.replaceWith(aboutEl);
   const following = aboutEl.nextElementSibling;
   if (following instanceof HTMLElement) {
     if (!following.id) following.id = "case-work";
-    const cta = heroEl.querySelector(".button");
+    const cta = heroEl.querySelector(".work-case-hero__cta");
     if (cta instanceof HTMLAnchorElement) cta.href = `#${following.id}`;
   }
 }
@@ -1689,14 +1751,20 @@ function setupWorkCaseNextPreview() {
 function setupWorkCaseNextFooter() {
   if (!document.body.classList.contains("page-work-case")) return;
   const main = document.getElementById("main");
-  const srcNext = document.querySelector(".work-case-client-board__next");
-  if (!(main instanceof HTMLElement) || !(srcNext instanceof HTMLAnchorElement)) return;
+  if (!(main instanceof HTMLElement)) return;
   if (main.querySelector(".work-case-next-footer")) return;
 
-  const href = srcNext.getAttribute("href");
+  const srcNext = document.querySelector(".work-case-client-board__next");
+  const href =
+    (srcNext instanceof HTMLAnchorElement && srcNext.getAttribute("href")) ||
+    main.dataset.workCaseNextHref ||
+    "";
   if (!href) return;
 
-  const aria = srcNext.getAttribute("aria-label") || "Next portfolio project";
+  const aria =
+    (srcNext instanceof HTMLAnchorElement && srcNext.getAttribute("aria-label")) ||
+    main.dataset.workCaseNextAria ||
+    "Next portfolio project";
   const nameMatch = aria.match(/next project:\s*(.+)$/i);
   const nextName = (nameMatch?.[1] || "").trim();
 
@@ -2863,7 +2931,6 @@ setupBrandingTierReveal();
 setupBrandingCaseAccordion();
 setupBrandingCaseScrollArrows();
 setupWorkCaseNextPreview();
-setupWorkCaseNextFooter();
 setupIconCollageReveal();
 setupFaqAccordion();
 setupStatsCounter();
@@ -2872,6 +2939,7 @@ setupReviewsCarousel();
 setupServicesPricingModals();
 setupHomeInstagramFeed();
 setupNobleInstagramHorizontalFeed();
+setupWorkCaseNextFooter();
 setupBlazeYogaReelsEmbeds();
 function setupHomeTimeline() {
   const section = document.querySelector(".home-timeline");
