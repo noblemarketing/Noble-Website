@@ -17709,7 +17709,7 @@ body.page-work-case .work-case-hero__img{
   height: 100%;
   object-fit: cover;
   object-position: center 32%;
-  filter: blur(25px);
+  filter: blur(2px);
   transform: scale(1.08);
 }
 body.page-outback-toys-case .work-case-hero__img{
@@ -17729,7 +17729,7 @@ body.page-hey-peaches-case .work-case-hero__img{
 }
 body.page-hsf-case .work-case-hero__img{
   object-position: center 50%;
-  filter: blur(25px);
+  filter: blur(2px);
   transform: scale(1.4);
   transform-origin: 0% 46%;
 }
@@ -17738,7 +17738,7 @@ body.page-remax-pinnacle-case .work-case-hero__img{
 }
 body.page-brad-zimmerman-team-case .work-case-hero__img{
   object-position: center top;
-  filter: blur(25px);
+  filter: blur(2px);
   transform: translateY(72px) scale(1.08);
 }
 body.page-wittness-coffeehouse-case .work-case-hero__img{
