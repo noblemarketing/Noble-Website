@@ -514,23 +514,23 @@ function setupWorkCaseClientProfiles() {
     "work-no-nonsense-neutering": ["/portfolio/nnn/nnn-carousel-vet-handling-cat.png", "Veterinary staff with a cat at No Nonsense Neutering"],
     "work-everflame-financial": ["/Photos/everflame/everflame-branded-polo.png", "Everflame Financial branded polo"],
     "work-hsf": ["/Photos/head-strong-flight/hsf-in-use-archer-hoodie.png", "Head Strong Flight hoodie"],
-    "work-da-targets": ["/Photos/da-targets/da-teaser-range-day.png", "DA Targets at the range"],
+    "work-da-targets": ["/Photos/da-targets/da-hero-range.jpg", "A man setting orange DA Targets on a rail at dusk"],
     "work-gradys": ["/Photos/gradys/gradys-tire-work-wear.png", "Grady's Grill workwear"],
     "work-vizion": ["/Photos/vizion-consulting/vizion-business-cards.png", "Vizion Consulting business cards"],
     "work-baker-accounting": ["/Photos/baker-accounting/baker-gallery-team.png", "Baker Accounting Services team"],
     "work-living-room-church": ["/Photos/living-room-church/living-room-church-community-prayer.png", "The Living Room Church community"],
-    "work-wittness-coffeehouse": ["/Photos/wittness-coffeehouse/wittness-mugs-toast-bricks.png", "Guests toasting with Wittness mugs"],
+    "work-wittness-coffeehouse": ["/Photos/wittness-coffeehouse/wittness-hero-glass.jpg", "Hand holding a Wittness Coffeehouse glass with the scales logo"],
     "work-32-below-ice-cream": ["/Photos/32-below-ice-cream/32-below-storefront-hero.jpg", "32° Below Ice Cream Shop storefront in Lititz, with the hanging sign and window logo"],
     "work-hatchworks": ["/Photos/hatchworks/hatch-brand-01.jpg", "Hatchworks brand photography"],
-    "work-brad-zimmerman-team": ["/Photos/brad-zimmerman-team/bzt-brand-02.jpg", "Portrait of Brad Zimmerman"],
-    "work-remax-pinnacle": ["/portfolio/remax-pinnacle-portfolio-thumb.jpg", "RE/MAX Pinnacle"],
-    "work-hey-peaches": ["/Photos/hey-peaches/hey-peaches-chair-lifestyle.png", "Hey Peaches lifestyle photograph"],
+    "work-brad-zimmerman-team": ["/Photos/brad-zimmerman-team/bzt-hero-kitchen.jpg", "The Brad Zimmerman Team posed in a modern kitchen"],
+    "work-remax-pinnacle": ["/Photos/remax-pinnacle/remax-hero-living-room.jpg", "Bright living room with a fiddle-leaf fig, gray sofa, and arched window"],
+    "work-hey-peaches": ["/Photos/hey-peaches/hey-peaches-hero-rack.jpg", "Hey Peaches shirts on wooden hangers, including a white tee with a western print"],
     "work-cosmos": ["/Photos/cosmo-floral/cosmo-florist-studio-bw.png", "Cosmo Floral Design studio"],
-    "work-flintrock": ["/Photos/flintrock/flintrock-young-rider.png", "Young rider at Flintrock Stables"],
+    "work-flintrock": ["/Photos/flintrock/flintrock-hero-pasture.jpg", "Flintrock Stables pasture with wooden fences, horses, and barns"],
     "work-lakewood-reserve": ["/Photos/lakewood-reserve/lakewood-cabin-exterior.png", "Lakewood Reserve cabin"],
-    "work-outback-toys": ["/Photos/outback-toys/obt-case-ih-steiger-arrival.png", "Farm equipment at Outback Toys"],
-    "work-blaze-yoga": ["/Photos/blaze-yoga/blaze-invest-in-your-body.png", "Blaze Yoga Lancaster"],
-    "work-pennwood": ["/Photos/pennwood/pennwood-building-brand.png", "Pennwood Development Group"],
+    "work-outback-toys": ["/Photos/outback-toys/obt-hero.jpg", "Outback Toys storefront with a red Farmall tractor out front"],
+    "work-blaze-yoga": ["/Photos/blaze-yoga/blaze-hero-class.jpg", "Blaze Yoga Lancaster class in a studio with brick windows"],
+    "work-pennwood": ["/Photos/pennwood/pennwood-hero-campus.jpg", "Aerial view of a Pennwood industrial campus beside a highway"],
   };
 
   const heroStats = {
@@ -616,11 +616,6 @@ function setupWorkCaseClientProfiles() {
       <div class="work-case-hero__layout">
         <div class="work-case-hero__copy">
           <h1 class="work-case-hero__title">${esc(profile.name)}</h1>
-          <p class="work-case-hero__meta">
-            <span>${esc(profile.location)}</span>
-            <span>${esc(profile.niche)}</span>
-            <span>${esc(profile.services)}</span>
-          </p>
           <a class="work-case-hero__cta" href="#case-work">See the work</a>
         </div>
         ${statsMarkup}
@@ -1796,7 +1791,9 @@ function setupWorkCaseNextFooter() {
   }
 
   nav.appendChild(a);
-  main.appendChild(nav);
+  const instagram = main.querySelector(".site-instagram-prefooter");
+  if (instagram) main.insertBefore(nav, instagram);
+  else main.appendChild(nav);
 }
 
 function setupIconCollageReveal() {
