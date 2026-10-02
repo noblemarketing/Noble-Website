@@ -17030,7 +17030,7 @@ body.page-home .brand-mark{
   filter: none;
 }
 
-/* Hero — Opaline-style: nav above; copy left; portrait flush bottom-right */
+/* Hero — full-bleed photo; copy sits on the left */
 body.page-home .hero,
 body.page-home.home-nav-fixed-bottom .hero{
   margin-top: 0;
@@ -17071,37 +17071,57 @@ body.page-home .hero-split-copy{
   align-items: center;
   justify-content: flex-start;
   height: 100%;
-  width: min(58%, calc(100% - min(48vw, calc((100vh - var(--site-header-height)) * 968 / 1024))));
+  width: min(72rem, 74%);
   padding: clamp(32px, 6vh, 72px) clamp(28px, 5vw, 72px);
   background: transparent;
   min-width: 0;
   box-sizing: border-box;
 }
-@supports (height: 100dvh){
-  body.page-home .hero-split-copy{
-    width: min(58%, calc(100% - min(48vw, calc((100dvh - var(--site-header-height)) * 968 / 1024))));
-  }
-}
 body.page-home .hero-split-photo{
   position: absolute;
-  top: auto;
-  right: 0;
-  bottom: 0;
-  left: auto;
+  inset: 0;
   margin: 0;
   padding: 0;
   border: 0;
+  width: 100%;
   height: 100%;
-  width: auto;
-  aspect-ratio: 968 / 1024;
   max-width: none;
-  background: var(--color-white);
+  aspect-ratio: auto;
+  background: #f3efe6;
   overflow: hidden;
   z-index: 0;
   line-height: 0;
 }
+body.page-home .hero-title-lead{
+  white-space: nowrap;
+}
+body.page-home .hero-split-copy .hero-card{
+  max-width: none;
+}
+body.page-home .hero-title-type,
+body.page-home .hero-title-type .hero-typewriter,
+body.page-home .hero-title-type .hero-typewriter__text{
+  max-width: none;
+  white-space: nowrap;
+}
+body.page-home .hero-split-photo::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(244, 241, 234, 0.9) 0,
+    rgba(244, 241, 234, 0.78) min(48rem, 46%),
+    rgba(244, 241, 234, 0) min(68rem, 64%)
+  );
+  pointer-events: none;
+}
 body.page-home .hero-split-photo picture{
-  display: contents;
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 body.page-home .hero-split-photo img{
   display: block;
@@ -17110,9 +17130,15 @@ body.page-home .hero-split-photo img{
   margin: 0;
   padding: 0;
   border: 0;
-  object-fit: contain;
-  object-position: bottom right;
+  object-fit: cover;
+  object-position: 58% center;
+  transform: none;
   image-rendering: auto;
+}
+@media (min-width: 1500px){
+  body.page-home .hero-split-photo img{
+    object-position: 62% center;
+  }
 }
 body.page-home .hero-inner{
   position: relative;
@@ -17235,12 +17261,22 @@ body.page-home .hero-title-lead-break{
     width: 100%;
     height: 100%;
   }
+  body.page-home .hero-split-photo::after{
+    background: linear-gradient(
+      180deg,
+      rgba(244, 241, 234, 0.55) 0%,
+      rgba(244, 241, 234, 0.12) 22%,
+      rgba(244, 241, 234, 0) 38%,
+      rgba(244, 241, 234, 0) 72%,
+      rgba(244, 241, 234, 0.5) 100%
+    );
+  }
   body.page-home .hero-split-photo img{
     display: block;
     position: absolute;
     inset: 0;
     object-fit: cover;
-    object-position: 42% 70%;
+    object-position: center 42%;
     width: 100%;
     max-width: none;
     min-width: 100%;
@@ -17282,6 +17318,9 @@ body.page-home .hero-title-lead-break{
     margin: 0;
     max-width: 22rem;
   }
+  body.page-home .hero-title-lead{
+    white-space: normal;
+  }
   body.page-home .hero-title--typewriter{
     gap: clamp(6px, 1.2vh, 12px);
     margin-bottom: 0;
@@ -17294,8 +17333,9 @@ body.page-home .hero-title-lead-break{
   body.page-home .hero-title-type,
   body.page-home.home-nav-fixed-bottom .hero-title-type{
     display: block;
-    width: 100%;
+    width: auto;
     max-width: none;
+    white-space: normal;
     margin: 0;
     padding: 0;
     text-indent: 0;
@@ -17306,6 +17346,7 @@ body.page-home .hero-title-lead-break{
   body.page-home .hero-title-type .hero-typewriter,
   body.page-home .hero-title-type .hero-typewriter__text{
     display: inline;
+    white-space: normal;
     margin: 0;
     padding: 0;
     text-indent: 0;
