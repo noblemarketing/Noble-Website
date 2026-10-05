@@ -430,8 +430,8 @@ window.NOBLE_INSTAGRAM_FEED_EMBEDDED = {
           "width": 640
         }
       },
-      "caption": "Safe to say quite a few! 😁\n\nFrom manufacturing to boutiques and everything in between—each brand is built on the same foundation: listening, positioning, and craft that reflects their unique expertise. Branding that communicates credibility across every industry.",
-      "prunedCaption": "Safe to say quite a few! 😁\n\nFrom manufacturing to boutiques and everything in between—each brand is built on the same foundation: listening, positioning, and craft that reflects their unique expertise. Branding that communicates credibility across every industry.",
+      "caption": "Safe to say quite a few! 😁\n\nFrom manufacturing to boutiques and everything in between. Each brand is built on the same foundation: listening, positioning, and craft that reflects their unique expertise. Branding that communicates credibility across every industry.",
+      "prunedCaption": "Safe to say quite a few! 😁\n\nFrom manufacturing to boutiques and everything in between. Each brand is built on the same foundation: listening, positioning, and craft that reflects their unique expertise. Branding that communicates credibility across every industry.",
       "hashtags": [],
       "mentions": [],
       "colorPalette": {

@@ -6504,6 +6504,21 @@ details.accordion[open] > summary .branding-case-acc-icon::before{
   object-fit: cover;
   object-position: center;
 }
+.page-blaze-yoga-alt-case #main .blaze-yoga-social-carousel{
+  background: #ffffff;
+  padding-top: clamp(10px, 1.6vw, 18px);
+  padding-bottom: clamp(4px, 1vw, 10px);
+}
+.page-blaze-yoga-alt-case #main .blaze-yoga-social-carousel .branding-case-scroll-wrap{
+  margin-top: 0;
+}
+.page-blaze-yoga-alt-case #main .blaze-yoga-social-carousel .branding-case-scroll__frame img{
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+}
 .page-blaze-yoga-fitness-case #main .work-case-client-end .work-case__cta + .work-case__cta{
   margin-top: clamp(12px, 2vw, 18px);
 }
@@ -8169,6 +8184,10 @@ body.portfolio-page--magazine .site-header.is-elevated{
   max-width: min(100%, 340px);
   width: auto;
   height: auto;
+}
+.portfolio-mag-card__logo-overlay--pine-hill{
+  max-width: min(78%, 280px);
+  max-height: 72px;
 }
 .portfolio-mag-card__logo-overlay--remax-pinnacle{
   max-width: min(88%, 300px);
@@ -12242,6 +12261,18 @@ body.page-services.page-service-social:not(.page-services-hub) .services-split-h
 .page-service-social .section-social-packages > .container > .lead{
   max-width: 56ch;
 }
+.page-service-social .service-social-custom{
+  background: var(--color-cream-tint);
+}
+.page-service-social .service-social-custom .section-title,
+.page-service-social .service-social-custom .lead{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.page-service-social .service-social-custom .lead{
+  max-width: 58ch;
+}
 .page-service-website .section-website-packages > .container > .fineprint,
 .page-service-social .section-social-packages > .container > .fineprint{
   max-width: 56ch;
@@ -13207,6 +13238,9 @@ body.page-blog-post .blog-magazine__hero img{
   object-fit: cover;
   object-position: center 40%;
 }
+body.page-blog-post-32-below .blog-magazine__hero img{
+  object-position: center 58%;
+}
 body.page-blog-post .blog-magazine__hero figcaption,
 body.page-blog-post .blog-magazine__pair figcaption,
 body.page-blog-post .blog-magazine__wide figcaption{
@@ -14113,19 +14147,6 @@ body.page-contact .section.section-alt{
 .contact-page-grid__copy .contact-cards{
   margin-top: 0;
   gap: 14px;
-}
-.contact-page-social-wrap{
-  margin-top: clamp(28px, 4vw, 44px);
-  padding-top: clamp(22px, 3vw, 32px);
-  border-top: 1px solid rgba(20, 19, 17, 0.1);
-}
-.contact-page-social-label{
-  margin: 0 0 12px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(20, 19, 17, 0.5);
 }
 .contact-page-form-title{
   margin: 0 0 clamp(16px, 2.2vw, 22px);
@@ -17833,6 +17854,27 @@ body.page-work-case .work-case-hero__title{
   text-transform: uppercase;
   text-wrap: balance;
   font-variant-ligatures: common-ligatures contextual;
+}
+body.page-pine-hill-building-case .work-case-hero__title--logo{
+  max-width: min(520px, 78vw);
+  line-height: 0;
+}
+body.page-pine-hill-building-case .work-case-hero__title--logo img{
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+body.page-pine-hill-building-case .work-case-hero__img{
+  object-position: center 46%;
+}
+body.page-pine-hill-building-case .work-case-about__lead a{
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+body.page-pine-hill-building-case .work-case-about__lead a:hover{
+  color: rgba(20, 19, 17, 0.62);
 }
 body.page-work-case .work-case-hero__meta{
   display: flex;

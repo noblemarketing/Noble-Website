@@ -253,7 +253,7 @@ function setupWorkCaseClientProfiles() {
       niche: "Nonprofit / Animal Welfare",
       location: "PA",
       about:
-        "A 501(c)3 nonprofit founded in 2008 providing affordable sterilization and vaccination services for pets and community cats. Operating three clinic locations across the Lehigh Valley, Reading, and Plains, PA — they have impacted over 190,000 cats and dogs.",
+        "A 501(c)3 nonprofit founded in 2008 providing affordable sterilization and vaccination services for pets and community cats. Operating three clinic locations across the Lehigh Valley, Reading, and Plains, PA. They have impacted over 190,000 cats and dogs.",
       links: [
         { label: "Website", href: "https://nnnlv.org" },
         { label: "Facebook", href: "https://facebook.com/NoNonsenseNeutering" },
@@ -327,7 +327,7 @@ function setupWorkCaseClientProfiles() {
       niche: "Accounting / CPA Advisory + HR",
       location: "Red Lion, PA",
       about:
-        "Baker Accounting Services helps growing organizations improve profitability, cash flow, and people operations—pairing CPA advisory with dedicated HR support. I created their full brand identity, stationery, and social profile assets.",
+        "Baker Accounting Services helps growing organizations improve profitability, cash flow, and people operations, pairing CPA advisory with dedicated HR support. I created their full brand identity, stationery, and social profile assets.",
       links: [{ label: "Website", href: "https://bakerasc.com" }],
     },
     "work-living-room-church": {
@@ -367,7 +367,7 @@ function setupWorkCaseClientProfiles() {
       niche: "Ice Cream Shop / Food & Beverage",
       location: "Lititz, PA",
       about:
-        "32° Below Ice Cream Shop is a family-owned business that loves serving the Lititz community and making memories—one scoop at a time.",
+        "32° Below Ice Cream Shop is a family-owned business that loves serving the Lititz community and making memories, one scoop at a time.",
       links: [
         { label: "Website", href: "https://www.32belowicecreamshop.com/" },
         { label: "Facebook", href: "https://www.facebook.com/32belowicecreamshop" },
@@ -383,7 +383,7 @@ function setupWorkCaseClientProfiles() {
       niche: "Coworking / Shared Workspace",
       location: "Lancaster, PA",
       about:
-        "Hatchworks is a coworking space in Lancaster, PA—offering shared workspaces, private offices, and conference rooms for freelancers, remote teams, and growing businesses who want a flexible place to work and connect.",
+        "Hatchworks is a coworking space in Lancaster, PA, offering shared workspaces, private offices, and conference rooms for freelancers, remote teams, and growing businesses who want a flexible place to work and connect.",
       links: [],
     },
     "work-brad-zimmerman-team": {
@@ -395,7 +395,7 @@ function setupWorkCaseClientProfiles() {
       niche: "Real Estate",
       location: "Lancaster, PA",
       about:
-        "The Brad Zimmerman Team is a RE/MAX Pinnacle real estate team serving Lancaster County and surrounding markets—combining marketing expertise, modern listing presentation, and a client-first approach to help buyers and sellers move with confidence.",
+        "The Brad Zimmerman Team is a RE/MAX Pinnacle real estate team serving Lancaster County and surrounding markets, combining marketing expertise, modern listing presentation, and a client-first approach to help buyers and sellers move with confidence.",
       links: [
         { label: "Website", href: "https://www.bradshomesales.com/" },
         { label: "Instagram", href: "https://www.instagram.com/bradshomesales/" },
@@ -411,7 +411,7 @@ function setupWorkCaseClientProfiles() {
       niche: "Real Estate",
       location: "Lancaster, PA",
       about:
-        "RE/MAX Pinnacle is a Lancaster and Dauphin County brokerage with offices across Central Pennsylvania—built on local market knowledge, agent expertise, and a commitment to helping buyers and sellers move with confidence.",
+        "RE/MAX Pinnacle is a Lancaster and Dauphin County brokerage with offices across Central Pennsylvania, built on local market knowledge, agent expertise, and a commitment to helping buyers and sellers move with confidence.",
       links: [
         { label: "Website", href: "https://pinnacle-lancaster-pa.remax.com/" },
         { label: "LinkedIn", href: "https://www.linkedin.com/company/remaxpinnacle" },
@@ -447,7 +447,7 @@ function setupWorkCaseClientProfiles() {
       niche: "Equestrian / Agriculture",
       location: "PA",
       about:
-        "A premier equestrian facility in Lititz, Lancaster County, PA — part of the family-owned Flintrock Corporation.",
+        "A premier equestrian facility in Lititz, Lancaster County, PA, part of the family-owned Flintrock Corporation.",
       links: [
         { label: "Website", href: "https://flintrockcorporation.com" },
         { label: "Instagram", href: "https://www.instagram.com/flintrock_stables/" },
@@ -470,7 +470,7 @@ function setupWorkCaseClientProfiles() {
       niche: "Retail / Farm Toy & Collectibles",
       location: "PA",
       about:
-        "One of the largest farm toy retailers in the United States, Outback Toys is a family-owned store rooted in Lititz, Lancaster County, PA — carrying thousands of die-cast farm toys, construction equipment replicas, collectibles, and farm-branded merchandise for kids and adult collectors alike. With roots going back to the early 1990s and a newly expanded state-of-the-art retail location, Outback Toys serves customers locally, nationally, and internationally through both their in-store experience and outbacktoys.com. Known for their exclusive limited-edition releases and deep agricultural heritage, they are a beloved destination for the farming community and a one-of-a-kind gem in Lancaster County.",
+        "One of the largest farm toy retailers in the United States, Outback Toys is a family-owned store rooted in Lititz, Lancaster County, PA, carrying thousands of die-cast farm toys, construction equipment replicas, collectibles, and farm-branded merchandise for kids and adult collectors alike. With roots going back to the early 1990s and a newly expanded state-of-the-art retail location, Outback Toys serves customers locally, nationally, and internationally through both their in-store experience and outbacktoys.com. Known for their exclusive limited-edition releases and deep agricultural heritage, they are a beloved destination for the farming community and a one-of-a-kind gem in Lancaster County.",
       links: [
         { label: "Website", href: "https://www.outbacktoys.com" },
         { label: "Instagram", href: "https://instagram.com/outbacktoys" },
@@ -2388,7 +2388,7 @@ function setupHomeInstagramFeed() {
     const iframe = document.createElement("iframe");
     iframe.className = "home-instagram-strip__iframe";
     iframe.src = iframeSrc;
-    iframe.title = "Instagram feed — Noble Marketing & Design";
+    iframe.title = "Instagram feed: Noble Marketing & Design";
     iframe.loading = "lazy";
     iframe.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
     embedHost.appendChild(iframe);
