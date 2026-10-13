@@ -1006,6 +1006,23 @@ function setupPortfolioFilter() {
   });
 }
 
+/** YYYY-MM-DD in Eastern Time, so a publish date means that calendar day in Pennsylvania. */
+function nobleEasternDate() {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+  const get = (type) => parts.find((part) => part.type === type).value;
+  return `${get("year")}-${get("month")}-${get("day")}`;
+}
+
+function isPublishedOn(isoDate) {
+  if (!isoDate) return true;
+  return nobleEasternDate() >= isoDate;
+}
+
 /** Portfolio page — editorial grid filter */
 function setupPortfolioMagazineFilter() {
   const root = document.querySelector("[data-portfolio-magazine]");
@@ -1025,6 +1042,11 @@ function setupPortfolioMagazineFilter() {
 
   const apply = (kind) => {
     items.forEach((el) => {
+      const publishOn = el.getAttribute("data-publish-on");
+      if (publishOn && !isPublishedOn(publishOn)) {
+        el.hidden = true;
+        return;
+      }
       const cat = el.getAttribute("data-mag-cat") || "";
       const cats = cat.split(/\s+/).filter(Boolean);
       const show = kind === "all" || cats.includes(kind);
@@ -1058,6 +1080,7 @@ function setupPortfolioMagazineFilter() {
     activateByKind(kind);
   };
 
+  apply("all");
   applyHashFilter();
   window.addEventListener("hashchange", applyHashFilter);
 }
