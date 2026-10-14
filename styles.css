@@ -8156,10 +8156,10 @@ body.portfolio-page--magazine .site-header.is-elevated{
   margin: 0;
 }
 .portfolio-mag-card__logo-overlay--brad-zimmerman-team{
-  max-width: min(88%, 340px);
-  max-height: min(96px, 22vw);
+  max-width: min(92%, 300px);
+  max-height: min(110px, 26vw);
   height: auto;
-  filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.45));
+  filter: brightness(0) invert(1) drop-shadow(0 2px 14px rgba(0, 0, 0, 0.45));
 }
 .portfolio-mag-card__logo-overlay--revd{
   max-width: min(78%, 320px);
