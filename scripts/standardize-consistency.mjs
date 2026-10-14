@@ -78,9 +78,9 @@ function redirectStub(target, canonicalPath) {
 }
 
 const legacyRedirects = [
-  { file: "branding/index.html", target: "/services/branding", canonical: "/services/branding" },
-  { file: "website-design/index.html", target: "/services/website-design", canonical: "/services/website-design" },
-  { file: "social-media/index.html", target: "/services/social-media", canonical: "/services/social-media" },
+  { file: "branding/index.html", target: "/services/branding", canonical: "/services/branding/" },
+  { file: "website-design/index.html", target: "/services/website-design", canonical: "/services/website-design/" },
+  { file: "social-media/index.html", target: "/services/social-media", canonical: "/services/social-media/" },
 ];
 
 let updated = 0;
