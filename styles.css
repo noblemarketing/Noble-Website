@@ -8161,6 +8161,11 @@ body.portfolio-page--magazine .site-header.is-elevated{
   height: auto;
   filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.45));
 }
+.portfolio-mag-card__logo-overlay--revd{
+  max-width: min(78%, 320px);
+  max-height: min(78px, 16vw);
+  filter: none;
+}
 .branding-case-accordion[aria-labelledby="brad-zimmerman-team-social-posts-heading"] .branding-case-accordion__intro .work-case-showcase__lede{
   margin-bottom: clamp(18px, 2.6vw, 28px);
 }
