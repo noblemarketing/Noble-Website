@@ -17871,6 +17871,16 @@ body.page-pine-hill-building-case .work-case-hero__title--logo img{
 body.page-pine-hill-building-case .work-case-hero__img{
   object-position: center 46%;
 }
+body.page-by-anna-claire-case .work-case-hero__img{
+  object-position: center 42%;
+  transform: translateY(56px) scale(1.08);
+}
+@media (max-width: 860px){
+  body.page-by-anna-claire-case .work-case-hero__img{
+    object-position: 44% center;
+    transform: scale(1.08);
+  }
+}
 body.page-pine-hill-building-case .work-case-about__lead a{
   color: inherit;
   text-decoration-thickness: 1px;
