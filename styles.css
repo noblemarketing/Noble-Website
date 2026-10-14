@@ -7940,6 +7940,9 @@ body.portfolio-page--magazine .site-header.is-elevated{
   object-fit: cover;
   object-position: center 42%;
 }
+.portfolio-mag-card__media--revd > img:first-child{
+  object-position: center 36%;
+}
 .portfolio-mag-card__media--pennwood > img:first-child{
   object-fit: cover;
 }
