@@ -1,16 +1,59 @@
 /* Branding package quiz modal. Scoped so it does not restyle the rest of the site. */
 
-.brand-quiz-launch{
-  margin: 14px 0 0;
-}
-
-.brand-quiz-trigger,
 .portfolio-brand-quiz .button{
   height: auto;
   max-width: min(34rem, 100%);
   white-space: normal;
   text-align: center;
   line-height: 1.35;
+}
+
+.brand-quiz-fab{
+  position: fixed;
+  z-index: 940;
+  right: calc(max(16px, env(safe-area-inset-right, 0px)) + 64px);
+  bottom: max(20px, env(safe-area-inset-bottom, 0px) + 12px);
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: min(280px, calc(100vw - 110px));
+  min-height: 52px;
+  margin: 0;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 0;
+  background: var(--color-green, #5e6e3c);
+  color: var(--color-white, #fdfcf8);
+  box-shadow: 0 4px 20px rgba(20, 19, 17, 0.12);
+  font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.brand-quiz-fab:hover{
+  background: var(--color-green-dark, #4a5730);
+  color: var(--color-white, #fdfcf8);
+}
+
+.brand-quiz-fab:focus-visible{
+  outline: 2px solid var(--moss, #5e6e3c);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px){
+  .brand-quiz-fab{
+    left: calc(max(12px, env(safe-area-inset-left, 0px) + 8px) + 64px);
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom, 0px) + 8px);
+    width: auto;
+    max-width: none;
+  }
 }
 
 .page-service-branding .brand-quiz-package-actions{

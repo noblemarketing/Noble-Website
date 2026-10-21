@@ -455,12 +455,21 @@
 
   if (!brandingPage) return;
 
+  var fab = document.createElement("button");
+  fab.type = "button";
+  fab.className = "brand-quiz-fab";
+  fab.setAttribute("data-open-brand-quiz", "");
+  fab.textContent = "Find out which branding package is right for you";
+  var backToTop = document.getElementById("noble-back-to-top");
+  if (backToTop) document.body.insertBefore(fab, backToTop);
+  else document.body.appendChild(fab);
+
   var params = new URLSearchParams(location.search);
   if (params.get("openBrandQuiz") === "1") {
     params.delete("openBrandQuiz");
     var next = params.toString();
     history.replaceState(null, "", location.pathname + (next ? "?" + next : "") + location.hash);
-    openQuiz(document.querySelector("[data-open-brand-quiz]"));
+    openQuiz(fab);
     return;
   }
 
@@ -475,6 +484,6 @@
   autoTimer = window.setTimeout(function () {
     autoTimer = 0;
     if (!brandingPage || isOpen) return;
-    openQuiz(document.querySelector("[data-open-brand-quiz]"));
+    openQuiz(fab);
   }, AUTO_DELAY_MS);
 })();
