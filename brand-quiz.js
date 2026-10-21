@@ -459,7 +459,7 @@
   fab.type = "button";
   fab.className = "brand-quiz-fab";
   fab.setAttribute("data-open-brand-quiz", "");
-  fab.textContent = "Find out which branding package is right for you";
+  fab.textContent = "Take the Quiz";
   var backToTop = document.getElementById("noble-back-to-top");
   if (backToTop) document.body.insertBefore(fab, backToTop);
   else document.body.appendChild(fab);
