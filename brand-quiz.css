@@ -56,19 +56,6 @@
   }
 }
 
-.page-service-branding .brand-quiz-package-actions{
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.page-service-branding .brand-quiz-package-actions .package-card-btn{
-  max-width: 28rem;
-  height: auto;
-  white-space: normal;
-  text-align: center;
-  line-height: 1.35;
-}
-
 .portfolio-brand-quiz{
   display: flex;
   justify-content: center;
