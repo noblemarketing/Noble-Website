@@ -7943,9 +7943,6 @@ body.portfolio-page--magazine .site-header.is-elevated{
 .portfolio-mag-card__media--by-anna-claire > img:first-child{
   object-position: center 42%;
 }
-.portfolio-mag-card__media-scrim--by-anna-claire{
-  background: rgba(20, 19, 17, 0.28);
-}
 .portfolio-mag-card__logo-overlay--by-anna-claire{
   max-width: min(86%, calc(100% - 28px));
   max-height: min(72px, 16vw);
@@ -8175,7 +8172,7 @@ body.portfolio-page--magazine .site-header.is-elevated{
   filter: none;
 }
 .portfolio-mag-card__media-scrim--revd{
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.62);
 }
 .branding-case-accordion[aria-labelledby="brad-zimmerman-team-social-posts-heading"] .branding-case-accordion__intro .work-case-showcase__lede{
   margin-bottom: clamp(18px, 2.6vw, 28px);
