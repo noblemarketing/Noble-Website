@@ -18177,6 +18177,14 @@ body.page-pine-hill-building-case .work-case-about__lead a{
 body.page-pine-hill-building-case .work-case-about__lead a:hover{
   color: rgba(20, 19, 17, 0.62);
 }
+body.page-pine-hill-building-case .pine-hill-social-carousel .branding-case-scroll__frame a{
+  display: block;
+  cursor: pointer;
+}
+body.page-pine-hill-building-case .pine-hill-social-carousel .branding-case-scroll__frame a img{
+  width: 100%;
+  height: auto;
+}
 body.page-work-case .work-case-hero__meta{
   display: flex;
   flex-direction: column;
