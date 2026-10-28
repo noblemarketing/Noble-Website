@@ -18,8 +18,8 @@
       <meta name="description" content="Client success stories and marketing insights from Noble Marketing &amp; Design: branding, websites, and organic social across PA. Read the latest posts." />
   <title>Client Stories & Marketing Insights | Noble Marketing</title>
   <link rel="canonical" href="https://www.thenoblemarketing.com/blog/" />
-  <link rel="stylesheet" href="/styles.css?v=stationery-site-53" />
-  <script src="/script.js?v=blog-schedule-1" defer></script>
+  <link rel="stylesheet" href="/styles.css?v=blog-fonts-1" />
+  <script src="/script.js?v=blog-gap-1" defer></script>
 </head>
 <body class="page-blog">
 <header class="site-header" data-elevate>
@@ -50,30 +50,34 @@
   </div>
 </header>
 <main id="main">
-  <section class="section blog-hero blog-hero--masthead" data-reveal-on-scroll>
-    <div class="blog-hero__masthead">
-      <figure class="blog-hero__figure blog-hero__figure--cover">
-        <img src="/Photos/AudreyHBranding-7323.jpg" width="2400" height="1030" alt="Designer at a laptop in a light studio" decoding="async" />
-      </figure>
-      <header class="blog-hero__header">
-        <p class="blog-hero__kicker">Noble</p>
-        <h1 class="blog-hero__title">Blog</h1>
-        <p class="blog-hero__hint">Scroll to explore by topic</p>
-      </header>
-    </div>
-  </section>
-
-  <section class="section blog-index-section section-alt" data-reveal-on-scroll>
+  <section class="section blog-index-section blog-journal section-alt" data-reveal-on-scroll>
     <div class="container blog-index-section__inner">
-      <div class="blog-index-toolbar" data-blog-filters role="group" aria-label="Filter blog posts">
-        <span class="blog-index-toolbar__label" id="blog-filters-label">Topics</span>
-        <div class="blog-index-filters" aria-labelledby="blog-filters-label">
-          <button type="button" class="blog-filter-chip is-active" data-blog-filter="all" aria-pressed="true">All</button>
-          <button type="button" class="blog-filter-chip" data-blog-filter="social-media" aria-pressed="false">Social Media</button>
-          <button type="button" class="blog-filter-chip" data-blog-filter="branding" aria-pressed="false">Branding</button>
-          <button type="button" class="blog-filter-chip" data-blog-filter="print" aria-pressed="false">Print</button>
-          <button type="button" class="blog-filter-chip" data-blog-filter="website" aria-pressed="false">Website</button>
+      <header class="blog-journal__intro">
+        <p class="blog-journal__welcome">Welcome to</p>
+        <h1 class="blog-journal__title">The Blog</h1>
+        <span class="blog-journal__rule" aria-hidden="true"></span>
+        <p class="blog-journal__lead">Client stories and notes on branding, websites, and organic social.</p>
+      </header>
+
+      <div class="blog-journal__bar" data-blog-filters>
+        <div class="blog-journal__categories">
+          <span class="blog-journal__categories-label" id="blog-filters-label">Categories:</span>
+          <div class="blog-index-filters" role="group" aria-labelledby="blog-filters-label">
+            <button type="button" class="blog-filter-chip is-active" data-blog-filter="all" aria-pressed="true">Blog home</button>
+            <button type="button" class="blog-filter-chip" data-blog-filter="social-media" aria-pressed="false">Social Media</button>
+            <button type="button" class="blog-filter-chip" data-blog-filter="branding" aria-pressed="false">Branding</button>
+            <button type="button" class="blog-filter-chip" data-blog-filter="print" aria-pressed="false">Print</button>
+            <button type="button" class="blog-filter-chip" data-blog-filter="website" aria-pressed="false">Website</button>
+          </div>
         </div>
+        <label class="blog-journal__search">
+          <span class="sr-only">Search the blog</span>
+          <svg class="blog-journal__search-icon" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+            <circle cx="10.5" cy="10.5" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M15.2 15.2 L20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <input type="search" placeholder="Search the blog" data-blog-search autocomplete="off" />
+        </label>
       </div>
 
       <ul class="blog-index blog-index--grid" role="list">
@@ -362,6 +366,16 @@
       </ul>
 
       <p id="blog-empty" class="blog-index-empty" hidden>No posts in this view.</p>
+
+      <nav class="blog-journal__pager" data-blog-pager aria-label="More blog posts" hidden>
+        <button type="button" class="blog-journal__pager-btn" data-blog-page="older">
+          <span aria-hidden="true">←</span> Older posts
+        </button>
+        <span class="blog-journal__pager-rule" aria-hidden="true"></span>
+        <button type="button" class="blog-journal__pager-btn" data-blog-page="newer">
+          Newer posts <span aria-hidden="true">→</span>
+        </button>
+      </nav>
     </div>
   </section>
 </main>

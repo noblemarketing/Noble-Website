@@ -1341,6 +1341,37 @@ function setupServiceAccordion() {
   });
 }
 
+function bindScrollReveal(el) {
+  if (!(el instanceof Element) || el.classList.contains("is-revealed")) return;
+  if (
+    !document.body.classList.contains("page-services") &&
+    !document.body.classList.contains("page-blog") &&
+    !document.body.classList.contains("page-contact")
+  ) {
+    return;
+  }
+
+  const reveal = () => el.classList.add("is-revealed");
+  const r = el.getBoundingClientRect();
+  const vh = window.innerHeight || document.documentElement.clientHeight;
+  if (r.top < vh * 0.92 && r.bottom > 0) {
+    reveal();
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        reveal();
+        io.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
+  );
+  io.observe(el);
+}
+
 function setupServicesScrollReveal() {
   if (
     !document.body.classList.contains("page-services") &&
@@ -1349,34 +1380,7 @@ function setupServicesScrollReveal() {
   ) {
     return;
   }
-  const sections = document.querySelectorAll("[data-reveal-on-scroll]");
-  if (sections.length === 0) return;
-
-  const reveal = (el) => {
-    el.classList.add("is-revealed");
-  };
-
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          reveal(entry.target);
-          io.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
-  );
-
-  sections.forEach((el) => {
-    const r = el.getBoundingClientRect();
-    const vh = window.innerHeight || document.documentElement.clientHeight;
-    if (r.top < vh * 0.92 && r.bottom > 0) {
-      reveal(el);
-    } else {
-      io.observe(el);
-    }
-  });
+  document.querySelectorAll("[data-reveal-on-scroll]").forEach(bindScrollReveal);
 }
 
 function setupAddonsCarousel() {
@@ -2008,6 +2012,7 @@ function ensureNobleInstagramFeedMount() {
 
   section.appendChild(container);
   main.appendChild(section);
+  bindScrollReveal(section);
 }
 
 function loadNobleInstagramFeedFallback() {
@@ -2697,11 +2702,173 @@ function setupBlogPostGalleries() {
   });
 }
 
+/** Blog posts — Cascadia-style hero, story row, and a three-frame gallery. */
+async function setupBlogCascadia() {
+  if (!document.body.classList.contains("page-blog-post")) return;
+  const article = document.querySelector(".blog-magazine");
+  if (!(article instanceof HTMLElement) || article.classList.contains("blog-cascadia")) return;
+
+  const imgs = Array.from(article.querySelectorAll("img"));
+  await Promise.race([
+    Promise.all(imgs.map((img) => (img.decode ? img.decode().catch(() => {}) : Promise.resolve()))),
+    new Promise((resolve) => setTimeout(resolve, 1200)),
+  ]);
+
+  const heroFig = article.querySelector(".blog-magazine__hero");
+  const intro = article.querySelector(".blog-magazine__intro");
+  const copy = article.querySelector(".blog-magazine__copy");
+  const split = article.querySelector(".blog-magazine__split");
+  if (!(heroFig instanceof HTMLElement) || !(intro instanceof HTMLElement)) return;
+
+  const ratioOf = (img) => {
+    const w = img.naturalWidth || Number(img.getAttribute("width")) || 0;
+    const h = img.naturalHeight || Number(img.getAttribute("height")) || 0;
+    if (!w || !h) return 1;
+    return w / h;
+  };
+  const srcOf = (img) => img.getAttribute("src") || "";
+  const poorFit = (img) => {
+    const r = ratioOf(img);
+    if (r > 2.75 || r < 0.45) return true;
+    return /letterhead|profile-photo/i.test(srcOf(img));
+  };
+
+  const heroImg = heroFig.querySelector("img");
+  const pool = [];
+  if (heroImg instanceof HTMLImageElement) pool.push({ fig: heroFig, img: heroImg });
+
+  article.querySelectorAll(".blog-magazine__visuals figure, .blog-magazine__row figure").forEach((fig) => {
+    if (!(fig instanceof HTMLElement) || fig === heroFig) return;
+    const img = fig.querySelector("img");
+    if (img instanceof HTMLImageElement) pool.push({ fig, img });
+  });
+
+  pool.forEach((item) => {
+    if (!poorFit(item.img) || item.fig === heroFig) return;
+    item.fig.remove();
+    item.dropped = true;
+  });
+  const usable = pool.filter((item) => !item.dropped && !poorFit(item.img));
+
+  const byWide = (a, b) => ratioOf(b.img) - ratioOf(a.img);
+  const scenic = usable.filter((item) => ratioOf(item.img) >= 1.25 && !/banner/i.test(srcOf(item.img))).sort(byWide);
+  const anyWide = usable.filter((item) => ratioOf(item.img) >= 1.25).sort(byWide);
+  const heroPick = scenic[0] || anyWide[0] || usable[0];
+  if (!heroPick) return;
+
+  if (heroPick.img !== heroImg && heroImg instanceof HTMLImageElement) {
+    const donor = heroPick.fig;
+    heroFig.appendChild(heroPick.img);
+    donor.appendChild(heroImg);
+    const displaced = usable.find((item) => item.img === heroImg);
+    if (displaced) displaced.fig = donor;
+    heroPick.fig = heroFig;
+  }
+
+  const rest = usable.filter((item) => item.img !== heroFig.querySelector("img"));
+  const storyPick = rest.find((item) => ratioOf(item.img) < 1.15) || null;
+  const afterStory = rest.filter((item) => item !== storyPick);
+  const featurePick = afterStory
+    .filter((item) => ratioOf(item.img) >= 1.35)
+    .sort((a, b) => Math.abs(ratioOf(a.img) - 1.55) - Math.abs(ratioOf(b.img) - 1.55))[0] || null;
+  const stackPicks = afterStory.filter((item) => item !== featurePick && ratioOf(item.img) < 1.2).slice(0, 2);
+  const kept = new Set([heroPick, storyPick, featurePick, ...stackPicks].filter(Boolean));
+  usable.forEach((item) => {
+    if (kept.has(item) || item.fig === heroFig) return;
+    item.fig.remove();
+  });
+
+  const mark = document.createElement("div");
+  mark.className = "blog-cascadia__mark";
+  ["blog-magazine__date", "blog-magazine__title", "blog-magazine__kicker"].forEach((cls) => {
+    const el = intro.querySelector("." + cls);
+    if (el) mark.appendChild(el);
+  });
+  intro.querySelector(".blog-magazine__length")?.remove();
+  const dek = intro.querySelector(".blog-magazine__dek");
+  heroFig.appendChild(mark);
+
+  const scroll = document.createElement("a");
+  scroll.className = "blog-cascadia__scroll";
+  scroll.href = "#blog-story";
+  scroll.setAttribute("aria-label", "Scroll to the story");
+  scroll.innerHTML = "<span></span>";
+  heroFig.appendChild(scroll);
+  intro.remove();
+
+  const story = document.createElement("section");
+  story.className = "blog-cascadia__story";
+  story.id = "blog-story";
+  if (storyPick) {
+    storyPick.fig.classList.add("blog-cascadia__story-photo");
+    story.appendChild(storyPick.fig);
+  } else {
+    story.classList.add("blog-cascadia__story--text");
+  }
+  const storyCopy = document.createElement("div");
+  storyCopy.className = "blog-cascadia__story-copy";
+  if (dek) {
+    dek.classList.add("blog-cascadia__headline");
+    storyCopy.appendChild(dek);
+  }
+  const firstP = copy?.querySelector(".blog-magazine__body p");
+  if (firstP) storyCopy.appendChild(firstP);
+  const ctaSrc = copy?.querySelector(".blog-magazine__result-links a");
+  if (ctaSrc instanceof HTMLAnchorElement) {
+    const cta = ctaSrc.cloneNode(true);
+    if (cta instanceof HTMLAnchorElement) {
+      cta.className = "blog-cascadia__cta";
+      storyCopy.appendChild(cta);
+    }
+  }
+  story.appendChild(storyCopy);
+
+  let gallery = null;
+  if (featurePick || stackPicks.length) {
+    gallery = document.createElement("section");
+    gallery.className = "blog-cascadia__gallery";
+    gallery.setAttribute("aria-label", "Story photos");
+    if (featurePick) {
+      featurePick.fig.classList.add("blog-cascadia__feature");
+      gallery.appendChild(featurePick.fig);
+    }
+    if (stackPicks.length > 1 && featurePick) {
+      const stack = document.createElement("div");
+      stack.className = "blog-cascadia__stack";
+      stackPicks.forEach((item) => stack.appendChild(item.fig));
+      gallery.appendChild(stack);
+    } else if (featurePick && stackPicks.length === 1) {
+      gallery.classList.add("blog-cascadia__gallery--pair");
+      gallery.appendChild(stackPicks[0].fig);
+    } else if (stackPicks.length) {
+      gallery.classList.add(stackPicks.length === 1 ? "blog-cascadia__gallery--single" : "blog-cascadia__gallery--pair");
+      stackPicks.forEach((item) => gallery.appendChild(item.fig));
+    }
+  }
+
+  article.querySelectorAll(".blog-magazine__visuals, .blog-magazine__row").forEach((node) => {
+    if (!node.querySelector("img")) node.remove();
+  });
+
+  const stats = article.querySelector(".blog-magazine__stats");
+  article.appendChild(heroFig);
+  article.appendChild(story);
+  if (stats) article.appendChild(stats);
+  if (gallery) article.appendChild(gallery);
+  if (split) {
+    split.classList.add("blog-cascadia__essay");
+    article.appendChild(split);
+  }
+
+  article.classList.add("blog-cascadia");
+}
+
 /** Blog magazine closing images → mobile accordion + horizontal swipe gallery. */
 function setupBlogMagazineGalleryScroll() {
   if (!document.body.classList.contains("page-blog-post")) return;
 
   document.querySelectorAll(".blog-magazine").forEach((article) => {
+    if (article.classList.contains("blog-cascadia")) return;
     if (article.querySelector("[data-blog-gallery-scroll]")) return;
 
     const visuals = article.querySelector(".blog-magazine__visuals");
@@ -2826,37 +2993,82 @@ function setupBlogIndexFilters() {
   const items = Array.from(list.querySelectorAll(".blog-index__item[data-blog-tags]"));
   const chips = Array.from(root.querySelectorAll("[data-blog-filter]"));
   const empty = document.getElementById("blog-empty");
+  const search = root.querySelector("[data-blog-search]");
+  const pager = document.querySelector("[data-blog-pager]");
+  const olderBtn = pager?.querySelector('[data-blog-page="older"]');
+  const newerBtn = pager?.querySelector('[data-blog-page="newer"]');
   if (chips.length === 0) return;
 
-  const apply = (filter) => {
-    const key = filter === "all" ? "all" : String(filter).toLowerCase();
-    let visible = 0;
-    items.forEach((li) => {
-      if (li.hasAttribute("data-blog-unpublished")) {
-        li.hidden = true;
-        return;
-      }
+  const pageSize = 6;
+  let filter = "all";
+  let page = 0;
+
+  const matches = () => {
+    const key = filter === "all" ? "all" : filter;
+    const query = search instanceof HTMLInputElement ? search.value.trim().toLowerCase() : "";
+    return items.filter((li) => {
+      if (li.hasAttribute("data-blog-unpublished")) return false;
       const raw = (li.getAttribute("data-blog-tags") || "").toLowerCase();
-      const show = key === "all" || raw.split(/\s+/).includes(key);
-      li.hidden = !show;
-      if (show) visible += 1;
+      if (key !== "all" && !raw.split(/\s+/).includes(key)) return false;
+      if (query && !(li.textContent || "").toLowerCase().includes(query)) return false;
+      return true;
+    });
+  };
+
+  const apply = (scrollToList) => {
+    const found = matches();
+    const pages = Math.max(1, Math.ceil(found.length / pageSize));
+    if (page > pages - 1) page = pages - 1;
+    if (page < 0) page = 0;
+    const start = page * pageSize;
+    const visible = new Set(found.slice(start, start + pageSize));
+    items.forEach((li) => {
+      li.hidden = !visible.has(li);
     });
     chips.forEach((btn) => {
       const f = (btn.getAttribute("data-blog-filter") || "all").toLowerCase();
-      const on = f === key;
+      const on = f === filter;
       btn.classList.toggle("is-active", on);
       btn.setAttribute("aria-pressed", on ? "true" : "false");
     });
-    if (empty instanceof HTMLElement) {
-      empty.hidden = visible !== 0;
+    if (empty instanceof HTMLElement) empty.hidden = found.length !== 0;
+    if (pager instanceof HTMLElement) {
+      const showPager = found.length > pageSize;
+      pager.hidden = !showPager;
+      if (olderBtn instanceof HTMLButtonElement) olderBtn.disabled = page >= pages - 1;
+      if (newerBtn instanceof HTMLButtonElement) newerBtn.disabled = page <= 0;
+    }
+    if (scrollToList) {
+      list.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   chips.forEach((btn) => {
     btn.addEventListener("click", () => {
-      apply(btn.getAttribute("data-blog-filter") || "all");
+      filter = (btn.getAttribute("data-blog-filter") || "all").toLowerCase();
+      page = 0;
+      if (filter === "all" && search instanceof HTMLInputElement) search.value = "";
+      apply(false);
     });
   });
+
+  if (search instanceof HTMLInputElement) {
+    search.addEventListener("input", () => {
+      page = 0;
+      apply(false);
+    });
+  }
+
+  olderBtn?.addEventListener("click", () => {
+    page += 1;
+    apply(true);
+  });
+  newerBtn?.addEventListener("click", () => {
+    page -= 1;
+    apply(true);
+  });
+
+  apply(false);
 }
 
 function setupBackToTop() {
@@ -2945,7 +3157,9 @@ setupServiceAccordion();
 setupAddonsCarousel();
 setupServicesScrollReveal();
 setupBlogPostGalleries();
-setupBlogMagazineGalleryScroll();
+setupBlogCascadia().finally(() => {
+  setupBlogMagazineGalleryScroll();
+});
 setupBlogPublishSchedule();
 setupBlogIndexFilters();
 setupContactForm();
