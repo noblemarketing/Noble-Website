@@ -13,17 +13,6 @@
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow" />
-  <script>
-    (function () {
-      var parts = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(new Date());
-      var get = function (type) { return parts.filter(function (part) { return part.type === type; })[0].value; };
-      if (get("year") + "-" + get("month") + "-" + get("day") < "2026-11-01") {
-        document.documentElement.style.display = "none";
-        location.replace("/");
-      }
-    })();
-  </script>
   <meta name="description" content="Pine Hill Building Company is a hometown custom home builder in Lititz, Pennsylvania. Noble built a social strategy to showcase their work and send more leads to phbchomes.com." />
   <link rel="icon" href="/Logos/noble-icon.png" type="image/png" sizes="any" />
   <link rel="apple-touch-icon" href="/Logos/noble-icon.png" />
