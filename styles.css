@@ -3628,8 +3628,10 @@ body.home-nav-fixed-bottom .home-featured-section .portfolio-mag-grid{
 }
 .work-case-highlight-grid img{
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  margin-inline: auto;
   border-radius: 10px;
   border: 1px solid rgba(20, 19, 17, 0.1);
   box-sizing: border-box;
@@ -3645,8 +3647,10 @@ body.home-nav-fixed-bottom .home-featured-section .portfolio-mag-grid{
 .revd-moodboard img,
 .witness-moodboard img{
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  margin-inline: auto;
   vertical-align: middle;
   border-radius: 12px;
   border: 1px solid rgba(20, 19, 17, 0.1);
@@ -3657,7 +3661,8 @@ body.home-nav-fixed-bottom .home-featured-section .portfolio-mag-grid{
 }
 .hsf-moodboard img{
   display: block;
-  width: min(100%, 1024px);
+  width: auto;
+  max-width: min(100%, 1024px);
   height: auto;
   margin-inline: auto;
   border-radius: 12px;
@@ -3935,15 +3940,18 @@ body.home-nav-fixed-bottom .home-featured-section .portfolio-mag-grid{
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(20, 19, 17, 0.1);
-  background: rgba(20, 19, 17, 0.04);
-  aspect-ratio: 4 / 3;
-  max-height: min(52vh, 520px);
+  background: transparent;
+  aspect-ratio: auto;
+  height: auto;
+  max-height: none;
 }
 .work-case-intro-split__hero img{
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
 }
 
 /* Case study — 50/50 client board (portfolio case pages) */
@@ -4862,15 +4870,18 @@ body.page-work-case .site-header{
 }
 .work-case-visual-gallery__media{
   width: 100%;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  background: rgba(20, 19, 17, 0.04);
+  aspect-ratio: auto;
+  height: auto;
+  overflow: visible;
+  background: transparent;
 }
 .work-case-visual-gallery__media img{
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
 }
 .work-case-visual-gallery__media--natural{
   aspect-ratio: auto;
@@ -5784,15 +5795,23 @@ body.page-work-case .site-header{
   background: rgba(255, 255, 255, 0.4);
 }
 .work-case-showcase-card__media{
-  aspect-ratio: 4 / 5;
-  background: rgba(20, 19, 17, 0.06);
+  aspect-ratio: auto;
+  height: auto;
+  background: transparent;
 }
-.work-case-showcase-card__media img,
+.work-case-showcase-card__media img{
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
+}
 .work-case-showcase-card__media video{
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .work-case-showcase-card__body{
   padding: clamp(16px, 2vw, 22px);
@@ -5884,8 +5903,10 @@ body.page-work-case .site-header{
 }
 .work-case-gallery__item img{
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  margin-inline: auto;
   border-radius: 6px;
   border: 1px solid rgba(20, 19, 17, 0.08);
 }
@@ -5955,10 +5976,12 @@ body.page-work-case .site-header{
   background: rgba(20, 19, 17, 0.04);
 }
 .work-case-social-item--still .work-case-social-item__frame{
-  aspect-ratio: 4 / 5;
+  aspect-ratio: auto;
+  height: auto;
 }
 .work-case-social-grid--curriculum .work-case-social-item--still .work-case-social-item__frame{
-  aspect-ratio: 9 / 16;
+  aspect-ratio: auto;
+  height: auto;
 }
 .work-case-social-item--still-landscape{
   width: 100%;
@@ -5966,7 +5989,8 @@ body.page-work-case .site-header{
   margin-inline: auto;
 }
 .work-case-social-item--still-landscape .work-case-social-item__frame{
-  aspect-ratio: 16 / 9;
+  aspect-ratio: auto;
+  height: auto;
 }
 .work-case-social-grid--curriculum > .work-case-social-item--still-landscape.work-case-social-item--span-row{
   grid-column: 1 / -1;
@@ -5979,9 +6003,11 @@ body.page-work-case .site-header{
 .work-case-social-item--still img,
 .work-case-social-item--still-landscape img{
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
 }
 .work-case-social-item--motion .work-case-social-item__frame{
   aspect-ratio: 9 / 16;
@@ -7873,7 +7899,6 @@ body.portfolio-page--magazine .site-header.is-elevated{
   aspect-ratio: 8 / 5;
   overflow: hidden;
   background: rgba(20, 19, 17, 0.06);
-  contain: paint;
 }
 .portfolio-mag-card__media img:not(.portfolio-mag-card__logo-overlay){
   display: block;
@@ -7881,8 +7906,6 @@ body.portfolio-page--magazine .site-header.is-elevated{
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  transform: scale(1);
-  transition: transform 0.45s ease, opacity 0.3s ease;
 }
 .portfolio-mag-card__media--logo{
   background: #fff;
@@ -8237,7 +8260,7 @@ body.portfolio-page--magazine .site-header.is-elevated{
   filter: drop-shadow(0 2px 20px rgba(0, 0, 0, 0.5));
 }
 .portfolio-mag-card:hover .portfolio-mag-card__media img:not(.portfolio-mag-card__logo-overlay){
-  transform: scale(1.04);
+  transform: none;
 }
 .portfolio-mag-card:hover .portfolio-mag-card__media--logo img{
   transform: none;
@@ -18056,14 +18079,22 @@ body.page-work-case .work-case-hero__shade{
   position: absolute;
   inset: 0;
 }
+body.page-work-case .work-case-hero__media{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 body.page-work-case .work-case-hero__img{
+  position: relative;
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 32%;
-  filter: blur(2px);
-  transform: scale(1.08);
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: none;
+  transform: none;
 }
 body.page-outback-toys-case .work-case-hero__img{
   object-position: center 68%;
@@ -18081,18 +18112,17 @@ body.page-hey-peaches-case .work-case-hero__img{
   object-position: 38% center;
 }
 body.page-hsf-case .work-case-hero__img{
-  object-position: center 50%;
-  filter: blur(2px);
-  transform: scale(1.4);
-  transform-origin: 0% 46%;
+  object-position: center;
+  filter: none;
+  transform: none;
 }
 body.page-remax-pinnacle-case .work-case-hero__img{
   object-position: 58% 42%;
 }
 body.page-brad-zimmerman-team-case .work-case-hero__img{
-  object-position: center top;
-  filter: blur(2px);
-  transform: translateY(72px) scale(1.08);
+  object-position: center;
+  filter: none;
+  transform: none;
 }
 body.page-wittness-coffeehouse-case .work-case-hero__img{
   object-position: 62% center;
@@ -18160,14 +18190,9 @@ body.page-pine-hill-building-case .work-case-hero__img{
   object-position: center 46%;
 }
 body.page-by-anna-claire-case .work-case-hero__img{
-  object-position: center 42%;
-  transform: translateY(56px) scale(1.08);
-}
-@media (max-width: 860px){
-  body.page-by-anna-claire-case .work-case-hero__img{
-    object-position: 44% center;
-    transform: scale(1.08);
-  }
+  object-position: center;
+  filter: none;
+  transform: none;
 }
 body.page-pine-hill-building-case .work-case-about__lead a{
   color: inherit;
@@ -19439,6 +19464,24 @@ body.page-blog-post .blog-cascadia .blog-magazine__chap{
     grid-column: 1;
     grid-row: auto;
   }
+}
+
+/* Case-study carousels: show each photo at its real size.
+   Fixed 4:5 cover crops were enlarging files past their pixel dimensions. */
+body[class*="-case"] #main .branding-case-scroll:not(.branding-case-scroll--logos) .branding-case-scroll__frame:has(> img){
+  aspect-ratio: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body[class*="-case"] #main .branding-case-scroll:not(.branding-case-scroll--logos) .branding-case-scroll__frame:has(> img) > img{
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
 }
 
 
