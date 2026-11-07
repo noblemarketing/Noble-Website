@@ -512,7 +512,7 @@ function setupWorkCaseClientProfiles() {
     "work-brookstone-ind": ["/Photos/brookstone/brookstone-brand-in-action-hat-display.jpg", "Brookstone Industries cap"],
     "work-revd": ["/Photos/revd-toys/revd-website-mockup-display.jpg", "REVD Toys website on a laptop"],
     "work-no-nonsense-neutering": ["/portfolio/nnn/nnn-carousel-vet-handling-cat-display.jpg", "Veterinary staff with a cat at No Nonsense Neutering"],
-    "work-everflame-financial": ["/Photos/everflame/everflame-branded-polo-display.jpg", "Everflame Financial branded polo"],
+    "work-everflame-financial": ["/Photos/everflame/everflame-hero-mug.png", "Person holding a phone and a white mug printed with the Everflame Financial Consulting logo"],
     "work-hsf": ["/Photos/head-strong-flight/hsf-hero-deer-display.jpg", "Deer standing in tall grass beneath dark trees"],
     "work-da-targets": ["/Photos/da-targets/da-hero-range-display.jpg", "A man setting orange DA Targets on a rail at dusk"],
     "work-gradys": ["/Photos/gradys/gradys-tire-work-wear-display.jpg", "Grady's Grill workwear"],

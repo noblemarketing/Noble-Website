@@ -4868,32 +4868,23 @@ body.page-work-case .site-header{
   align-items: center;
   margin: 0;
 }
-.work-case-visual-gallery__media{
-  width: 100%;
-  aspect-ratio: auto;
-  height: auto;
-  overflow: visible;
-  background: transparent;
-}
-.work-case-visual-gallery__media img{
-  display: block;
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  margin-inline: auto;
-  object-fit: contain;
-}
+.work-case-visual-gallery__media,
 .work-case-visual-gallery__media--natural{
-  aspect-ratio: auto;
-  height: auto;
-  overflow: visible;
-  background: transparent;
-}
-.work-case-visual-gallery__media--natural img{
   width: 100%;
+  aspect-ratio: 3 / 4;
   height: auto;
+  overflow: hidden;
+  background: rgba(20, 19, 17, 0.04);
+}
+.work-case-visual-gallery__media img,
+.work-case-visual-gallery__media--natural img{
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin-inline: 0;
   aspect-ratio: auto;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 .work-case-visual-gallery__caption{
@@ -18116,7 +18107,7 @@ body.page-remax-pinnacle-case .work-case-hero__img{
   object-position: 58% 42%;
 }
 body.page-brad-zimmerman-team-case .work-case-hero__img{
-  object-position: center;
+  object-position: center 22%;
   filter: none;
   transform: none;
 }
@@ -18184,6 +18175,12 @@ body.page-pine-hill-building-case .work-case-hero__title--logo img{
 }
 body.page-pine-hill-building-case .work-case-hero__img{
   object-position: center 46%;
+}
+body.page-brookstone-case .work-case-hero__img{
+  object-position: center 28%;
+}
+body.page-everflame-financial-case .work-case-hero__img{
+  object-position: 72% center;
 }
 body.page-by-anna-claire-case .work-case-hero__img{
   object-position: center;
