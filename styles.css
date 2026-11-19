@@ -9014,8 +9014,8 @@ main > section.section:has(+ section.home-instagram-strip){
   color: #fff;
 }
 
-/* Services hub — testimonials above footer */
-.page-services-hub .services-hub-voices{
+/* About page — client voices */
+.page-about .services-hub-voices{
   background: var(--color-white);
   color: var(--color-ink);
   border-top: none;
@@ -9024,11 +9024,11 @@ main > section.section:has(+ section.home-instagram-strip){
   padding-bottom: clamp(72px, 9vw, 112px);
   overflow: visible;
 }
-.page-services-hub .services-hub-voices__head{
+.page-about .services-hub-voices__head{
   max-width: 36rem;
   margin: 0 0 clamp(24px, 3.5vw, 36px);
 }
-.page-services-hub .services-hub-voices__kicker{
+.page-about .services-hub-voices__kicker{
   margin: 0 0 10px;
   font-family: var(--font-body);
   font-size: 0.72rem;
@@ -9037,7 +9037,7 @@ main > section.section:has(+ section.home-instagram-strip){
   text-transform: uppercase;
   color: var(--color-green);
 }
-.page-services-hub .services-hub-voices__title{
+.page-about .services-hub-voices__title{
   margin: 0;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
   font-size: calc(clamp(1.7rem, 3.2vw, 2.5rem) + var(--heading-size-add));
@@ -9047,7 +9047,7 @@ main > section.section:has(+ section.home-instagram-strip){
   color: var(--color-ink);
   font-variant-ligatures: none;
 }
-.page-services-hub .services-hub-voices__grid{
+.page-about .services-hub-voices__grid{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(28px, 4.5vw, 56px) clamp(24px, 4vw, 48px);
@@ -9057,17 +9057,17 @@ main > section.section:has(+ section.home-instagram-strip){
   list-style: none;
   max-width: 920px;
 }
-.page-services-hub .services-hub-voices__grid > li{
+.page-about .services-hub-voices__grid > li{
   margin: 0;
   min-width: 0;
   display: flex;
   justify-content: center;
 }
-.page-services-hub .services-hub-voices[data-reveal-on-scroll],
-.page-services-hub .services-hub-voices[data-reveal-on-scroll].is-revealed{
+.page-about .services-hub-voices[data-reveal-on-scroll],
+.page-about .services-hub-voices[data-reveal-on-scroll].is-revealed{
   transform: none;
 }
-.page-services-hub .voice-card{
+.page-about .voice-card{
   position: relative;
   display: block;
   width: min(100%, 260px);
@@ -9087,7 +9087,7 @@ main > section.section:has(+ section.home-instagram-strip){
   perspective: 1400px;
   -webkit-perspective: 1400px;
 }
-.page-services-hub .voice-card__scene{
+.page-about .voice-card__scene{
   position: relative;
   display: block;
   width: 100%;
@@ -9097,13 +9097,13 @@ main > section.section:has(+ section.home-instagram-strip){
   transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
-.page-services-hub .voice-card:hover .voice-card__scene,
-.page-services-hub .voice-card:focus-visible .voice-card__scene,
-.page-services-hub .voice-card.is-flipped .voice-card__scene{
+.page-about .voice-card:hover .voice-card__scene,
+.page-about .voice-card:focus-visible .voice-card__scene,
+.page-about .voice-card.is-flipped .voice-card__scene{
   transform: rotateY(180deg);
 }
-.page-services-hub .voice-card__front,
-.page-services-hub .voice-card__back{
+.page-about .voice-card__front,
+.page-about .voice-card__back{
   position: absolute;
   inset: 0;
   border-radius: 22px;
@@ -9112,10 +9112,10 @@ main > section.section:has(+ section.home-instagram-strip){
   -webkit-backface-visibility: hidden;
   box-shadow: 0 10px 28px rgba(46, 42, 34, 0.08);
 }
-.page-services-hub .voice-card__front{
+.page-about .voice-card__front{
   transform: rotateY(0deg) translateZ(1px);
 }
-.page-services-hub .voice-card__front img{
+.page-about .voice-card__front img{
   display: block;
   width: 100%;
   height: 100%;
@@ -9127,12 +9127,12 @@ main > section.section:has(+ section.home-instagram-strip){
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
-.page-services-hub .voice-card:hover .voice-card__front img,
-.page-services-hub .voice-card:focus-visible .voice-card__front img,
-.page-services-hub .voice-card.is-flipped .voice-card__front img{
+.page-about .voice-card:hover .voice-card__front img,
+.page-about .voice-card:focus-visible .voice-card__front img,
+.page-about .voice-card.is-flipped .voice-card__front img{
   transform: scale(1.14);
 }
-.page-services-hub .voice-card__front-meta{
+.page-about .voice-card__front-meta{
   position: absolute;
   left: 0;
   right: 0;
@@ -9141,14 +9141,14 @@ main > section.section:has(+ section.home-instagram-strip){
   background: linear-gradient(180deg, transparent 0%, rgba(20, 19, 17, 0.78) 100%);
   color: #fff;
 }
-.page-services-hub .voice-card__front-name{
+.page-about .voice-card__front-name{
   display: block;
   font-family: var(--font-body);
   font-size: clamp(1rem, 1.6vw, 1.2rem);
   font-weight: 700;
   line-height: 1.2;
 }
-.page-services-hub .voice-card__front-org{
+.page-about .voice-card__front-org{
   display: block;
   margin-top: 4px;
   font-family: var(--font-body);
@@ -9157,7 +9157,7 @@ main > section.section:has(+ section.home-instagram-strip){
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.88);
 }
-.page-services-hub .voice-card__back{
+.page-about .voice-card__back{
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -9169,12 +9169,12 @@ main > section.section:has(+ section.home-instagram-strip){
   background: #fff;
   transform: rotateY(180deg) translateZ(1px);
 }
-.page-services-hub .voice-card:hover .voice-card__back,
-.page-services-hub .voice-card:focus-visible .voice-card__back,
-.page-services-hub .voice-card.is-flipped .voice-card__back{
+.page-about .voice-card:hover .voice-card__back,
+.page-about .voice-card:focus-visible .voice-card__back,
+.page-about .voice-card.is-flipped .voice-card__back{
   pointer-events: auto;
 }
-.page-services-hub .voice-card__back-head{
+.page-about .voice-card__back-head{
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -9182,7 +9182,7 @@ main > section.section:has(+ section.home-instagram-strip){
   margin-bottom: 8px;
   flex: 0 0 auto;
 }
-.page-services-hub .voice-card__avatar{
+.page-about .voice-card__avatar{
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -9192,19 +9192,19 @@ main > section.section:has(+ section.home-instagram-strip){
   transform: scale(0.92);
   transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
 }
-.page-services-hub .voice-card:hover .voice-card__avatar,
-.page-services-hub .voice-card:focus-visible .voice-card__avatar,
-.page-services-hub .voice-card.is-flipped .voice-card__avatar{
+.page-about .voice-card:hover .voice-card__avatar,
+.page-about .voice-card:focus-visible .voice-card__avatar,
+.page-about .voice-card.is-flipped .voice-card__avatar{
   transform: scale(1);
 }
-.page-services-hub .voice-card__quote-mark{
+.page-about .voice-card__quote-mark{
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
   font-size: 2.2rem;
   line-height: 0.7;
   color: rgba(46, 42, 34, 0.16);
   font-variant-ligatures: none;
 }
-.page-services-hub .voice-card__back-name{
+.page-about .voice-card__back-name{
   display: block;
   font-family: var(--font-body);
   font-size: 0.92rem;
@@ -9212,7 +9212,7 @@ main > section.section:has(+ section.home-instagram-strip){
   color: var(--color-ink);
   text-transform: none;
 }
-.page-services-hub .voice-card__back-org{
+.page-about .voice-card__back-org{
   display: block;
   margin: 3px 0 10px;
   font-family: var(--font-body);
@@ -9222,7 +9222,7 @@ main > section.section:has(+ section.home-instagram-strip){
   color: rgba(46, 42, 34, 0.55);
   text-transform: none;
 }
-.page-services-hub .voice-card__quote{
+.page-about .voice-card__quote{
   margin: 0;
   flex: 1 1 auto;
   min-height: 0;
@@ -9235,11 +9235,11 @@ main > section.section:has(+ section.home-instagram-strip){
   font-variant-ligatures: none;
   overflow-wrap: anywhere;
 }
-.page-services-hub .voice-card:focus-visible{
+.page-about .voice-card:focus-visible{
   outline: 2px solid var(--color-green);
   outline-offset: 3px;
 }
-.page-services-hub .voice-card--cta{
+.page-about .voice-card--cta{
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -9255,10 +9255,10 @@ main > section.section:has(+ section.home-instagram-strip){
   perspective: none;
   box-shadow: 0 10px 28px rgba(46, 42, 34, 0.08);
 }
-.page-services-hub .voice-card--cta:focus-visible{
+.page-about .voice-card--cta:focus-visible{
   outline: none;
 }
-.page-services-hub .voice-card__cta-copy{
+.page-about .voice-card__cta-copy{
   margin: 0;
   max-width: none;
   font-family: "Arome", ui-serif, Georgia, "Times New Roman", Times, serif;
@@ -9267,7 +9267,7 @@ main > section.section:has(+ section.home-instagram-strip){
   line-height: 1.2;
   font-variant-ligatures: none;
 }
-.page-services-hub .voice-card__cta-btn{
+.page-about .voice-card__cta-btn{
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -9282,36 +9282,36 @@ main > section.section:has(+ section.home-instagram-strip){
   text-transform: uppercase;
   text-decoration: none;
 }
-.page-services-hub .voice-card__cta-btn:hover{
+.page-about .voice-card__cta-btn:hover{
   background: var(--color-cream-tint);
 }
 @media (max-width: 900px){
-  .page-services-hub .services-hub-voices__grid{
+  .page-about .services-hub-voices__grid{
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(16px, 3.5vw, 28px) clamp(12px, 3vw, 20px);
     max-width: none;
   }
-  .page-services-hub .voice-card{
+  .page-about .voice-card{
     width: 100%;
     max-width: none;
   }
 }
 @media (max-width: 560px){
-  .page-services-hub .services-hub-voices__grid{
+  .page-about .services-hub-voices__grid{
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px 10px;
   }
-  .page-services-hub .voice-card__front-name{
+  .page-about .voice-card__front-name{
     font-size: clamp(0.78rem, 3.4vw, 0.95rem);
   }
-  .page-services-hub .voice-card__front-org{
+  .page-about .voice-card__front-org{
     font-size: clamp(0.62rem, 2.6vw, 0.75rem);
   }
 }
 @media (prefers-reduced-motion: reduce){
-  .page-services-hub .voice-card__scene,
-  .page-services-hub .voice-card__front img,
-  .page-services-hub .voice-card__avatar{
+  .page-about .voice-card__scene,
+  .page-about .voice-card__front img,
+  .page-about .voice-card__avatar{
     transition: none;
   }
 }
@@ -9325,7 +9325,7 @@ main > section.section:has(+ section.home-instagram-strip){
   .page-services-hub .services-editorial--catalog .services-editorial-cta-row{
     margin-top: clamp(18px, 3.5vw, 26px);
   }
-  .page-services-hub #client-love{
+  .page-about #client-love{
     padding-top: clamp(28px, 5vw, 40px);
   }
 }
