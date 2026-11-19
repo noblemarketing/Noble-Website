@@ -2771,7 +2771,8 @@ async function setupBlogCascadia() {
   const featurePick = afterStory
     .filter((item) => ratioOf(item.img) >= 1.35)
     .sort((a, b) => Math.abs(ratioOf(a.img) - 1.55) - Math.abs(ratioOf(b.img) - 1.55))[0] || null;
-  const stackPicks = afterStory.filter((item) => item !== featurePick && ratioOf(item.img) < 1.2).slice(0, 2);
+  const portraitRest = afterStory.filter((item) => item !== featurePick && ratioOf(item.img) < 1.2);
+  const stackPicks = article.hasAttribute("data-keep-proofs") ? portraitRest : portraitRest.slice(0, 2);
   const kept = new Set([heroPick, storyPick, featurePick, ...stackPicks].filter(Boolean));
   usable.forEach((item) => {
     if (kept.has(item) || item.fig === heroFig) return;
