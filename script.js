@@ -535,7 +535,7 @@ function setupWorkCaseClientProfiles() {
 
   const heroStats = {
     "work-outback-toys": [
-      { value: "300K+", label: "Views on one reel" },
+      { value: "1.6M", label: "Views on one reel" },
       { value: "100K", label: "Facebook followers" },
       { value: "3,000", label: "New Instagram followers" },
     ],
